@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+  <name>talos_controller_configuration_gazebo</name>
+  <version>0.2.1</version>
+  <description>The talos_controller_configuration_gazebo package</description>
+
+  <maintainer email="hilario.tome@pal-robotics.com">hilario</maintainer>
+
+  <license>LGPL-3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>imu_sensor_controller</run_depend>
+  <run_depend>force_torque_sensor_controller</run_depend>
+  <run_depend>joint_trajectory_controller</run_depend>
+  <run_depend>joint_torque_sensor_state_controller</run_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>mode_state_controller</run_depend>
+  <run_depend>temperature_sensor_controller</run_depend>
+  <run_depend>head_action</run_depend>
+  <run_depend>walking_controller</run_depend>
+  <run_depend>pal_transmissions</run_depend>
+  <run_depend>talos_controller_configuration</run_depend>
+
+  <export>
+  </export>
+
+</package>

@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller/lib/python2.7/dist-packages/cartesian_compliance_controller/cfg/ComplianceControllerConfig.py

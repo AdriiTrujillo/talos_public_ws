@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_hardware_gazebo/lib/pkgconfig/talos_hardware_gazebo.pc

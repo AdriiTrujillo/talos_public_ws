@@ -1,0 +1,8 @@
+\subsubsection usage Usage
+\verbatim
+<node name="cartesian_controller_base" pkg="cartesian_controller_base" type="cartesian_controller_base">
+  <param name="p" type="double" value="0.0" />
+  <param name="d" type="double" value="0.0" />
+</node>
+\endverbatim
+

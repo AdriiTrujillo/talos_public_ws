@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/tf_lookup/share/roseus/ros/tf_lookup/msg/TfStreamActionGoal.l

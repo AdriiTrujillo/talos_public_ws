@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: pal_transmissions
+Description: Description of pal_transmissions
+Version: 0.2.3
+Cflags: -I${prefix}/include -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/x86_64-linux-gnu/libtinyxml.so
+Requires: pluginlib roscpp transmission_interface

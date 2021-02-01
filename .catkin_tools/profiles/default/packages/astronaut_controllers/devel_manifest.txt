@@ -1,0 +1,6 @@
+talos_astronaut/astronaut_controllers
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/astronaut_controllers/cmake/astronaut_controllersConfig-version.cmake /home/adrii/talos_public_ws/devel/share/astronaut_controllers/cmake/astronaut_controllersConfig-version.cmake
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/astronaut_controllers/cmake/astronaut_controllersConfig.cmake /home/adrii/talos_public_ws/devel/share/astronaut_controllers/cmake/astronaut_controllersConfig.cmake
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so /home/adrii/talos_public_ws/devel/lib/libastronaut_controllers_lib.so
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/pkgconfig/astronaut_controllers.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/astronaut_controllers.pc

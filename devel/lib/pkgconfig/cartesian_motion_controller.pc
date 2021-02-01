@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/cartesian_motion_controller/lib/pkgconfig/cartesian_motion_controller.pc

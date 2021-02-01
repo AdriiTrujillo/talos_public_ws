@@ -1,0 +1,16 @@
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/PDGainsConfig-usage.dox
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/CartesianControllerConfig.dox
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/PDGainsConfig.wikidoc
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/CartesianControllerConfig.wikidoc
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/PDGainsConfig.dox
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/docs/CartesianControllerConfig-usage.dox
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/cmake/cartesian_controller_baseConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_controller_base/cmake/cartesian_controller_baseConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/include/cartesian_controller_base/PDGainsConfig.h
+Symlinking /home/adrii/talos_public_ws/devel/include/cartesian_controller_base/CartesianControllerConfig.h
+Symlinking /home/adrii/talos_public_ws/devel/lib/libcartesian_controller_base.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/cartesian_controller_base/__init__.py
+Symlinking /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/cartesian_controller_base/cfg/CartesianControllerConfig.py
+Symlinking /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/cartesian_controller_base/cfg/__init__.py
+Symlinking /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/cartesian_controller_base/cfg/PDGainsConfig.py
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/cartesian_controller_base.pc

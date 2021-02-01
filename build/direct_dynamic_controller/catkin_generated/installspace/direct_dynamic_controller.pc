@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: direct_dynamic_controller
+Description: Description of direct_dynamic_controller
+Version: 2.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -ldirect_dynamic_controller
+Requires: actionlib angles roscpp urdf control_toolbox controller_interface hardware_interface realtime_tools control_msgs trajectory_msgs kdl_parser ddynamic_reconfigure

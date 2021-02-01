@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/cartesian_controller_base/share/cartesian_controller_base/cmake/cartesian_controller_baseConfig-version.cmake

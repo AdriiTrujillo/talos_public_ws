@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>talos_hardware_gazebo</name>
+  <version>0.2.1</version>
+  <description>The talos_hardware_gazebo package</description>
+
+  <maintainer email="hilario.tome@pal-robotics.com">Hilario Tome</maintainer>
+
+  <license>LGPL-3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>pal_hardware_gazebo</build_depend>
+
+  <run_depend>pal_hardware_gazebo</run_depend>
+
+  <export>
+  </export>
+</package>

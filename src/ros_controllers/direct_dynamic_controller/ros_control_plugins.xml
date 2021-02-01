@@ -1,0 +1,12 @@
+<library path="lib/libdirect_dynamic_controller">
+
+  <class name="effort_controllers/DirectDynamicController"
+         type="effort_controllers::DirectDynamicController"
+         base_class_type="controller_interface::ControllerBase">
+    <description>
+      The DirectDynamicController executes joint-space trajectories on a set of joints. This variant obtains directly the effort
+      that is needed at each joint taking into account the robotic arm dynamics (Inertia, Coriolis and Gravity), which improves performance
+    </description>
+  </class>
+
+</library>

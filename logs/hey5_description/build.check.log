@@ -1,0 +1,4 @@
+CMake Error: The source directory "/home/adrii/talos_public_ws/src/hey5_description" does not exist.
+Specify --help for usage, or press the help button on the CMake GUI.
+Makefile:222: fallo en las instrucciones para el objetivo 'cmake_check_build_system'
+make: *** [cmake_check_build_system] Error 1

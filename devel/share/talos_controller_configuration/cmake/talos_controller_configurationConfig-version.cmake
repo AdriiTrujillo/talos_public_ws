@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_controller_configuration/share/talos_controller_configuration/cmake/talos_controller_configurationConfig-version.cmake

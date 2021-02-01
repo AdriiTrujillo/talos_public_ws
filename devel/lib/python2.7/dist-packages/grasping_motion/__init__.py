@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/grasping_motion/lib/python2.7/dist-packages/grasping_motion/__init__.py

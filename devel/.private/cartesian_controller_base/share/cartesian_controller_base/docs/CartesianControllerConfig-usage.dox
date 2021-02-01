@@ -1,0 +1,8 @@
+\subsubsection usage Usage
+\verbatim
+<node name="cartesian_controller_base" pkg="cartesian_controller_base" type="cartesian_controller_base">
+  <param name="error_scale" type="double" value="1.0" />
+  <param name="iterations" type="int" value="10" />
+</node>
+\endverbatim
+

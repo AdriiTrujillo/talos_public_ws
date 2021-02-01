@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_bringup/share/talos_bringup/cmake/talos_bringupConfig.cmake

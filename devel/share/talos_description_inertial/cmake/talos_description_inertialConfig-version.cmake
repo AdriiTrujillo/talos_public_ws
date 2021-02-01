@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_description_inertial/share/talos_description_inertial/cmake/talos_description_inertialConfig-version.cmake

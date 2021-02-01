@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig.cmake

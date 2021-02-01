@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_controller_configuration_gazebo/share/talos_controller_configuration_gazebo/cmake/talos_controller_configuration_gazeboConfig-version.cmake

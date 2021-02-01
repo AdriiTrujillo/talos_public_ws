@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/devel/.private/talos_gazebo
+
+Name: talos_gazebo
+Description: Description of talos_gazebo
+Version: 0.2.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

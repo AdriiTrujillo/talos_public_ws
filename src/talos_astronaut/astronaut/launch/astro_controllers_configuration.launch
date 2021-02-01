@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <arg name="prefix" />
+  <arg name="hand_prefix" />
+  <arg name="suffix" value=".yaml" />
+  <arg name="robot" default="full_v2" />
+
+  <rosparam command="load" file="$(arg prefix)arm_left$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)arm_right$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)head$(arg suffix)" />
+  <rosparam command="load" file="$(arg prefix)torso$(arg suffix)" />
+  <rosparam command="load" file="$(arg hand_prefix)hand_full_ft_hey5_controllers$(arg suffix)" />
+
+</launch>

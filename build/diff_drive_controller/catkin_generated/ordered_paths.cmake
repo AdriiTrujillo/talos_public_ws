@@ -1,0 +1,1 @@
+set(ORDERED_PATHS "/home/adrii/talos_public_ws/devel/.private/controller_manager/lib;/opt/ros/kinetic/lib")

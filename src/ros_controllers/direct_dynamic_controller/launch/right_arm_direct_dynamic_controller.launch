@@ -1,0 +1,18 @@
+<launch>
+  <rosparam command="load" file="$(find direct_dynamic_controller)/config/right_arm/direct_dynamic_controller.yaml" />
+   
+  <!-- Set up controller -->
+  <arg name="controller_list"
+       value="right_arm_dynamic_controller"/>
+
+  <arg name="simulation" default="true"/>
+
+  <!-- Load the motor parameters -->
+  <group if="$(arg simulation)">
+  	<rosparam command="load" file="$(find direct_dynamic_controller)/config/right_arm/motor_params_simulation.yaml" />
+  </group>
+  <group unless="$(arg simulation)">
+  	<rosparam command="load" file="$(find direct_dynamic_controller)/config/right_arm/motor_params.yaml" />
+  </group>
+          
+</launch>

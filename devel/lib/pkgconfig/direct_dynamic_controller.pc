@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/lib/pkgconfig/direct_dynamic_controller.pc

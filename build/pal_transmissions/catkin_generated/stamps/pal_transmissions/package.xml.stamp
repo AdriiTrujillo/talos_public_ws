@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>pal_transmissions</name>
+  <version>0.2.3</version>
+  <description>
+    REEM / REEM-C head mechanical transmission model.
+
+    The transmission models the neck reducers, and the joint position limits of
+    head_2 as a function of head_1.
+  </description>
+  <maintainer email="adolfo.rodriguez@pal-robotics.com">Adolfo Rodriguez Tsouroukdissian</maintainer>
+  <author email="adolfo.rodriguez@pal-robotics.com">Adolfo Rodriguez Tsouroukdissian</author>
+  <license>Modified BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>cmake_modules</build_depend>
+  <build_depend>hardware_interface</build_depend>
+
+  <depend>pluginlib</depend>
+  <depend>roscpp</depend>
+  <depend>tinyxml</depend>
+  <depend>transmission_interface</depend>
+
+  <test_depend>resource_retriever</test_depend>
+
+  <export>
+    <cpp cflags="-I${prefix}/include"/>
+    <rosdoc config="rosdoc.yaml"/>
+    <transmission_interface plugin="${prefix}/ros_control_plugins.xml" />
+  </export>
+</package>

@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: talos_description
+Description: Description of talos_description
+Version: 1.1.15
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

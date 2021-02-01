@@ -1,0 +1,5 @@
+<library path="lib/libastronaut_controllers_lib">
+  <class name="astronaut_controllers/PositionController" 
+         type="position_controller::PositionController"           
+         base_class_type="controller_interface::ControllerBase" />
+</library>

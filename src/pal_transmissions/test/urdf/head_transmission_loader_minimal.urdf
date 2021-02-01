@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

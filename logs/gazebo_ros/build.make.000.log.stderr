@@ -1,0 +1,11 @@
+In file included from [01m[K/usr/include/gazebo-7/gazebo/physics/Entity.hh:30:0[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Model.hh:34[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Actor.hh:24[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/physics.hh:2[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_ros/include/gazebo_ros/gazebo_ros_api_plugin.h:34[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_ros/src/gazebo_ros_api_plugin.cpp:25[m[K:
+[01m[K/usr/include/gazebo-7/gazebo/msgs/msgs.hh:24:37:[m[K [01;31m[Kfatal error: [m[Kignition/math/Inertial.hh: No existe el archivo o el directorio
+compilation terminated.
+make[2]: *** [CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o] Error 1
+make[1]: *** [CMakeFiles/gazebo_ros_api_plugin.dir/all] Error 2
+make: *** [all] Error 2

@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/pal_common_msgs/share/roseus/ros/pal_common_msgs/msg/EmptyGoal.l

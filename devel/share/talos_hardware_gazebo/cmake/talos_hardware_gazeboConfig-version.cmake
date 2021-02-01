@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_hardware_gazebo/share/talos_hardware_gazebo/cmake/talos_hardware_gazeboConfig-version.cmake

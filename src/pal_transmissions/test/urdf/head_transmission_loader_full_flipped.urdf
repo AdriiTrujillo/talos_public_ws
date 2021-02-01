@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- NOTE: Order of joints and actuators is the inverse of the full URDF -->
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <key> -3.0 </key>
+        <max>  0.0 </max>
+      </limits>
+      <limits>
+        <key> -2.0 </key>
+        <min>  0.0 </min>
+        <max>  0.0 </max>
+      </limits>
+      <limits>
+        <key>  1.0 </key>
+        <min> -2.0 </min>
+        <max>  2.0 </max>
+      </limits>
+      <limits> <!-- should come in second, not third when sorted by key -->
+        <key> -1.0 </key>
+        <min> -1.0 </min>
+        <max>  1.0 </max>
+      </limits>
+      <limits>
+        <key>  2.0 </key>
+        <min>  0.0 </min>
+        <max>  0.0 </max>
+      </limits>
+      <limits>
+        <key>  3.0 </key>
+        <min>  0.0 </min>
+      </limits>
+      <limits>
+        <key>  4.0 </key>
+      </limits>
+      <offset>-1.0</offset>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <offset>1.0</offset>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

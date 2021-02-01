@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/simple_trajectory/share/simple_trajectory/cmake/simple_trajectoryConfig.cmake

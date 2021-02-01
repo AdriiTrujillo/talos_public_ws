@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target simple_trajectory[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/simple_trajectory.dir/src/simple_trajectory.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/adrii/talos_public_ws/devel/.private/simple_trajectory/lib/simple_trajectory/simple_trajectory[0m
+[100%] Built target simple_trajectory

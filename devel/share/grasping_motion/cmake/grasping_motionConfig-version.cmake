@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/grasping_motion/share/grasping_motion/cmake/grasping_motionConfig-version.cmake

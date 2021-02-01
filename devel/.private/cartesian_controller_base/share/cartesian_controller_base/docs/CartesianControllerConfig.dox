@@ -1,0 +1,7 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~error_scale" : \b [double] Scale the PID controlled error uniformly with this value min: 0.0, default: 1.0, max: 10.0
+- \b "~iterations" : \b [int] Number of solver iterations per control cycle min: 1, default: 10, max: 100
+

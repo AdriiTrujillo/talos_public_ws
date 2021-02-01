@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/talos_description_calibration/lib/pkgconfig/talos_description_calibration.pc

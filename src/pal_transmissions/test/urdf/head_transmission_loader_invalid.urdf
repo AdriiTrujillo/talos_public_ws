@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+
+<robot name="robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <transmission name="head_trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="bar_joint">
+      <!--<role>dependent</role>--> <!--Unspecified element -->
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>invalid_role</role> <!--Invalid role -->
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role></role> <!--Invalid role -->
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <!--<role>independent</role>--> <!--Unspecified element -->
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>invalid_role</role> <!--Invalid role -->
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role></role> <!--Invalid role -->
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role> <!-- duplicate role -->
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>independent</role> <!-- duplicate role -->
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <!--<mechanicalReduction>50</mechanicalReduction>--> <!--Unspecified element -->
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>fifty</mechanicalReduction>  <!-- Not a number -->
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="head_trans">
+    <type>transmission_interface/DifferentialTransmission</type>
+    <joint name="bar_joint">
+      <offset>zero</offset> <!-- Not a number -->
+      <role>dependent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>50</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>-50</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <!-- Empty spec-->
+      </limits>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <!-- Missing key -->
+        <min>  0.0 </min>
+        <max>  0.0 </max>
+      </limits>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <key>  zero </key> <!-- Not a number -->
+        <min>  0.0 </min>
+        <max>  0.0 </max>
+      </limits>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <key>  0.0 </key>
+        <min>  zero </min>  <!-- Not a number -->
+        <max>  0.0 </max>
+      </limits>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="trans">
+    <type>pal_transmissions/HeadTransmission</type>
+    <joint name="foo_joint">
+      <role>independent</role>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <joint name="bar_joint">
+      <role>dependent</role>
+      <limits>
+        <key>  0.0 </key>
+        <min>  0.0 </min>
+        <max>  zero </max>  <!-- Not a number -->
+      </limits>
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="foo_actuator">
+      <role>independent</role>
+      <mechanicalReduction>2.0</mechanicalReduction>
+    </actuator>
+    <actuator name="bar_actuator">
+      <role>dependent</role>
+      <mechanicalReduction>4.0</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+</robot>

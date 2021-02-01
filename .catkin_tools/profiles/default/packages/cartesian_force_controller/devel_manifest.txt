@@ -1,0 +1,6 @@
+talos_astronaut/cartesian_controllers/cartesian_force_controller
+/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
+/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/share/cartesian_force_controller/cmake/cartesian_force_controllerConfig.cmake /home/adrii/talos_public_ws/devel/share/cartesian_force_controller/cmake/cartesian_force_controllerConfig.cmake
+/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/share/cartesian_force_controller/cmake/cartesian_force_controllerConfig-version.cmake /home/adrii/talos_public_ws/devel/share/cartesian_force_controller/cmake/cartesian_force_controllerConfig-version.cmake
+/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/lib/libcartesian_force_controller.so /home/adrii/talos_public_ws/devel/lib/libcartesian_force_controller.so
+/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/lib/pkgconfig/cartesian_force_controller.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/cartesian_force_controller.pc

@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/devel/.private/cartesian_controller_base
+
+Name: cartesian_controller_base
+Description: Description of cartesian_controller_base
+Version: 0.0.0
+Cflags: -I/home/adrii/talos_public_ws/devel/.private/cartesian_controller_base/include -I/home/adrii/talos_public_ws/src/talos_astronaut/cartesian_controllers/cartesian_controller_base/include
+Libs: -L${prefix}/lib -lcartesian_controller_base
+Requires: roscpp controller_interface kdl_parser trajectory_msgs control_toolbox eigen_conversions dynamic_reconfigure

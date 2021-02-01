@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package>
+  <name>talos_gazebo</name>
+  <version>0.2.1</version>
+  <description>The talos_gazebo package</description>
+
+  <maintainer email="hilario.tome@pal-robotics.com">Hilario Tome</maintainer>
+
+  <license>LGPL-3.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>image_proc</run_depend>
+  <run_depend>talos_controller_configuration</run_depend>
+  <run_depend>talos_description</run_depend>
+  <run_depend>talos_hardware_gazebo</run_depend>
+  <run_depend>talos_bringup</run_depend>
+  <run_depend>gazebo_plugins</run_depend>
+  <run_depend>pal_gazebo_plugins</run_depend>
+  <run_depend>pal_gazebo_worlds</run_depend>
+  <run_depend>roboticsgroup_gazebo_plugins</run_depend>
+  <run_depend>talos_controller_configuration_gazebo</run_depend>
+
+  <export>
+  </export>
+</package>

@@ -1,0 +1,4 @@
+Symlinking /home/adrii/talos_public_ws/devel/share/pal_transmissions/cmake/pal_transmissionsConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/pal_transmissions/cmake/pal_transmissionsConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/lib/libpal_transmissions_loader_plugins.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/pal_transmissions.pc

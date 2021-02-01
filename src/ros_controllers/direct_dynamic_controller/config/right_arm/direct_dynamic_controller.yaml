@@ -1,0 +1,54 @@
+right_arm_dynamic_controller:
+  type: "effort_controllers/DirectDynamicController"
+  check_mode: True
+  joints:
+    - arm_right_1_joint
+    - arm_right_2_joint
+    - arm_right_3_joint
+    - arm_right_4_joint
+    - arm_right_5_joint
+    - arm_right_6_joint
+  actuators:
+    - arm_right_1_motor
+    - arm_right_2_motor
+    - arm_right_3_motor
+    - arm_right_4_motor
+    - arm_right_5_motor
+    - arm_right_6_motor
+
+  links:
+    - torso_2_link
+    - arm_right_7_link
+  Kp:
+    - 40
+    - 350
+    - 90
+    - 180
+    - 40
+    - 40
+  Kv:
+    - 4
+    - 35
+    - 9
+    - 2
+    - 2
+    - 4
+  
+  controller_type: "PD+"
+  constraints:
+    goal_time: &goal_time_constraint 0.6
+    stopped_velocity_tolerance: &stopped_velocity_constraint 0.05
+    arm_right_1_joint:
+      goal: &goal_pos_constraint 0.02
+    arm_right_2_joint:
+      goal: *goal_pos_constraint
+    arm_right_3_joint:
+      goal: *goal_pos_constraint
+    arm_right_4_joint:
+      goal: *goal_pos_constraint
+    arm_right_5_joint:
+      goal: *goal_pos_constraint
+    arm_right_6_joint:
+      goal: *goal_pos_constraint
+
+  stop_trajectory_duration: 0.0

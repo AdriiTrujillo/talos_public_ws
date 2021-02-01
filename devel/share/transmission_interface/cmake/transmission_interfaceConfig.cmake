@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/transmission_interface/share/transmission_interface/cmake/transmission_interfaceConfig.cmake

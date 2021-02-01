@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/adrii/talos_public_ws/devel/.private/cartesian_controller_base/setup.sh

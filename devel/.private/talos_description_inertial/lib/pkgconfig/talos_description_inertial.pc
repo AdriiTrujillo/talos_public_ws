@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/devel/.private/talos_description_inertial
+
+Name: talos_description_inertial
+Description: Description of talos_description_inertial
+Version: 1.1.15
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

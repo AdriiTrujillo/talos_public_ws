@@ -1,0 +1,4 @@
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_motion_controller/cmake/cartesian_motion_controllerConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/cartesian_motion_controller/cmake/cartesian_motion_controllerConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/lib/libcartesian_motion_controller.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/cartesian_motion_controller.pc

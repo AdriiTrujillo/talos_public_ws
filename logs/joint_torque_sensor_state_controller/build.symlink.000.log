@@ -1,0 +1,5 @@
+Symlinking /home/adrii/talos_public_ws/devel/share/joint_torque_sensor_state_controller/cmake/joint_torque_sensor_state_controllerConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/joint_torque_sensor_state_controller/cmake/joint_torque_sensor_state_controllerConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/lib/libjoint_torque_sensor_state_controller.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/joint_torque_sensor_state_controller/joint_state_relay_without_nans
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/joint_torque_sensor_state_controller.pc

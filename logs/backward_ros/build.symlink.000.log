@@ -1,0 +1,4 @@
+Symlinking /home/adrii/talos_public_ws/devel/share/backward_ros/cmake/backward_rosConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/backward_ros/cmake/backward_rosConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/lib/libbackward.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/backward_ros.pc

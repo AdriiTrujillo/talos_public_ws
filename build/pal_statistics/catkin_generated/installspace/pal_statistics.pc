@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: pal_statistics
+Description: Description of pal_statistics
+Version: 1.4.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lpal_statistics
+Requires: pal_statistics_msgs roscpp

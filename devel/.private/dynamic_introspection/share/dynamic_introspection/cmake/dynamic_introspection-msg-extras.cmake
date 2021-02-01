@@ -1,0 +1,2 @@
+set(dynamic_introspection_MESSAGE_FILES "/home/adrii/talos_public_ws/src/dynamic_introspection/msg/BoolParameter.msg;/home/adrii/talos_public_ws/src/dynamic_introspection/msg/IntrospectionMsg.msg;/home/adrii/talos_public_ws/src/dynamic_introspection/msg/DoubleParameter.msg;/home/adrii/talos_public_ws/src/dynamic_introspection/msg/IntParameter.msg;/home/adrii/talos_public_ws/src/dynamic_introspection/msg/MarkerParameter.msg")
+set(dynamic_introspection_SERVICE_FILES "")

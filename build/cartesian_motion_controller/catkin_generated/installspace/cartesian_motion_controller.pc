@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: cartesian_motion_controller
+Description: Description of cartesian_motion_controller
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lcartesian_motion_controller
+Requires: 

@@ -1,0 +1,25 @@
+motor_params:
+    leg_right_1_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0
+    leg_right_2_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0
+    leg_right_3_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0
+    leg_right_4_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0
+    leg_right_5_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0
+    leg_right_6_joint:
+      type: actuated
+      motor_torque_constant: 1.0
+      reduction_ratio: 1.0

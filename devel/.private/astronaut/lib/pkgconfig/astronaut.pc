@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/devel/.private/astronaut
+
+Name: astronaut
+Description: Description of astronaut
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs
+
+Name: controller_manager_msgs
+Description: Description of controller_manager_msgs
+Version: 0.3.0
+Cflags: -I/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs/include
+Libs: -L${prefix}/lib 
+Requires: std_msgs message_runtime

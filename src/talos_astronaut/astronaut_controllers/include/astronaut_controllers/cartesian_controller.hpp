@@ -83,6 +83,12 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     // Initialize solvers ----------------------------------------------------------
     KDL::Chain kdl_chain;
     kdl_chain.addChain(_robot_chain);
+    ROS_INFO("Number of Segments: %i", kdl_chain.getNrOfSegments());
+    ROS_INFO("Number of Joints: %i", kdl_chain.getNrOfJoints());
+    KDL::Segment segment = kdl_chain.getSegment(6);
+    KDL::Joint joint = segment.getJoint();
+    ROS_INFO("%i", joint.getType());
+
     _jnt_to_pose_solver.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
     _jnt_to_jac_solver.reset(new KDL::ChainJntToJacSolver(kdl_chain));
     // -----------------------------------------------------------------------------
@@ -93,8 +99,13 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     _jacobian.resize(_joint_names.size());
 
     // Set the desired pose --------------------------------------------------------
-    _reference_pose = KDL::Frame(KDL::Rotation::RPY(0,0,0), KDL::Vector(0.7, -0.2, 0));
+    _reference_pose = KDL::Frame(KDL::Rotation::RPY(0,0,0), KDL::Vector(0.5, -0.2, -0.2));
     // -----------------------------------------------------------------------------
+
+    ROS_INFO("Cadena cinematica incializada correctamente ...");
+    ROS_INFO("%i", _joint_handles.size());
+    ROS_INFO("%i", _joint_names.size());
+
 
     return true;
 
@@ -105,12 +116,18 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     //Get initial joints position
     for(unsigned int i = 0; i < _joint_handles.size(); i++){
         // _jnt_pos[i] = _joint_handles[i].getPosition();
-        _jnt_pos(i, _joint_handles[i].getPosition());
+        _jnt_pos(i) = _joint_handles[i].getPosition();
     }
+
+    // ROS_INFO("%f", _joint_handles[0].getPosition());
+    // ROS_INFO("%f", _jnt_pos(0));
 
     KDL::Frame current_pose;
     _jnt_to_pose_solver->JntToCart(_jnt_pos,current_pose);
-
+    // ROS_INFO("x : %f",current_pose(0, 3));
+    // ROS_INFO("y : %f",current_pose(1, 3));
+    // ROS_INFO("z : %f",current_pose(2, 3));
+    
     // get the pose error
     KDL::Frame offset;
     KDL::Twist error;
@@ -123,12 +140,13 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     _jnt_to_jac_solver->JntToJac(_jnt_pos, _jacobian);
 
-    // _jnt_effort= Jac^transpose * cart_wrench
+    // _jnt_effort = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < _jnt_pos.rows(); i++)
     {
         _jnt_effort(i) = 0;
-        for (unsigned int j=0; j<6; j++)
+        for (unsigned int j=0; j<6; j++){
             _jnt_effort(i) += (_jacobian(j,i) * 30.0 * error(j));
+        }
     }
 
     writeJointCommand(_jnt_effort);
@@ -139,7 +157,9 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
     for(size_t i = 0; i < _joint_handles.size(); i++){
         _joint_handles[i].setCommand(joint_command(i));
+        // ROS_INFO("Para la art %i : %f", i, joint_command(i));
     }
+    
 
 }
 

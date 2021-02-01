@@ -16,6 +16,8 @@
 #include <kdl/frames.hpp>
 #include <kdl/jacobian.hpp>
 #include <kdl/jntarray.hpp>
+#include <kdl/segment.hpp>
+#include <kdl/joint.hpp>
 
 namespace controller_ns{
 

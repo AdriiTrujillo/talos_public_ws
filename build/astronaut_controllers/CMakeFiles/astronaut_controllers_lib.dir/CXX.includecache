@@ -163,6 +163,10 @@ kdl/jacobian.hpp
 -
 kdl/jntarray.hpp
 -
+kdl/segment.hpp
+-
+kdl/joint.hpp
+-
 astronaut_controllers/cartesian_controller.hpp
 -
 

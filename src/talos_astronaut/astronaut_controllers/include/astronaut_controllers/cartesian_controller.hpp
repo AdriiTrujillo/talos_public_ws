@@ -88,27 +88,29 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     // -----------------------------------------------------------------------------
 
     // Resizes the joint state vectors in non-realtime -----------------------------
-    _jnt_pos.resize(_joint_names.size());
-    _jnt_effort.resize(_joint_names.size());
-    _jacobian.resize(_joint_names.size());
+    _jnt_pos.resize(kdl_chain.getNrOfJoints());
+    _jnt_effort.resize(kdl_chain.getNrOfJoints());
+    _jacobian.resize(kdl_chain.getNrOfJoints());
 
     // Set the desired pose --------------------------------------------------------
     _reference_pose = KDL::Frame(KDL::Rotation::RPY(0,0,0), KDL::Vector(0.5, -0.2, -0.2));
     // -----------------------------------------------------------------------------
 
-    // ROS_INFO("Cadena cinematica incializada correctamente ...");
-    // ROS_INFO("%i", _joint_handles.size());
-    // ROS_INFO("%i", _joint_names.size());
-
+    ROS_INFO("Cadena cinematica incializada correctamente ...");
+    ROS_INFO("Handles Size: %i", _joint_handles.size());
+    ROS_INFO("Names Size: %i", _joint_names.size());
     ROS_INFO("Number of Segments: %i", kdl_chain.getNrOfSegments());
     ROS_INFO("Number of Joints: %i", kdl_chain.getNrOfJoints());
-    ROS_INFO("Cadena cinemática creada: ");
-    for(int i = 0; i < kdl_chain.getNrOfSegments(); i++){
-        std::cout << "Segment : " << i << " --> " << kdl_chain.getSegment(i).getName() << std::endl;
-        std::cout << "Segments' Joint name : " << kdl_chain.getSegment(i).getJoint().getName() << std::endl;
-        std::cout << "Segments' Joint Type : " << kdl_chain.getSegment(i).getJoint().getTypeName() << std::endl;
-        std::cout << " ------------------------- " << std::endl;
-    }
+
+    // ROS_INFO("Number of Segments: %i", kdl_chain.getNrOfSegments());
+    // ROS_INFO("Number of Joints: %i", kdl_chain.getNrOfJoints());
+    // ROS_INFO("Cadena cinemática creada: ");
+    // for(int i = 0; i < kdl_chain.getNrOfSegments(); i++){
+    //     std::cout << "Segment : " << i << " --> " << kdl_chain.getSegment(i).getName() << std::endl;
+    //     std::cout << "Segments' Joint name : " << kdl_chain.getSegment(i).getJoint().getName() << std::endl;
+    //     std::cout << "Segments' Joint Type : " << kdl_chain.getSegment(i).getJoint().getTypeName() << std::endl;
+    //     std::cout << " ------------------------- " << std::endl;
+    // }
 
 
     return true;
@@ -119,16 +121,16 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     //Get initial joints position
     for(unsigned int i = 0; i < _joint_handles.size(); i++){
-        // _jnt_pos[i] = _joint_handles[i].getPosition();
         _jnt_pos(i) = _joint_handles[i].getPosition();
     }
 
     KDL::Frame current_pose;
     ik_status = _jnt_to_pose_solver->JntToCart(_jnt_pos,current_pose);
-    if (ik_status != -1) ROS_INFO(" --- IK Ok ---")
-    // ROS_INFO("x : %f",current_pose(0, 3));
-    // ROS_INFO("y : %f",current_pose(1, 3));
-    // ROS_INFO("z : %f",current_pose(2, 3));
+    if (ik_status != -1) ROS_INFO(" --- IK Ok ---");
+
+    ROS_INFO("x : %f",current_pose.p.x());
+    ROS_INFO("y : %f",current_pose.p.y());
+    ROS_INFO("z : %f",current_pose.p.z());
     
     // get the pose error
     KDL::Frame offset;
@@ -159,7 +161,7 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
     for(size_t i = 0; i < _joint_handles.size(); i++){
         _joint_handles[i].setCommand(joint_command(i));
-        // ROS_INFO("Para la art %i : %f", i, joint_command(i));
+        ROS_INFO("Para la art %i : %f", i, joint_command(i));
     }
     
 

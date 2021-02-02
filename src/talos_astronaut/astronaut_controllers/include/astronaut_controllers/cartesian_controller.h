@@ -40,6 +40,7 @@ namespace controller_ns{
             KDL::Tree _robot_tree;
 
             // KDL Solvers performing the actual computations
+            int ik_status;
             boost::scoped_ptr<KDL::ChainFkSolverPos>    _jnt_to_pose_solver;
             boost::scoped_ptr<KDL::ChainJntToJacSolver> _jnt_to_jac_solver;
 

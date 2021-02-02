@@ -41,7 +41,7 @@ In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
      ROS_INFO("Names Size: %i", _joint_names.size());
 [01;32m[K     ^[m[K
 [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:[m[K In member function ‘[01m[Kvirtual void controller_ns::cartesian_controller_class::update(const ros::Time&, const ros::Duration&)[m[K’:
-[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kdouble[m[K’ [-Wformat=]
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;31m[Kerror: [m[Kinvalid use of member function (did you forget the ‘[01m[K()[m[K’ ?)
      ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
 [01;32m[K                                                                                                                                                                                ^[m[K
 [01m[K/opt/ros/kinetic/include/ros/console.h:349:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
@@ -56,10 +56,10 @@ In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
 [01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
  #define ROS_INFO(...) ROS_LOG(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
 [01;32m[K                       ^[m[K
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:132:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
-     ROS_INFO("x : %d",current_pose(0, 3));
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:135:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+     ROS_INFO("x : %f",current_pose.p.x);
 [01;32m[K     ^[m[K
-[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kdouble[m[K’ [-Wformat=]
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;31m[Kerror: [m[Kinvalid use of member function (did you forget the ‘[01m[K()[m[K’ ?)
      ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
 [01;32m[K                                                                                                                                                                                ^[m[K
 [01m[K/opt/ros/kinetic/include/ros/console.h:349:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
@@ -74,10 +74,10 @@ In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
 [01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
  #define ROS_INFO(...) ROS_LOG(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
 [01;32m[K                       ^[m[K
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:133:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
-     ROS_INFO("y : %d",current_pose(1, 3));
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:136:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+     ROS_INFO("y : %f",current_pose.p.y);
 [01;32m[K     ^[m[K
-[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%d[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kdouble[m[K’ [-Wformat=]
+[01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;31m[Kerror: [m[Kinvalid use of member function (did you forget the ‘[01m[K()[m[K’ ?)
      ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
 [01;32m[K                                                                                                                                                                                ^[m[K
 [01m[K/opt/ros/kinetic/include/ros/console.h:349:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
@@ -92,8 +92,8 @@ In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
 [01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
  #define ROS_INFO(...) ROS_LOG(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
 [01;32m[K                       ^[m[K
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:134:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
-     ROS_INFO("z : %d",current_pose(2, 3));
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:137:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+     ROS_INFO("z : %f",current_pose.p.z);
 [01;32m[K     ^[m[K
 [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:[m[K In member function ‘[01m[Kvoid controller_ns::cartesian_controller_class::writeJointCommand(KDL::JntArray)[m[K’:
 [01m[K/opt/ros/kinetic/include/ros/console.h:346:176:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%i[m[K’ expects argument of type ‘[01m[Kint[m[K’, but argument 8 has type ‘[01m[Kstd::size_t {aka long unsigned int}[m[K’ [-Wformat=]
@@ -111,7 +111,7 @@ In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:40:0[m[K,
 [01m[K/opt/ros/kinetic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
  #define ROS_INFO(...) ROS_LOG(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
 [01;32m[K                       ^[m[K
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:169:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:168:9:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
          ROS_INFO("Para la art %i : %f", i, joint_command(i));
 [01;32m[K         ^[m[K
 In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
@@ -127,5 +127,9 @@ In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardwa
 [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
      yes tmp_yes;
 [01;32m[K         ^[m[K
-[100%] [32m[1mLinking CXX shared library /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so[0m
-[100%] Built target astronaut_controllers_lib
+CMakeFiles/astronaut_controllers_lib.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o'
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+CMakeFiles/Makefile2:707: fallo en las instrucciones para el objetivo 'CMakeFiles/astronaut_controllers_lib.dir/all'
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+Makefile:138: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

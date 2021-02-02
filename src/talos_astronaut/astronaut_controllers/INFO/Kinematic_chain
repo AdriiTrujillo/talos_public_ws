@@ -1,0 +1,49 @@
+ ------------------------- 
+Segment : 0 --> base_link
+Segments' Joint name : dummy_to_base_link
+Segments' Joint Type : None
+ ------------------------- 
+Segment : 1 --> torso_1_link
+Segments' Joint name : torso_1_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 2 --> torso_2_link
+Segments' Joint name : torso_2_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 3 --> arm_right_1_link
+Segments' Joint name : arm_right_1_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 4 --> arm_right_2_link
+Segments' Joint name : arm_right_2_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 5 --> arm_right_3_link
+Segments' Joint name : arm_right_3_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 6 --> arm_right_4_link
+Segments' Joint name : arm_right_4_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 7 --> arm_right_5_link
+Segments' Joint name : arm_right_5_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 8 --> arm_right_6_link
+Segments' Joint name : arm_right_6_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 9 --> arm_right_7_link
+Segments' Joint name : arm_right_7_joint
+Segments' Joint Type : RotAxis
+ ------------------------- 
+Segment : 10 --> wrist_right_ft_link
+Segments' Joint name : wrist_right_ft_joint
+Segments' Joint Type : None
+ ------------------------- 
+Segment : 11 --> wrist_right_ft_tool_link
+Segments' Joint name : wrist_right_tool_joint
+Segments' Joint Type : None
+ ------------------------- 

@@ -115,8 +115,8 @@ astronaut_controllers_lib_EXTERNAL_OBJECTS =
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/libroscpp_serialization.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/libroscpp_serialization.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/librostime.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /opt/ros/kinetic/lib/libcpp_common.so
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so: /usr/lib/x86_64-linux-gnu/libboost_system.so

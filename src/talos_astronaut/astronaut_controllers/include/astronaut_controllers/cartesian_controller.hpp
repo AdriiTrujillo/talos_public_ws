@@ -82,7 +82,12 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
 
     // Initialize solvers ----------------------------------------------------------
     KDL::Chain kdl_chain;
-    kdl_chain.addChain(_robot_chain);
+    // To remove two joints of the torso but the base_link is still in the 0,0,0
+    for(size_t i = 0; i < _robot_chain.getNrOfSegments(); i++){
+        if(i != 1 && i != 2) kdl_chain.addSegment(_robot_chain.getSegment(i));
+    }
+
+    // kdl_chain.addChain(_robot_chain);
     _jnt_to_pose_solver.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
     _jnt_to_jac_solver.reset(new KDL::ChainJntToJacSolver(kdl_chain));
     // -----------------------------------------------------------------------------
@@ -93,6 +98,8 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     _jacobian.resize(kdl_chain.getNrOfJoints());
 
     // Set the desired pose --------------------------------------------------------
+    // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, 0.2) funciona
+    // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, -0.2) funciona
     _reference_pose = KDL::Frame(KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, -0.2));
     // -----------------------------------------------------------------------------
 
@@ -126,7 +133,8 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     KDL::Frame current_pose;
     ik_status = _jnt_to_pose_solver->JntToCart(_jnt_pos,current_pose);
-    if (ik_status != -1) ROS_INFO(" --- IK Ok ---");
+    if (ik_status == -1) 
+        ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
     // Descomentar para imprimir por pantalla la posición del extremo
     // ROS_INFO("x : %f",current_pose.p.x());
@@ -160,7 +168,6 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
         // ROS_INFO("Para la art %i : %f", i, joint_command(i));
     }
     
-
 }
 
 void cartesian_controller_class::starting(const ros::Time &time) {}

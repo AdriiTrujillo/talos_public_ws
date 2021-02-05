@@ -3,14 +3,6 @@ Segment : 0 --> base_link
 Segments' Joint name : dummy_to_base_link
 Segments' Joint Type : None
  ------------------------- 
-Segment : 1 --> torso_1_link
-Segments' Joint name : torso_1_joint
-Segments' Joint Type : RotAxis
- ------------------------- 
-Segment : 2 --> torso_2_link
-Segments' Joint name : torso_2_joint
-Segments' Joint Type : RotAxis
- ------------------------- 
 Segment : 3 --> arm_right_1_link
 Segments' Joint name : arm_right_1_joint
 Segments' Joint Type : RotAxis

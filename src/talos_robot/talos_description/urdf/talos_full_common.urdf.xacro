@@ -17,6 +17,7 @@
     <xacro:include filename="$(find talos_description)/urdf/crane/crane.urdf.xacro" />
   </xacro:if>
 
+  <!-- <xacro:include filename="$(find astronaut)/urdfs/torso/torso_jetpack.urdf.xacro" /> -->
   <xacro:include filename="$(find talos_description)/urdf/torso/torso.urdf.xacro" />
   <xacro:include filename="$(find talos_description)/urdf/head/head.urdf.xacro" />
   <xacro:include filename="$(find talos_description)/urdf/arm/arm.urdf.xacro" />

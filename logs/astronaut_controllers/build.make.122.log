@@ -1,0 +1,46 @@
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target trajectory_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target trajectory_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target trajectory_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target trajectory_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[ 15%] Built target publisher
+[ 23%] Built target astronaut_controllers_generate_messages_cpp
+[ 38%] Built target astronaut_controllers_lib
+[ 53%] Built target astronaut_controllers_generate_messages_py
+[ 61%] Built target astronaut_controllers_generate_messages_lisp
+[ 69%] Built target astronaut_controllers_generate_messages_nodejs
+[ 84%] Built target astronaut_controllers_generate_messages_eus
+[ 84%] Built target astronaut_controllers_gencpp
+[35m[1mScanning dependencies of target hand_service[0m
+[ 84%] Built target astronaut_controllers_generate_messages
+[ 92%] [32mBuilding CXX object CMakeFiles/hand_service.dir/src/hand_service.cpp.o[0m
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:31:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktopic[m[K’ was not declared in this scope
+         topic = "/" + req.hand + "_hand_controller/command";
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:31:9:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/opt/ros/kinetic/include/ros/ros.h:55:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/opt/ros/kinetic/include/ros/topic.h:45:1:[m[K [01;36m[Knote: [m[K  ‘[01m[Kros::topic[m[K’
+ {
+[01;32m[K ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:89:30:[m[K [01;31m[Kerror: [m[K‘[01m[Krigth_pub[m[K’ was not declared in this scope
+     if (req.hand == "right") rigth_pub.publish(jt);
+[01;32m[K                              ^[m[K
+CMakeFiles/hand_service.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/hand_service.dir/src/hand_service.cpp.o'
+make[2]: *** [CMakeFiles/hand_service.dir/src/hand_service.cpp.o] Error 1
+CMakeFiles/Makefile2:809: fallo en las instrucciones para el objetivo 'CMakeFiles/hand_service.dir/all'
+make[1]: *** [CMakeFiles/hand_service.dir/all] Error 2
+Makefile:138: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

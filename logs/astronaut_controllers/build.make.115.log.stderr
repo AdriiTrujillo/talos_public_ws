@@ -1,0 +1,25 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:23:9:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kthumb[m[K’
+         thumb = "hand_" + req.hand + "_thumb_joint";
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:40:9:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kp[m[K’
+         p.positions[0] = 6.2;
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:46:9:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kfor[m[K’
+         for(size_t i = 0; i < p.velocities.size(); i++) p.velocities[i] = 0.0;
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:46:27:[m[K [01;31m[Kerror: [m[K‘[01m[Ki[m[K’ was not declared in this scope
+         for(size_t i = 0; i < p.velocities.size(); i++) p.velocities[i] = 0.0;
+[01;32m[K                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:50:5:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+     }
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:72:5:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kjt[m[K’
+     jt.header.stamp = ros::Time::now();
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:82:5:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[Kreturn[m[K’
+     return true;
+[01;32m[K     ^[m[K
+make[2]: *** [CMakeFiles/hand_service.dir/src/hand_service.cpp.o] Error 1
+make[1]: *** [CMakeFiles/hand_service.dir/all] Error 2
+make: *** [all] Error 2

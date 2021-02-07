@@ -153,7 +153,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     {
         _jnt_effort(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            _jnt_effort(i) += (_jacobian(j,i) * 30.0 * error(j));
+            _jnt_effort(i) += (_jacobian(j,i) * 125.0 * error(j));
         }
     }
 

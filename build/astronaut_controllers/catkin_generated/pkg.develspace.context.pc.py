@@ -1,7 +1,7 @@
 # generated from catkin/cmake/template/pkg.context.pc.in
 CATKIN_PACKAGE_PREFIX = ""
-PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
-PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
+PROJECT_PKG_CONFIG_INCLUDE_DIRS = "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include".split(';') if "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include" != "" else []
+PROJECT_CATKIN_DEPENDS = "roscpp;rospy;std_msgs;message_runtime".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "astronaut_controllers"
 PROJECT_SPACE_DIR = "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers"

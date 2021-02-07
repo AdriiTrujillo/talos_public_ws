@@ -3,6 +3,6 @@ prefix=/home/adrii/talos_public_ws/devel/.private/astronaut_controllers
 Name: astronaut_controllers
 Description: Description of astronaut_controllers
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: roscpp rospy std_msgs message_runtime

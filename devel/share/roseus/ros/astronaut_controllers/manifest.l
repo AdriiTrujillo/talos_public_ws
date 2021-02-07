@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/roseus/ros/astronaut_controllers/manifest.l

@@ -1,0 +1,272 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:41:25:[m[K [01;31m[Kerror: [m[Kexpected identifier before numeric constant
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:41:28:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K][m[K’ before ‘[01m[K,[m[K’ token
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:41:28:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K,[m[K’ token
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:41:22:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_velocities_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                      ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:42:28:[m[K [01;31m[Kerror: [m[Kexpected identifier before numeric constant
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:42:31:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K][m[K’ before ‘[01m[K,[m[K’ token
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                               ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:42:31:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K,[m[K’ token
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:42:25:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_accelerations_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                         ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:43:22:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K;[m[K’ token
+         p.effort = [];
+[01;32m[K                      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:43:18:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_effort_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.effort = [];
+[01;32m[K                  ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:52:25:[m[K [01;31m[Kerror: [m[Kexpected identifier before numeric constant
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:52:28:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K][m[K’ before ‘[01m[K,[m[K’ token
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:52:28:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K,[m[K’ token
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:52:22:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_velocities_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.velocities = [0.0, 0.0, 0.0];
+[01;32m[K                      ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:53:28:[m[K [01;31m[Kerror: [m[Kexpected identifier before numeric constant
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:53:31:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K][m[K’ before ‘[01m[K,[m[K’ token
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                               ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:53:31:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K,[m[K’ token
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:53:25:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_accelerations_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.accelerations = [0.0, 0.0, 0.0];
+[01;32m[K                         ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In lambda function:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:54:22:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K{[m[K’ before ‘[01m[K;[m[K’ token
+         p.effort = [];
+[01;32m[K                      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:[m[K In function ‘[01m[Kbool serviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:54:18:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >::_effort_type {aka std::vector<double>}[m[K’ and ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’)
+         p.effort = [];
+[01;32m[K                  ^[m[K
+In file included from [01m[K/usr/include/c++/5/vector:69:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = double; _Alloc = std::allocator<double>]
+     vector<_Tp, _Alloc>::
+[01;32m[K     ^[m[K
+[01m[K/usr/include/c++/5/bits/vector.tcc:167:5:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kconst std::vector<double>&[m[K’
+In file included from [01m[K/usr/include/c++/5/vector:64:0[m[K,
+                 from [01m[K/usr/include/c++/5/bits/random.h:34[m[K,
+                 from [01m[K/usr/include/c++/5/random:49[m[K,
+                 from [01m[K/usr/include/c++/5/bits/stl_algo.h:66[m[K,
+                 from [01m[K/usr/include/c++/5/algorithm:62[m[K,
+                 from [01m[K/usr/include/boost/math/tools/config.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:13[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:448:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::vector<double>&&[m[K’
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[Kcandidate: std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = double; _Alloc = std::allocator<double>]
+       operator=(initializer_list<value_type> __l)
+[01;32m[K       ^[m[K
+[01m[K/usr/include/c++/5/bits/stl_vector.h:470:7:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KserviceCallback(astronaut_controllers::hand_operations::Request&, astronaut_controllers::hand_operations::Response&)::<lambda()>[m[K’ to ‘[01m[Kstd::initializer_list<double>[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:65:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kros::time[m[K’ has not been declared
+     jt.header.stamp = ros::time::now();
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:69:6:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator[][m[K’ (operand types are ‘[01m[Ktrajectory_msgs::JointTrajectoryPoint {aka trajectory_msgs::JointTrajectoryPoint_<std::allocator<void> >}[m[K’ and ‘[01m[Kint[m[K’)
+     p[0].time_from_start = ros::Duration(2.5);
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:72:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kn[m[K’ was not declared in this scope
+     joint_pub = n.advertise<trajectory_msgs::JointTrajectory>(topic, 10);
+[01;32m[K                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:72:61:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K>[m[K’ token
+     joint_pub = n.advertise<trajectory_msgs::JointTrajectory>(topic, 10);
+[01;32m[K                                                             ^[m[K
+make[2]: *** [CMakeFiles/hand_service.dir/src/hand_service.cpp.o] Error 1
+make[1]: *** [CMakeFiles/hand_service.dir/all] Error 2
+make: *** [all] Error 2

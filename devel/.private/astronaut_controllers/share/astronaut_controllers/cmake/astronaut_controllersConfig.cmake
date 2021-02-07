@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(astronaut_controllers_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT " " STREQUAL " ")
+if(NOT "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include " STREQUAL " ")
   set(astronaut_controllers_INCLUDE_DIRS "")
-  set(_include_dirs "")
+  set(_include_dirs "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -177,7 +177,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(astronaut_controllers_EXPORTED_TARGETS "")
+set(astronaut_controllers_EXPORTED_TARGETS "astronaut_controllers_generate_messages_cpp;astronaut_controllers_generate_messages_eus;astronaut_controllers_generate_messages_lisp;astronaut_controllers_generate_messages_nodejs;astronaut_controllers_generate_messages_py")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${astronaut_controllers_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -185,7 +185,7 @@ foreach(t ${astronaut_controllers_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "roscpp;rospy;std_msgs;message_runtime")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -214,7 +214,7 @@ foreach(depend ${depends})
   list(APPEND astronaut_controllers_EXPORTED_TARGETS ${${astronaut_controllers_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "")
+set(pkg_cfg_extras "astronaut_controllers-msg-extras.cmake")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${astronaut_controllers_DIR}/${extra})

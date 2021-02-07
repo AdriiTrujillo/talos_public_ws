@@ -1,0 +1,6 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/hand_service.cpp:6:52:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllers/hands_operations.h: No existe el archivo o el directorio
+compilation terminated.
+make[2]: *** [CMakeFiles/hand_service.dir/src/hand_service.cpp.o] Error 1
+make[1]: *** [CMakeFiles/hand_service.dir/all] Error 2
+make[1]: *** Se espera a que terminen otras tareas....
+make: *** [all] Error 2

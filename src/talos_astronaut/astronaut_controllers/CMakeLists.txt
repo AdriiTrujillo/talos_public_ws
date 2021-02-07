@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(astronaut_controllers)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -18,6 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   geometry_msgs
+  trajectory_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -61,11 +63,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  hand_operations.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -75,10 +76,12 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+  geometry_msgs
+  trajectory_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -112,7 +115,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES astronaut_controllers
-#  CATKIN_DEPENDS roscpp rospy
+ CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -145,6 +148,10 @@ add_library(astronaut_controllers_lib src/cartesian_controller.cpp)
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(publisher src/publisher.cpp)
 target_link_libraries(publisher ${catkin_LIBRARIES})
+
+add_executable(hand_service src/hand_service.cpp)
+target_link_libraries(hand_service ${catkin_LIBRARIES})
+add_dependencies(hand_service astronaut_controllers_gencpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

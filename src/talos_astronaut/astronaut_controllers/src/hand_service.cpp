@@ -73,8 +73,17 @@ bool serviceCallback(astronaut_controllers::hand_operations::Request &req, astro
     p.time_from_start = ros::Duration(2.5);
     jt.points.push_back(p);
 
-    if (req.hand == "right") right_pub.publish(jt);
-    if (req.hand == "left") left_pub.publish(jt);
+    if (req.hand == "right") {
+        const std::string info1 = req.operation + " right hand ... ";
+        ROS_INFO_STREAM(info1);
+        right_pub.publish(jt);
+    }
+
+    if (req.hand == "left") {
+        const std::string info2 = req.operation + " left hand ... ";
+        ROS_INFO_STREAM(info2);
+        left_pub.publish(jt);
+    }
 
     res.succes = true;
     return true;

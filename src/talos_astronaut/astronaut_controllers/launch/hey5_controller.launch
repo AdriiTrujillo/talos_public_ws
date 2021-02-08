@@ -10,6 +10,9 @@
               right_hand_controller
               left_hand_controller" />
 
+  <!-- Servicio para abrir y cerrar las manos -->
+  <node name="hand_service_node" pkg="astronaut_controllers" type="hand_service" output="screen"/>
+
   <!-- Simple grasping action -->
   <!-- <node name="right_hand_grasping_action" pkg="simple_grasping_action" type="simple_grasping_action" output="screen">
     <param name="target_controller" value="right_hand_controller" />

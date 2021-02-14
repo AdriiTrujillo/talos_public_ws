@@ -1,12 +1,18 @@
 <?xml version="1.0" ?>
-
 <sdf version="1.5">
-
   <model name="International Space Station">
-    
-    <static>true</static>
 
-    <link name="link">
+    <static>True</static>
+
+    <link name="Link">
+
+      <collision name="collision">
+        <geometry>
+            <mesh>
+              <uri>model://ISS_model/meshes/iss.dae</uri>
+            </mesh>
+        </geometry>
+      </collision>
 
       <visual name="visual">
         <geometry>
@@ -16,16 +22,7 @@
         </geometry>
       </visual>
 
-      <collision name="collision">
-        <geometry>
-          <mesh>
-            <uri>model://ISS_model/meshes/iss.dae</uri>
-          </mesh>
-        </geometry>
-      </collision>
-
     </link>
-    
-  </model>
 
+  </model>
 </sdf>

@@ -2,26 +2,26 @@
 [  0%] Built target geometry_msgs_generate_messages_cpp
 [  0%] Built target trajectory_msgs_generate_messages_cpp
 [  0%] Built target geometry_msgs_generate_messages_nodejs
-[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
 [  0%] Built target std_msgs_generate_messages_nodejs
-[  0%] Built target std_msgs_generate_messages_lisp
-[  0%] Built target trajectory_msgs_generate_messages_nodejs
 [  0%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
 [  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
 [  0%] Built target trajectory_msgs_generate_messages_lisp
 [  0%] Built target std_msgs_generate_messages_eus
 [  0%] Built target geometry_msgs_generate_messages_eus
 [  0%] Built target std_msgs_generate_messages_py
 [  0%] Built target trajectory_msgs_generate_messages_eus
-[  0%] Built target trajectory_msgs_generate_messages_py
 [  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target trajectory_msgs_generate_messages_py
 [35m[1mScanning dependencies of target astronaut_controllers_lib[0m
-[ 10%] Built target astronaut_controllers_generate_messages_cpp
-[ 21%] Built target astronaut_controllers_generate_messages_nodejs
+[ 10%] Built target astronaut_controllers_generate_messages_nodejs
+[ 21%] Built target astronaut_controllers_generate_messages_cpp
 [ 26%] [32mBuilding CXX object CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o[0m
 [ 36%] Built target publisher
-[ 52%] Built target astronaut_controllers_generate_messages_eus
-[ 63%] Built target astronaut_controllers_generate_messages_lisp
+[ 47%] Built target astronaut_controllers_generate_messages_lisp
+[ 63%] Built target astronaut_controllers_generate_messages_eus
 [ 84%] Built target astronaut_controllers_generate_messages_py
 [ 84%] Built target astronaut_controllers_gencpp
 [ 84%] Built target astronaut_controllers_generate_messages
@@ -29,7 +29,7 @@
 In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
                  from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
                  from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
-                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:8[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:9[m[K,
                  from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
 /home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h: In instantiation of ‘[01m[Kstatic char (& hardware_interface::CheckIsResourceManager<T>::callCM(std::vector<C*>&, C*, typename C::resource_manager_type*))[1] [with C = hardware_interface::EffortJointInterface; T = hardware_interface::EffortJointInterface; hardware_interface::CheckIsResourceManager<T>::yes = char [1]; typename C::resource_manager_type = hardware_interface::ResourceManager<hardware_interface::JointHandle>][m[K’:
 [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:83:14:[m[K   required from ‘[01m[Kstatic const void hardware_interface::CheckIsResourceManager<T>::callConcatManagers(std::vector<T*>&, T*) [with T = hardware_interface::EffortJointInterface][m[K’

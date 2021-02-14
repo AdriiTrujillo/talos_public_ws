@@ -191,7 +191,7 @@ void cartesian_controller_class::stopping(const ros::Time &time) {}
 
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
                                                                                                         //0.4, -0.1, 0.2
-    target_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll,target_frame.pitch,target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+    target_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll,target_frame.pitch,target_frame.yaw + M_PI), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
 
 }
     

@@ -4,6 +4,7 @@
 #include <ros/ros.h>
 #include <vector>
 #include <string>
+#include <math.h>
 
 #include <controller_interface/controller.h>
 #include <hardware_interface/joint_command_interface.h>

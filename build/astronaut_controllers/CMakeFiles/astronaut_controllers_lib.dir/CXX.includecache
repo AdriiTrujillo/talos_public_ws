@@ -159,6 +159,8 @@ vector
 -
 string
 -
+math.h
+-
 controller_interface/controller.h
 -
 hardware_interface/joint_command_interface.h

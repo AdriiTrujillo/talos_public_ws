@@ -19,6 +19,8 @@
 #include <kdl/segment.hpp>
 #include <kdl/joint.hpp>
 
+#include <astronaut_controllers/target_frame.h>
+
 namespace controller_ns{
 
     class cartesian_controller_class : public controller_interface::Controller<hardware_interface::EffortJointInterface> {
@@ -32,6 +34,9 @@ namespace controller_ns{
             void writeJointCommand(KDL::JntArray joint_command);
 
         private:
+            
+            ros::Subscriber target_frame_subscr_;
+            void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
             std::vector<hardware_interface::JointHandle>      _joint_handles;
             std::vector<std::string>                          _joint_names;
@@ -48,6 +53,7 @@ namespace controller_ns{
             KDL::JntArray _jnt_pos, _jnt_effort;
             KDL::Jacobian _jacobian;
             KDL::Frame _reference_pose;
+            KDL::Frame target_frame_;
     };
 
 }; //namespace

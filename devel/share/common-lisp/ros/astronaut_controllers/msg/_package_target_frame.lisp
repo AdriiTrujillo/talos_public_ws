@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/common-lisp/ros/astronaut_controllers/msg/_package_target_frame.lisp

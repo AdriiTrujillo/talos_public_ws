@@ -124,6 +124,10 @@ file(INSTALL DESTINATION "/home/adrii/talos_public_ws/install" TYPE FILE FILES "
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astronaut_controllers/msg" TYPE FILE FILES "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg")
+endif()
+
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astronaut_controllers/srv" TYPE FILE FILES "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv")
 endif()
 

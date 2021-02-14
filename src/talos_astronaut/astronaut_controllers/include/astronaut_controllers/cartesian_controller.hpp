@@ -100,7 +100,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     // Set the desired pose --------------------------------------------------------
     // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, 0.2) funciona
     // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, -0.2) funciona
-    _reference_pose = KDL::Frame(KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, -0.2));
+    // target_frame_ = KDL::Frame(KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.4, -0.1, 0.2));
     // -----------------------------------------------------------------------------
 
     // ROS_INFO("Cadena cinematica incializada correctamente ...");
@@ -119,6 +119,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     //     std::cout << " ------------------------- " << std::endl;
     // }
 
+    target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
 
     return true;
 
@@ -144,7 +145,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     // get the pose error
     KDL::Twist error;
 
-    error = KDL::diff(current_pose, _reference_pose);
+    error = KDL::diff(current_pose, target_frame_);
 
     _jnt_to_jac_solver->JntToJac(_jnt_pos, _jacobian);
 
@@ -165,14 +166,36 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
     for(size_t i = 0; i < _joint_handles.size(); i++){
         _joint_handles[i].setCommand(joint_command(i));
-        // ROS_INFO("Para la art %i : %f", i, joint_command(i));
     }
     
 }
 
-void cartesian_controller_class::starting(const ros::Time &time) {}
+void cartesian_controller_class::starting(const ros::Time &time) {
+    
+    //Get initial joints position
+    for(unsigned int i = 0; i < _joint_handles.size(); i++){
+        _jnt_pos(i) = _joint_handles[i].getPosition();
+    }
+
+    KDL::Frame current_pose;
+    ik_status = _jnt_to_pose_solver->JntToCart(_jnt_pos,current_pose);
+    if (ik_status == -1) 
+        ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
+
+
+    target_frame_ = current_pose;
+
+}
+
 void cartesian_controller_class::stopping(const ros::Time &time) {}
+
+void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
+                                                                                                        //0.4, -0.1, 0.2
+    target_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll,target_frame.pitch,target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+
+}
     
 }; // namespace
+
 
 #endif

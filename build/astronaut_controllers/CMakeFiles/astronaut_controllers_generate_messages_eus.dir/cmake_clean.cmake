@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/astronaut_controllers_generate_messages_eus"
+  "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/roseus/ros/astronaut_controllers/msg/target_frame.l"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/roseus/ros/astronaut_controllers/srv/hand_operations.l"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/roseus/ros/astronaut_controllers/manifest.l"
 )

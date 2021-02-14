@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -111,17 +122,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -242,19 +242,6 @@ std_msgs_generate_messages_py: cmake_check_build_system
 std_msgs_generate_messages_py/fast:
 	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_py.dir/build.make CMakeFiles/std_msgs_generate_messages_py.dir/build
 .PHONY : std_msgs_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named rosgraph_msgs_generate_messages_py
-
-# Build rule for target.
-rosgraph_msgs_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_py
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_lisp
@@ -634,6 +621,58 @@ astronaut_controllers_geneus/fast:
 .PHONY : astronaut_controllers_geneus/fast
 
 #=============================================================================
+# Target rules for targets named rosgraph_msgs_generate_messages_py
+
+# Build rule for target.
+rosgraph_msgs_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_py
+.PHONY : rosgraph_msgs_generate_messages_py
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
+.PHONY : rosgraph_msgs_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _astronaut_controllers_generate_messages_check_deps_target_frame
+
+# Build rule for target.
+_astronaut_controllers_generate_messages_check_deps_target_frame: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _astronaut_controllers_generate_messages_check_deps_target_frame
+.PHONY : _astronaut_controllers_generate_messages_check_deps_target_frame
+
+# fast build rule for target.
+_astronaut_controllers_generate_messages_check_deps_target_frame/fast:
+	$(MAKE) -f CMakeFiles/_astronaut_controllers_generate_messages_check_deps_target_frame.dir/build.make CMakeFiles/_astronaut_controllers_generate_messages_check_deps_target_frame.dir/build
+.PHONY : _astronaut_controllers_generate_messages_check_deps_target_frame/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_eus
+
+# Build rule for target.
+roscpp_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_py
+
+# Build rule for target.
+astronaut_controllers_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_py
+.PHONY : astronaut_controllers_generate_messages_py
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_py.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_py.dir/build
+.PHONY : astronaut_controllers_generate_messages_py/fast
+
+#=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -697,32 +736,6 @@ astronaut_controllers_gennodejs: cmake_check_build_system
 astronaut_controllers_gennodejs/fast:
 	$(MAKE) -f CMakeFiles/astronaut_controllers_gennodejs.dir/build.make CMakeFiles/astronaut_controllers_gennodejs.dir/build
 .PHONY : astronaut_controllers_gennodejs/fast
-
-#=============================================================================
-# Target rules for targets named roscpp_generate_messages_eus
-
-# Build rule for target.
-roscpp_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named astronaut_controllers_generate_messages_py
-
-# Build rule for target.
-astronaut_controllers_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_py
-.PHONY : astronaut_controllers_generate_messages_py
-
-# fast build rule for target.
-astronaut_controllers_generate_messages_py/fast:
-	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_py.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_py.dir/build
-.PHONY : astronaut_controllers_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named astronaut_controllers_lib
@@ -891,13 +904,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... install/strip"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... astronaut_controllers_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... tests"
 	@echo "... roscpp_generate_messages_nodejs"
@@ -930,15 +943,16 @@ help:
 	@echo "... astronaut_controllers_generate_messages_eus"
 	@echo "... astronaut_controllers_generate_messages"
 	@echo "... astronaut_controllers_geneus"
+	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... _astronaut_controllers_generate_messages_check_deps_target_frame"
+	@echo "... list_install_components"
+	@echo "... roscpp_generate_messages_eus"
+	@echo "... astronaut_controllers_generate_messages_py"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... _astronaut_controllers_generate_messages_check_deps_hand_operations"
 	@echo "... astronaut_controllers_gencpp"
 	@echo "... astronaut_controllers_generate_messages_nodejs"
-	@echo "... install/strip"
 	@echo "... astronaut_controllers_gennodejs"
-	@echo "... list_install_components"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... astronaut_controllers_generate_messages_py"
 	@echo "... astronaut_controllers_lib"
 	@echo "... publisher"
 	@echo "... gmock"

@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/astronaut_controllers_generate_messages_py"
+  "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/msg/_target_frame.py"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/srv/_hand_operations.py"
+  "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/msg/__init__.py"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/srv/__init__.py"
 )
 

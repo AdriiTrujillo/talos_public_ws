@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h
 controller_interface/controller_base.h
 -
@@ -166,6 +182,8 @@ kdl/jntarray.hpp
 kdl/segment.hpp
 -
 kdl/joint.hpp
+-
+astronaut_controllers/target_frame.h
 -
 astronaut_controllers/cartesian_controller.hpp
 -
@@ -676,6 +694,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/kinetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/kinetic/include/ros/message_traits.h

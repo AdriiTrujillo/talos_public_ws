@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "astronaut_controllers: 0 messages, 1 services")
+message(STATUS "astronaut_controllers: 1 messages, 1 services")
 
-set(MSG_I_FLAGS "-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,6 +17,11 @@ add_custom_target(astronaut_controllers_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_custom_target(_astronaut_controllers_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "astronaut_controllers" "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" ""
+)
+
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_custom_target(_astronaut_controllers_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "astronaut_controllers" "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" ""
@@ -28,6 +33,12 @@ add_custom_target(_astronaut_controllers_generate_messages_check_deps_${_filenam
 
 ### Section generating for lang: gencpp
 ### Generating Messages
+_generate_msg_cpp(astronaut_controllers
+  "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/astronaut_controllers
+)
 
 ### Generating Services
 _generate_srv_cpp(astronaut_controllers
@@ -49,6 +60,8 @@ add_custom_target(astronaut_controllers_generate_messages_cpp
 add_dependencies(astronaut_controllers_generate_messages astronaut_controllers_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_dependencies(astronaut_controllers_generate_messages_cpp _astronaut_controllers_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_dependencies(astronaut_controllers_generate_messages_cpp _astronaut_controllers_generate_messages_check_deps_${_filename})
 
@@ -61,6 +74,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS astronaut_controllers_generate_mess
 
 ### Section generating for lang: geneus
 ### Generating Messages
+_generate_msg_eus(astronaut_controllers
+  "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/astronaut_controllers
+)
 
 ### Generating Services
 _generate_srv_eus(astronaut_controllers
@@ -82,6 +101,8 @@ add_custom_target(astronaut_controllers_generate_messages_eus
 add_dependencies(astronaut_controllers_generate_messages astronaut_controllers_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_dependencies(astronaut_controllers_generate_messages_eus _astronaut_controllers_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_dependencies(astronaut_controllers_generate_messages_eus _astronaut_controllers_generate_messages_check_deps_${_filename})
 
@@ -94,6 +115,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS astronaut_controllers_generate_mess
 
 ### Section generating for lang: genlisp
 ### Generating Messages
+_generate_msg_lisp(astronaut_controllers
+  "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/astronaut_controllers
+)
 
 ### Generating Services
 _generate_srv_lisp(astronaut_controllers
@@ -115,6 +142,8 @@ add_custom_target(astronaut_controllers_generate_messages_lisp
 add_dependencies(astronaut_controllers_generate_messages astronaut_controllers_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_dependencies(astronaut_controllers_generate_messages_lisp _astronaut_controllers_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_dependencies(astronaut_controllers_generate_messages_lisp _astronaut_controllers_generate_messages_check_deps_${_filename})
 
@@ -127,6 +156,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS astronaut_controllers_generate_mess
 
 ### Section generating for lang: gennodejs
 ### Generating Messages
+_generate_msg_nodejs(astronaut_controllers
+  "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/astronaut_controllers
+)
 
 ### Generating Services
 _generate_srv_nodejs(astronaut_controllers
@@ -148,6 +183,8 @@ add_custom_target(astronaut_controllers_generate_messages_nodejs
 add_dependencies(astronaut_controllers_generate_messages astronaut_controllers_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_dependencies(astronaut_controllers_generate_messages_nodejs _astronaut_controllers_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_dependencies(astronaut_controllers_generate_messages_nodejs _astronaut_controllers_generate_messages_check_deps_${_filename})
 
@@ -160,6 +197,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS astronaut_controllers_generate_mess
 
 ### Section generating for lang: genpy
 ### Generating Messages
+_generate_msg_py(astronaut_controllers
+  "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/astronaut_controllers
+)
 
 ### Generating Services
 _generate_srv_py(astronaut_controllers
@@ -181,6 +224,8 @@ add_custom_target(astronaut_controllers_generate_messages_py
 add_dependencies(astronaut_controllers_generate_messages astronaut_controllers_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg" NAME_WE)
+add_dependencies(astronaut_controllers_generate_messages_py _astronaut_controllers_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv" NAME_WE)
 add_dependencies(astronaut_controllers_generate_messages_py _astronaut_controllers_generate_messages_check_deps_${_filename})
 

@@ -24,6 +24,12 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ro
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/class_loader/exceptions.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/class_loader/meta_object.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/class_loader/register_macro.hpp
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/gazebo_msgs/ModelStates.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Point.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Pose.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Twist.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/chain.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/chainfksolver.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/chainfksolverpos_recursive.hpp

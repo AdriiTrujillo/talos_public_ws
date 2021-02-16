@@ -20,6 +20,10 @@
 #include <kdl/segment.hpp>
 #include <kdl/joint.hpp>
 
+// GAZEBO MSGS
+#include <gazebo_msgs/ModelStates.h>
+
+
 #include <astronaut_controllers/target_frame.h>
 
 namespace controller_ns{
@@ -33,28 +37,34 @@ namespace controller_ns{
             void starting(const ros::Time &time);
             void stopping(const ros::Time &time);
             void writeJointCommand(KDL::JntArray joint_command);
+            void calculate_transformations(KDL::Frame &current_pose);
 
         private:
             
             ros::Subscriber target_frame_subscr_;
             void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
-            std::vector<hardware_interface::JointHandle>      _joint_handles;
-            std::vector<std::string>                          _joint_names;
+            ros::Subscriber Gazebo_models_subscr_;
+            void transformationsCallback(const gazebo_msgs::ModelStates& data);
 
-            KDL::Chain _robot_chain;
-            KDL::Tree _robot_tree;
+            std::vector<hardware_interface::JointHandle>      joint_handles_;
+            std::vector<std::string>                          joint_names_;
+
+            KDL::Chain robot_chain_;
+            KDL::Tree robot_tree_;
 
             // KDL Solvers performing the actual computations
             int ik_status;
-            boost::scoped_ptr<KDL::ChainFkSolverPos>    _jnt_to_pose_solver;
-            boost::scoped_ptr<KDL::ChainJntToJacSolver> _jnt_to_jac_solver;
+            boost::scoped_ptr<KDL::ChainFkSolverPos>    jnt_to_pose_solver_;
+            boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
             //Variables
-            KDL::JntArray _jnt_pos, _jnt_effort;
-            KDL::Jacobian _jacobian;
-            KDL::Frame _reference_pose;
+            KDL::JntArray jnt_pos_, jnt_effort_;
+            KDL::Jacobian jacobian_;
             KDL::Frame target_frame_;
+            KDL::Frame world_2_Talos_;
+            KDL::Frame world_2_ISS_;
+
     };
 
 }; //namespace

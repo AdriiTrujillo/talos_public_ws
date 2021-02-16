@@ -25,6 +25,12 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /opt/ros/kinetic/include/class_loader/exceptions.hpp
  /opt/ros/kinetic/include/class_loader/meta_object.hpp
  /opt/ros/kinetic/include/class_loader/register_macro.hpp
+ /opt/ros/kinetic/include/gazebo_msgs/ModelStates.h
+ /opt/ros/kinetic/include/geometry_msgs/Point.h
+ /opt/ros/kinetic/include/geometry_msgs/Pose.h
+ /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
+ /opt/ros/kinetic/include/geometry_msgs/Twist.h
+ /opt/ros/kinetic/include/geometry_msgs/Vector3.h
  /opt/ros/kinetic/include/kdl/chain.hpp
  /opt/ros/kinetic/include/kdl/chainfksolver.hpp
  /opt/ros/kinetic/include/kdl/chainfksolverpos_recursive.hpp

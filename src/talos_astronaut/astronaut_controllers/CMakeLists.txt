@@ -145,8 +145,6 @@ add_library(astronaut_controllers_lib src/cartesian_controller.cpp)
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(publisher src/publisher.cpp)
-target_link_libraries(publisher ${catkin_LIBRARIES})
 
 add_executable(hand_service src/hand_service.cpp)
 target_link_libraries(hand_service ${catkin_LIBRARIES})

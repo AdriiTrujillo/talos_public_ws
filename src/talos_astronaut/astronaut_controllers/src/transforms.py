@@ -11,13 +11,17 @@ if __name__ == '__main__':
 
     rospy.init_node('gazebo_tf_broadcaster')
 
-    broadcaster = tf2_ros.StaticTransformBroadcaster()
+    broadcaster = tf2_ros.TransformBroadcaster()
 
     publish_frequency = rospy.get_param("publish_frequency", 1)
 
     last_published = None
     def callback(data):
         global last_published
+        
+        print(type(last_published))
+        print(type(publish_frequency))
+        print(type(time.time()))
 
         if last_published and publish_frequency > 0.0 and time.time() - last_published <= 1.0 / publish_frequency:
             return

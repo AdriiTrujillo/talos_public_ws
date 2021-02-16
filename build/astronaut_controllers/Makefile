@@ -78,17 +78,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -132,6 +121,17 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -751,19 +751,6 @@ astronaut_controllers_lib/fast:
 .PHONY : astronaut_controllers_lib/fast
 
 #=============================================================================
-# Target rules for targets named publisher
-
-# Build rule for target.
-publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 publisher
-.PHONY : publisher
-
-# fast build rule for target.
-publisher/fast:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/build
-.PHONY : publisher/fast
-
-#=============================================================================
 # Target rules for targets named gmock
 
 # Build rule for target.
@@ -869,33 +856,6 @@ src/hand_service.cpp.s:
 	$(MAKE) -f CMakeFiles/hand_service.dir/build.make CMakeFiles/hand_service.dir/src/hand_service.cpp.s
 .PHONY : src/hand_service.cpp.s
 
-src/publisher.o: src/publisher.cpp.o
-
-.PHONY : src/publisher.o
-
-# target to build an object file
-src/publisher.cpp.o:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/src/publisher.cpp.o
-.PHONY : src/publisher.cpp.o
-
-src/publisher.i: src/publisher.cpp.i
-
-.PHONY : src/publisher.i
-
-# target to preprocess a source file
-src/publisher.cpp.i:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/src/publisher.cpp.i
-.PHONY : src/publisher.cpp.i
-
-src/publisher.s: src/publisher.cpp.s
-
-.PHONY : src/publisher.s
-
-# target to generate assembly for a file
-src/publisher.cpp.s:
-	$(MAKE) -f CMakeFiles/publisher.dir/build.make CMakeFiles/publisher.dir/src/publisher.cpp.s
-.PHONY : src/publisher.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -904,7 +864,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... install/strip"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_eus"
@@ -952,9 +911,9 @@ help:
 	@echo "... _astronaut_controllers_generate_messages_check_deps_hand_operations"
 	@echo "... astronaut_controllers_gencpp"
 	@echo "... astronaut_controllers_generate_messages_nodejs"
+	@echo "... install/strip"
 	@echo "... astronaut_controllers_gennodejs"
 	@echo "... astronaut_controllers_lib"
-	@echo "... publisher"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
@@ -965,9 +924,6 @@ help:
 	@echo "... src/hand_service.o"
 	@echo "... src/hand_service.i"
 	@echo "... src/hand_service.s"
-	@echo "... src/publisher.o"
-	@echo "... src/publisher.i"
-	@echo "... src/publisher.s"
 .PHONY : help
 
 

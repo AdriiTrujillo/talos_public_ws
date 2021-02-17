@@ -25,7 +25,6 @@ talos_astronaut/astronaut_controllers
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h /home/adrii/talos_public_ws/devel/include/astronaut_controllers/hand_operations.h
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operationsResponse.h /home/adrii/talos_public_ws/devel/include/astronaut_controllers/hand_operationsResponse.h
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so /home/adrii/talos_public_ws/devel/lib/libastronaut_controllers_lib.so
-/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/publisher /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/publisher
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/hand_service /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/hand_service
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/__init__.py /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/astronaut_controllers/__init__.py
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/msg/__init__.py /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/astronaut_controllers/msg/__init__.py

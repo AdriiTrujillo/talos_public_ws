@@ -147,10 +147,10 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     calculate_transformations(current_pose);
 
-    ROS_INFO("Despues de salir");
-    ROS_INFO("x : %f",current_pose.p.x());
-    ROS_INFO("y : %f",current_pose.p.y());
-    ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Despues de salir");
+    // ROS_INFO("x : %f",current_pose.p.x());
+    // ROS_INFO("y : %f",current_pose.p.y());
+    // ROS_INFO("z : %f",current_pose.p.z());
     // Target frame is already with ISS reference
     
     // get the pose error
@@ -193,24 +193,24 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     if (ik_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    ROS_INFO("Antes de entrar");
-    ROS_INFO("x : %f",current_pose.p.x());
-    ROS_INFO("y : %f",current_pose.p.y());
-    ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Antes de entrar");
+    // ROS_INFO("x : %f",current_pose.p.x());
+    // ROS_INFO("y : %f",current_pose.p.y());
+    // ROS_INFO("z : %f",current_pose.p.z());
 
     calculate_transformations(current_pose);
 
-    ROS_INFO("Despues de salir");
-    ROS_INFO("x : %f",current_pose.p.x());
-    ROS_INFO("y : %f",current_pose.p.y());
-    ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Despues de salir");
+    // ROS_INFO("x : %f",current_pose.p.x());
+    // ROS_INFO("y : %f",current_pose.p.y());
+    // ROS_INFO("z : %f",current_pose.p.z());
 
     target_frame_ = current_pose;
 
-    ROS_INFO("Target Frame");
-    ROS_INFO("x : %f",target_frame_.p.x());
-    ROS_INFO("y : %f",target_frame_.p.y());
-    ROS_INFO("z : %f",target_frame_.p.z());
+    // ROS_INFO("Target Frame");
+    // ROS_INFO("x : %f",target_frame_.p.x());
+    // ROS_INFO("y : %f",target_frame_.p.y());
+    // ROS_INFO("z : %f",target_frame_.p.z());
 
 }
 
@@ -227,9 +227,18 @@ void cartesian_controller_class::calculate_transformations(KDL::Frame &current_p
 }
 
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
-                                                                                                        //0.4, -0.1, 0.2
-    target_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll,target_frame.pitch,target_frame.yaw + M_PI), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
 
+    // The desired point is movig with the ISS
+    float x = world_2_ISS_.p.x() + target_frame.x;
+    float y = world_2_ISS_.p.y() + target_frame.y;
+    float z = world_2_ISS_.p.z() + target_frame.z;
+    double roll, pitch, yaw;
+    world_2_ISS_.M.GetRPY(roll, pitch, yaw);
+    roll += target_frame.roll;
+    pitch += target_frame.pitch;
+    yaw += target_frame.yaw + M_PI;
+
+    target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
 }
 
 void cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){
@@ -245,8 +254,6 @@ void cartesian_controller_class::transformationsCallback(const gazebo_msgs::Mode
         q_y = data.pose[i].orientation.y;
         q_z = data.pose[i].orientation.z;
         q_w = data.pose[i].orientation.w;
-
-        
 
         if(data.name[i] == "talos"){
             world_2_Talos_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));

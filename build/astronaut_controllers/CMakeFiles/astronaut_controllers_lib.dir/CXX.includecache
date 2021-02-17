@@ -7,20 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
 
 /home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h
 controller_interface/controller_base.h

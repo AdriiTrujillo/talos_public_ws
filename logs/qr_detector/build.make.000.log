@@ -1,0 +1,5 @@
+[35m[1mScanning dependencies of target qr_detector_nodelet[0m
+[ 33%] [32mBuilding CXX object CMakeFiles/qr_detector_nodelet.dir/src/detector.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/qr_detector_nodelet.dir/src/qr_detector_nodelet.cpp.o[0m
+[100%] [32m[1mLinking CXX shared library /home/adrii/talos_public_ws/devel/.private/qr_detector/lib/libqr_detector_nodelet.so[0m
+[100%] Built target qr_detector_nodelet

@@ -147,10 +147,10 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     calculate_transformations(current_pose);
 
-    // ROS_INFO("Despues de salir");
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
+    ROS_INFO("Despues de salir");
+    ROS_INFO("x : %f",current_pose.p.x());
+    ROS_INFO("y : %f",current_pose.p.y());
+    ROS_INFO("z : %f",current_pose.p.z());
     // Target frame is already with ISS reference
     
     // get the pose error
@@ -165,7 +165,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 125 * error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * 10 * error(j));
         }
     }
 

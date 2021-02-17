@@ -1,0 +1,68 @@
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target astronaut_controllers_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target astronaut_controllers_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target astronaut_controllers_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target astronaut_controllers_generate_messages_cpp
+[  0%] Built target astronaut_controllers_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target send_position[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/send_position.dir/src/send_position.cpp.o[0m
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:[m[K In function ‘[01m[Kvoid qr_callback(const ConstPtr&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:16:49:[m[K [01;31m[Kerror: [m[K‘[01m[KremoveDupWord[m[K’ was not declared in this scope
+     positions = removeDupWord(data->data.c_str());
+[01;32m[K                                                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:38:15:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator=[m[K’ (operand types are ‘[01m[Kstd_msgs::Float64 {aka std_msgs::Float64_<std::allocator<void> >}[m[K’ and ‘[01m[Kdouble[m[K’)
+     head_move = 0.0;
+[01;32m[K               ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:3:0[m[K:
+[01m[K/opt/ros/kinetic/include/std_msgs/Float64.h:22:8:[m[K [01;36m[Knote: [m[Kcandidate: std_msgs::Float64_<std::allocator<void> >& std_msgs::Float64_<std::allocator<void> >::operator=(const std_msgs::Float64_<std::allocator<void> >&)
+ struct Float64_
+[01;32m[K        ^[m[K
+[01m[K/opt/ros/kinetic/include/std_msgs/Float64.h:22:8:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[Kdouble[m[K’ to ‘[01m[Kconst std_msgs::Float64_<std::allocator<void> >&[m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:42:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kstring[m[K’ was not declared in this scope
+ std::vector<float> removeDupWord(string str) {
+[01;32m[K                                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:42:34:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+In file included from [01m[K/usr/include/c++/5/string:39:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/platform.h:55[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/time.h:53[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:1[m[K:
+[01m[K/usr/include/c++/5/bits/stringfwd.h:74:33:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string[m[K’
+   typedef basic_string<char>    string;   
+[01;32m[K                                 ^[m[K
+[01m[K/usr/include/c++/5/bits/stringfwd.h:74:33:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::__cxx11::string[m[K’
+In file included from [01m[K/usr/include/boost/lexical_cast/detail/converter_lexical.hpp:51:0[m[K,
+                 from [01m[K/usr/include/boost/lexical_cast/try_lexical_convert.hpp:34[m[K,
+                 from [01m[K/usr/include/boost/lexical_cast.hpp:32[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/transport_hints.h:34[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/subscribe_options.h:33[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:42[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:1[m[K:
+[01m[K/usr/include/boost/container/container_fwd.hpp:179:1:[m[K [01;36m[Knote: [m[K  ‘[01m[Kboost::container::string[m[K’
+ string;
+[01;32m[K ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:42:46:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K;[m[K’ before ‘[01m[K{[m[K’ token
+ std::vector<float> removeDupWord(string str) {
+[01;32m[K                                              ^[m[K
+CMakeFiles/send_position.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/send_position.dir/src/send_position.cpp.o'
+make[2]: *** [CMakeFiles/send_position.dir/src/send_position.cpp.o] Error 1
+CMakeFiles/Makefile2:86: fallo en las instrucciones para el objetivo 'CMakeFiles/send_position.dir/all'
+make[1]: *** [CMakeFiles/send_position.dir/all] Error 2
+Makefile:138: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

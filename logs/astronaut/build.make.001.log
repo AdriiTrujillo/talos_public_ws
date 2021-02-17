@@ -1,0 +1,50 @@
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target astronaut_controllers_generate_messages_py[0m
+[35m[1mScanning dependencies of target astronaut_controllers_generate_messages_nodejs[0m
+[  0%] Built target astronaut_controllers_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target astronaut_controllers_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_py
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target astronaut_controllers_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target astronaut_controllers_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target astronaut_controllers_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target astronaut_controllers_generate_messages_eus[0m
+[  0%] Built target astronaut_controllers_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target astronaut_controllers_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target send_position[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/send_position.dir/src/send_position.cpp.o[0m
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:4:46:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllers/target_frame: No existe el archivo o el directorio
+compilation terminated.
+CMakeFiles/send_position.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/send_position.dir/src/send_position.cpp.o'
+make[2]: *** [CMakeFiles/send_position.dir/src/send_position.cpp.o] Error 1
+CMakeFiles/Makefile2:86: fallo en las instrucciones para el objetivo 'CMakeFiles/send_position.dir/all'
+make[1]: *** [CMakeFiles/send_position.dir/all] Error 2
+Makefile:138: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

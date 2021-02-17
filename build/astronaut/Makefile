@@ -111,17 +111,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -132,6 +121,17 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -164,6 +164,45 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named send_position
+
+# Build rule for target.
+send_position: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 send_position
+.PHONY : send_position
+
+# fast build rule for target.
+send_position/fast:
+	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/build
+.PHONY : send_position/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_py
+
+# Build rule for target.
+astronaut_controllers_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_py
+.PHONY : astronaut_controllers_generate_messages_py
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_py.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_py.dir/build
+.PHONY : astronaut_controllers_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_nodejs
+
+# Build rule for target.
+astronaut_controllers_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_nodejs
+.PHONY : astronaut_controllers_generate_messages_nodejs
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build
+.PHONY : astronaut_controllers_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
@@ -205,6 +244,19 @@ clean_test_results/fast:
 .PHONY : clean_test_results/fast
 
 #=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_lisp
+
+# Build rule for target.
+astronaut_controllers_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_lisp
+.PHONY : astronaut_controllers_generate_messages_lisp
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build
+.PHONY : astronaut_controllers_generate_messages_lisp/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -216,6 +268,19 @@ std_msgs_generate_messages_nodejs: cmake_check_build_system
 std_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_eus
+
+# Build rule for target.
+roscpp_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named roscpp_generate_messages_cpp
@@ -231,17 +296,17 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named roscpp_generate_messages_eus
+# Target rules for targets named astronaut_controllers_generate_messages_cpp
 
 # Build rule for target.
-roscpp_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
-.PHONY : roscpp_generate_messages_eus
+astronaut_controllers_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_cpp
+.PHONY : astronaut_controllers_generate_messages_cpp
 
 # fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
+astronaut_controllers_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build
+.PHONY : astronaut_controllers_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named download_extra_data
@@ -268,6 +333,19 @@ std_msgs_generate_messages_lisp: cmake_check_build_system
 std_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make CMakeFiles/std_msgs_generate_messages_lisp.dir/build
 .PHONY : std_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_eus
+
+# Build rule for target.
+astronaut_controllers_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_eus
+.PHONY : astronaut_controllers_generate_messages_eus
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_eus/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_eus.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_eus.dir/build
+.PHONY : astronaut_controllers_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named doxygen
@@ -477,6 +555,33 @@ gtest_main/fast:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/send_position.o: src/send_position.cpp.o
+
+.PHONY : src/send_position.o
+
+# target to build an object file
+src/send_position.cpp.o:
+	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.o
+.PHONY : src/send_position.cpp.o
+
+src/send_position.i: src/send_position.cpp.i
+
+.PHONY : src/send_position.i
+
+# target to preprocess a source file
+src/send_position.cpp.i:
+	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.i
+.PHONY : src/send_position.cpp.i
+
+src/send_position.s: src/send_position.cpp.s
+
+.PHONY : src/send_position.s
+
+# target to generate assembly for a file
+src/send_position.cpp.s:
+	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.s
+.PHONY : src/send_position.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -488,14 +593,22 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... install/local"
+	@echo "... send_position"
+	@echo "... astronaut_controllers_generate_messages_py"
+	@echo "... install/strip"
+	@echo "... astronaut_controllers_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... clean_test_results"
+	@echo "... astronaut_controllers_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... astronaut_controllers_generate_messages_cpp"
 	@echo "... download_extra_data"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... astronaut_controllers_generate_messages_eus"
 	@echo "... doxygen"
 	@echo "... run_tests"
 	@echo "... std_msgs_generate_messages_cpp"
@@ -508,12 +621,13 @@ help:
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
-	@echo "... install/strip"
-	@echo "... install/local"
 	@echo "... gmock"
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... src/send_position.o"
+	@echo "... src/send_position.i"
+	@echo "... src/send_position.s"
 .PHONY : help
 
 

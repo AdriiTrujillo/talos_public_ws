@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: qr_detector
+Description: Description of qr_detector
+Version: 1.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lqr_detector_nodelet
+Requires: roscpp nodelet sensor_msgs cv_bridge image_transport

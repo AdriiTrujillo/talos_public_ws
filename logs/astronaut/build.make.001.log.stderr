@@ -1,0 +1,5 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/send_position.cpp:4:46:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllers/target_frame: No existe el archivo o el directorio
+compilation terminated.
+make[2]: *** [CMakeFiles/send_position.dir/src/send_position.cpp.o] Error 1
+make[1]: *** [CMakeFiles/send_position.dir/all] Error 2
+make: *** [all] Error 2

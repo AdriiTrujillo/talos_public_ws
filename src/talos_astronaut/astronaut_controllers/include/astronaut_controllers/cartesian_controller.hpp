@@ -36,6 +36,11 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/end_effector_link" << " from parameter server");
         return false;
     }
+    if (!nh.getParam("goal_tolerance",tolerance_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
+        return false;
+    }
     // Robot configuration done ----------------------------------------------
 
 
@@ -97,12 +102,6 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     jnt_effort_.resize(kdl_chain.getNrOfJoints());
     jacobian_.resize(kdl_chain.getNrOfJoints());
 
-    // Set the desired pose --------------------------------------------------------
-    // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, 0.2) funciona
-    // El punto KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.5, -0.2, -0.2) funciona
-    // target_frame_ = KDL::Frame(KDL::Rotation::RPY(0,0,3.14), KDL::Vector(0.4, -0.1, 0.2));
-    // -----------------------------------------------------------------------------
-
     // ROS_INFO("Cadena cinematica incializada correctamente ...");
     // ROS_INFO("Handles Size: %i", joint_handles_.size());
     // ROS_INFO("Names Size: %i", joint_names_.size());
@@ -121,6 +120,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
 
     target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
     Gazebo_models_subscr_ = nh.subscribe("/gazebo/model_states", 3, &cartesian_controller_class::transformationsCallback, this);
+    tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
     return true;
 
@@ -147,16 +147,17 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     calculate_transformations(current_pose);
 
-    ROS_INFO("Despues de salir");
-    ROS_INFO("x : %f",current_pose.p.x());
-    ROS_INFO("y : %f",current_pose.p.y());
-    ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Despues de salir");
+    // ROS_INFO("x : %f",current_pose.p.x());
+    // ROS_INFO("y : %f",current_pose.p.y());
+    // ROS_INFO("z : %f",current_pose.p.z());
     // Target frame is already with ISS reference
     
     // get the pose error
     KDL::Twist error;
 
     error = KDL::diff(current_pose, target_frame_);
+    goal_reached.data = compareTolerance(error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 
@@ -165,11 +166,12 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 10 * error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * 20 * error(j));
         }
     }
 
     writeJointCommand(jnt_effort_);
+    tolerance_publisher_.publish(goal_reached);
 
 }
 
@@ -183,6 +185,9 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
 void cartesian_controller_class::starting(const ros::Time &time) {
     
+    goal_reached.data = false;
+    diff_frame_ = true;
+
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
@@ -226,19 +231,62 @@ void cartesian_controller_class::calculate_transformations(KDL::Frame &current_p
 
 }
 
+bool cartesian_controller_class::compareTolerance(KDL::Twist error){
+
+    // Point reached
+    if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+        return true;
+    }
+
+    // Not reached yet
+    return false;
+
+}
+
+bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::target_frame& target_frame){
+
+    double roll, pitch, yaw;
+    local_frame_.M.GetRPY(roll, pitch, yaw);
+    double x = local_frame_.p.x();
+    double y = local_frame_.p.y();
+    double z = local_frame_.p.z();
+
+    if(target_frame.x != x or target_frame.y != y or target_frame.z != z or
+        target_frame.roll != roll or target_frame.pitch != pitch or target_frame.yaw != yaw){
+            std::cout << "Different" << std::endl;
+            return true; // A different frame has arrived
+    }
+
+    return false;
+
+}
+
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
 
-    // The desired point is movig with the ISS
-    float x = world_2_ISS_.p.x() + target_frame.x;
-    float y = world_2_ISS_.p.y() + target_frame.y;
-    float z = world_2_ISS_.p.z() + target_frame.z;
-    double roll, pitch, yaw;
-    world_2_ISS_.M.GetRPY(roll, pitch, yaw);
-    roll += target_frame.roll;
-    pitch += target_frame.pitch;
-    yaw += target_frame.yaw + M_PI;
+    if(diff_frame_){
+        local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+        diff_frame_ = false;
+    }
 
-    target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+    if(diffTargetFrame(target_frame)){
+        // The desired point is movig with the ISS
+        float x = world_2_ISS_.p.x() + target_frame.x;
+        float y = world_2_ISS_.p.y() + target_frame.y;
+        float z = world_2_ISS_.p.z() + target_frame.z;
+        double roll, pitch, yaw;
+        // world_2_ISS_.M.GetRPY(roll, pitch, yaw);
+        // I don't need to add the angle
+        roll = target_frame.roll;
+        pitch = target_frame.pitch;
+        yaw = target_frame.yaw; // + M_PI;
+
+        target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+    }
+
+    else{
+        diff_frame_ = true;
+    }   
+
 }
 
 void cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){

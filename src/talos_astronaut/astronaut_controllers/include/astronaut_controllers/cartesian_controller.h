@@ -23,7 +23,10 @@
 // GAZEBO MSGS
 #include <gazebo_msgs/ModelStates.h>
 
+// STD_MSGS
+#include <std_msgs/Bool.h>
 
+// PROJECT
 #include <astronaut_controllers/target_frame.h>
 
 namespace controller_ns{
@@ -41,11 +44,20 @@ namespace controller_ns{
 
         private:
             
+            bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
+            bool compareTolerance(KDL::Twist error);
+
             ros::Subscriber target_frame_subscr_;
             void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
             ros::Subscriber Gazebo_models_subscr_;
             void transformationsCallback(const gazebo_msgs::ModelStates& data);
+
+            ros::Publisher tolerance_publisher_;
+            float tolerance_;
+            bool diff_frame_;
+            std_msgs::Bool goal_reached;
+            
 
             std::vector<hardware_interface::JointHandle>      joint_handles_;
             std::vector<std::string>                          joint_names_;
@@ -64,6 +76,7 @@ namespace controller_ns{
             KDL::Frame target_frame_;
             KDL::Frame world_2_Talos_;
             KDL::Frame world_2_ISS_;
+            KDL::Frame local_frame_;
 
     };
 

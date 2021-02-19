@@ -117,6 +117,7 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /opt/ros/kinetic/include/ros/wall_timer.h
  /opt/ros/kinetic/include/ros/wall_timer_options.h
  /opt/ros/kinetic/include/rosconsole/macros_generated.h
+ /opt/ros/kinetic/include/std_msgs/Bool.h
  /opt/ros/kinetic/include/urdf/model.h
  /opt/ros/kinetic/include/urdf/urdfdom_compatibility.h
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h

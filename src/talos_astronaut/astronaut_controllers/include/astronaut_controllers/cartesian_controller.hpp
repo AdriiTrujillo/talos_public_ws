@@ -186,7 +186,7 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 void cartesian_controller_class::starting(const ros::Time &time) {
     
     goal_reached.data = false;
-    diff_frame_ = true;
+    diff_frame_ = false;
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -198,24 +198,10 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     if (ik_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    // ROS_INFO("Antes de entrar");
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
-
     calculate_transformations(current_pose);
 
-    // ROS_INFO("Despues de salir");
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
-
     target_frame_ = current_pose;
-
-    // ROS_INFO("Target Frame");
-    // ROS_INFO("x : %f",target_frame_.p.x());
-    // ROS_INFO("y : %f",target_frame_.p.y());
-    // ROS_INFO("z : %f",target_frame_.p.z());
+    local_frame_ = current_pose;
 
 }
 
@@ -234,8 +220,10 @@ void cartesian_controller_class::calculate_transformations(KDL::Frame &current_p
 bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
-    if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
-        return true;
+    if(diff_frame_){ // To not check when it has just started
+        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+            return true;
+        }
     }
 
     // Not reached yet
@@ -253,7 +241,6 @@ bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::ta
 
     if(target_frame.x != x or target_frame.y != y or target_frame.z != z or
         target_frame.roll != roll or target_frame.pitch != pitch or target_frame.yaw != yaw){
-            std::cout << "Different" << std::endl;
             return true; // A different frame has arrived
     }
 
@@ -263,10 +250,10 @@ bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::ta
 
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
 
-    if(diff_frame_){
-        local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
-        diff_frame_ = false;
-    }
+    // if(diff_frame_){
+    //     local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+    //     diff_frame_ = false;
+    // }
 
     if(diffTargetFrame(target_frame)){
         // The desired point is movig with the ISS
@@ -281,10 +268,12 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
         yaw = target_frame.yaw; // + M_PI;
 
         target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+        diff_frame_ = true;
     }
 
     else{
-        diff_frame_ = true;
+        diff_frame_ = false;
     }   
 
 }

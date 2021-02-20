@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="nodelet"
+          type="nodelet"
+          name="qr_detector"
+          args="standalone qr_detector/qr_detector_nodelet">
+        <remap from="image" to="rgbd/rgb/high_res/image_color"/>
+    </node>
+</launch>

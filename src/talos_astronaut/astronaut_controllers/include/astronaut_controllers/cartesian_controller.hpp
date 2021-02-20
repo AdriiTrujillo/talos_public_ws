@@ -186,7 +186,7 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 void cartesian_controller_class::starting(const ros::Time &time) {
     
     goal_reached.data = false;
-    diff_frame_ = false;
+    diff_frame_ = true;
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -220,12 +220,12 @@ void cartesian_controller_class::calculate_transformations(KDL::Frame &current_p
 bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
-    if(diff_frame_){ // To not check when it has just started
+    if(not diff_frame_){ // To not check when it has just started
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
             return true;
         }
     }
-
+        
     // Not reached yet
     return false;
 

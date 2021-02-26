@@ -32,7 +32,6 @@ void qr_callback(const std_msgs::String::ConstPtr& data){
     std::vector<float> positions;
     positions = removeDupWord(data->data.c_str());
     
-
     target_frame.x = positions[0];
 
     target_frame.y = positions[1];

@@ -1,0 +1,1 @@
+/home/adrii/talos_public_ws/devel/.private/aruco_msgs/share/roseus/ros/aruco_msgs/manifest.l

@@ -18,10 +18,11 @@ def jointTrajectoryCommand():
     jt.header.stamp = rospy.Time.now()
     jt.joint_names = ["hand_right_thumb_joint", "hand_right_index_joint", "hand_right_mrl_joint"]
     p = JointTrajectoryPoint()
-    p.positions = [6.2, 6.8, 9.2]
+    # p.positions = [6.2, 6.8, 9.2]
+    p.positions = [0.0, 0.0, 0.0]
     p.velocities = [0.0, 0.0, 0.0]
     p.accelerations = [0.0, 0.0, 0.0]
-    p.effort = []
+    p.effort = [0.33, 0.33, 0.33]
     p.time_from_start = rospy.Duration(2.5)
     jt.points.append(p)
 

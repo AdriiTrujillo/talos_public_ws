@@ -138,25 +138,19 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     if (ik_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    // Descomentar para imprimir por pantalla la posición del extremo
-
-    // ROS_INFO("Antes de entrar");
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
-
     calculate_transformations(current_pose);
-
-    // ROS_INFO("Despues de salir");
+// -------------------------------------------------------------------------------------------    
+    // Descomentar para imprimir por pantalla la posición del extremo
     // ROS_INFO("x : %f",current_pose.p.x());
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
-    // Target frame is already with ISS reference
+// ------------------------------------------------------------------------------------------- 
     
     // get the pose error
     KDL::Twist error;
-
+    // Target frame is already with ISS reference
     error = KDL::diff(current_pose, target_frame_);
+    //check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
@@ -177,6 +171,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
 void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
+    // Send joint position to joints
     for(size_t i = 0; i < joint_handles_.size(); i++){
         joint_handles_[i].setCommand(joint_command(i));
     }
@@ -185,6 +180,7 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
 void cartesian_controller_class::starting(const ros::Time &time) {
     
+    //Some initializtions
     goal_reached.data = false;
     diff_frame_ = true;
 
@@ -200,7 +196,9 @@ void cartesian_controller_class::starting(const ros::Time &time) {
 
     calculate_transformations(current_pose);
 
+    // Send current pose to the effecto to not to move
     target_frame_ = current_pose;
+    // Save first cartesian positión to detect when a differente one has arrived
     local_frame_ = current_pose;
 
 }
@@ -250,19 +248,12 @@ bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::ta
 
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
 
-    // if(diff_frame_){
-    //     local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
-    //     diff_frame_ = false;
-    // }
-
     if(diffTargetFrame(target_frame)){
-        // The desired point is movig with the ISS
-        float x = world_2_ISS_.p.x() + target_frame.x;
-        float y = world_2_ISS_.p.y() + target_frame.y;
-        float z = world_2_ISS_.p.z() + target_frame.z;
+        // The desired point is at ISS reference
+        float x = target_frame.x;
+        float y = target_frame.y;
+        float z = target_frame.z;
         double roll, pitch, yaw;
-        // world_2_ISS_.M.GetRPY(roll, pitch, yaw);
-        // I don't need to add the angle
         roll = target_frame.roll;
         pitch = target_frame.pitch;
         yaw = target_frame.yaw; // + M_PI;
@@ -278,7 +269,7 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
 
 }
 
-void cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){
+void cartesian_controller_class::transformationCallback(const geometry_msgs::PoseStamped& data){
     
     float x, y, z, q_x, q_y, q_z, q_w;
 
@@ -292,12 +283,8 @@ void cartesian_controller_class::transformationsCallback(const gazebo_msgs::Mode
         q_z = data.pose[i].orientation.z;
         q_w = data.pose[i].orientation.w;
 
-        if(data.name[i] == "talos"){
-            world_2_Talos_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
-        }
-
-        if(data.name[i] == "International Space Station"){
-            world_2_ISS_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
+        if(data.frame_id[i] == "base_link"){
+            talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
         }
 
     }

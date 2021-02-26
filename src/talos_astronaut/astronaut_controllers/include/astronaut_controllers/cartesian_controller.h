@@ -23,6 +23,9 @@
 // GAZEBO MSGS
 #include <gazebo_msgs/ModelStates.h>
 
+// GEOMETRY MSGS
+#include <geometry_msgs/PoseStamped.h>
+
 // STD_MSGS
 #include <std_msgs/Bool.h>
 
@@ -50,8 +53,8 @@ namespace controller_ns{
             ros::Subscriber target_frame_subscr_;
             void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
-            ros::Subscriber Gazebo_models_subscr_;
-            void transformationsCallback(const gazebo_msgs::ModelStates& data);
+            ros::Subscriber aruco_subscr_;
+            void transformationCallback(const geometry_msgs::PoseStamped& data);
 
             ros::Publisher tolerance_publisher_;
             float tolerance_;
@@ -74,8 +77,7 @@ namespace controller_ns{
             KDL::JntArray jnt_pos_, jnt_effort_;
             KDL::Jacobian jacobian_;
             KDL::Frame target_frame_;
-            KDL::Frame world_2_Talos_;
-            KDL::Frame world_2_ISS_;
+            KDL::Frame talos_2_aruco_;
             KDL::Frame local_frame_;
 
     };

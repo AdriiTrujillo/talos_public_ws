@@ -1,0 +1,10 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/look_to_aruco.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/look_to_aruco.cpp:11:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublisher[m[K’ is not a member of ‘[01m[Kros[m[K’
+     ros::publisher head_tilt_publisher = n.advertise<std_msgs::Float64>("/astronaut_head_tilt_controller/command", 1000);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/look_to_aruco.cpp:21:9:[m[K [01;31m[Kerror: [m[K‘[01m[Khead_tilt_publisher[m[K’ was not declared in this scope
+         head_tilt_publisher.publish(head_tilt_move);
+[01;32m[K         ^[m[K
+make[2]: *** [CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.o] Error 1
+make[1]: *** [CMakeFiles/look_to_aruco.dir/all] Error 2
+make: *** [all] Error 2

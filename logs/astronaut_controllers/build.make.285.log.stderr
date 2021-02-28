@@ -1,0 +1,36 @@
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:88:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:218:6:[m[K [01;31m[Kerror: [m[Kprototype for ‘[01m[Kbool controller_ns::cartesian_controller_class::diffTargetFrame(KDL::Frame)[m[K’ does not match any in class ‘[01m[Kcontroller_ns::cartesian_controller_class[m[K’
+ bool cartesian_controller_class::diffTargetFrame(KDL::Frame target_frame){
+[01;32m[K      ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:49:18:[m[K [01;31m[Kerror: [m[Kcandidate is: bool controller_ns::cartesian_controller_class::diffTargetFrame(const target_frame&)
+             bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
+[01;32m[K                  ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:88:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:[m[K In member function ‘[01m[Kvoid controller_ns::cartesian_controller_class::transformationCallback(const PoseStamped&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp:243:42:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kcontroller_ns::cartesian_controller_class::diffTargetFrame(KDL::Frame&)[m[K’
+         if (diffTargetFrame(target_frame_)) {
+[01;32m[K                                          ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:49:18:[m[K [01;36m[Knote: [m[Kcandidate: bool controller_ns::cartesian_controller_class::diffTargetFrame(const target_frame&)
+             bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
+[01;32m[K                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:49:18:[m[K [01;36m[Knote: [m[K  no known conversion for argument 1 from ‘[01m[KKDL::Frame[m[K’ to ‘[01m[Kconst target_frame& {aka const astronaut_controllers::target_frame_<std::allocator<void> >&}[m[K’
+In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h: In instantiation of ‘[01m[Kstatic char (& hardware_interface::CheckIsResourceManager<T>::callCM(std::vector<C*>&, C*, typename C::resource_manager_type*))[1] [with C = hardware_interface::EffortJointInterface; T = hardware_interface::EffortJointInterface; hardware_interface::CheckIsResourceManager<T>::yes = char [1]; typename C::resource_manager_type = hardware_interface::ResourceManager<hardware_interface::JointHandle>][m[K’:
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:83:14:[m[K   required from ‘[01m[Kstatic const void hardware_interface::CheckIsResourceManager<T>::callConcatManagers(std::vector<T*>&, T*) [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:200:54:[m[K   required from ‘[01m[KT* hardware_interface::InterfaceManager::get() [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:110:30:[m[K   required from ‘[01m[Kbool controller_interface::Controller<T>::initRequest(hardware_interface::RobotHW*, ros::NodeHandle&, ros::NodeHandle&, controller_interface::ControllerBase::ClaimedResources&) [with T = hardware_interface::EffortJointInterface; controller_interface::ControllerBase::ClaimedResources = std::vector<hardware_interface::InterfaceResources>][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:11:102:[m[K   required from here
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
+     yes tmp_yes;
+[01;32m[K         ^[m[K
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

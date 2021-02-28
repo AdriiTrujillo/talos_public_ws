@@ -118,7 +118,6 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     //     std::cout << " ------------------------- " << std::endl;
     // }
 
-    target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
     aruco_subscr_ = nh.subscribe("/aruco_single/pose", 3, &cartesian_controller_class::transformationCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
@@ -141,9 +140,9 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     // calculate_transformations(current_pose);
 // -------------------------------------------------------------------------------------------    
     // Descomentar para imprimir por pantalla la posición del extremo
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
+    ROS_INFO("x : %f",current_pose.p.x());
+    ROS_INFO("y : %f",current_pose.p.y());
+    ROS_INFO("z : %f",current_pose.p.z());
 // ------------------------------------------------------------------------------------------- 
     
     // get the pose error
@@ -170,12 +169,10 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 }
 
 void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
-
     // Send joint position to joints
     for(size_t i = 0; i < joint_handles_.size(); i++){
         joint_handles_[i].setCommand(joint_command(i));
     }
-    
 }
 
 void cartesian_controller_class::starting(const ros::Time &time) {
@@ -183,10 +180,11 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     //Some initializtions
     goal_reached.data = false;
     diff_frame_ = true;
+    // Transformation from the aruco marker to the target point
     aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.452, 0.201, 2.937), KDL::Vector(-0.5196, 0.223, -0.132));
 
 
-    //Get initial joints position
+    //Get initial joints position 
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
     }
@@ -196,26 +194,13 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    //calculate_transformations(current_pose);
-
     // Send current pose to the end effector to not to move
     target_frame_ = current_pose;
     // Save first cartesian positión to detect when a differente one has arrived
     local_frame_ = current_pose;
-
 }
 
 void cartesian_controller_class::stopping(const ros::Time &time) {}
-
-void cartesian_controller_class::calculate_transformations(KDL::Frame &current_pose) {
-
-    // To obtain Talos position with ISS reference
-    // KDL::Frame iss_2_Talos = world_2_ISS_.Inverse() * world_2_Talos_;
-
-    // // To obtain current_frame with ISS reference
-    // current_pose = iss_2_Talos * current_pose;
-
-}
 
 bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
@@ -225,50 +210,16 @@ bool cartesian_controller_class::compareTolerance(KDL::Twist error){
             return true;
         }
     }
-        
     // Not reached yet
     return false;
-
 }
 
-bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::target_frame& target_frame){
+bool cartesian_controller_class::diffTargetFrame(KDL::Frame target_frame){
 
-    double roll, pitch, yaw;
-    local_frame_.M.GetRPY(roll, pitch, yaw);
-    double x = local_frame_.p.x();
-    double y = local_frame_.p.y();
-    double z = local_frame_.p.z();
-
-    if(target_frame.x != x or target_frame.y != y or target_frame.z != z or
-        target_frame.roll != roll or target_frame.pitch != pitch or target_frame.yaw != yaw){
+    if(target_frame != local_frame_){
             return true; // A different frame has arrived
     }
-
     return false;
-
-}
-
-void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
-
-    if(diffTargetFrame(target_frame)){
-        // The desired point is at ISS reference
-        float x = target_frame.x;
-        float y = target_frame.y;
-        float z = target_frame.z;
-        double roll, pitch, yaw;
-        roll = target_frame.roll;
-        pitch = target_frame.pitch;
-        yaw = target_frame.yaw; // + M_PI;
-
-        target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
-        local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
-        diff_frame_ = true;
-    }
-
-    else{
-        diff_frame_ = false;
-    }   
-
 }
 
 void cartesian_controller_class::transformationCallback(const geometry_msgs::PoseStamped& data){
@@ -284,29 +235,19 @@ void cartesian_controller_class::transformationCallback(const geometry_msgs::Pos
     q_w = data.pose.orientation.w;
 
     if(data.header.frame_id == "base_link"){
+
         talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
         target_frame_ = talos_2_aruco_ * aruco_2_target_;
-        // std::cout << "Target: XYZ" << std::endl;
-        // std::cout << target_frame_.p.x() << std::endl;
-        // std::cout << target_frame_.p.y() << std::endl;
-        // std::cout << target_frame_.p.z() << std::endl;
-        // double roll, pitch, yaw;
-        // target_frame_.M.GetRPY(roll, pitch, yaw);
-        // std::cout << "Target: RPY" << std::endl;
-        // std::cout << roll << std::endl;
-        // std::cout << pitch << std::endl;
-        // std::cout << yaw << std::endl;
 
-        // std::cout << "Talos 2 aruco: XYZ" << std::endl;
-        // std::cout << talos_2_aruco_.p.x() << std::endl;
-        // std::cout << talos_2_aruco_.p.y() << std::endl;
-        // std::cout << talos_2_aruco_.p.z() << std::endl;
-        // double roll2, pitch2, yaw2;
-        // talos_2_aruco_.M.GetRPY(roll2, pitch2, yaw2);
-        // std::cout << "Talos 2 aruco: RPY" << std::endl;
-        // std::cout << roll2 << std::endl;
-        // std::cout << pitch2 << std::endl;
-        // std::cout << yaw2 << std::endl;
+        if (diffTargetFrame(target_frame_)) {
+            // Update frame to calculate if we've reached the target point
+            local_frame_ = target_frame_;
+            diff_frame_ = true;
+        }
+
+        else{
+            diff_frame_ = false;
+        }
     }
 
 } 

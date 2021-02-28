@@ -43,15 +43,11 @@ namespace controller_ns{
             void starting(const ros::Time &time);
             void stopping(const ros::Time &time);
             void writeJointCommand(KDL::JntArray joint_command);
-            void calculate_transformations(KDL::Frame &current_pose);
 
         private:
             
-            bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
+            bool diffTargetFrame(KDL::Frame target_frame);
             bool compareTolerance(KDL::Twist error);
-
-            ros::Subscriber target_frame_subscr_;
-            void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
             ros::Subscriber aruco_subscr_;
             void transformationCallback(const geometry_msgs::PoseStamped& data);
@@ -60,7 +56,6 @@ namespace controller_ns{
             float tolerance_;
             bool diff_frame_;
             std_msgs::Bool goal_reached;
-            
 
             std::vector<hardware_interface::JointHandle>      joint_handles_;
             std::vector<std::string>                          joint_names_;

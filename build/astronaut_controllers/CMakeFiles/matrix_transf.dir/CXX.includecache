@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp
+kdl/frames.hpp
+-
+iostream
+-
+
+/opt/ros/kinetic/include/kdl/frames.hpp
+utilities/kdl-config.h
+/opt/ros/kinetic/include/kdl/utilities/kdl-config.h
+utilities/utility.h
+/opt/ros/kinetic/include/kdl/utilities/utility.h
+frames.inl
+/opt/ros/kinetic/include/kdl/frames.inl
+
+/opt/ros/kinetic/include/kdl/frames.inl
+
+/opt/ros/kinetic/include/kdl/utilities/kdl-config.h
+
+/opt/ros/kinetic/include/kdl/utilities/utility.h
+kdl-config.h
+/opt/ros/kinetic/include/kdl/utilities/kdl-config.h
+cstdlib
+-
+cassert
+-
+cmath
+-
+

@@ -9,6 +9,7 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/pal_carbon_collector:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/pal_carbon_collector/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/pal_carbon_collector/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/pal_carbon_collector'
 export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/pal_carbon_collector/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/pal_carbon_collector/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

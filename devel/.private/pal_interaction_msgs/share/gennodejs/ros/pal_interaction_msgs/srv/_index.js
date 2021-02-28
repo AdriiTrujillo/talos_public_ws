@@ -1,12 +1,12 @@
 
 "use strict";
 
-let ASRService = require('./ASRService.js')
-let SoundLocalisationService = require('./SoundLocalisationService.js')
 let recognizerService = require('./recognizerService.js')
+let SoundLocalisationService = require('./SoundLocalisationService.js')
+let ASRService = require('./ASRService.js')
 
 module.exports = {
-  ASRService: ASRService,
-  SoundLocalisationService: SoundLocalisationService,
   recognizerService: recognizerService,
+  SoundLocalisationService: SoundLocalisationService,
+  ASRService: ASRService,
 };

@@ -1,14 +1,14 @@
 
 "use strict";
 
-let ControllersStatistics = require('./ControllersStatistics.js');
 let HardwareInterfaceResources = require('./HardwareInterfaceResources.js');
-let ControllerState = require('./ControllerState.js');
 let ControllerStatistics = require('./ControllerStatistics.js');
+let ControllerState = require('./ControllerState.js');
+let ControllersStatistics = require('./ControllersStatistics.js');
 
 module.exports = {
-  ControllersStatistics: ControllersStatistics,
   HardwareInterfaceResources: HardwareInterfaceResources,
-  ControllerState: ControllerState,
   ControllerStatistics: ControllerStatistics,
+  ControllerState: ControllerState,
+  ControllersStatistics: ControllersStatistics,
 };

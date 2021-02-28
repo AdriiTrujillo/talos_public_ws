@@ -119,7 +119,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     // }
 
     target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
-    Gazebo_models_subscr_ = nh.subscribe("/gazebo/model_states", 3, &cartesian_controller_class::transformationsCallback, this);
+    aruco_subscr_ = nh.subscribe("/aruco_single/pose", 3, &cartesian_controller_class::transformationCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
     return true;
@@ -134,11 +134,11 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    calculate_transformations(current_pose);
+    // calculate_transformations(current_pose);
 // -------------------------------------------------------------------------------------------    
     // Descomentar para imprimir por pantalla la posición del extremo
     // ROS_INFO("x : %f",current_pose.p.x());
@@ -183,6 +183,8 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     //Some initializtions
     goal_reached.data = false;
     diff_frame_ = true;
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.452, 0.201, 2.937), KDL::Vector(-0.5196, 0.223, -0.132));
+
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -190,13 +192,13 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    calculate_transformations(current_pose);
+    //calculate_transformations(current_pose);
 
-    // Send current pose to the effecto to not to move
+    // Send current pose to the end effector to not to move
     target_frame_ = current_pose;
     // Save first cartesian positión to detect when a differente one has arrived
     local_frame_ = current_pose;
@@ -208,10 +210,10 @@ void cartesian_controller_class::stopping(const ros::Time &time) {}
 void cartesian_controller_class::calculate_transformations(KDL::Frame &current_pose) {
 
     // To obtain Talos position with ISS reference
-    KDL::Frame iss_2_Talos = world_2_ISS_.Inverse() * world_2_Talos_;
+    // KDL::Frame iss_2_Talos = world_2_ISS_.Inverse() * world_2_Talos_;
 
-    // To obtain current_frame with ISS reference
-    current_pose = iss_2_Talos * current_pose;
+    // // To obtain current_frame with ISS reference
+    // current_pose = iss_2_Talos * current_pose;
 
 }
 
@@ -273,20 +275,38 @@ void cartesian_controller_class::transformationCallback(const geometry_msgs::Pos
     
     float x, y, z, q_x, q_y, q_z, q_w;
 
-    for (size_t i = 0; i < data.name.size(); i++){
+    x = data.pose.position.x;
+    y = data.pose.position.y;
+    z = data.pose.position.z;
+    q_x = data.pose.orientation.x;
+    q_y = data.pose.orientation.y;
+    q_z = data.pose.orientation.z;
+    q_w = data.pose.orientation.w;
 
-        x = data.pose[i].position.x;
-        y = data.pose[i].position.y;
-        z = data.pose[i].position.z;
-        q_x = data.pose[i].orientation.x;
-        q_y = data.pose[i].orientation.y;
-        q_z = data.pose[i].orientation.z;
-        q_w = data.pose[i].orientation.w;
+    if(data.header.frame_id == "base_link"){
+        talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
+        target_frame_ = talos_2_aruco_ * aruco_2_target_;
+        // std::cout << "Target: XYZ" << std::endl;
+        // std::cout << target_frame_.p.x() << std::endl;
+        // std::cout << target_frame_.p.y() << std::endl;
+        // std::cout << target_frame_.p.z() << std::endl;
+        // double roll, pitch, yaw;
+        // target_frame_.M.GetRPY(roll, pitch, yaw);
+        // std::cout << "Target: RPY" << std::endl;
+        // std::cout << roll << std::endl;
+        // std::cout << pitch << std::endl;
+        // std::cout << yaw << std::endl;
 
-        if(data.frame_id[i] == "base_link"){
-            talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
-        }
-
+        // std::cout << "Talos 2 aruco: XYZ" << std::endl;
+        // std::cout << talos_2_aruco_.p.x() << std::endl;
+        // std::cout << talos_2_aruco_.p.y() << std::endl;
+        // std::cout << talos_2_aruco_.p.z() << std::endl;
+        // double roll2, pitch2, yaw2;
+        // talos_2_aruco_.M.GetRPY(roll2, pitch2, yaw2);
+        // std::cout << "Talos 2 aruco: RPY" << std::endl;
+        // std::cout << roll2 << std::endl;
+        // std::cout << pitch2 << std::endl;
+        // std::cout << yaw2 << std::endl;
     }
 
 } 

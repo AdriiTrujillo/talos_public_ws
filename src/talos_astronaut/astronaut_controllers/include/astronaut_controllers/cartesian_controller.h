@@ -69,7 +69,7 @@ namespace controller_ns{
             KDL::Tree robot_tree_;
 
             // KDL Solvers performing the actual computations
-            int ik_status;
+            int fk_status;
             boost::scoped_ptr<KDL::ChainFkSolverPos>    jnt_to_pose_solver_;
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
@@ -79,6 +79,7 @@ namespace controller_ns{
             KDL::Frame target_frame_;
             KDL::Frame talos_2_aruco_;
             KDL::Frame local_frame_;
+            KDL::Frame aruco_2_target_;
 
     };
 

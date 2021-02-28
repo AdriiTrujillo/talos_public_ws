@@ -1,34 +1,34 @@
 
 "use strict";
 
-let VisualLocRecognizeActionResult = require('./VisualLocRecognizeActionResult.js');
-let VisualLocAddPlaceActionGoal = require('./VisualLocAddPlaceActionGoal.js');
+let VisualLocRecognizeActionGoal = require('./VisualLocRecognizeActionGoal.js');
+let VisualLocAddPlaceActionFeedback = require('./VisualLocAddPlaceActionFeedback.js');
+let VisualLocRecognizeAction = require('./VisualLocRecognizeAction.js');
 let VisualLocAddPlaceFeedback = require('./VisualLocAddPlaceFeedback.js');
 let VisualLocRecognizeGoal = require('./VisualLocRecognizeGoal.js');
-let VisualLocAddPlaceGoal = require('./VisualLocAddPlaceGoal.js');
-let VisualLocAddPlaceActionFeedback = require('./VisualLocAddPlaceActionFeedback.js');
-let VisualLocAddPlaceActionResult = require('./VisualLocAddPlaceActionResult.js');
-let VisualLocAddPlaceResult = require('./VisualLocAddPlaceResult.js');
-let VisualLocAddPlaceAction = require('./VisualLocAddPlaceAction.js');
-let VisualLocRecognizeActionGoal = require('./VisualLocRecognizeActionGoal.js');
-let VisualLocRecognizeFeedback = require('./VisualLocRecognizeFeedback.js');
-let VisualLocRecognizeResult = require('./VisualLocRecognizeResult.js');
+let VisualLocRecognizeActionResult = require('./VisualLocRecognizeActionResult.js');
 let VisualLocRecognizeActionFeedback = require('./VisualLocRecognizeActionFeedback.js');
-let VisualLocRecognizeAction = require('./VisualLocRecognizeAction.js');
+let VisualLocAddPlaceActionGoal = require('./VisualLocAddPlaceActionGoal.js');
+let VisualLocAddPlaceResult = require('./VisualLocAddPlaceResult.js');
+let VisualLocRecognizeResult = require('./VisualLocRecognizeResult.js');
+let VisualLocAddPlaceActionResult = require('./VisualLocAddPlaceActionResult.js');
+let VisualLocAddPlaceGoal = require('./VisualLocAddPlaceGoal.js');
+let VisualLocRecognizeFeedback = require('./VisualLocRecognizeFeedback.js');
+let VisualLocAddPlaceAction = require('./VisualLocAddPlaceAction.js');
 
 module.exports = {
-  VisualLocRecognizeActionResult: VisualLocRecognizeActionResult,
-  VisualLocAddPlaceActionGoal: VisualLocAddPlaceActionGoal,
+  VisualLocRecognizeActionGoal: VisualLocRecognizeActionGoal,
+  VisualLocAddPlaceActionFeedback: VisualLocAddPlaceActionFeedback,
+  VisualLocRecognizeAction: VisualLocRecognizeAction,
   VisualLocAddPlaceFeedback: VisualLocAddPlaceFeedback,
   VisualLocRecognizeGoal: VisualLocRecognizeGoal,
-  VisualLocAddPlaceGoal: VisualLocAddPlaceGoal,
-  VisualLocAddPlaceActionFeedback: VisualLocAddPlaceActionFeedback,
-  VisualLocAddPlaceActionResult: VisualLocAddPlaceActionResult,
-  VisualLocAddPlaceResult: VisualLocAddPlaceResult,
-  VisualLocAddPlaceAction: VisualLocAddPlaceAction,
-  VisualLocRecognizeActionGoal: VisualLocRecognizeActionGoal,
-  VisualLocRecognizeFeedback: VisualLocRecognizeFeedback,
-  VisualLocRecognizeResult: VisualLocRecognizeResult,
+  VisualLocRecognizeActionResult: VisualLocRecognizeActionResult,
   VisualLocRecognizeActionFeedback: VisualLocRecognizeActionFeedback,
-  VisualLocRecognizeAction: VisualLocRecognizeAction,
+  VisualLocAddPlaceActionGoal: VisualLocAddPlaceActionGoal,
+  VisualLocAddPlaceResult: VisualLocAddPlaceResult,
+  VisualLocRecognizeResult: VisualLocRecognizeResult,
+  VisualLocAddPlaceActionResult: VisualLocAddPlaceActionResult,
+  VisualLocAddPlaceGoal: VisualLocAddPlaceGoal,
+  VisualLocRecognizeFeedback: VisualLocRecognizeFeedback,
+  VisualLocAddPlaceAction: VisualLocAddPlaceAction,
 };

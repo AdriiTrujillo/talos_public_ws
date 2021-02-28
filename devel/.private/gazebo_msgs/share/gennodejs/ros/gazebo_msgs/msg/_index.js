@@ -1,24 +1,24 @@
 
 "use strict";
 
-let LinkState = require('./LinkState.js');
-let ODEJointProperties = require('./ODEJointProperties.js');
-let WorldState = require('./WorldState.js');
 let ODEPhysics = require('./ODEPhysics.js');
 let ContactState = require('./ContactState.js');
-let ModelStates = require('./ModelStates.js');
 let ContactsState = require('./ContactsState.js');
+let LinkState = require('./LinkState.js');
+let ModelStates = require('./ModelStates.js');
+let ODEJointProperties = require('./ODEJointProperties.js');
 let LinkStates = require('./LinkStates.js');
+let WorldState = require('./WorldState.js');
 let ModelState = require('./ModelState.js');
 
 module.exports = {
-  LinkState: LinkState,
-  ODEJointProperties: ODEJointProperties,
-  WorldState: WorldState,
   ODEPhysics: ODEPhysics,
   ContactState: ContactState,
-  ModelStates: ModelStates,
   ContactsState: ContactsState,
+  LinkState: LinkState,
+  ModelStates: ModelStates,
+  ODEJointProperties: ODEJointProperties,
   LinkStates: LinkStates,
+  WorldState: WorldState,
   ModelState: ModelState,
 };

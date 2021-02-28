@@ -1,46 +1,46 @@
 
 "use strict";
 
-let LedRainbowParams = require('./LedRainbowParams.js');
 let BatteryState = require('./BatteryState.js');
-let LedPreProgrammedParams = require('./LedPreProgrammedParams.js');
-let LedEffectParams = require('./LedEffectParams.js');
-let Bumper = require('./Bumper.js');
-let LedFixedColorParams = require('./LedFixedColorParams.js');
-let LedProgressParams = require('./LedProgressParams.js');
+let LedEffectViaTopicParams = require('./LedEffectViaTopicParams.js');
 let LedFlowParams = require('./LedFlowParams.js');
 let LedGroup = require('./LedGroup.js');
-let LedFadeParams = require('./LedFadeParams.js');
-let LedDataArrayParams = require('./LedDataArrayParams.js');
+let LedPreProgrammedParams = require('./LedPreProgrammedParams.js');
 let LedBlinkParams = require('./LedBlinkParams.js');
-let LedEffectViaTopicParams = require('./LedEffectViaTopicParams.js');
-let DoTimedLedEffectActionResult = require('./DoTimedLedEffectActionResult.js');
-let DoTimedLedEffectActionGoal = require('./DoTimedLedEffectActionGoal.js');
-let DoTimedLedEffectResult = require('./DoTimedLedEffectResult.js');
+let LedProgressParams = require('./LedProgressParams.js');
+let LedRainbowParams = require('./LedRainbowParams.js');
+let LedEffectParams = require('./LedEffectParams.js');
+let LedFixedColorParams = require('./LedFixedColorParams.js');
+let LedDataArrayParams = require('./LedDataArrayParams.js');
+let Bumper = require('./Bumper.js');
+let LedFadeParams = require('./LedFadeParams.js');
 let DoTimedLedEffectGoal = require('./DoTimedLedEffectGoal.js');
 let DoTimedLedEffectActionFeedback = require('./DoTimedLedEffectActionFeedback.js');
-let DoTimedLedEffectAction = require('./DoTimedLedEffectAction.js');
+let DoTimedLedEffectActionGoal = require('./DoTimedLedEffectActionGoal.js');
 let DoTimedLedEffectFeedback = require('./DoTimedLedEffectFeedback.js');
+let DoTimedLedEffectAction = require('./DoTimedLedEffectAction.js');
+let DoTimedLedEffectActionResult = require('./DoTimedLedEffectActionResult.js');
+let DoTimedLedEffectResult = require('./DoTimedLedEffectResult.js');
 
 module.exports = {
-  LedRainbowParams: LedRainbowParams,
   BatteryState: BatteryState,
-  LedPreProgrammedParams: LedPreProgrammedParams,
-  LedEffectParams: LedEffectParams,
-  Bumper: Bumper,
-  LedFixedColorParams: LedFixedColorParams,
-  LedProgressParams: LedProgressParams,
+  LedEffectViaTopicParams: LedEffectViaTopicParams,
   LedFlowParams: LedFlowParams,
   LedGroup: LedGroup,
-  LedFadeParams: LedFadeParams,
-  LedDataArrayParams: LedDataArrayParams,
+  LedPreProgrammedParams: LedPreProgrammedParams,
   LedBlinkParams: LedBlinkParams,
-  LedEffectViaTopicParams: LedEffectViaTopicParams,
-  DoTimedLedEffectActionResult: DoTimedLedEffectActionResult,
-  DoTimedLedEffectActionGoal: DoTimedLedEffectActionGoal,
-  DoTimedLedEffectResult: DoTimedLedEffectResult,
+  LedProgressParams: LedProgressParams,
+  LedRainbowParams: LedRainbowParams,
+  LedEffectParams: LedEffectParams,
+  LedFixedColorParams: LedFixedColorParams,
+  LedDataArrayParams: LedDataArrayParams,
+  Bumper: Bumper,
+  LedFadeParams: LedFadeParams,
   DoTimedLedEffectGoal: DoTimedLedEffectGoal,
   DoTimedLedEffectActionFeedback: DoTimedLedEffectActionFeedback,
-  DoTimedLedEffectAction: DoTimedLedEffectAction,
+  DoTimedLedEffectActionGoal: DoTimedLedEffectActionGoal,
   DoTimedLedEffectFeedback: DoTimedLedEffectFeedback,
+  DoTimedLedEffectAction: DoTimedLedEffectAction,
+  DoTimedLedEffectActionResult: DoTimedLedEffectActionResult,
+  DoTimedLedEffectResult: DoTimedLedEffectResult,
 };

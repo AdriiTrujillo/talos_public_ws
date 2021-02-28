@@ -1,36 +1,36 @@
 
 "use strict";
 
-let PresentationFeedback = require('./PresentationFeedback.js');
-let BehaviourTaskAction = require('./BehaviourTaskAction.js');
-let BehaviourTaskActionFeedback = require('./BehaviourTaskActionFeedback.js');
+let PresentationActionGoal = require('./PresentationActionGoal.js');
 let BehaviourTaskActionGoal = require('./BehaviourTaskActionGoal.js');
-let BehaviourTaskResult = require('./BehaviourTaskResult.js');
-let PresentationActionResult = require('./PresentationActionResult.js');
 let BehaviourTaskActionResult = require('./BehaviourTaskActionResult.js');
-let BehaviourTaskGoal = require('./BehaviourTaskGoal.js');
-let PresentationGoal = require('./PresentationGoal.js');
+let BehaviourTaskResult = require('./BehaviourTaskResult.js');
+let BehaviourTaskActionFeedback = require('./BehaviourTaskActionFeedback.js');
 let BehaviourTaskFeedback = require('./BehaviourTaskFeedback.js');
+let PresentationFeedback = require('./PresentationFeedback.js');
 let PresentationResult = require('./PresentationResult.js');
 let PresentationAction = require('./PresentationAction.js');
+let PresentationActionResult = require('./PresentationActionResult.js');
+let BehaviourTaskGoal = require('./BehaviourTaskGoal.js');
 let PresentationActionFeedback = require('./PresentationActionFeedback.js');
-let PresentationActionGoal = require('./PresentationActionGoal.js');
+let PresentationGoal = require('./PresentationGoal.js');
+let BehaviourTaskAction = require('./BehaviourTaskAction.js');
 let BehaviourArgument = require('./BehaviourArgument.js');
 
 module.exports = {
-  PresentationFeedback: PresentationFeedback,
-  BehaviourTaskAction: BehaviourTaskAction,
-  BehaviourTaskActionFeedback: BehaviourTaskActionFeedback,
+  PresentationActionGoal: PresentationActionGoal,
   BehaviourTaskActionGoal: BehaviourTaskActionGoal,
-  BehaviourTaskResult: BehaviourTaskResult,
-  PresentationActionResult: PresentationActionResult,
   BehaviourTaskActionResult: BehaviourTaskActionResult,
-  BehaviourTaskGoal: BehaviourTaskGoal,
-  PresentationGoal: PresentationGoal,
+  BehaviourTaskResult: BehaviourTaskResult,
+  BehaviourTaskActionFeedback: BehaviourTaskActionFeedback,
   BehaviourTaskFeedback: BehaviourTaskFeedback,
+  PresentationFeedback: PresentationFeedback,
   PresentationResult: PresentationResult,
   PresentationAction: PresentationAction,
+  PresentationActionResult: PresentationActionResult,
+  BehaviourTaskGoal: BehaviourTaskGoal,
   PresentationActionFeedback: PresentationActionFeedback,
-  PresentationActionGoal: PresentationActionGoal,
+  PresentationGoal: PresentationGoal,
+  BehaviourTaskAction: BehaviourTaskAction,
   BehaviourArgument: BehaviourArgument,
 };

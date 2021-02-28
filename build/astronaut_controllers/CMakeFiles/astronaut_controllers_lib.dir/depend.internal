@@ -28,6 +28,7 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /opt/ros/kinetic/include/gazebo_msgs/ModelStates.h
  /opt/ros/kinetic/include/geometry_msgs/Point.h
  /opt/ros/kinetic/include/geometry_msgs/Pose.h
+ /opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
  /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
  /opt/ros/kinetic/include/geometry_msgs/Twist.h
  /opt/ros/kinetic/include/geometry_msgs/Vector3.h
@@ -118,6 +119,7 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /opt/ros/kinetic/include/ros/wall_timer_options.h
  /opt/ros/kinetic/include/rosconsole/macros_generated.h
  /opt/ros/kinetic/include/std_msgs/Bool.h
+ /opt/ros/kinetic/include/std_msgs/Header.h
  /opt/ros/kinetic/include/urdf/model.h
  /opt/ros/kinetic/include/urdf/urdfdom_compatibility.h
  /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h

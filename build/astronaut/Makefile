@@ -78,17 +78,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -121,6 +110,17 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -164,6 +164,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named look_to_aruco
+
+# Build rule for target.
+look_to_aruco: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 look_to_aruco
+.PHONY : look_to_aruco
+
+# fast build rule for target.
+look_to_aruco/fast:
+	$(MAKE) -f CMakeFiles/look_to_aruco.dir/build.make CMakeFiles/look_to_aruco.dir/build
+.PHONY : look_to_aruco/fast
 
 #=============================================================================
 # Target rules for targets named send_position
@@ -555,6 +568,33 @@ gtest_main/fast:
 	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
+src/look_to_aruco.o: src/look_to_aruco.cpp.o
+
+.PHONY : src/look_to_aruco.o
+
+# target to build an object file
+src/look_to_aruco.cpp.o:
+	$(MAKE) -f CMakeFiles/look_to_aruco.dir/build.make CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.o
+.PHONY : src/look_to_aruco.cpp.o
+
+src/look_to_aruco.i: src/look_to_aruco.cpp.i
+
+.PHONY : src/look_to_aruco.i
+
+# target to preprocess a source file
+src/look_to_aruco.cpp.i:
+	$(MAKE) -f CMakeFiles/look_to_aruco.dir/build.make CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.i
+.PHONY : src/look_to_aruco.cpp.i
+
+src/look_to_aruco.s: src/look_to_aruco.cpp.s
+
+.PHONY : src/look_to_aruco.s
+
+# target to generate assembly for a file
+src/look_to_aruco.cpp.s:
+	$(MAKE) -f CMakeFiles/look_to_aruco.dir/build.make CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.s
+.PHONY : src/look_to_aruco.cpp.s
+
 src/send_position.o: src/send_position.cpp.o
 
 .PHONY : src/send_position.o
@@ -590,10 +630,11 @@ help:
 	@echo "... depend"
 	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... install/local"
+	@echo "... rebuild_cache"
+	@echo "... look_to_aruco"
 	@echo "... send_position"
 	@echo "... astronaut_controllers_generate_messages_py"
 	@echo "... install/strip"
@@ -625,6 +666,9 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... src/look_to_aruco.o"
+	@echo "... src/look_to_aruco.i"
+	@echo "... src/look_to_aruco.s"
 	@echo "... src/send_position.o"
 	@echo "... src/send_position.i"
 	@echo "... src/send_position.s"

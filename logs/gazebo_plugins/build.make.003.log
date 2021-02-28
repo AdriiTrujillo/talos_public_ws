@@ -1,0 +1,31 @@
+[35m[1mScanning dependencies of target gazebo_ros_template[0m
+[35m[1mScanning dependencies of target gazebo_ros_vacuum_gripper[0m
+[  1%] [32mBuilding CXX object CMakeFiles/gazebo_ros_template.dir/src/gazebo_ros_template.cpp.o[0m
+[  2%] [32mBuilding CXX object CMakeFiles/gazebo_ros_vacuum_gripper.dir/src/gazebo_ros_vacuum_gripper.cpp.o[0m
+In file included from [01m[K/usr/include/gazebo-7/gazebo/physics/Entity.hh:30:0[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Model.hh:34[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Actor.hh:24[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/physics.hh:2[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_plugins/include/gazebo_plugins/gazebo_ros_template.h:28[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_plugins/src/gazebo_ros_template.cpp:41[m[K:
+[01m[K/usr/include/gazebo-7/gazebo/msgs/msgs.hh:24:37:[m[K [01;31m[Kfatal error: [m[Kignition/math/Inertial.hh: No existe el archivo o el directorio
+In file included from [01m[K/usr/include/gazebo-7/gazebo/physics/Entity.hh:30:0[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Model.hh:34[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/Actor.hh:24[m[K,
+                 from [01m[K/usr/include/gazebo-7/gazebo/physics/physics.hh:2[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_plugins/include/gazebo_plugins/gazebo_ros_vacuum_gripper.h:38[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/gazebo_ros_pkgs/gazebo_plugins/src/gazebo_ros_vacuum_gripper.cpp:28[m[K:
+[01m[K/usr/include/gazebo-7/gazebo/msgs/msgs.hh:24:37:[m[K [01;31m[Kfatal error: [m[Kignition/math/Inertial.hh: No existe el archivo o el directorio
+compilation terminated.
+compilation terminated.
+CMakeFiles/gazebo_ros_vacuum_gripper.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/gazebo_ros_vacuum_gripper.dir/src/gazebo_ros_vacuum_gripper.cpp.o'
+CMakeFiles/Makefile2:104: fallo en las instrucciones para el objetivo 'CMakeFiles/gazebo_ros_vacuum_gripper.dir/all'
+make[2]: *** [CMakeFiles/gazebo_ros_vacuum_gripper.dir/src/gazebo_ros_vacuum_gripper.cpp.o] Error 1
+make[1]: *** [CMakeFiles/gazebo_ros_vacuum_gripper.dir/all] Error 2
+make[1]: *** Se espera a que terminen otras tareas....
+CMakeFiles/gazebo_ros_template.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/gazebo_ros_template.dir/src/gazebo_ros_template.cpp.o'
+make[2]: *** [CMakeFiles/gazebo_ros_template.dir/src/gazebo_ros_template.cpp.o] Error 1
+CMakeFiles/Makefile2:67: fallo en las instrucciones para el objetivo 'CMakeFiles/gazebo_ros_template.dir/all'
+make[1]: *** [CMakeFiles/gazebo_ros_template.dir/all] Error 2
+Makefile:127: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

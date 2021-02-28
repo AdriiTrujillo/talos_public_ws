@@ -150,6 +150,9 @@ add_executable(hand_service src/hand_service.cpp)
 target_link_libraries(hand_service ${catkin_LIBRARIES})
 add_dependencies(hand_service astronaut_controllers_gencpp)
 
+add_executable(matrix_transf src/matrix_transf.cpp)
+target_link_libraries(matrix_transf ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

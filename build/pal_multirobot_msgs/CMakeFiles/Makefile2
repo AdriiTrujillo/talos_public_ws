@@ -95,8 +95,8 @@ clean: CMakeFiles/pal_multirobot_msgs_genpy.dir/clean
 # Target rules for target CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir
 
 # All Build rule for target.
-CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
+CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all: CMakeFiles/_pal_multirobot_msgs_generate_messages_check_deps_WifiServiceDetection.dir/all
 	$(MAKE) -f CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/build.make CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/build.make CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/build
@@ -449,8 +449,8 @@ clean: CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 # Target rules for target CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir
 
 # All Build rule for target.
-CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
+CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/all: CMakeFiles/_pal_multirobot_msgs_generate_messages_check_deps_WifiServiceDetection.dir/all
 	$(MAKE) -f CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/build.make CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/build.make CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/build
@@ -775,9 +775,9 @@ clean: CMakeFiles/pal_multirobot_msgs_generate_messages_cpp.dir/clean
 # Target rules for target CMakeFiles/pal_multirobot_msgs_generate_messages.dir
 
 # All Build rule for target.
+CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_eus.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_lisp.dir/all
-CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_py.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_cpp.dir/all
 CMakeFiles/pal_multirobot_msgs_generate_messages.dir/all: CMakeFiles/pal_multirobot_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f CMakeFiles/pal_multirobot_msgs_generate_messages.dir/build.make CMakeFiles/pal_multirobot_msgs_generate_messages.dir/depend

@@ -7,6 +7,20 @@
 #IncludeRegexTransform: 
 
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h
 controller_interface/controller_base.h
@@ -173,6 +187,8 @@ kdl/joint.hpp
 -
 gazebo_msgs/ModelStates.h
 -
+geometry_msgs/PoseStamped.h
+-
 std_msgs/Bool.h
 -
 astronaut_controllers/target_frame.h
@@ -332,6 +348,26 @@ ros/message_operations.h
 geometry_msgs/Point.h
 -
 geometry_msgs/Quaternion.h
+-
+
+/opt/ros/kinetic/include/geometry_msgs/PoseStamped.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Pose.h
 -
 
 /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
@@ -1235,6 +1271,22 @@ ros/forwards.h
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
 
 /opt/ros/kinetic/include/std_msgs/Bool.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/opt/ros/kinetic/include/std_msgs/Header.h
 string
 -
 vector

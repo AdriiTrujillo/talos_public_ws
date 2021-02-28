@@ -1,16 +1,16 @@
 
 "use strict";
 
-let MarkerParameter = require('./MarkerParameter.js');
-let BoolParameter = require('./BoolParameter.js');
 let DoubleParameter = require('./DoubleParameter.js');
-let IntrospectionMsg = require('./IntrospectionMsg.js');
 let IntParameter = require('./IntParameter.js');
+let IntrospectionMsg = require('./IntrospectionMsg.js');
+let BoolParameter = require('./BoolParameter.js');
+let MarkerParameter = require('./MarkerParameter.js');
 
 module.exports = {
-  MarkerParameter: MarkerParameter,
-  BoolParameter: BoolParameter,
   DoubleParameter: DoubleParameter,
-  IntrospectionMsg: IntrospectionMsg,
   IntParameter: IntParameter,
+  IntrospectionMsg: IntrospectionMsg,
+  BoolParameter: BoolParameter,
+  MarkerParameter: MarkerParameter,
 };

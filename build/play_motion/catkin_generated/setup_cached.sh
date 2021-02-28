@@ -9,6 +9,7 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/play_motion:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/play_motion/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/play_motion/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/play_motion'
 export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/play_motion/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/play_motion/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

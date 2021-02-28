@@ -180,6 +180,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/look_to_aruco.dir/DependInfo.cmake"
   "CMakeFiles/send_position.dir/DependInfo.cmake"
   "CMakeFiles/astronaut_controllers_generate_messages_py.dir/DependInfo.cmake"
   "CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/DependInfo.cmake"

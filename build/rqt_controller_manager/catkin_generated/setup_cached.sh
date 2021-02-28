@@ -9,6 +9,7 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/rqt_controller_manager:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/rqt_controller_manager/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/rqt_controller_manager/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/rqt_controller_manager'
 export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/rqt_controller_manager/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/rqt_controller_manager/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

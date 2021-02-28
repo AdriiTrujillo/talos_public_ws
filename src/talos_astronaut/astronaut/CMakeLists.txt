@@ -139,6 +139,9 @@ add_executable(send_position src/send_position.cpp)
 target_link_libraries(send_position ${catkin_LIBRARIES})
 add_dependencies(send_position ${catkin_EXPORTED_TARGETS})
 
+add_executable(look_to_aruco src/look_to_aruco.cpp)
+target_link_libraries(look_to_aruco ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use

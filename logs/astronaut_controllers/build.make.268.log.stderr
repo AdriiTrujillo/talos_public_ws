@@ -1,0 +1,25 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:10:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kbl_2_ar[m[K’ was not declared in this scope
+     bl_2_ar = KDL::Frame(KDL::Rotation::RPY(-0.81, 1.57, 2.40), KDL::Vector(0.9037, 0.03, 0.514));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:11:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kworld_2_pto[m[K’ was not declared in this scope
+     world_2_pto = KDL::Frame(KDL::Rotation::RPY(-0.942, 1.307, 2.246), KDL::Vector(-4.89, 2.085, 0.573));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:12:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kworld_2_bl[m[K’ was not declared in this scope
+     world_2_bl = KDL::Frame(KDL::Rotation::RPY(0.0, 0.0, 0.0), KDL::Vector(-5.625, 1.915, 0.585));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:13:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kworld_2_aruco[m[K’ was not declared in this scope
+     world_2_aruco = KDL::Frame(KDL::Rotation::RPY(-0.81, 1.57, 2.40), KDL::Vector(-4.688, 1.945, 1.099));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:14:5:[m[K [01;31m[Kerror: [m[K‘[01m[Karuco_2_world[m[K’ was not declared in this scope
+     aruco_2_world = world_2_aruco.Inverse();
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:16:5:[m[K [01;31m[Kerror: [m[K‘[01m[Karuco_2_pto[m[K’ was not declared in this scope
+     aruco_2_pto = aruco_2_world * world_2_pto;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:23:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktalos_2_aruco_[m[K’ was not declared in this scope
+     talos_2_aruco_.M.GetRPY(roll, pitch, yaw);
+[01;32m[K     ^[m[K
+make[2]: *** [CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o] Error 1
+make[1]: *** [CMakeFiles/matrix_transf.dir/all] Error 2
+make: *** [all] Error 2

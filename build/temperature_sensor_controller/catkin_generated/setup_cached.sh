@@ -8,6 +8,9 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/temperature_sensor_controller:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/temperature_sensor_controller/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/temperature_sensor_controller/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/temperature_sensor_controller'
+export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/temperature_sensor_controller/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/temperature_sensor_controller/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/adrii/talos_public_ws/src/ros_controllers/temperature_sensor_controller:$ROS_PACKAGE_PATH"

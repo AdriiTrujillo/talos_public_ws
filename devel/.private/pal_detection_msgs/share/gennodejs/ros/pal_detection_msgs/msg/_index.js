@@ -1,48 +1,48 @@
 
 "use strict";
 
-let LegDetections = require('./LegDetections.js');
+let Gesture = require('./Gesture.js');
+let RecognizedActions = require('./RecognizedActions.js');
+let RecognizedObject = require('./RecognizedObject.js');
 let FaceDetections = require('./FaceDetections.js');
-let Detection2d = require('./Detection2d.js');
 let FaceDetection = require('./FaceDetection.js');
+let Detection2d = require('./Detection2d.js');
 let PersonDetections = require('./PersonDetections.js');
 let RecognizedObjectArray = require('./RecognizedObjectArray.js');
-let RecognizedActions = require('./RecognizedActions.js');
-let TexturedObjectDetection = require('./TexturedObjectDetection.js');
+let LegDetections = require('./LegDetections.js');
 let RotatedDetection2d = require('./RotatedDetection2d.js');
-let PersonDetection = require('./PersonDetection.js');
+let TexturedObjectDetection = require('./TexturedObjectDetection.js');
 let WaveDetection = require('./WaveDetection.js');
-let Gesture = require('./Gesture.js');
-let RecognizedObject = require('./RecognizedObject.js');
+let PersonDetection = require('./PersonDetection.js');
 let Detections2d = require('./Detections2d.js');
+let RecognizeObjectsActionFeedback = require('./RecognizeObjectsActionFeedback.js');
+let RecognizeObjectsFeedback = require('./RecognizeObjectsFeedback.js');
+let RecognizeObjectsAction = require('./RecognizeObjectsAction.js');
+let RecognizeObjectsActionResult = require('./RecognizeObjectsActionResult.js');
+let RecognizeObjectsActionGoal = require('./RecognizeObjectsActionGoal.js');
 let RecognizeObjectsResult = require('./RecognizeObjectsResult.js');
 let RecognizeObjectsGoal = require('./RecognizeObjectsGoal.js');
-let RecognizeObjectsFeedback = require('./RecognizeObjectsFeedback.js');
-let RecognizeObjectsActionFeedback = require('./RecognizeObjectsActionFeedback.js');
-let RecognizeObjectsAction = require('./RecognizeObjectsAction.js');
-let RecognizeObjectsActionGoal = require('./RecognizeObjectsActionGoal.js');
-let RecognizeObjectsActionResult = require('./RecognizeObjectsActionResult.js');
 
 module.exports = {
-  LegDetections: LegDetections,
+  Gesture: Gesture,
+  RecognizedActions: RecognizedActions,
+  RecognizedObject: RecognizedObject,
   FaceDetections: FaceDetections,
-  Detection2d: Detection2d,
   FaceDetection: FaceDetection,
+  Detection2d: Detection2d,
   PersonDetections: PersonDetections,
   RecognizedObjectArray: RecognizedObjectArray,
-  RecognizedActions: RecognizedActions,
-  TexturedObjectDetection: TexturedObjectDetection,
+  LegDetections: LegDetections,
   RotatedDetection2d: RotatedDetection2d,
-  PersonDetection: PersonDetection,
+  TexturedObjectDetection: TexturedObjectDetection,
   WaveDetection: WaveDetection,
-  Gesture: Gesture,
-  RecognizedObject: RecognizedObject,
+  PersonDetection: PersonDetection,
   Detections2d: Detections2d,
+  RecognizeObjectsActionFeedback: RecognizeObjectsActionFeedback,
+  RecognizeObjectsFeedback: RecognizeObjectsFeedback,
+  RecognizeObjectsAction: RecognizeObjectsAction,
+  RecognizeObjectsActionResult: RecognizeObjectsActionResult,
+  RecognizeObjectsActionGoal: RecognizeObjectsActionGoal,
   RecognizeObjectsResult: RecognizeObjectsResult,
   RecognizeObjectsGoal: RecognizeObjectsGoal,
-  RecognizeObjectsFeedback: RecognizeObjectsFeedback,
-  RecognizeObjectsActionFeedback: RecognizeObjectsActionFeedback,
-  RecognizeObjectsAction: RecognizeObjectsAction,
-  RecognizeObjectsActionGoal: RecognizeObjectsActionGoal,
-  RecognizeObjectsActionResult: RecognizeObjectsActionResult,
 };

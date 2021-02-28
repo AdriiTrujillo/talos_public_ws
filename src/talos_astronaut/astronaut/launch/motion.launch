@@ -8,10 +8,10 @@
     <include file="$(find astronaut_controllers)/launch/head_controller.launch"/>
     <!-- Launch hands controller to grasp de objective -->
     <include file="$(find astronaut_controllers)/launch/hey5_controller.launch"/>
-    <!-- Launch Qr detector -->
-    <include file="$(find qr_detector)/launch/detector.launch"/>
+    <!-- Launch Aruco detector -->
+    <include file="$(find aruco_ros)/launch/astro_detector.launch"/>
 
-    <node name="send_position_node" pkg="astronaut" type="send_position" output="screen"/>
+    <node name="look_to_aruco_node" pkg="astronaut" type="look_to_aruco" output="screen"/>
 
 
 </launch>

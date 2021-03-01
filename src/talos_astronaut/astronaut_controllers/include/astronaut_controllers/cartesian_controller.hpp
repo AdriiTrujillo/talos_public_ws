@@ -140,9 +140,14 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     // calculate_transformations(current_pose);
 // -------------------------------------------------------------------------------------------    
     // Descomentar para imprimir por pantalla la posición del extremo
-    ROS_INFO("x : %f",current_pose.p.x());
-    ROS_INFO("y : %f",current_pose.p.y());
-    ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Current: ");
+    // ROS_INFO("x : %f",current_pose.p.x());
+    // ROS_INFO("y : %f",current_pose.p.y());
+    // ROS_INFO("z : %f",current_pose.p.z());
+    // ROS_INFO("Target: ");
+    // ROS_INFO("x : %f",target_frame_.p.x());
+    // ROS_INFO("y : %f",target_frame_.p.y());
+    // ROS_INFO("z : %f",target_frame_.p.z());
 // ------------------------------------------------------------------------------------------- 
     
     // get the pose error
@@ -179,10 +184,10 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     
     //Some initializtions
     goal_reached.data = false;
-    diff_frame_ = true;
+    diff_frame_ = false;
     // Transformation from the aruco marker to the target point
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.452, 0.201, 2.937), KDL::Vector(-0.5196, 0.223, -0.132));
-
+    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.517, 0.218, 3.104), KDL::Vector(-0.440, 0.328, -0.081)); Funciona
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.5443, 0.2231, -3.057), KDL::Vector(-0.491, 0.310, -0.090));
 
     //Get initial joints position 
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -205,7 +210,8 @@ void cartesian_controller_class::stopping(const ros::Time &time) {}
 bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
-    if(not diff_frame_){ // To not check when it has just started
+
+    if(diff_frame_){ // To not check when it has just started
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
             return true;
         }
@@ -240,13 +246,7 @@ void cartesian_controller_class::transformationCallback(const geometry_msgs::Pos
         target_frame_ = talos_2_aruco_ * aruco_2_target_;
 
         if (diffTargetFrame(target_frame_)) {
-            // Update frame to calculate if we've reached the target point
-            local_frame_ = target_frame_;
             diff_frame_ = true;
-        }
-
-        else{
-            diff_frame_ = false;
         }
     }
 

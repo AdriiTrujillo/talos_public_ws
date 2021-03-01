@@ -10,6 +10,8 @@
     <include file="$(find astronaut_controllers)/launch/hey5_controller.launch"/>
     <!-- Launch Aruco detector -->
     <include file="$(find aruco_ros)/launch/astro_detector.launch"/>
+    <!-- Rviz to visualize the camera and frames -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astronaut)/config/rviz/aruco_rivz.rviz" />
 
     <node name="look_to_aruco_node" pkg="astronaut" type="look_to_aruco" output="screen"/>
 

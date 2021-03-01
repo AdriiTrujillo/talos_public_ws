@@ -38,9 +38,9 @@ bool serviceCallback(astronaut_controllers::hand_operations::Request &req, astro
     
     if (req.operation == "close"){
 
-        p.positions.push_back(0.75);
-        p.positions.push_back(0.75);
-        p.positions.push_back(0.50);
+        p.positions.push_back(1.50);
+        p.positions.push_back(1.30);
+        p.positions.push_back(1.30);
 
         for(size_t i = 0; i < p.velocities.size(); i++) p.velocities.push_back(0.0);
         for(size_t i = 0; i < p.accelerations.size(); i++) p.accelerations.push_back(0.0);
@@ -49,9 +49,9 @@ bool serviceCallback(astronaut_controllers::hand_operations::Request &req, astro
 
     else if(req.operation == "open"){
         
-        p.positions.push_back(-1.0);
-        p.positions.push_back(-1.0);
-        p.positions.push_back(-1.0);
+        p.positions.push_back(0.0);
+        p.positions.push_back(0.0);
+        p.positions.push_back(0.0);
 
         for(size_t i = 0; i < p.velocities.size(); i++) p.velocities.push_back(0.0);
         for(size_t i = 0; i < p.accelerations.size(); i++) p.accelerations.push_back(0.0);

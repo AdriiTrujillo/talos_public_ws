@@ -19,7 +19,7 @@ def jointTrajectoryCommand():
     jt.joint_names = ["hand_right_thumb_joint", "hand_right_index_joint", "hand_right_mrl_joint"]
     p = JointTrajectoryPoint()
     # p.positions = [6.2, 6.8, 9.2]
-    p.positions = [0.0, 0.0, 0.0]
+    p.positions = [1.70, 1.70, 2.0]
     p.velocities = [0.0, 0.0, 0.0]
     p.accelerations = [0.0, 0.0, 0.0]
     p.effort = [0.33, 0.33, 0.33]

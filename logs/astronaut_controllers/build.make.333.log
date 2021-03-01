@@ -1,0 +1,27 @@
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target trajectory_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
+[  0%] Built target trajectory_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target trajectory_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target trajectory_msgs_generate_messages_py
+[  0%] Built target geometry_msgs_generate_messages_py
+[ 10%] Built target astronaut_controllers_lib
+[ 21%] Built target astronaut_controllers_generate_messages_nodejs
+[ 31%] Built target matrix_transf
+[ 42%] Built target astronaut_controllers_generate_messages_cpp
+[ 52%] Built target astronaut_controllers_generate_messages_lisp
+[ 73%] Built target astronaut_controllers_generate_messages_py
+[ 89%] Built target astronaut_controllers_generate_messages_eus
+[ 89%] Built target astronaut_controllers_gencpp
+[ 89%] Built target astronaut_controllers_generate_messages
+[100%] Built target hand_service

@@ -1,6 +1,17 @@
 #include <iostream>
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
+#include <std_msgs/Bool.h>
+#include "astronaut_controllers/hand_operations.h"
+
+bool close_hand = false;
+astronaut_controllers::hand_operations hand_operation;
+
+void goalReachedCallback(const std_msgs::Bool& goal_reached){
+    hand_operation.request.operation = "close";
+    hand_operation.request.hand = "right";
+    close_hand = goal_reached.data;
+}
 
 int main(int argc, char **argv){
 
@@ -9,16 +20,26 @@ int main(int argc, char **argv){
 
     ros::Publisher head_pan_publisher = n.advertise<std_msgs::Float64>("/astronaut_head_pan_controller/command", 1000);
     ros::Publisher head_tilt_publisher = n.advertise<std_msgs::Float64>("/astronaut_head_tilt_controller/command", 1000);
+    ros::Subscriber goal_subscr = n.subscribe("/goal_tolerance", 1000, goalReachedCallback);
+    ros::ServiceClient hand_client = n.serviceClient<astronaut_controllers::hand_operations>("hand_service_server");
 
     std_msgs::Float64 head_pan_move;
     std_msgs::Float64 head_tilt_move;
-    head_pan_move.data = -0.4;
-    head_tilt_move.data = -0.1;
+    head_pan_move.data = -0.5;
+    head_tilt_move.data = -0.05;
+    bool stop = false;
 
 
     while(ros::ok){
         head_pan_publisher.publish(head_pan_move);
         head_tilt_publisher.publish(head_tilt_move);
+        if(close_hand and not stop){
+            hand_client.call(hand_operation);
+            if(hand_operation.response.succes){
+                stop = true;
+            }
+        }
+
         ros::spinOnce();
     }
 

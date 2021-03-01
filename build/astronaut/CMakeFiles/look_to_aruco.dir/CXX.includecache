@@ -6,6 +6,46 @@
 
 #IncludeRegexTransform: 
 
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h
+ros/service_traits.h
+-
+astronaut_controllers/hand_operationsRequest.h
+-
+astronaut_controllers/hand_operationsResponse.h
+-
+
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operationsRequest.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operationsResponse.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/look_to_aruco.cpp
 iostream
 -
@@ -13,6 +53,10 @@ ros/ros.h
 -
 std_msgs/Float64.h
 -
+std_msgs/Bool.h
+-
+astronaut_controllers/hand_operations.h
+/home/adrii/talos_public_ws/src/talos_astronaut/astronaut/src/astronaut_controllers/hand_operations.h
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h
@@ -659,6 +703,22 @@ ros/forwards.h
 /opt/ros/kinetic/include/ros/ros/forwards.h
 
 /opt/ros/kinetic/include/rosconsole/macros_generated.h
+
+/opt/ros/kinetic/include/std_msgs/Bool.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /opt/ros/kinetic/include/std_msgs/Float64.h
 string

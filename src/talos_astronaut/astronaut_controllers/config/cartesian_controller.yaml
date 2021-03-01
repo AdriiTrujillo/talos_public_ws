@@ -11,4 +11,4 @@ right_arm_controller:
     - arm_right_6_joint
     - arm_right_7_joint
 
-  goal_tolerance: 0.02
+  goal_tolerance: 0.015

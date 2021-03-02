@@ -128,6 +128,7 @@ bool gazebo_cartesian_controller_class::init(hardware_interface::EffortJointInte
 
 void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
+
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
@@ -145,13 +146,29 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
 // ------------------------------------------------------------------------------------------- 
-    
+    // std::cout << "Booleano: " << start_trajectory_ << std::endl;
+    if(start_trajectory_){
+        //Get the actual time
+        actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
+        double now = actual_time_.toSec();
+        // std::cout << "time: " << now << std::endl;
+        target_frame_ = trajectory_->Pos(now);
+        // KDL::Frame initial_frame = trajectory_->Pos(2.0);
+        // std::cout << "Target frame: " << std::endl;
+        // std::cout << "x: " << target_frame_.p.x() << std::endl;
+        // std::cout << "y: " << target_frame_.p.y() << std::endl;
+        // std::cout << "z: " << target_frame_.p.z() << std::endl;     
+    }
+
     // get the pose error
-    KDL::Twist error;
+    KDL::Twist control_error;
+    KDL::Twist final_error;
     // Target frame is already with ISS reference
-    error = KDL::diff(current_pose, target_frame_);
+    control_error = KDL::diff(current_pose, target_frame_);
+    final_error = KDL::diff(current_pose, final_frame_);
+
     //check if the tool has arrive to the desired point
-    goal_reached.data = compareTolerance(error);
+    goal_reached.data = compareTolerance(final_error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 
@@ -160,12 +177,16 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 20 * error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * 20 * control_error(j));
         }
     }
 
     writeJointCommand(jnt_effort_);
     tolerance_publisher_.publish(goal_reached);
+    if(goal_reached.data){
+        target_frame_ = current_pose;
+        start_trajectory_ = false;
+    }
 
 }
 
@@ -183,6 +204,9 @@ void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     //Some initializtions
     goal_reached.data = false;
     diff_frame_ = true;
+    start_trajectory_ = false;
+    final_time_ = ros::Duration(7.0).toSec();
+    pre_time_ = 0.0;
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -200,6 +224,8 @@ void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     target_frame_ = current_pose;
     // Save first cartesian positión to detect when a differente one has arrived
     local_frame_ = current_pose;
+    // Save inital pose to create the trajectory
+    start_frame_ = current_pose;
 
 }
 
@@ -218,10 +244,6 @@ void gazebo_cartesian_controller_class::calculate_transformations(KDL::Frame &cu
 bool gazebo_cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
-    // std::cout << "Error_X: " << fabs(error(0)) << std::endl;
-    // std::cout << "Error_Y: " << fabs(error(1)) << std::endl;
-    // std::cout << "Error_Z: " << fabs(error(2)) << std::endl;
-    // std::cout << "diff_frame_: " << diff_frame_ << std::endl;
     if(not diff_frame_){ // To not check when it has just started
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
             return true;
@@ -260,7 +282,6 @@ bool gazebo_cartesian_controller_class::diffTargetFrame(const astronaut_controll
 
 void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
 
-    
     if(diffTargetFrame(target_frame)){
         // The desired point is at ISS reference
         float x = target_frame.x;
@@ -271,9 +292,13 @@ void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_cont
         pitch = target_frame.pitch;
         yaw = target_frame.yaw; // + M_PI;
 
-        target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        begin_time_ = ros::Time::now();
+
+        final_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        trajectory_ = trajectoryPlanner(start_frame_, final_frame_, final_time_);
         local_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
         diff_frame_ = true;
+        start_trajectory_ = true;
     }
 
     else{
@@ -303,10 +328,25 @@ void gazebo_cartesian_controller_class::transformationsCallback(const gazebo_msg
         if(data.name[i] == "International Space Station"){
             world_2_ISS_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
         }
-
     }
-
 } 
+
+KDL::Trajectory* gazebo_cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration){
+
+    // Geometrical path
+    KDL::Path_RoundedComposite* path = new KDL::Path_RoundedComposite(0.2,0.01,new KDL::RotationalInterpolation_SingleAxis()); 
+    path->Add(start); 
+    path->Add(ending);
+    path->Finish();
+
+    KDL::VelocityProfile_Spline* velprof = new KDL::VelocityProfile_Spline();
+    //(start_pos, start_vel, start_acc, end_pos, end_vel, end_acc, Duration)
+    velprof->SetProfileDuration(0, 0.0, 0.0, path->PathLength(), 0, 0.0,  duration); 
+    KDL::Trajectory* traject = new KDL::Trajectory_Segment(path, velprof);
+
+    return traject;
+
+}
     
 }; // namespace
 

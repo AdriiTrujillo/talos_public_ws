@@ -9,6 +9,7 @@
 #include <controller_interface/controller.h>
 #include <hardware_interface/joint_command_interface.h>
 
+// KDL
 #include <boost/scoped_ptr.hpp>
 #include <kdl/chain.hpp>
 #include <kdl/tree.hpp>
@@ -19,6 +20,18 @@
 #include <kdl/jntarray.hpp>
 #include <kdl/segment.hpp>
 #include <kdl/joint.hpp>
+
+// KDL Trajectory
+#include <kdl/frames.hpp>
+#include <kdl/frames_io.hpp>
+#include <kdl/trajectory.hpp>
+#include <kdl/trajectory_segment.hpp>
+#include <kdl/trajectory_stationary.hpp>
+#include <kdl/trajectory_composite.hpp>
+#include <kdl/velocityprofile_spline.hpp>
+#include <kdl/path_roundedcomposite.hpp>
+#include <kdl/rotational_interpolation_sa.hpp>
+#include <kdl/utilities/error.h>
 
 // GAZEBO MSGS
 #include <gazebo_msgs/ModelStates.h>
@@ -47,6 +60,7 @@ namespace controller_ns{
 
         private:
             
+            KDL::Trajectory*  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration);
             bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
             bool compareTolerance(KDL::Twist error);
 
@@ -59,6 +73,7 @@ namespace controller_ns{
             ros::Publisher tolerance_publisher_;
             float tolerance_;
             bool diff_frame_;
+            bool start_trajectory_;
             std_msgs::Bool goal_reached;
             
 
@@ -76,10 +91,19 @@ namespace controller_ns{
             //Variables
             KDL::JntArray jnt_pos_, jnt_effort_;
             KDL::Jacobian jacobian_;
+            KDL::Frame start_frame_;
+            KDL::Frame final_frame_;
             KDL::Frame target_frame_;
             KDL::Frame local_frame_;
             KDL::Frame world_2_ISS_;
             KDL::Frame world_2_Talos_;
+            KDL::Trajectory* trajectory_;
+
+            //Time variables
+            ros::Time begin_time_;
+            double final_time_;
+            double pre_time_;
+            ros::Duration actual_time_;
 
     };
 

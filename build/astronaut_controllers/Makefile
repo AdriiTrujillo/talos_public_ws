@@ -166,6 +166,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named trajectories
+
+# Build rule for target.
+trajectories: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 trajectories
+.PHONY : trajectories
+
+# fast build rule for target.
+trajectories/fast:
+	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/build
+.PHONY : trajectories/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_eus
 
 # Build rule for target.
@@ -896,6 +909,33 @@ src/matrix_transf.cpp.s:
 	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.s
 .PHONY : src/matrix_transf.cpp.s
 
+src/trajectories.o: src/trajectories.cpp.o
+
+.PHONY : src/trajectories.o
+
+# target to build an object file
+src/trajectories.cpp.o:
+	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.o
+.PHONY : src/trajectories.cpp.o
+
+src/trajectories.i: src/trajectories.cpp.i
+
+.PHONY : src/trajectories.i
+
+# target to preprocess a source file
+src/trajectories.cpp.i:
+	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.i
+.PHONY : src/trajectories.cpp.i
+
+src/trajectories.s: src/trajectories.cpp.s
+
+.PHONY : src/trajectories.s
+
+# target to generate assembly for a file
+src/trajectories.cpp.s:
+	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.s
+.PHONY : src/trajectories.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -905,6 +945,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... install/strip"
+	@echo "... trajectories"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_eus"
@@ -968,6 +1009,9 @@ help:
 	@echo "... src/matrix_transf.o"
 	@echo "... src/matrix_transf.i"
 	@echo "... src/matrix_transf.s"
+	@echo "... src/trajectories.o"
+	@echo "... src/trajectories.i"
+	@echo "... src/trajectories.s"
 .PHONY : help
 
 

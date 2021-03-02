@@ -1,0 +1,70 @@
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h:63:18:[m[K [01;31m[Kerror: [m[Kinvalid abstract return type ‘[01m[KKDL::Trajectory[m[K’
+             KDL::Trajectory  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration);
+[01;32m[K                  ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h:27:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:78:8:[m[K [01;36m[Knote: [m[K  because the following virtual functions are pure within ‘[01m[KKDL::Trajectory[m[K’:
+  class Trajectory
+[01;32m[K        ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:81:18:[m[K [01;36m[Knote: [m[K	virtual double KDL::Trajectory::Duration() const
+   virtual double Duration() const = 0;
+[01;32m[K                  ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:84:17:[m[K [01;36m[Knote: [m[K	virtual KDL::Frame KDL::Trajectory::Pos(double) const
+   virtual Frame Pos(double time) const = 0;
+[01;32m[K                 ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:87:17:[m[K [01;36m[Knote: [m[K	virtual KDL::Twist KDL::Trajectory::Vel(double) const
+   virtual Twist Vel(double time) const = 0;
+[01;32m[K                 ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:89:17:[m[K [01;36m[Knote: [m[K	virtual KDL::Twist KDL::Trajectory::Acc(double) const
+   virtual Twist Acc(double time) const = 0;
+[01;32m[K                 ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:92:23:[m[K [01;36m[Knote: [m[K	virtual KDL::Trajectory* KDL::Trajectory::Clone() const
+   virtual Trajectory* Clone() const = 0;
+[01;32m[K                       ^[m[K
+[01m[K/opt/ros/kinetic/include/kdl/trajectory.hpp:93:16:[m[K [01;36m[Knote: [m[K	virtual void KDL::Trajectory::Write(std::ostream&) const
+   virtual void Write(std::ostream& os) const = 0;
+[01;32m[K                ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h:99:29:[m[K [01;31m[Kerror: [m[Kcannot declare field ‘[01m[Kcontroller_ns::gazebo_cartesian_controller_class::trajectory_[m[K’ to be of abstract type ‘[01m[KKDL::Trajectory[m[K’
+             KDL::Trajectory trajectory_;
+[01;32m[K                             ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h:111:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:[m[K In member function ‘[01m[Kvoid controller_ns::gazebo_cartesian_controller_class::targetFrameCallback(const target_frame&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:281:80:[m[K [01;31m[Kerror: [m[Kcannot allocate an object of abstract type ‘[01m[KKDL::Trajectory[m[K’
+         trajectory_ = trajectoryPlanner(start_frame_, final_frame_, final_time_);
+[01;32m[K                                                                                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:316:6:[m[K [01;31m[Kerror: [m[Kinvalid abstract return type ‘[01m[KKDL::Trajectory[m[K’
+ KDL::Trajectory gazebo_cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:[m[K In member function ‘[01m[KKDL::Trajectory controller_ns::gazebo_cartesian_controller_class::trajectoryPlanner(KDL::Frame, KDL::Frame, double)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:316:17:[m[K [01;31m[Kerror: [m[Kinvalid abstract return type for member function ‘[01m[KKDL::Trajectory controller_ns::gazebo_cartesian_controller_class::trajectoryPlanner(KDL::Frame, KDL::Frame, double)[m[K’
+ KDL::Trajectory gazebo_cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration){
+[01;32m[K                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:327:72:[m[K [01;31m[Kerror: [m[Kcannot allocate an object of abstract type ‘[01m[KKDL::Trajectory[m[K’
+     KDL::Trajectory traject = new KDL::Trajectory_Segment(path, velprof);
+[01;32m[K                                                                        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:327:21:[m[K [01;31m[Kerror: [m[Kcannot declare variable ‘[01m[Ktraject[m[K’ to be of abstract type ‘[01m[KKDL::Trajectory[m[K’
+     KDL::Trajectory traject = new KDL::Trajectory_Segment(path, velprof);
+[01;32m[K                     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp:329:12:[m[K [01;31m[Kerror: [m[Kcannot allocate an object of abstract type ‘[01m[KKDL::Trajectory[m[K’
+     return traject;
+[01;32m[K            ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h: In instantiation of ‘[01m[Kstatic char (& hardware_interface::CheckIsResourceManager<T>::callCM(std::vector<C*>&, C*, typename C::resource_manager_type*))[1] [with C = hardware_interface::EffortJointInterface; T = hardware_interface::EffortJointInterface; hardware_interface::CheckIsResourceManager<T>::yes = char [1]; typename C::resource_manager_type = hardware_interface::ResourceManager<hardware_interface::JointHandle>][m[K’:
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:83:14:[m[K   required from ‘[01m[Kstatic const void hardware_interface::CheckIsResourceManager<T>::callConcatManagers(std::vector<T*>&, T*) [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:200:54:[m[K   required from ‘[01m[KT* hardware_interface::InterfaceManager::get() [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:110:30:[m[K   required from ‘[01m[Kbool controller_interface::Controller<T>::initRequest(hardware_interface::RobotHW*, ros::NodeHandle&, ros::NodeHandle&, controller_interface::ControllerBase::ClaimedResources&) [with T = hardware_interface::EffortJointInterface; controller_interface::ControllerBase::ClaimedResources = std::vector<hardware_interface::InterfaceResources>][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:15:100:[m[K   required from here
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
+     yes tmp_yes;
+[01;32m[K         ^[m[K
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

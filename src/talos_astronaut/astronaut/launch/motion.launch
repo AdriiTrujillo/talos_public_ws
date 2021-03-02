@@ -3,7 +3,7 @@
 <launch>
 
     <!-- Launch Cartesian arm controller to get the point -->
-    <include file="$(find astronaut_controllers)/launch/cartesian_controller.launch"/>
+    <include file="$(find astronaut_controllers)/launch/aruco_cartesian_controller.launch"/>
     <!-- Launch head controller to look for the Qr code -->
     <include file="$(find astronaut_controllers)/launch/head_controller.launch"/>
     <!-- Launch hands controller to grasp de objective -->

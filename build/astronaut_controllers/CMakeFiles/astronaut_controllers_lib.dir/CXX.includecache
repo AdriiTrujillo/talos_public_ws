@@ -152,7 +152,7 @@ ros/console.h
 ros/node_handle.h
 -
 
-/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.h
+/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h
 ros/ros.h
 -
 vector
@@ -193,11 +193,11 @@ std_msgs/Bool.h
 -
 astronaut_controllers/target_frame.h
 -
-astronaut_controllers/cartesian_controller.hpp
+astronaut_controllers/aruco_cartesian_controller.hpp
 -
 
-/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller.hpp
-astronaut_controllers/cartesian_controller.h
+/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.hpp
+astronaut_controllers/aruco_cartesian_controller.h
 -
 kdl_parser/kdl_parser.hpp
 -
@@ -209,7 +209,7 @@ urdf/model.h
 /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp
 pluginlib/class_list_macros.h
 -
-astronaut_controllers/cartesian_controller.h
+astronaut_controllers/aruco_cartesian_controller.h
 -
 
 /opt/ros/kinetic/include/class_loader/./class_loader.hpp

@@ -1,5 +1,12 @@
 <library path="lib/libastronaut_controllers_lib">
-  <class name="astronaut_controllers/PositionController" 
-         type="position_controller::PositionController"           
-         base_class_type="controller_interface::ControllerBase" />
+
+  <class name="astronaut_controllers/ArucoController" 
+         type="position_controller::ArucoController"           
+         base_class_type="controller_interface::ControllerBase" >
+    <description>
+      The astronaut controller (Cartesian Controller) use a Aruco Marker to get his own position 
+      that way the controller can calculate the error to achieve the desired point 
+    </description>
+  </class>
+
 </library>

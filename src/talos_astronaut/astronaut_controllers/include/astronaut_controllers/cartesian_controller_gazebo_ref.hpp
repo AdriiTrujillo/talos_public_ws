@@ -1,8 +1,8 @@
-#ifndef CARTESIAN_CONTROLLER_HPP_INCLUDED
-#define CARTESIAN_CONTROLLER_HPP_INCLUDED
+#ifndef CARTESIAN_CONTROLLER_GAZEBO_REF_HPP_INCLUDED
+#define CARTESIAN_CONTROLLER_GAZEBO_REF_HPP_INCLUDED
 
 // PROJECT
-#include <astronaut_controllers/cartesian_controller.h>
+#include <astronaut_controllers/cartesian_controller_gazebo_ref.h>
 
 // KDL
 #include <kdl_parser/kdl_parser.hpp>
@@ -13,7 +13,7 @@
 
 namespace controller_ns{
 
-bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* hw, ros::NodeHandle& nh){
+bool gazebo_cartesian_controller_class::init(hardware_interface::EffortJointInterface* hw, ros::NodeHandle& nh){
 
     std::string robot_description;
     std::string base_link;
@@ -118,15 +118,15 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     //     std::cout << " ------------------------- " << std::endl;
     // }
 
-    target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
-    Gazebo_models_subscr_ = nh.subscribe("/gazebo/model_states", 3, &cartesian_controller_class::transformationsCallback, this);
+    target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &gazebo_cartesian_controller_class::targetFrameCallback, this);
+    Gazebo_models_subscr_ = nh.subscribe("/gazebo/model_states", 3, &gazebo_cartesian_controller_class::transformationsCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
     return true;
 
 }
 
-void cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
+void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -134,8 +134,8 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
     calculate_transformations(current_pose);
@@ -169,7 +169,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
 }
 
-void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
+void gazebo_cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
     // Send joint position to joints
     for(size_t i = 0; i < joint_handles_.size(); i++){
@@ -178,7 +178,7 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
     
 }
 
-void cartesian_controller_class::starting(const ros::Time &time) {
+void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     
     //Some initializtions
     goal_reached.data = false;
@@ -190,8 +190,8 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
     calculate_transformations(current_pose);
@@ -203,9 +203,9 @@ void cartesian_controller_class::starting(const ros::Time &time) {
 
 }
 
-void cartesian_controller_class::stopping(const ros::Time &time) {}
+void gazebo_cartesian_controller_class::stopping(const ros::Time &time) {}
 
-void cartesian_controller_class::calculate_transformations(KDL::Frame &current_pose) {
+void gazebo_cartesian_controller_class::calculate_transformations(KDL::Frame &current_pose) {
 
     // To obtain Talos position with ISS reference
     KDL::Frame iss_2_Talos = world_2_ISS_.Inverse() * world_2_Talos_;
@@ -215,9 +215,13 @@ void cartesian_controller_class::calculate_transformations(KDL::Frame &current_p
 
 }
 
-bool cartesian_controller_class::compareTolerance(KDL::Twist error){
+bool gazebo_cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
+    // std::cout << "Error_X: " << fabs(error(0)) << std::endl;
+    // std::cout << "Error_Y: " << fabs(error(1)) << std::endl;
+    // std::cout << "Error_Z: " << fabs(error(2)) << std::endl;
+    // std::cout << "diff_frame_: " << diff_frame_ << std::endl;
     if(not diff_frame_){ // To not check when it has just started
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
             return true;
@@ -229,7 +233,7 @@ bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
 }
 
-bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::target_frame& target_frame){
+bool gazebo_cartesian_controller_class::diffTargetFrame(const astronaut_controllers::target_frame& target_frame){
 
     double roll, pitch, yaw;
     local_frame_.M.GetRPY(roll, pitch, yaw);
@@ -237,17 +241,26 @@ bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::ta
     double y = local_frame_.p.y();
     double z = local_frame_.p.z();
 
-    if(target_frame.x != x or target_frame.y != y or target_frame.z != z or
-        target_frame.roll != roll or target_frame.pitch != pitch or target_frame.yaw != yaw){
-            return true; // A different frame has arrived
+    double x_diff = fabs(target_frame.x - x);
+    double y_diff = fabs(target_frame.y - y);
+    double z_diff = fabs(target_frame.z - z);
+    double roll_diff = fabs(target_frame.roll - roll);
+    double pitch_diff = fabs(target_frame.pitch - pitch);
+    double yaw_diff = fabs(target_frame.yaw - yaw);
+    double threshold = 0.0001;
+
+    if((x_diff < threshold) and (y_diff < threshold) and (z_diff < threshold) and
+        (roll_diff < threshold) and (pitch_diff < threshold) and (yaw_diff < threshold)){
+            return false; // Almost the same frame has arrived
     }
 
-    return false;
+    return true;
 
 }
 
-void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
+void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
 
+    
     if(diffTargetFrame(target_frame)){
         // The desired point is at ISS reference
         float x = target_frame.x;
@@ -259,7 +272,7 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
         yaw = target_frame.yaw; // + M_PI;
 
         target_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
-        local_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll, target_frame.pitch, target_frame.yaw), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+        local_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
         diff_frame_ = true;
     }
 
@@ -269,7 +282,7 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
 
 }
 
-void cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){
+void gazebo_cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){
     
     float x, y, z, q_x, q_y, q_z, q_w;
 

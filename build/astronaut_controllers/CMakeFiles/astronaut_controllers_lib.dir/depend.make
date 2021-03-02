@@ -16,6 +16,8 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/a
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.hpp
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/class_loader/./class_loader.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/class_loader/class_loader.h

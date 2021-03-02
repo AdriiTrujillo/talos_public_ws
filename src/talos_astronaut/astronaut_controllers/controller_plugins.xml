@@ -9,4 +9,14 @@
     </description>
   </class>
 
+  <class name="astronaut_controllers/GazeboController" 
+         type="position_controller::GazeboController"           
+         base_class_type="controller_interface::ControllerBase" >
+    <description>
+      The astronaut controller (Cartesian Controller) use a Frames composition to get his position
+      with the ISS reference to use this controllers is necessary to know robot and ISS pose with
+      world reference.
+    </description>
+  </class>
+
 </library>

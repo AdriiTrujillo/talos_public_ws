@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <rosparam file="$(find astronaut_controllers)/config/gazebo_cartesian_controller.yaml" command="load"/>
+
+  <node name="astronaut_controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="right_arm_controller"/>
+
+</launch>

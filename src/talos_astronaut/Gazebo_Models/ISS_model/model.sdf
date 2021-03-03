@@ -1,9 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
   <model name="International Space Station">
-
-    <static>True</static>
-
     <link name="Link">
 
       <collision name="collision">
@@ -21,8 +18,6 @@
           </mesh>
         </geometry>
       </visual>
-
     </link>
-
   </model>
 </sdf>

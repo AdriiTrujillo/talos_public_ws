@@ -146,23 +146,19 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
 // ------------------------------------------------------------------------------------------- 
-    // std::cout << "Booleano: " << start_trajectory_ << std::endl;
+
     if(start_trajectory_){
         //Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
         double now = actual_time_.toSec();
-        // std::cout << "time: " << now << std::endl;
-        target_frame_ = trajectory_->Pos(now);
-        // KDL::Frame initial_frame = trajectory_->Pos(2.0);
-        // std::cout << "Target frame: " << std::endl;
-        // std::cout << "x: " << target_frame_.p.x() << std::endl;
-        // std::cout << "y: " << target_frame_.p.y() << std::endl;
-        // std::cout << "z: " << target_frame_.p.z() << std::endl;     
+        target_frame_ = trajectory_->Pos(now);   
     }
 
-    // get the pose error
+    // get the actual error
     KDL::Twist control_error;
+    // get the final error
     KDL::Twist final_error;
+
     // Target frame is already with ISS reference
     control_error = KDL::diff(current_pose, target_frame_);
     final_error = KDL::diff(current_pose, final_frame_);
@@ -183,8 +179,11 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
 
     writeJointCommand(jnt_effort_);
     tolerance_publisher_.publish(goal_reached);
-    if(goal_reached.data){
+
+    // If it arrives to the desired point it has to stop there
+    if(goal_reached.data and start_trajectory_){
         target_frame_ = current_pose;
+        start_frame_ = current_pose;
         start_trajectory_ = false;
     }
 
@@ -206,7 +205,6 @@ void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     diff_frame_ = true;
     start_trajectory_ = false;
     final_time_ = ros::Duration(7.0).toSec();
-    pre_time_ = 0.0;
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -249,7 +247,6 @@ bool gazebo_cartesian_controller_class::compareTolerance(KDL::Twist error){
             return true;
         }
     }
-        
     // Not reached yet
     return false;
 
@@ -271,6 +268,7 @@ bool gazebo_cartesian_controller_class::diffTargetFrame(const astronaut_controll
     double yaw_diff = fabs(target_frame.yaw - yaw);
     double threshold = 0.0001;
 
+    // If no position has changed more than 0.0001 it is the same frame
     if((x_diff < threshold) and (y_diff < threshold) and (z_diff < threshold) and
         (roll_diff < threshold) and (pitch_diff < threshold) and (yaw_diff < threshold)){
             return false; // Almost the same frame has arrived
@@ -290,23 +288,31 @@ void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_cont
         double roll, pitch, yaw;
         roll = target_frame.roll;
         pitch = target_frame.pitch;
-        yaw = target_frame.yaw; // + M_PI;
+        yaw = target_frame.yaw;
 
+        // Save starting time for the trajectory
         begin_time_ = ros::Time::now();
 
+        // Save final frame for the trajectory
         final_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        // Create the trajectory with 7.0s duration
         trajectory_ = trajectoryPlanner(start_frame_, final_frame_, final_time_);
+        // Update localframe to check if when a different frame has arrived
         local_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        // Set diff_frame_ a true to start checking if the end effector has arrived
         diff_frame_ = true;
+        // Start the trajectory in the main loop
         start_trajectory_ = true;
     }
 
     else{
+        // I it is the same frame do not update a thing
         diff_frame_ = false;
     }   
 
 }
 
+// Save Talos and ISS position from Gazebo simulator
 void gazebo_cartesian_controller_class::transformationsCallback(const gazebo_msgs::ModelStates& data){
     
     float x, y, z, q_x, q_y, q_z, q_w;
@@ -331,6 +337,7 @@ void gazebo_cartesian_controller_class::transformationsCallback(const gazebo_msg
     }
 } 
 
+// Create a cartesian trajectory with a quintic spline interpolation 
 KDL::Trajectory* gazebo_cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration){
 
     // Geometrical path

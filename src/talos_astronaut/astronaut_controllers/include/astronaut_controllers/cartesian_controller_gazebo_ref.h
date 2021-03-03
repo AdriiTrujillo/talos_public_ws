@@ -75,7 +75,6 @@ namespace controller_ns{
             bool diff_frame_;
             bool start_trajectory_;
             std_msgs::Bool goal_reached;
-            
 
             std::vector<hardware_interface::JointHandle>      joint_handles_;
             std::vector<std::string>                          joint_names_;
@@ -102,7 +101,6 @@ namespace controller_ns{
             //Time variables
             ros::Time begin_time_;
             double final_time_;
-            double pre_time_;
             ros::Duration actual_time_;
 
     };

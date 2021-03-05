@@ -9,6 +9,17 @@
     </description>
   </class>
 
+  <class name="astronaut_controllers/ArucoTrajectoryController" 
+         type="position_controller::ArucoTrajectoryController"           
+         base_class_type="controller_interface::ControllerBase" >
+    <description>
+      The astronaut controller (Cartesian Controller) use a Aruco Marker to get his own position, 
+      that way the controller can calculate the error to achieve the desired point. Evry time a new final
+      position arrives a new trajectory path is calcutated and a new time is recalculated in a propotional
+      way to the first time and final position gave.
+    </description>
+  </class>
+
   <class name="astronaut_controllers/GazeboController" 
          type="position_controller::GazeboController"           
          base_class_type="controller_interface::ControllerBase" >

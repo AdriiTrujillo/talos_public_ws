@@ -151,6 +151,7 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
         //Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
         double now = actual_time_.toSec();
+        // std::cout << "Now time: " << now << std::endl;
         target_frame_ = trajectory_->Pos(now);   
     }
 
@@ -173,7 +174,7 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 20 * control_error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j));
         }
     }
 
@@ -185,6 +186,7 @@ void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros:
         target_frame_ = current_pose;
         start_frame_ = current_pose;
         start_trajectory_ = false;
+        kp_ = 20;
     }
 
 }
@@ -201,10 +203,11 @@ void gazebo_cartesian_controller_class::writeJointCommand(KDL::JntArray joint_co
 void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     
     //Some initializtions
+    kp_ = 20.0;
     goal_reached.data = false;
     diff_frame_ = true;
     start_trajectory_ = false;
-    final_time_ = ros::Duration(7.0).toSec();
+    final_time_ = ros::Duration(9.0).toSec();
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -303,6 +306,7 @@ void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_cont
         diff_frame_ = true;
         // Start the trajectory in the main loop
         start_trajectory_ = true;
+        kp_ = 75.0;
     }
 
     else{

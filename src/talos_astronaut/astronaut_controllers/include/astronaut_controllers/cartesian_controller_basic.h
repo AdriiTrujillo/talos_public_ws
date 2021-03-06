@@ -1,5 +1,5 @@
-#ifndef ARUCO_CARTESIAN_CONTROLLER_H_INCLUDED
-#define ARUCO_CARTESIAN_CONTROLLER_H_INCLUDED
+#ifndef CARTESIAN_CONTROLLER_BASIC_H_INCLUDED
+#define CARTESIAN_CONTROLLER_BASIC_H_INCLUDED
 
 #include <ros/ros.h>
 #include <vector>
@@ -9,7 +9,9 @@
 #include <controller_interface/controller.h>
 #include <hardware_interface/joint_command_interface.h>
 
+// Boost
 #include <boost/scoped_ptr.hpp>
+// KDL
 #include <kdl/chain.hpp>
 #include <kdl/tree.hpp>
 #include <kdl/chainjnttojacsolver.hpp>
@@ -19,6 +21,18 @@
 #include <kdl/jntarray.hpp>
 #include <kdl/segment.hpp>
 #include <kdl/joint.hpp>
+
+// KDL Trajectory
+#include <kdl/frames.hpp>
+#include <kdl/frames_io.hpp>
+#include <kdl/trajectory.hpp>
+#include <kdl/trajectory_segment.hpp>
+#include <kdl/trajectory_stationary.hpp>
+#include <kdl/trajectory_composite.hpp>
+#include <kdl/velocityprofile_spline.hpp>
+#include <kdl/path_roundedcomposite.hpp>
+#include <kdl/rotational_interpolation_sa.hpp>
+#include <kdl/utilities/error.h>
 
 // GAZEBO MSGS
 #include <gazebo_msgs/ModelStates.h>
@@ -34,7 +48,7 @@
 
 namespace controller_ns{
 
-    class aruco_cartesian_controller_class : public controller_interface::Controller<hardware_interface::EffortJointInterface> {
+    class cartesian_controller_class : public controller_interface::Controller<hardware_interface::EffortJointInterface> {
         
         public:
 
@@ -46,15 +60,17 @@ namespace controller_ns{
 
         private:
             
-            bool diffTargetFrame(KDL::Frame target_frame);
+            KDL::Trajectory*  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration);
+            bool diffTargetFrame(const astronaut_controllers::target_frame& target_frame);
             bool compareTolerance(KDL::Twist error);
 
-            ros::Subscriber aruco_subscr_;
-            void transformationCallback(const geometry_msgs::PoseStamped& data);
+            ros::Subscriber target_frame_subscr_;
+            void targetFrameCallback(const astronaut_controllers::target_frame& target_frame);
 
             ros::Publisher tolerance_publisher_;
             float tolerance_;
             bool diff_frame_;
+            bool start_trajectory_;
             std_msgs::Bool goal_reached;
 
             std::vector<hardware_interface::JointHandle>      joint_handles_;
@@ -71,17 +87,24 @@ namespace controller_ns{
             //Variables
             KDL::JntArray jnt_pos_, jnt_effort_;
             KDL::Jacobian jacobian_;
+            KDL::Frame start_frame_;
+            KDL::Frame final_frame_;
             KDL::Frame target_frame_;
-            KDL::Frame talos_2_aruco_;
             KDL::Frame local_frame_;
-            KDL::Frame aruco_2_target_;
+            KDL::Trajectory* trajectory_;
+            float kp_;
+
+            //Time variables
+            ros::Time begin_time_;
+            double final_time_;
+            ros::Duration actual_time_;
 
     };
 
 }; //namespace
 
 //Project
-#include <astronaut_controllers/aruco_cartesian_controller.hpp>
+#include <astronaut_controllers/cartesian_controller_basic.hpp>
 
 #endif
 

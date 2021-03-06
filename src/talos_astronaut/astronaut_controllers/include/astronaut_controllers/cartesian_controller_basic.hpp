@@ -1,8 +1,8 @@
-#ifndef CARTESIAN_CONTROLLER_HPP_INCLUDED
-#define CARTESIAN_CONTROLLER_HPP_INCLUDED
+#ifndef CARTESIAN_CONTROLLER_BASIC_HPP_INCLUDED
+#define CARTESIAN_CONTROLLER_BASIC_HPP_INCLUDED
 
 //Project
-#include <astronaut_controllers/cartesian_controller.h>
+#include <astronaut_controllers/cartesian_controller_basic.h>
 
 // KDL
 #include <kdl_parser/kdl_parser.hpp>
@@ -34,6 +34,11 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     if (!nh.getParam("end_effector_link",end_effector_link)){
     
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/end_effector_link" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("goal_tolerance",tolerance_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
         return false;
     }
     // Robot configuration done ----------------------------------------------
@@ -120,6 +125,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     // }
 
     target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
+    tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
     return true;
 
@@ -133,20 +139,34 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
+    if(start_trajectory_){
+        //Get the actual time
+        actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
+        double now = actual_time_.toSec();
+        // std::cout << "Now time: " << now << std::endl;
+        target_frame_ = trajectory_->Pos(now);   
+    }
     // Descomentar para imprimir por pantalla la posición del extremo
     // ROS_INFO("x : %f",current_pose.p.x());
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
     
     
-    // get the pose error
-    KDL::Twist error;
+    // get the actual error
+    KDL::Twist control_error;
+    // get the final error
+    KDL::Twist final_error;
 
-    error = KDL::diff(current_pose, target_frame_);
+    // Target frame is already with ISS reference
+    control_error = KDL::diff(current_pose, target_frame_);
+    final_error = KDL::diff(current_pose, final_frame_);
+
+    //check if the tool has arrive to the desired point
+    goal_reached.data = compareTolerance(final_error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 
@@ -155,11 +175,20 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 125.0 * error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j));
         }
     }
 
     writeJointCommand(jnt_effort_);
+    tolerance_publisher_.publish(goal_reached);
+
+    // If it arrives to the desired point it has to stop there
+    if(goal_reached.data and start_trajectory_){
+        target_frame_ = current_pose;
+        start_frame_ = current_pose;
+        start_trajectory_ = false;
+        kp_ = 20;
+    }
 
 }
 
@@ -173,30 +202,126 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 
 void cartesian_controller_class::starting(const ros::Time &time) {
     
+    //Some initializtions
+    kp_ = 20.0;
+    goal_reached.data = false;
+    diff_frame_ = true;
+    start_trajectory_ = false;
+    final_time_ = ros::Duration(9.0).toSec();
+
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
     }
 
     KDL::Frame current_pose;
-    ik_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (ik_status == -1) 
+    fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-
+    // Send current pose to the effecto to not to move
     target_frame_ = current_pose;
+    // Save first cartesian positión to detect when a differente one has arrived
+    local_frame_ = current_pose;
+    // Save inital pose to create the trajectory
+    start_frame_ = current_pose;
 
 }
 
 void cartesian_controller_class::stopping(const ros::Time &time) {}
 
+bool cartesian_controller_class::compareTolerance(KDL::Twist error){
+
+    // Point reached
+    if(not diff_frame_){ // To not check when it has just started
+        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+            return true;
+        }
+    }
+    // Not reached yet
+    return false;
+
+}
+
+bool cartesian_controller_class::diffTargetFrame(const astronaut_controllers::target_frame& target_frame){
+
+    double roll, pitch, yaw;
+    local_frame_.M.GetRPY(roll, pitch, yaw);
+    double x = local_frame_.p.x();
+    double y = local_frame_.p.y();
+    double z = local_frame_.p.z();
+
+    double x_diff = fabs(target_frame.x - x);
+    double y_diff = fabs(target_frame.y - y);
+    double z_diff = fabs(target_frame.z - z);
+    double roll_diff = fabs(target_frame.roll - roll);
+    double pitch_diff = fabs(target_frame.pitch - pitch);
+    double yaw_diff = fabs(target_frame.yaw - yaw);
+    double threshold = 0.0001;
+
+    // If no position has changed more than 0.0001 it is the same frame
+    if((x_diff < threshold) and (y_diff < threshold) and (z_diff < threshold) and
+        (roll_diff < threshold) and (pitch_diff < threshold) and (yaw_diff < threshold)){
+            return false; // Almost the same frame has arrived
+    }
+
+    return true;
+
+}
+
 void cartesian_controller_class::targetFrameCallback(const astronaut_controllers::target_frame& target_frame){
-                                                                                                        //0.4, -0.1, 0.2
-    target_frame_ = KDL::Frame(KDL::Rotation::RPY(target_frame.roll,target_frame.pitch,target_frame.yaw + M_PI), KDL::Vector(target_frame.x, target_frame.y, target_frame.z));
+
+    if(diffTargetFrame(target_frame)){
+        // The desired point is at ISS reference
+        float x = target_frame.x;
+        float y = target_frame.y;
+        float z = target_frame.z;
+        double roll, pitch, yaw;
+        roll = target_frame.roll;
+        pitch = target_frame.pitch;
+        yaw = target_frame.yaw;
+
+        // Save starting time for the trajectory
+        begin_time_ = ros::Time::now();
+
+        // Save final frame for the trajectory
+        final_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        // Create the trajectory with 7.0s duration
+        trajectory_ = trajectoryPlanner(start_frame_, final_frame_, final_time_);
+        // Update localframe to check if when a different frame has arrived
+        local_frame_ = KDL::Frame(KDL::Rotation::RPY(roll, pitch, yaw), KDL::Vector(x, y, z));
+        // Set diff_frame_ a true to start checking if the end effector has arrived
+        diff_frame_ = true;
+        // Start the trajectory in the main loop
+        start_trajectory_ = true;
+        kp_ = 20.0;
+    }
+
+    else{
+        // I it is the same frame do not update a thing
+        diff_frame_ = false;
+    }   
+
+}
+
+// Create a cartesian trajectory with a quintic spline interpolation 
+KDL::Trajectory* cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double duration){
+
+    // Geometrical path
+    KDL::Path_RoundedComposite* path = new KDL::Path_RoundedComposite(0.2,0.01,new KDL::RotationalInterpolation_SingleAxis()); 
+    path->Add(start); 
+    path->Add(ending);
+    path->Finish();
+
+    KDL::VelocityProfile_Spline* velprof = new KDL::VelocityProfile_Spline();
+    //(start_pos, start_vel, start_acc, end_pos, end_vel, end_acc, Duration)
+    velprof->SetProfileDuration(0, 0.0, 0.0, path->PathLength(), 0, 0.0,  duration); 
+    KDL::Trajectory* traject = new KDL::Trajectory_Segment(path, velprof);
+
+    return traject;
 
 }
     
 }; // namespace
-
 
 #endif

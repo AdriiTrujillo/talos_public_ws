@@ -1,5 +1,5 @@
 talos_moveit_config
 /home/adrii/talos_public_ws/devel/.private/talos_moveit_config/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
+/home/adrii/talos_public_ws/devel/.private/talos_moveit_config/lib/pkgconfig/talos_moveit_config.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/talos_moveit_config.pc
 /home/adrii/talos_public_ws/devel/.private/talos_moveit_config/share/talos_moveit_config/cmake/talos_moveit_configConfig-version.cmake /home/adrii/talos_public_ws/devel/share/talos_moveit_config/cmake/talos_moveit_configConfig-version.cmake
 /home/adrii/talos_public_ws/devel/.private/talos_moveit_config/share/talos_moveit_config/cmake/talos_moveit_configConfig.cmake /home/adrii/talos_public_ws/devel/share/talos_moveit_config/cmake/talos_moveit_configConfig.cmake
-/home/adrii/talos_public_ws/devel/.private/talos_moveit_config/lib/pkgconfig/talos_moveit_config.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/talos_moveit_config.pc

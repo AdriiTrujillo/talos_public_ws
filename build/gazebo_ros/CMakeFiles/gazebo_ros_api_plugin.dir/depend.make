@@ -425,9 +425,11 @@ CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/inclu
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Frustum.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Helpers.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/IndexException.hh
+CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Inertial.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Kmeans.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Line2.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Line3.hh
+CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/MassMatrix3.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Matrix3.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Matrix4.hh
 CMakeFiles/gazebo_ros_api_plugin.dir/src/gazebo_ros_api_plugin.cpp.o: /usr/include/ignition/math2/ignition/math/Plane.hh

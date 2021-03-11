@@ -1,10 +1,10 @@
 
 "use strict";
 
-let RobotStatus = require('./RobotStatus.js');
 let FunctionalityStatus = require('./FunctionalityStatus.js');
+let RobotStatus = require('./RobotStatus.js');
 
 module.exports = {
-  RobotStatus: RobotStatus,
   FunctionalityStatus: FunctionalityStatus,
+  RobotStatus: RobotStatus,
 };

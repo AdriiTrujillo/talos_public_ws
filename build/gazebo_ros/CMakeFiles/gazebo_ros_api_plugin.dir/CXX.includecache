@@ -7686,6 +7686,12 @@ stdexcept
 ignition/math/Helpers.hh
 -
 
+/usr/include/ignition/math2/ignition/math/Inertial.hh
+ignition/math/MassMatrix3.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/MassMatrix3.hh
+ignition/math/Pose3.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Pose3.hh
+
 /usr/include/ignition/math2/ignition/math/Kmeans.hh
 vector
 -
@@ -7709,6 +7715,24 @@ ignition/math/Vector3.hh
 -
 ignition/math/IndexException.hh
 -
+
+/usr/include/ignition/math2/ignition/math/MassMatrix3.hh
+algorithm
+-
+string
+-
+vector
+-
+ignition/math/Helpers.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Helpers.hh
+ignition/math/Quaternion.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Quaternion.hh
+ignition/math/Vector2.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Vector2.hh
+ignition/math/Vector3.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Vector3.hh
+ignition/math/Matrix3.hh
+/usr/include/ignition/math2/ignition/math/ignition/math/Matrix3.hh
 
 /usr/include/ignition/math2/ignition/math/Matrix3.hh
 cstring

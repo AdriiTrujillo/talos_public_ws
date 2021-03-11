@@ -1,12 +1,12 @@
 
 "use strict";
 
-let WifiSignal = require('./WifiSignal.js');
 let WifiSignalList = require('./WifiSignalList.js');
 let WifiSignalMap = require('./WifiSignalMap.js');
+let WifiSignal = require('./WifiSignal.js');
 
 module.exports = {
-  WifiSignal: WifiSignal,
   WifiSignalList: WifiSignalList,
   WifiSignalMap: WifiSignalMap,
+  WifiSignal: WifiSignal,
 };

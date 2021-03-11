@@ -1,6 +1,6 @@
 talos_astronaut/qr_detector
 /home/adrii/talos_public_ws/devel/.private/qr_detector/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
-/home/adrii/talos_public_ws/devel/.private/qr_detector/share/qr_detector/cmake/qr_detectorConfig-version.cmake /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig-version.cmake
-/home/adrii/talos_public_ws/devel/.private/qr_detector/share/qr_detector/cmake/qr_detectorConfig.cmake /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig.cmake
 /home/adrii/talos_public_ws/devel/.private/qr_detector/lib/libqr_detector_nodelet.so /home/adrii/talos_public_ws/devel/lib/libqr_detector_nodelet.so
 /home/adrii/talos_public_ws/devel/.private/qr_detector/lib/pkgconfig/qr_detector.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/qr_detector.pc
+/home/adrii/talos_public_ws/devel/.private/qr_detector/share/qr_detector/cmake/qr_detectorConfig.cmake /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig.cmake
+/home/adrii/talos_public_ws/devel/.private/qr_detector/share/qr_detector/cmake/qr_detectorConfig-version.cmake /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig-version.cmake

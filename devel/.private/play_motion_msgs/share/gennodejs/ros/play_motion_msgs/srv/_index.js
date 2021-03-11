@@ -1,10 +1,10 @@
 
 "use strict";
 
-let ListMotions = require('./ListMotions.js')
 let IsAlreadyThere = require('./IsAlreadyThere.js')
+let ListMotions = require('./ListMotions.js')
 
 module.exports = {
-  ListMotions: ListMotions,
   IsAlreadyThere: IsAlreadyThere,
+  ListMotions: ListMotions,
 };

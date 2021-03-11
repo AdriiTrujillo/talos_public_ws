@@ -56,16 +56,6 @@ CMAKE_BINARY_DIR = /home/adrii/talos_public_ws/build/astronaut
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -78,6 +68,16 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -88,17 +88,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -192,32 +181,6 @@ send_position/fast:
 .PHONY : send_position/fast
 
 #=============================================================================
-# Target rules for targets named astronaut_controllers_generate_messages_py
-
-# Build rule for target.
-astronaut_controllers_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_py
-.PHONY : astronaut_controllers_generate_messages_py
-
-# fast build rule for target.
-astronaut_controllers_generate_messages_py/fast:
-	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_py.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_py.dir/build
-.PHONY : astronaut_controllers_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named astronaut_controllers_generate_messages_nodejs
-
-# Build rule for target.
-astronaut_controllers_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_nodejs
-.PHONY : astronaut_controllers_generate_messages_nodejs
-
-# fast build rule for target.
-astronaut_controllers_generate_messages_nodejs/fast:
-	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build
-.PHONY : astronaut_controllers_generate_messages_nodejs/fast
-
-#=============================================================================
 # Target rules for targets named roscpp_generate_messages_py
 
 # Build rule for target.
@@ -244,45 +207,6 @@ rosgraph_msgs_generate_messages_eus/fast:
 .PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named clean_test_results
-
-# Build rule for target.
-clean_test_results: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 clean_test_results
-.PHONY : clean_test_results
-
-# fast build rule for target.
-clean_test_results/fast:
-	$(MAKE) -f CMakeFiles/clean_test_results.dir/build.make CMakeFiles/clean_test_results.dir/build
-.PHONY : clean_test_results/fast
-
-#=============================================================================
-# Target rules for targets named astronaut_controllers_generate_messages_lisp
-
-# Build rule for target.
-astronaut_controllers_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_lisp
-.PHONY : astronaut_controllers_generate_messages_lisp
-
-# fast build rule for target.
-astronaut_controllers_generate_messages_lisp/fast:
-	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build
-.PHONY : astronaut_controllers_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named std_msgs_generate_messages_nodejs
-
-# Build rule for target.
-std_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-#=============================================================================
 # Target rules for targets named roscpp_generate_messages_eus
 
 # Build rule for target.
@@ -294,32 +218,6 @@ roscpp_generate_messages_eus: cmake_check_build_system
 roscpp_generate_messages_eus/fast:
 	$(MAKE) -f CMakeFiles/roscpp_generate_messages_eus.dir/build.make CMakeFiles/roscpp_generate_messages_eus.dir/build
 .PHONY : roscpp_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named roscpp_generate_messages_cpp
-
-# Build rule for target.
-roscpp_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	$(MAKE) -f CMakeFiles/roscpp_generate_messages_cpp.dir/build.make CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named astronaut_controllers_generate_messages_cpp
-
-# Build rule for target.
-astronaut_controllers_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_cpp
-.PHONY : astronaut_controllers_generate_messages_cpp
-
-# fast build rule for target.
-astronaut_controllers_generate_messages_cpp/fast:
-	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build
-.PHONY : astronaut_controllers_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named download_extra_data
@@ -361,30 +259,17 @@ astronaut_controllers_generate_messages_eus/fast:
 .PHONY : astronaut_controllers_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named doxygen
+# Target rules for targets named rosgraph_msgs_generate_messages_cpp
 
 # Build rule for target.
-doxygen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 doxygen
-.PHONY : doxygen
+rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_cpp
+.PHONY : rosgraph_msgs_generate_messages_cpp
 
 # fast build rule for target.
-doxygen/fast:
-	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
-.PHONY : doxygen/fast
-
-#=============================================================================
-# Target rules for targets named run_tests
-
-# Build rule for target.
-run_tests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 run_tests
-.PHONY : run_tests
-
-# fast build rule for target.
-run_tests/fast:
-	$(MAKE) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
-.PHONY : run_tests/fast
+rosgraph_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_cpp
@@ -400,17 +285,17 @@ std_msgs_generate_messages_cpp/fast:
 .PHONY : std_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named rosgraph_msgs_generate_messages_cpp
+# Target rules for targets named doxygen
 
 # Build rule for target.
-rosgraph_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rosgraph_msgs_generate_messages_cpp
-.PHONY : rosgraph_msgs_generate_messages_cpp
+doxygen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doxygen
+.PHONY : doxygen
 
 # fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+doxygen/fast:
+	$(MAKE) -f CMakeFiles/doxygen.dir/build.make CMakeFiles/doxygen.dir/build
+.PHONY : doxygen/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
@@ -426,32 +311,6 @@ rosgraph_msgs_generate_messages_nodejs/fast:
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named roscpp_generate_messages_nodejs
-
-# Build rule for target.
-roscpp_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_nodejs
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	$(MAKE) -f CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named tests
-
-# Build rule for target.
-tests: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 tests
-.PHONY : tests
-
-# fast build rule for target.
-tests/fast:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
-.PHONY : tests/fast
-
-#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -463,6 +322,19 @@ rosgraph_msgs_generate_messages_lisp: cmake_check_build_system
 rosgraph_msgs_generate_messages_lisp/fast:
 	$(MAKE) -f CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_nodejs
+
+# Build rule for target.
+roscpp_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_nodejs
+.PHONY : roscpp_generate_messages_nodejs
+
+# fast build rule for target.
+roscpp_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make CMakeFiles/roscpp_generate_messages_nodejs.dir/build
+.PHONY : roscpp_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_py
@@ -517,56 +389,82 @@ std_msgs_generate_messages_eus/fast:
 .PHONY : std_msgs_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named gmock
+# Target rules for targets named roscpp_generate_messages_cpp
 
 # Build rule for target.
-gmock: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock
-.PHONY : gmock
+roscpp_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_cpp
+.PHONY : roscpp_generate_messages_cpp
 
 # fast build rule for target.
-gmock/fast:
-	$(MAKE) -f gtest/CMakeFiles/gmock.dir/build.make gtest/CMakeFiles/gmock.dir/build
-.PHONY : gmock/fast
+roscpp_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/roscpp_generate_messages_cpp.dir/build.make CMakeFiles/roscpp_generate_messages_cpp.dir/build
+.PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named gmock_main
+# Target rules for targets named astronaut_controllers_generate_messages_cpp
 
 # Build rule for target.
-gmock_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
-.PHONY : gmock_main
+astronaut_controllers_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_cpp
+.PHONY : astronaut_controllers_generate_messages_cpp
 
 # fast build rule for target.
-gmock_main/fast:
-	$(MAKE) -f gtest/CMakeFiles/gmock_main.dir/build.make gtest/CMakeFiles/gmock_main.dir/build
-.PHONY : gmock_main/fast
+astronaut_controllers_generate_messages_cpp/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build
+.PHONY : astronaut_controllers_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named gtest
+# Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
-gtest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest
-.PHONY : gtest
+std_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 std_msgs_generate_messages_nodejs
+.PHONY : std_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-gtest/fast:
-	$(MAKE) -f gtest/gtest/CMakeFiles/gtest.dir/build.make gtest/gtest/CMakeFiles/gtest.dir/build
-.PHONY : gtest/fast
+std_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
+.PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named gtest_main
+# Target rules for targets named astronaut_controllers_generate_messages_lisp
 
 # Build rule for target.
-gtest_main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
-.PHONY : gtest_main
+astronaut_controllers_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_lisp
+.PHONY : astronaut_controllers_generate_messages_lisp
 
 # fast build rule for target.
-gtest_main/fast:
-	$(MAKE) -f gtest/gtest/CMakeFiles/gtest_main.dir/build.make gtest/gtest/CMakeFiles/gtest_main.dir/build
-.PHONY : gtest_main/fast
+astronaut_controllers_generate_messages_lisp/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/build
+.PHONY : astronaut_controllers_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_nodejs
+
+# Build rule for target.
+astronaut_controllers_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_nodejs
+.PHONY : astronaut_controllers_generate_messages_nodejs
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build
+.PHONY : astronaut_controllers_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named astronaut_controllers_generate_messages_py
+
+# Build rule for target.
+astronaut_controllers_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 astronaut_controllers_generate_messages_py
+.PHONY : astronaut_controllers_generate_messages_py
+
+# fast build rule for target.
+astronaut_controllers_generate_messages_py/fast:
+	$(MAKE) -f CMakeFiles/astronaut_controllers_generate_messages_py.dir/build.make CMakeFiles/astronaut_controllers_generate_messages_py.dir/build
+.PHONY : astronaut_controllers_generate_messages_py/fast
 
 src/look_to_aruco.o: src/look_to_aruco.cpp.o
 
@@ -628,44 +526,36 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... list_install_components"
 	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... edit_cache"
-	@echo "... test"
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... look_to_aruco"
 	@echo "... send_position"
-	@echo "... astronaut_controllers_generate_messages_py"
-	@echo "... install/strip"
-	@echo "... astronaut_controllers_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... clean_test_results"
-	@echo "... astronaut_controllers_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_eus"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... astronaut_controllers_generate_messages_cpp"
 	@echo "... download_extra_data"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... astronaut_controllers_generate_messages_eus"
-	@echo "... doxygen"
-	@echo "... run_tests"
-	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
+	@echo "... std_msgs_generate_messages_cpp"
+	@echo "... doxygen"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... tests"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
+	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... std_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_eus"
-	@echo "... gmock"
-	@echo "... gmock_main"
-	@echo "... gtest"
-	@echo "... gtest_main"
+	@echo "... roscpp_generate_messages_cpp"
+	@echo "... astronaut_controllers_generate_messages_cpp"
+	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... astronaut_controllers_generate_messages_lisp"
+	@echo "... install/strip"
+	@echo "... astronaut_controllers_generate_messages_nodejs"
+	@echo "... astronaut_controllers_generate_messages_py"
 	@echo "... src/look_to_aruco.o"
 	@echo "... src/look_to_aruco.i"
 	@echo "... src/look_to_aruco.s"

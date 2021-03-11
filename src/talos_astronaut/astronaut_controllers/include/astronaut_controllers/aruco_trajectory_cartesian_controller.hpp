@@ -173,6 +173,7 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     // Target frame is already with ISS reference
     control_error = KDL::diff(current_pose, target_frame_);
+    std::cout << "Error: " << control_error << std::endl;
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(final_error);
@@ -299,11 +300,11 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             begin_time_ = ros::Time::now();
             // If a direfent frame is recalculated it won't do a 7 sec trajectory
             // if((duration_time_ - now) > 0.0) duration_time_ = duration_time_ - now;
-            std::cout << "NOW Vel: " << vel_i_ << std::endl;
-            std::cout << "NOW Acc: " << acc_i_ << std::endl;
-            std::cout << "START DISTANCE between frames : " << start_distance_ << std::endl;
-            std::cout << "DISTANCE between frames : " << frame_distance << std::endl;
-            std::cout << "DURATION time recalculated : " << duration_time_ << std::endl;
+            // std::cout << "NOW Vel: " << vel_i_ << std::endl;
+            // std::cout << "NOW Acc: " << acc_i_ << std::endl;
+            // std::cout << "START DISTANCE between frames : " << start_distance_ << std::endl;
+            // std::cout << "DISTANCE between frames : " << frame_distance << std::endl;
+            // std::cout << "DURATION time recalculated : " << duration_time_ << std::endl;
 
             // std::cout << "Start Frame:" << std::endl;
             // std::cout << "X: " << start_frame_.p.x() << std::endl;

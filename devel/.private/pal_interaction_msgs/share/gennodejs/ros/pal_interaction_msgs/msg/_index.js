@@ -1,110 +1,110 @@
 
 "use strict";
 
-let actiontag = require('./actiontag.js');
-let ASRSrvResponse = require('./ASRSrvResponse.js');
-let ASREvent = require('./ASREvent.js');
-let TtsText = require('./TtsText.js');
-let TTSstate = require('./TTSstate.js');
-let ASRSrvRequest = require('./ASRSrvRequest.js');
-let InputArgument = require('./InputArgument.js');
-let ASRLanguage = require('./ASRLanguage.js');
-let audiosignal = require('./audiosignal.js');
 let asrresult = require('./asrresult.js');
+let audiosignal = require('./audiosignal.js');
+let InputArgument = require('./InputArgument.js');
 let Input = require('./Input.js');
-let ASRActivation = require('./ASRActivation.js');
-let VoiceActivity = require('./VoiceActivity.js');
-let DirectionOfArrival = require('./DirectionOfArrival.js');
-let I18nText = require('./I18nText.js');
+let TtsMark = require('./TtsMark.js');
 let ASRStatus = require('./ASRStatus.js');
+let I18nText = require('./I18nText.js');
+let TTSstate = require('./TTSstate.js');
+let ASREvent = require('./ASREvent.js');
+let actiontag = require('./actiontag.js');
+let TtsText = require('./TtsText.js');
+let ASRSrvResponse = require('./ASRSrvResponse.js');
+let DirectionOfArrival = require('./DirectionOfArrival.js');
+let AudioPlayerState = require('./AudioPlayerState.js');
 let AudioDeviceDescription = require('./AudioDeviceDescription.js');
-let WebGuiEvent = require('./WebGuiEvent.js');
-let ASRLangModelMngmt = require('./ASRLangModelMngmt.js');
-let I18nArgument = require('./I18nArgument.js');
+let VoiceActivity = require('./VoiceActivity.js');
 let asrupdate = require('./asrupdate.js');
 let EnablingSoundLocalisation = require('./EnablingSoundLocalisation.js');
-let AudioPlayerState = require('./AudioPlayerState.js');
-let TtsMark = require('./TtsMark.js');
-let AudioPlayFeedback = require('./AudioPlayFeedback.js');
-let AudioPlayGoal = require('./AudioPlayGoal.js');
-let ASRFileActionFeedback = require('./ASRFileActionFeedback.js');
-let TtsGoal = require('./TtsGoal.js');
-let TtsActionResult = require('./TtsActionResult.js');
-let TtsActionFeedback = require('./TtsActionFeedback.js');
-let AudioPlayActionGoal = require('./AudioPlayActionGoal.js');
-let SoundActionGoal = require('./SoundActionGoal.js');
-let AudioPlayActionFeedback = require('./AudioPlayActionFeedback.js');
+let ASRLangModelMngmt = require('./ASRLangModelMngmt.js');
+let ASRLanguage = require('./ASRLanguage.js');
+let ASRActivation = require('./ASRActivation.js');
+let WebGuiEvent = require('./WebGuiEvent.js');
+let ASRSrvRequest = require('./ASRSrvRequest.js');
+let I18nArgument = require('./I18nArgument.js');
 let ASRFileGoal = require('./ASRFileGoal.js');
-let SoundActionFeedback = require('./SoundActionFeedback.js');
-let SoundActionResult = require('./SoundActionResult.js');
-let AudioPlayAction = require('./AudioPlayAction.js');
-let SoundAction = require('./SoundAction.js');
-let ASRFileAction = require('./ASRFileAction.js');
-let ASRFileActionResult = require('./ASRFileActionResult.js');
-let TtsFeedback = require('./TtsFeedback.js');
-let AudioPlayResult = require('./AudioPlayResult.js');
-let ASRFileResult = require('./ASRFileResult.js');
-let TtsAction = require('./TtsAction.js');
-let SoundFeedback = require('./SoundFeedback.js');
-let SoundGoal = require('./SoundGoal.js');
-let ASRFileActionGoal = require('./ASRFileActionGoal.js');
-let SoundResult = require('./SoundResult.js');
-let TtsResult = require('./TtsResult.js');
-let TtsActionGoal = require('./TtsActionGoal.js');
-let AudioPlayActionResult = require('./AudioPlayActionResult.js');
 let ASRFileFeedback = require('./ASRFileFeedback.js');
+let ASRFileActionFeedback = require('./ASRFileActionFeedback.js');
+let SoundResult = require('./SoundResult.js');
+let TtsAction = require('./TtsAction.js');
+let ASRFileActionResult = require('./ASRFileActionResult.js');
+let AudioPlayResult = require('./AudioPlayResult.js');
+let SoundFeedback = require('./SoundFeedback.js');
+let TtsActionResult = require('./TtsActionResult.js');
+let SoundGoal = require('./SoundGoal.js');
+let TtsGoal = require('./TtsGoal.js');
+let AudioPlayFeedback = require('./AudioPlayFeedback.js');
+let AudioPlayActionFeedback = require('./AudioPlayActionFeedback.js');
+let SoundActionGoal = require('./SoundActionGoal.js');
+let AudioPlayActionGoal = require('./AudioPlayActionGoal.js');
+let AudioPlayAction = require('./AudioPlayAction.js');
+let TtsResult = require('./TtsResult.js');
+let AudioPlayActionResult = require('./AudioPlayActionResult.js');
+let ASRFileResult = require('./ASRFileResult.js');
+let SoundAction = require('./SoundAction.js');
+let SoundActionResult = require('./SoundActionResult.js');
+let AudioPlayGoal = require('./AudioPlayGoal.js');
+let TtsActionGoal = require('./TtsActionGoal.js');
+let TtsActionFeedback = require('./TtsActionFeedback.js');
+let ASRFileActionGoal = require('./ASRFileActionGoal.js');
+let SoundActionFeedback = require('./SoundActionFeedback.js');
+let TtsFeedback = require('./TtsFeedback.js');
+let ASRFileAction = require('./ASRFileAction.js');
 
 module.exports = {
-  actiontag: actiontag,
-  ASRSrvResponse: ASRSrvResponse,
-  ASREvent: ASREvent,
-  TtsText: TtsText,
-  TTSstate: TTSstate,
-  ASRSrvRequest: ASRSrvRequest,
-  InputArgument: InputArgument,
-  ASRLanguage: ASRLanguage,
-  audiosignal: audiosignal,
   asrresult: asrresult,
+  audiosignal: audiosignal,
+  InputArgument: InputArgument,
   Input: Input,
-  ASRActivation: ASRActivation,
-  VoiceActivity: VoiceActivity,
-  DirectionOfArrival: DirectionOfArrival,
-  I18nText: I18nText,
+  TtsMark: TtsMark,
   ASRStatus: ASRStatus,
+  I18nText: I18nText,
+  TTSstate: TTSstate,
+  ASREvent: ASREvent,
+  actiontag: actiontag,
+  TtsText: TtsText,
+  ASRSrvResponse: ASRSrvResponse,
+  DirectionOfArrival: DirectionOfArrival,
+  AudioPlayerState: AudioPlayerState,
   AudioDeviceDescription: AudioDeviceDescription,
-  WebGuiEvent: WebGuiEvent,
-  ASRLangModelMngmt: ASRLangModelMngmt,
-  I18nArgument: I18nArgument,
+  VoiceActivity: VoiceActivity,
   asrupdate: asrupdate,
   EnablingSoundLocalisation: EnablingSoundLocalisation,
-  AudioPlayerState: AudioPlayerState,
-  TtsMark: TtsMark,
-  AudioPlayFeedback: AudioPlayFeedback,
-  AudioPlayGoal: AudioPlayGoal,
-  ASRFileActionFeedback: ASRFileActionFeedback,
-  TtsGoal: TtsGoal,
-  TtsActionResult: TtsActionResult,
-  TtsActionFeedback: TtsActionFeedback,
-  AudioPlayActionGoal: AudioPlayActionGoal,
-  SoundActionGoal: SoundActionGoal,
-  AudioPlayActionFeedback: AudioPlayActionFeedback,
+  ASRLangModelMngmt: ASRLangModelMngmt,
+  ASRLanguage: ASRLanguage,
+  ASRActivation: ASRActivation,
+  WebGuiEvent: WebGuiEvent,
+  ASRSrvRequest: ASRSrvRequest,
+  I18nArgument: I18nArgument,
   ASRFileGoal: ASRFileGoal,
-  SoundActionFeedback: SoundActionFeedback,
-  SoundActionResult: SoundActionResult,
-  AudioPlayAction: AudioPlayAction,
-  SoundAction: SoundAction,
-  ASRFileAction: ASRFileAction,
-  ASRFileActionResult: ASRFileActionResult,
-  TtsFeedback: TtsFeedback,
-  AudioPlayResult: AudioPlayResult,
-  ASRFileResult: ASRFileResult,
-  TtsAction: TtsAction,
-  SoundFeedback: SoundFeedback,
-  SoundGoal: SoundGoal,
-  ASRFileActionGoal: ASRFileActionGoal,
-  SoundResult: SoundResult,
-  TtsResult: TtsResult,
-  TtsActionGoal: TtsActionGoal,
-  AudioPlayActionResult: AudioPlayActionResult,
   ASRFileFeedback: ASRFileFeedback,
+  ASRFileActionFeedback: ASRFileActionFeedback,
+  SoundResult: SoundResult,
+  TtsAction: TtsAction,
+  ASRFileActionResult: ASRFileActionResult,
+  AudioPlayResult: AudioPlayResult,
+  SoundFeedback: SoundFeedback,
+  TtsActionResult: TtsActionResult,
+  SoundGoal: SoundGoal,
+  TtsGoal: TtsGoal,
+  AudioPlayFeedback: AudioPlayFeedback,
+  AudioPlayActionFeedback: AudioPlayActionFeedback,
+  SoundActionGoal: SoundActionGoal,
+  AudioPlayActionGoal: AudioPlayActionGoal,
+  AudioPlayAction: AudioPlayAction,
+  TtsResult: TtsResult,
+  AudioPlayActionResult: AudioPlayActionResult,
+  ASRFileResult: ASRFileResult,
+  SoundAction: SoundAction,
+  SoundActionResult: SoundActionResult,
+  AudioPlayGoal: AudioPlayGoal,
+  TtsActionGoal: TtsActionGoal,
+  TtsActionFeedback: TtsActionFeedback,
+  ASRFileActionGoal: ASRFileActionGoal,
+  SoundActionFeedback: SoundActionFeedback,
+  TtsFeedback: TtsFeedback,
+  ASRFileAction: ASRFileAction,
 };

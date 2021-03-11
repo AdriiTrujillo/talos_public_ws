@@ -1,10 +1,10 @@
 
 "use strict";
 
-let Marker = require('./Marker.js');
 let MarkerArray = require('./MarkerArray.js');
+let Marker = require('./Marker.js');
 
 module.exports = {
-  Marker: Marker,
   MarkerArray: MarkerArray,
+  Marker: Marker,
 };

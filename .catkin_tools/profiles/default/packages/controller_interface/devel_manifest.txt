@@ -1,5 +1,5 @@
 ros_control/controller_interface
 /home/adrii/talos_public_ws/devel/.private/controller_interface/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
+/home/adrii/talos_public_ws/devel/.private/controller_interface/lib/pkgconfig/controller_interface.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/controller_interface.pc
 /home/adrii/talos_public_ws/devel/.private/controller_interface/share/controller_interface/cmake/controller_interfaceConfig-version.cmake /home/adrii/talos_public_ws/devel/share/controller_interface/cmake/controller_interfaceConfig-version.cmake
 /home/adrii/talos_public_ws/devel/.private/controller_interface/share/controller_interface/cmake/controller_interfaceConfig.cmake /home/adrii/talos_public_ws/devel/share/controller_interface/cmake/controller_interfaceConfig.cmake
-/home/adrii/talos_public_ws/devel/.private/controller_interface/lib/pkgconfig/controller_interface.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/controller_interface.pc

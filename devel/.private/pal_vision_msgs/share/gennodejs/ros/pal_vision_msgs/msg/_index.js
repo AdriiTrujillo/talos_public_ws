@@ -1,42 +1,42 @@
 
 "use strict";
 
-let FollowMeResponse = require('./FollowMeResponse.js');
-let HogDetection = require('./HogDetection.js');
-let Gesture = require('./Gesture.js');
-let DetectedPerson = require('./DetectedPerson.js');
-let FaceDetections = require('./FaceDetections.js');
-let FaceDetection = require('./FaceDetection.js');
-let HeadPanTilt = require('./HeadPanTilt.js');
 let LegDetections = require('./LegDetections.js');
+let DetectedPerson = require('./DetectedPerson.js');
+let FaceDetection = require('./FaceDetection.js');
 let HogDetections = require('./HogDetections.js');
-let Rectangle = require('./Rectangle.js');
+let FollowMeResponse = require('./FollowMeResponse.js');
 let DetectedObject = require('./DetectedObject.js');
-let FaceRecognitionActionGoal = require('./FaceRecognitionActionGoal.js');
-let FaceRecognitionActionResult = require('./FaceRecognitionActionResult.js');
-let FaceRecognitionAction = require('./FaceRecognitionAction.js');
+let FaceDetections = require('./FaceDetections.js');
+let HeadPanTilt = require('./HeadPanTilt.js');
+let Rectangle = require('./Rectangle.js');
+let Gesture = require('./Gesture.js');
+let HogDetection = require('./HogDetection.js');
 let FaceRecognitionFeedback = require('./FaceRecognitionFeedback.js');
+let FaceRecognitionActionResult = require('./FaceRecognitionActionResult.js');
 let FaceRecognitionGoal = require('./FaceRecognitionGoal.js');
-let FaceRecognitionResult = require('./FaceRecognitionResult.js');
+let FaceRecognitionAction = require('./FaceRecognitionAction.js');
+let FaceRecognitionActionGoal = require('./FaceRecognitionActionGoal.js');
 let FaceRecognitionActionFeedback = require('./FaceRecognitionActionFeedback.js');
+let FaceRecognitionResult = require('./FaceRecognitionResult.js');
 
 module.exports = {
-  FollowMeResponse: FollowMeResponse,
-  HogDetection: HogDetection,
-  Gesture: Gesture,
-  DetectedPerson: DetectedPerson,
-  FaceDetections: FaceDetections,
-  FaceDetection: FaceDetection,
-  HeadPanTilt: HeadPanTilt,
   LegDetections: LegDetections,
+  DetectedPerson: DetectedPerson,
+  FaceDetection: FaceDetection,
   HogDetections: HogDetections,
-  Rectangle: Rectangle,
+  FollowMeResponse: FollowMeResponse,
   DetectedObject: DetectedObject,
-  FaceRecognitionActionGoal: FaceRecognitionActionGoal,
-  FaceRecognitionActionResult: FaceRecognitionActionResult,
-  FaceRecognitionAction: FaceRecognitionAction,
+  FaceDetections: FaceDetections,
+  HeadPanTilt: HeadPanTilt,
+  Rectangle: Rectangle,
+  Gesture: Gesture,
+  HogDetection: HogDetection,
   FaceRecognitionFeedback: FaceRecognitionFeedback,
+  FaceRecognitionActionResult: FaceRecognitionActionResult,
   FaceRecognitionGoal: FaceRecognitionGoal,
-  FaceRecognitionResult: FaceRecognitionResult,
+  FaceRecognitionAction: FaceRecognitionAction,
+  FaceRecognitionActionGoal: FaceRecognitionActionGoal,
   FaceRecognitionActionFeedback: FaceRecognitionActionFeedback,
+  FaceRecognitionResult: FaceRecognitionResult,
 };

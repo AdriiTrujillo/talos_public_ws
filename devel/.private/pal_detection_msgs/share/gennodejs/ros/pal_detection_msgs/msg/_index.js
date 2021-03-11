@@ -1,48 +1,48 @@
 
 "use strict";
 
-let Gesture = require('./Gesture.js');
-let RecognizedActions = require('./RecognizedActions.js');
+let PersonDetection = require('./PersonDetection.js');
+let LegDetections = require('./LegDetections.js');
+let Detection2d = require('./Detection2d.js');
+let FaceDetection = require('./FaceDetection.js');
 let RecognizedObject = require('./RecognizedObject.js');
 let FaceDetections = require('./FaceDetections.js');
-let FaceDetection = require('./FaceDetection.js');
-let Detection2d = require('./Detection2d.js');
-let PersonDetections = require('./PersonDetections.js');
-let RecognizedObjectArray = require('./RecognizedObjectArray.js');
-let LegDetections = require('./LegDetections.js');
-let RotatedDetection2d = require('./RotatedDetection2d.js');
-let TexturedObjectDetection = require('./TexturedObjectDetection.js');
-let WaveDetection = require('./WaveDetection.js');
-let PersonDetection = require('./PersonDetection.js');
 let Detections2d = require('./Detections2d.js');
-let RecognizeObjectsActionFeedback = require('./RecognizeObjectsActionFeedback.js');
-let RecognizeObjectsFeedback = require('./RecognizeObjectsFeedback.js');
-let RecognizeObjectsAction = require('./RecognizeObjectsAction.js');
-let RecognizeObjectsActionResult = require('./RecognizeObjectsActionResult.js');
-let RecognizeObjectsActionGoal = require('./RecognizeObjectsActionGoal.js');
-let RecognizeObjectsResult = require('./RecognizeObjectsResult.js');
+let RecognizedObjectArray = require('./RecognizedObjectArray.js');
+let RotatedDetection2d = require('./RotatedDetection2d.js');
+let RecognizedActions = require('./RecognizedActions.js');
+let Gesture = require('./Gesture.js');
+let TexturedObjectDetection = require('./TexturedObjectDetection.js');
+let PersonDetections = require('./PersonDetections.js');
+let WaveDetection = require('./WaveDetection.js');
 let RecognizeObjectsGoal = require('./RecognizeObjectsGoal.js');
+let RecognizeObjectsActionGoal = require('./RecognizeObjectsActionGoal.js');
+let RecognizeObjectsFeedback = require('./RecognizeObjectsFeedback.js');
+let RecognizeObjectsActionFeedback = require('./RecognizeObjectsActionFeedback.js');
+let RecognizeObjectsAction = require('./RecognizeObjectsAction.js');
+let RecognizeObjectsResult = require('./RecognizeObjectsResult.js');
+let RecognizeObjectsActionResult = require('./RecognizeObjectsActionResult.js');
 
 module.exports = {
-  Gesture: Gesture,
-  RecognizedActions: RecognizedActions,
+  PersonDetection: PersonDetection,
+  LegDetections: LegDetections,
+  Detection2d: Detection2d,
+  FaceDetection: FaceDetection,
   RecognizedObject: RecognizedObject,
   FaceDetections: FaceDetections,
-  FaceDetection: FaceDetection,
-  Detection2d: Detection2d,
-  PersonDetections: PersonDetections,
-  RecognizedObjectArray: RecognizedObjectArray,
-  LegDetections: LegDetections,
-  RotatedDetection2d: RotatedDetection2d,
-  TexturedObjectDetection: TexturedObjectDetection,
-  WaveDetection: WaveDetection,
-  PersonDetection: PersonDetection,
   Detections2d: Detections2d,
-  RecognizeObjectsActionFeedback: RecognizeObjectsActionFeedback,
-  RecognizeObjectsFeedback: RecognizeObjectsFeedback,
-  RecognizeObjectsAction: RecognizeObjectsAction,
-  RecognizeObjectsActionResult: RecognizeObjectsActionResult,
-  RecognizeObjectsActionGoal: RecognizeObjectsActionGoal,
-  RecognizeObjectsResult: RecognizeObjectsResult,
+  RecognizedObjectArray: RecognizedObjectArray,
+  RotatedDetection2d: RotatedDetection2d,
+  RecognizedActions: RecognizedActions,
+  Gesture: Gesture,
+  TexturedObjectDetection: TexturedObjectDetection,
+  PersonDetections: PersonDetections,
+  WaveDetection: WaveDetection,
   RecognizeObjectsGoal: RecognizeObjectsGoal,
+  RecognizeObjectsActionGoal: RecognizeObjectsActionGoal,
+  RecognizeObjectsFeedback: RecognizeObjectsFeedback,
+  RecognizeObjectsActionFeedback: RecognizeObjectsActionFeedback,
+  RecognizeObjectsAction: RecognizeObjectsAction,
+  RecognizeObjectsResult: RecognizeObjectsResult,
+  RecognizeObjectsActionResult: RecognizeObjectsActionResult,
 };

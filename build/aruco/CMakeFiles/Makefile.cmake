@@ -83,26 +83,17 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.5/Modules/CMakeParseArguments.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeSystemSpecificInformation.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeSystemSpecificInitialize.cmake"
-  "/usr/share/cmake-3.5/Modules/CheckIncludeFile.cmake"
-  "/usr/share/cmake-3.5/Modules/CheckLibraryExists.cmake"
-  "/usr/share/cmake-3.5/Modules/CheckSymbolExists.cmake"
   "/usr/share/cmake-3.5/Modules/Compiler/GNU-C.cmake"
   "/usr/share/cmake-3.5/Modules/Compiler/GNU-CXX.cmake"
   "/usr/share/cmake-3.5/Modules/Compiler/GNU.cmake"
-  "/usr/share/cmake-3.5/Modules/DartConfiguration.tcl.in"
-  "/usr/share/cmake-3.5/Modules/FindGTest.cmake"
   "/usr/share/cmake-3.5/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.5/Modules/FindPackageMessage.cmake"
   "/usr/share/cmake-3.5/Modules/FindPythonInterp.cmake"
-  "/usr/share/cmake-3.5/Modules/FindThreads.cmake"
   "/usr/share/cmake-3.5/Modules/Platform/Linux-GNU-C.cmake"
   "/usr/share/cmake-3.5/Modules/Platform/Linux-GNU-CXX.cmake"
   "/usr/share/cmake-3.5/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.5/Modules/Platform/Linux.cmake"
   "/usr/share/cmake-3.5/Modules/Platform/UnixPaths.cmake"
-  "/usr/src/gmock/CMakeLists.txt"
-  "/usr/src/gtest/CMakeLists.txt"
-  "/usr/src/gtest/cmake/internal_utils.cmake"
   )
 
 # The corresponding makefile is:
@@ -113,7 +104,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CTestConfiguration.ini"
   "catkin_generated/stamps/aruco/package.xml.stamp"
   "atomic_configure/_setup_util.py"
   "atomic_configure/env.sh"
@@ -147,22 +137,13 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "catkin_generated/installspace/arucoConfig.cmake"
   "catkin_generated/installspace/arucoConfig-version.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "gtest/gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/clean_test_results.dir/DependInfo.cmake"
-  "CMakeFiles/run_tests.dir/DependInfo.cmake"
+  "CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
+  "CMakeFiles/doxygen.dir/DependInfo.cmake"
+  "CMakeFiles/aruco.dir/DependInfo.cmake"
   "CMakeFiles/download_extra_data.dir/DependInfo.cmake"
   "CMakeFiles/optimalmarkers.dir/DependInfo.cmake"
-  "CMakeFiles/tests.dir/DependInfo.cmake"
-  "CMakeFiles/doxygen.dir/DependInfo.cmake"
-  "CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake"
-  "CMakeFiles/aruco.dir/DependInfo.cmake"
-  "gtest/CMakeFiles/gmock.dir/DependInfo.cmake"
-  "gtest/CMakeFiles/gmock_main.dir/DependInfo.cmake"
-  "gtest/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
-  "gtest/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )

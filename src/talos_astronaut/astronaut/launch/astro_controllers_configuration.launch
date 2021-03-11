@@ -4,12 +4,25 @@
   <arg name="prefix" />
   <arg name="hand_prefix" />
   <arg name="suffix" value=".yaml" />
-  <arg name="robot" default="full_v2" />
+  <arg name="robot" default="upper_body" />
 
-  <rosparam command="load" file="$(arg prefix)arm_left$(arg suffix)" />
-  <rosparam command="load" file="$(arg prefix)arm_right$(arg suffix)" />
-  <rosparam command="load" file="$(arg prefix)head$(arg suffix)" />
-  <rosparam command="load" file="$(arg prefix)torso$(arg suffix)" />
-  <rosparam command="load" file="$(arg hand_prefix)hand_full_ft_hey5_controllers$(arg suffix)" />
+  <group if="$(eval arg('robot') == 'upper_body')" >
+    <rosparam command="load" file="$(arg prefix)arm_left$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)arm_right$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)head$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)torso$(arg suffix)" />
+    <rosparam command="load" file="$(arg hand_prefix)hand_full_ft_hey5_controllers$(arg suffix)" />
+  </group>
+
+  <group if="$(eval arg('robot') == 'upper_body_gripper')" >
+    <rosparam command="load" file="$(arg prefix)arm_left$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)arm_right$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)head$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)torso$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)gripper_left$(arg suffix)" />
+    <rosparam command="load" file="$(arg prefix)gripper_right$(arg suffix)" />
+  </group>
+
+
 
 </launch>

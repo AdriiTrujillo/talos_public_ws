@@ -1,18 +1,18 @@
 
 "use strict";
 
-let ListControllerTypes = require('./ListControllerTypes.js')
 let LoadController = require('./LoadController.js')
-let SwitchController = require('./SwitchController.js')
+let ListControllerTypes = require('./ListControllerTypes.js')
 let UnloadController = require('./UnloadController.js')
-let ListControllers = require('./ListControllers.js')
 let ReloadControllerLibraries = require('./ReloadControllerLibraries.js')
+let SwitchController = require('./SwitchController.js')
+let ListControllers = require('./ListControllers.js')
 
 module.exports = {
-  ListControllerTypes: ListControllerTypes,
   LoadController: LoadController,
-  SwitchController: SwitchController,
+  ListControllerTypes: ListControllerTypes,
   UnloadController: UnloadController,
-  ListControllers: ListControllers,
   ReloadControllerLibraries: ReloadControllerLibraries,
+  SwitchController: SwitchController,
+  ListControllers: ListControllers,
 };

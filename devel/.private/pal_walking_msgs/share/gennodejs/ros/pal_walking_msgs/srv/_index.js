@@ -1,14 +1,14 @@
 
 "use strict";
 
-let WalkSteps = require('./WalkSteps.js')
 let StepOver = require('./StepOver.js')
-let Sit = require('./Sit.js')
+let WalkSteps = require('./WalkSteps.js')
 let MoveHipFeet = require('./MoveHipFeet.js')
+let Sit = require('./Sit.js')
 
 module.exports = {
-  WalkSteps: WalkSteps,
   StepOver: StepOver,
-  Sit: Sit,
+  WalkSteps: WalkSteps,
   MoveHipFeet: MoveHipFeet,
+  Sit: Sit,
 };

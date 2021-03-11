@@ -150,6 +150,10 @@ add_executable(hand_service src/hand_service.cpp)
 target_link_libraries(hand_service ${catkin_LIBRARIES})
 add_dependencies(hand_service astronaut_controllers_gencpp)
 
+add_executable(gripper_service src/gripper_service.cpp)
+target_link_libraries(gripper_service ${catkin_LIBRARIES})
+add_dependencies(gripper_service astronaut_controllers_gencpp)
+
 add_executable(matrix_transf src/matrix_transf.cpp)
 target_link_libraries(matrix_transf ${catkin_LIBRARIES})
 

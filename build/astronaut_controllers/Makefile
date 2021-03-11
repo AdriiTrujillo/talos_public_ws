@@ -90,6 +90,17 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -110,17 +121,6 @@ install/strip: preinstall
 install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -519,6 +519,19 @@ astronaut_controllers_genpy/fast:
 .PHONY : astronaut_controllers_genpy/fast
 
 #=============================================================================
+# Target rules for targets named trajectory_msgs_generate_messages_nodejs
+
+# Build rule for target.
+trajectory_msgs_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 trajectory_msgs_generate_messages_nodejs
+.PHONY : trajectory_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+trajectory_msgs_generate_messages_nodejs/fast:
+	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
+.PHONY : trajectory_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
 # Target rules for targets named astronaut_controllers_generate_messages_eus
 
 # Build rule for target.
@@ -688,6 +701,19 @@ astronaut_controllers_lib/fast:
 .PHONY : astronaut_controllers_lib/fast
 
 #=============================================================================
+# Target rules for targets named gripper_service
+
+# Build rule for target.
+gripper_service: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gripper_service
+.PHONY : gripper_service
+
+# fast build rule for target.
+gripper_service/fast:
+	$(MAKE) -f CMakeFiles/gripper_service.dir/build.make CMakeFiles/gripper_service.dir/build
+.PHONY : gripper_service/fast
+
+#=============================================================================
 # Target rules for targets named matrix_transf
 
 # Build rule for target.
@@ -699,19 +725,6 @@ matrix_transf: cmake_check_build_system
 matrix_transf/fast:
 	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/build
 .PHONY : matrix_transf/fast
-
-#=============================================================================
-# Target rules for targets named trajectory_msgs_generate_messages_nodejs
-
-# Build rule for target.
-trajectory_msgs_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 trajectory_msgs_generate_messages_nodejs
-.PHONY : trajectory_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-trajectory_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build.make CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/build
-.PHONY : trajectory_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named trajectories
@@ -752,6 +765,33 @@ src/cartesian_controller.s: src/cartesian_controller.cpp.s
 src/cartesian_controller.cpp.s:
 	$(MAKE) -f CMakeFiles/astronaut_controllers_lib.dir/build.make CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.s
 .PHONY : src/cartesian_controller.cpp.s
+
+src/gripper_service.o: src/gripper_service.cpp.o
+
+.PHONY : src/gripper_service.o
+
+# target to build an object file
+src/gripper_service.cpp.o:
+	$(MAKE) -f CMakeFiles/gripper_service.dir/build.make CMakeFiles/gripper_service.dir/src/gripper_service.cpp.o
+.PHONY : src/gripper_service.cpp.o
+
+src/gripper_service.i: src/gripper_service.cpp.i
+
+.PHONY : src/gripper_service.i
+
+# target to preprocess a source file
+src/gripper_service.cpp.i:
+	$(MAKE) -f CMakeFiles/gripper_service.dir/build.make CMakeFiles/gripper_service.dir/src/gripper_service.cpp.i
+.PHONY : src/gripper_service.cpp.i
+
+src/gripper_service.s: src/gripper_service.cpp.s
+
+.PHONY : src/gripper_service.s
+
+# target to generate assembly for a file
+src/gripper_service.cpp.s:
+	$(MAKE) -f CMakeFiles/gripper_service.dir/build.make CMakeFiles/gripper_service.dir/src/gripper_service.cpp.s
+.PHONY : src/gripper_service.cpp.s
 
 src/hand_service.o: src/hand_service.cpp.o
 
@@ -871,6 +911,8 @@ help:
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... astronaut_controllers_genpy"
+	@echo "... install/local"
+	@echo "... trajectory_msgs_generate_messages_nodejs"
 	@echo "... astronaut_controllers_generate_messages_eus"
 	@echo "... astronaut_controllers_generate_messages"
 	@echo "... astronaut_controllers_geneus"
@@ -886,13 +928,15 @@ help:
 	@echo "... install/strip"
 	@echo "... astronaut_controllers_gennodejs"
 	@echo "... astronaut_controllers_lib"
+	@echo "... gripper_service"
 	@echo "... matrix_transf"
-	@echo "... trajectory_msgs_generate_messages_nodejs"
-	@echo "... install/local"
 	@echo "... trajectories"
 	@echo "... src/cartesian_controller.o"
 	@echo "... src/cartesian_controller.i"
 	@echo "... src/cartesian_controller.s"
+	@echo "... src/gripper_service.o"
+	@echo "... src/gripper_service.i"
+	@echo "... src/gripper_service.s"
 	@echo "... src/hand_service.o"
 	@echo "... src/hand_service.i"
 	@echo "... src/hand_service.s"

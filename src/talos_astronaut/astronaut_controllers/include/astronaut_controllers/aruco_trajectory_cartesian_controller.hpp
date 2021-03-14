@@ -319,7 +319,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 75.0;
+            kp_ = 125.0;
         }
     }
 

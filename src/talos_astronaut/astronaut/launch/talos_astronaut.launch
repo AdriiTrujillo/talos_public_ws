@@ -20,7 +20,8 @@
         <arg name="foot_collision" default="thinbox"/>
         <arg name="default_configuration_type" default="astro"/>
         <arg name="disable_gazebo_camera" default="false"/>
-        <arg name="gzpose" default="-x -5.3036 -y 2.1012 -z 0.6166 -R -0.0063 -P 0.0245 -Y 0.0777"/>
+        <!-- <arg name="gzpose" default="-x -5.3036 -y 2.1012 -z 0.6166 -R -0.0063 -P 0.0245 -Y 0.0777"/> -->
+        <arg name="gzpose" default="-x -5.323 -y 2.353 -z 0.638 -R -0.0063 -P 0.0245 -Y 0.0777"/>
 
         <env name="GAZEBO_MODEL_PATH" value="$(find talos_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
 

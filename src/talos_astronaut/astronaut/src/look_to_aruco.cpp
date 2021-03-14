@@ -29,10 +29,12 @@ int main(int argc, char **argv){
     head_tilt_move.data = -0.05;
     bool stop = false;
 
+    ros::Duration(0.5).sleep(); //Sleep for 5 secs
+    head_pan_publisher.publish(head_pan_move);
+    head_tilt_publisher.publish(head_tilt_move);
 
-    while(ros::ok){
-        head_pan_publisher.publish(head_pan_move);
-        head_tilt_publisher.publish(head_tilt_move);
+    while(ros::ok){ 
+
         if(close_hand and not stop){
             hand_client.call(hand_operation);
             if(hand_operation.response.succes){

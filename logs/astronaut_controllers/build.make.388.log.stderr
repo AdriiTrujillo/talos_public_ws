@@ -1,7 +1,0 @@
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/trajectories.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/trajectories.cpp:31:30:[m[K [01;31m[Kerror: [m[K‘[01m[Ktaject[m[K’ was not declared in this scope
-     KDL::Frame final_frame = taject->Pos(7);
-[01;32m[K                              ^[m[K
-make[2]: *** [CMakeFiles/trajectories.dir/src/trajectories.cpp.o] Error 1
-make[1]: *** [CMakeFiles/trajectories.dir/all] Error 2
-make: *** [all] Error 2

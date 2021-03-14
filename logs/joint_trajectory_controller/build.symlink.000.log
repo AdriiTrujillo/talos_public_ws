@@ -1,4 +1,4 @@
-Symlinking /home/adrii/talos_public_ws/devel/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig.cmake
-Symlinking /home/adrii/talos_public_ws/devel/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig-version.cmake
 Symlinking /home/adrii/talos_public_ws/devel/lib/libjoint_trajectory_controller.so
 Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/joint_trajectory_controller.pc
+Symlinking /home/adrii/talos_public_ws/devel/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/joint_trajectory_controller/cmake/joint_trajectory_controllerConfig.cmake

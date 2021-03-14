@@ -118,7 +118,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     //     std::cout << " ------------------------- " << std::endl;
     // }
 
-    aruco_subscr_ = nh.subscribe("/aruco_single/pose", 3, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
+    aruco_subscr_ = nh.subscribe("/aruco_single/pose", 10000, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
 
     return true;
@@ -173,7 +173,7 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     // Target frame is already with ISS reference
     control_error = KDL::diff(current_pose, target_frame_);
-    std::cout << "Error: " << control_error << std::endl;
+    // std::cout << "Error: " << control_error << std::endl;
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(final_error);

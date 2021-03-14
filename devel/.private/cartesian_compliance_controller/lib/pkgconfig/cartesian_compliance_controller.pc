@@ -1,8 +1,0 @@
-prefix=/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller
-
-Name: cartesian_compliance_controller
-Description: Description of cartesian_compliance_controller
-Version: 0.0.0
-Cflags: -I/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller/include -I/home/adrii/talos_public_ws/src/talos_astronaut/cartesian_controllers/cartesian_compliance_controller/include
-Libs: -L${prefix}/lib -lcartesian_compliance_controller
-Requires: roscpp cartesian_controller_base cartesian_motion_controller cartesian_force_controller dynamic_reconfigure pluginlib

@@ -1,9 +1,9 @@
-[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
-[  0%] Built target std_msgs_generate_messages_nodejs
 [35m[1mScanning dependencies of target _pal_tablet_msgs_generate_messages_check_deps_RobotStatus[0m
 [  0%] Built target _pal_tablet_msgs_generate_messages_check_deps_RobotStatus
 [35m[1mScanning dependencies of target _pal_tablet_msgs_generate_messages_check_deps_FunctionalityStatus[0m
 [  0%] Built target _pal_tablet_msgs_generate_messages_check_deps_FunctionalityStatus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
 [35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
 [  0%] Built target std_msgs_generate_messages_py
 [35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m

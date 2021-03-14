@@ -1,0 +1,5 @@
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/astronaut.pc
+Symlinking /home/adrii/talos_public_ws/devel/lib/astronaut/look_to_aruco
+Symlinking /home/adrii/talos_public_ws/devel/lib/astronaut/send_position
+Symlinking /home/adrii/talos_public_ws/devel/share/astronaut/cmake/astronautConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/astronaut/cmake/astronautConfig.cmake

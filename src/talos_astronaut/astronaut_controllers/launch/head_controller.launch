@@ -8,10 +8,9 @@
     <!-- Controllers -->
     <node name="head_controller_spawner" pkg="controller_manager" type="spawner"
         respawn="false" output="screen"
-        args="
+        args="--timeout 120
         astronaut_head_tilt_controller
-        astronaut_head_pan_controller
-        --timeout 60">
+        astronaut_head_pan_controller">
     </node>
     
     <!-- rqt -->

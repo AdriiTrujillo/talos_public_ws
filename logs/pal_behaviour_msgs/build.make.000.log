@@ -53,41 +53,42 @@
 [35m[1mScanning dependencies of target pal_behaviour_msgs_generate_messages_py[0m
 [  1%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationAction[0m
 [  2%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationActionGoal[0m
-[  3%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskFeedback[0m
-[  4%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskResult[0m
-[  6%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationActionResult[0m
-[  7%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationFeedback[0m
-[  8%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskGoal[0m
-[  9%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationActionFeedback[0m
-[ 10%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourArgument[0m
-[ 12%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionResult[0m
-[ 13%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationGoal[0m
-[ 14%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationResult[0m
-[ 15%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskAction[0m
-[ 16%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionFeedback[0m
-[ 18%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionGoal[0m
-[ 19%] [34m[1mGenerating Python code from SRV pal_behaviour_msgs/BehaviourEvent[0m
-[ 20%] [34m[1mGenerating Python msg __init__.py for pal_behaviour_msgs[0m
-[ 21%] [34m[1mGenerating Python srv __init__.py for pal_behaviour_msgs[0m
-[ 21%] Built target pal_behaviour_msgs_generate_messages_py
 [35m[1mScanning dependencies of target pal_behaviour_msgs_generate_messages_eus[0m
-[ 22%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationAction.msg[0m
-[ 24%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionGoal.msg[0m
-[ 25%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskFeedback.msg[0m
-[ 26%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskResult.msg[0m
-[ 27%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionResult.msg[0m
-[ 28%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationFeedback.msg[0m
-[ 30%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskGoal.msg[0m
-[ 31%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionFeedback.msg[0m
-[ 32%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourArgument.msg[0m
-[ 33%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionResult.msg[0m
-[ 34%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationGoal.msg[0m
-[ 36%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationResult.msg[0m
-[ 37%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskAction.msg[0m
-[ 38%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionFeedback.msg[0m
-[ 39%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionGoal.msg[0m
-[ 40%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourEvent.srv[0m
-[ 42%] [34m[1mGenerating EusLisp manifest code for pal_behaviour_msgs[0m
+[  3%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationAction.msg[0m
+[  4%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskFeedback[0m
+[  6%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionGoal.msg[0m
+[  7%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskResult[0m
+[  8%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskFeedback.msg[0m
+[  9%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskResult.msg[0m
+[ 10%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationActionResult[0m
+[ 12%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionResult.msg[0m
+[ 13%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationFeedback.msg[0m
+[ 14%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationFeedback[0m
+[ 15%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskGoal.msg[0m
+[ 16%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskGoal[0m
+[ 18%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationActionFeedback.msg[0m
+[ 19%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourArgument.msg[0m
+[ 20%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationActionFeedback[0m
+[ 21%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionResult.msg[0m
+[ 22%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationGoal.msg[0m
+[ 24%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourArgument[0m
+[ 25%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/PresentationResult.msg[0m
+[ 26%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskAction.msg[0m
+[ 27%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionFeedback.msg[0m
+[ 28%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourTaskActionGoal.msg[0m
+[ 30%] [34m[1mGenerating EusLisp code from pal_behaviour_msgs/BehaviourEvent.srv[0m
+[ 31%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionResult[0m
+[ 32%] [34m[1mGenerating EusLisp manifest code for pal_behaviour_msgs[0m
+[ 33%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationGoal[0m
+[ 34%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/PresentationResult[0m
+[ 36%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskAction[0m
+[ 37%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionFeedback[0m
+[ 38%] [34m[1mGenerating Python from MSG pal_behaviour_msgs/BehaviourTaskActionGoal[0m
+[ 39%] [34m[1mGenerating Python code from SRV pal_behaviour_msgs/BehaviourEvent[0m
+[ 39%] Built target pal_behaviour_msgs_generate_messages_eus
+[ 40%] [34m[1mGenerating Python msg __init__.py for pal_behaviour_msgs[0m
+[ 42%] [34m[1mGenerating Python srv __init__.py for pal_behaviour_msgs[0m
+[ 42%] Built target pal_behaviour_msgs_generate_messages_py
 [35m[1mScanning dependencies of target pal_behaviour_msgs_generate_messages_cpp[0m
 [ 43%] [34m[1mGenerating C++ code from pal_behaviour_msgs/PresentationAction.msg[0m
 [ 44%] [34m[1mGenerating C++ code from pal_behaviour_msgs/PresentationActionGoal.msg[0m
@@ -96,7 +97,6 @@
 [ 48%] [34m[1mGenerating C++ code from pal_behaviour_msgs/PresentationActionResult.msg[0m
 [ 49%] [34m[1mGenerating C++ code from pal_behaviour_msgs/PresentationFeedback.msg[0m
 [ 50%] [34m[1mGenerating C++ code from pal_behaviour_msgs/BehaviourTaskGoal.msg[0m
-[ 50%] Built target pal_behaviour_msgs_generate_messages_eus
 [ 51%] [34m[1mGenerating C++ code from pal_behaviour_msgs/PresentationActionFeedback.msg[0m
 [ 53%] [34m[1mGenerating C++ code from pal_behaviour_msgs/BehaviourArgument.msg[0m
 [ 54%] [34m[1mGenerating C++ code from pal_behaviour_msgs/BehaviourTaskActionResult.msg[0m

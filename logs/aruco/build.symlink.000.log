@@ -1,5 +1,5 @@
-Symlinking /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig.cmake
-Symlinking /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig-version.cmake
 Symlinking /home/adrii/talos_public_ws/devel/lib/libaruco.so
-Symlinking /home/adrii/talos_public_ws/devel/lib/aruco/optimalmarkers
 Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/aruco.pc
+Symlinking /home/adrii/talos_public_ws/devel/lib/aruco/optimalmarkers
+Symlinking /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig.cmake

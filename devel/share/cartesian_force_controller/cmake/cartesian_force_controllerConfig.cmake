@@ -1,1 +1,0 @@
-/home/adrii/talos_public_ws/devel/.private/cartesian_force_controller/share/cartesian_force_controller/cmake/cartesian_force_controllerConfig.cmake

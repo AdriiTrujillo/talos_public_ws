@@ -1,5 +1,0 @@
-talos_astronaut
-/home/adrii/talos_public_ws/devel/.private/talos_astronaut/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
-/home/adrii/talos_public_ws/devel/.private/talos_astronaut/share/talos_astronaut/cmake/talos_astronautConfig.cmake /home/adrii/talos_public_ws/devel/share/talos_astronaut/cmake/talos_astronautConfig.cmake
-/home/adrii/talos_public_ws/devel/.private/talos_astronaut/share/talos_astronaut/cmake/talos_astronautConfig-version.cmake /home/adrii/talos_public_ws/devel/share/talos_astronaut/cmake/talos_astronautConfig-version.cmake
-/home/adrii/talos_public_ws/devel/.private/talos_astronaut/lib/pkgconfig/talos_astronaut.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/talos_astronaut.pc

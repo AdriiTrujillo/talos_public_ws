@@ -1,4 +1,4 @@
-Symlinking /home/adrii/talos_public_ws/devel/share/four_wheel_steering_controller/cmake/four_wheel_steering_controllerConfig.cmake
-Symlinking /home/adrii/talos_public_ws/devel/share/four_wheel_steering_controller/cmake/four_wheel_steering_controllerConfig-version.cmake
 Symlinking /home/adrii/talos_public_ws/devel/lib/libfour_wheel_steering_controller.so
 Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/four_wheel_steering_controller.pc
+Symlinking /home/adrii/talos_public_ws/devel/share/four_wheel_steering_controller/cmake/four_wheel_steering_controllerConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/four_wheel_steering_controller/cmake/four_wheel_steering_controllerConfig-version.cmake

@@ -1,0 +1,7 @@
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:48:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllers/target_frame.h: No existe el archivo o el directorio
+compilation terminated.
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make[1]: *** Se espera a que terminen otras tareas....
+make: *** [all] Error 2

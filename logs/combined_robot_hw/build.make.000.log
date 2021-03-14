@@ -1,7 +1,9 @@
-[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
-[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
 [35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
 [  0%] Built target roscpp_generate_messages_py
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[  0%] Built target roscpp_generate_messages_eus
 [35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
 [  0%] Built target std_msgs_generate_messages_lisp
 [35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
@@ -24,8 +26,6 @@
 [  0%] Built target roscpp_generate_messages_lisp
 [35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
 [  0%] Built target std_msgs_generate_messages_eus
-[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
-[  0%] Built target std_msgs_generate_messages_nodejs
 [35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
 [  0%] Built target rosgraph_msgs_generate_messages_eus
 [35m[1mScanning dependencies of target combined_robot_hw[0m

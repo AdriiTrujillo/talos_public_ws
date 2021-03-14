@@ -1,1 +1,0 @@
-/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller/share/cartesian_compliance_controller/cmake/cartesian_compliance_controllerConfig.cmake

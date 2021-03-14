@@ -1,5 +1,5 @@
 right_arm_controller:
-  type: "astronaut_controllers/GazeboController"
+  type: "astronaut_controllers/GazeboTrajectoryController"
   end_effector_link: "wrist_right_ft_tool_link"
   base_link: "dummy_base_link"
   joints:

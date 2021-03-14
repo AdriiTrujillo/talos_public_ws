@@ -1,8 +1,0 @@
-prefix=/home/adrii/talos_public_ws/devel/.private/cartesian_motion_controller
-
-Name: cartesian_motion_controller
-Description: Description of cartesian_motion_controller
-Version: 0.0.0
-Cflags: -I/home/adrii/talos_public_ws/src/talos_astronaut/cartesian_controllers/cartesian_motion_controller/include
-Libs: -L${prefix}/lib -lcartesian_motion_controller
-Requires: 

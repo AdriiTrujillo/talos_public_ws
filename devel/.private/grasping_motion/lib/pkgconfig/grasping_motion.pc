@@ -1,8 +1,0 @@
-prefix=/home/adrii/talos_public_ws/devel/.private/grasping_motion
-
-Name: grasping_motion
-Description: Description of grasping_motion
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

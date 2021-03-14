@@ -1,7 +1,0 @@
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:23:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktalos_2_aruco_[m[K’ was not declared in this scope
-     talos_2_aruco_.M.GetRPY(roll, pitch, yaw);
-[01;32m[K     ^[m[K
-make[2]: *** [CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o] Error 1
-make[1]: *** [CMakeFiles/matrix_transf.dir/all] Error 2
-make: *** [all] Error 2

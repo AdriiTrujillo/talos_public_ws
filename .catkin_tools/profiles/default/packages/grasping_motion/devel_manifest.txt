@@ -1,6 +1,0 @@
-grasping_motion
-/home/adrii/talos_public_ws/devel/.private/grasping_motion/cmake.lock /home/adrii/talos_public_ws/devel/./cmake.lock
-/home/adrii/talos_public_ws/devel/.private/grasping_motion/share/grasping_motion/cmake/grasping_motionConfig-version.cmake /home/adrii/talos_public_ws/devel/share/grasping_motion/cmake/grasping_motionConfig-version.cmake
-/home/adrii/talos_public_ws/devel/.private/grasping_motion/share/grasping_motion/cmake/grasping_motionConfig.cmake /home/adrii/talos_public_ws/devel/share/grasping_motion/cmake/grasping_motionConfig.cmake
-/home/adrii/talos_public_ws/devel/.private/grasping_motion/lib/python2.7/dist-packages/grasping_motion/__init__.py /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/grasping_motion/__init__.py
-/home/adrii/talos_public_ws/devel/.private/grasping_motion/lib/pkgconfig/grasping_motion.pc /home/adrii/talos_public_ws/devel/lib/pkgconfig/grasping_motion.pc

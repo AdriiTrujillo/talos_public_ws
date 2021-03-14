@@ -1,1 +1,0 @@
-/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller/include/cartesian_compliance_controller/ComplianceControllerConfig.h

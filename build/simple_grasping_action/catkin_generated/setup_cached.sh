@@ -9,7 +9,6 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/simple_grasping_action:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/simple_grasping_action/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/simple_grasping_action/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/simple_grasping_action'
 export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/simple_grasping_action/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/simple_grasping_action/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

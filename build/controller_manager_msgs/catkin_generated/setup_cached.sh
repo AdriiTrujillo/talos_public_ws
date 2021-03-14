@@ -9,7 +9,6 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/controller_manager_msgs'
 export PYTHONPATH="/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/controller_manager_msgs/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

@@ -1,5 +1,0 @@
-[35m[1mScanning dependencies of target pal_transmissions_loader_plugins[0m
-[ 33%] [32mBuilding CXX object CMakeFiles/pal_transmissions_loader_plugins.dir/src/head_transmission_loader.cpp.o[0m
-[ 66%] [32mBuilding CXX object CMakeFiles/pal_transmissions_loader_plugins.dir/src/half_differential_transmission_loader.cpp.o[0m
-[100%] [32m[1mLinking CXX shared library /home/adrii/talos_public_ws/devel/.private/pal_transmissions/lib/libpal_transmissions_loader_plugins.so[0m
-[100%] Built target pal_transmissions_loader_plugins

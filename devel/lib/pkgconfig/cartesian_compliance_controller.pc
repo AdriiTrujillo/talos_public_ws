@@ -1,1 +1,0 @@
-/home/adrii/talos_public_ws/devel/.private/cartesian_compliance_controller/lib/pkgconfig/cartesian_compliance_controller.pc

@@ -1,1 +1,0 @@
-/home/adrii/talos_public_ws/devel/.private/talos_astronaut/share/talos_astronaut/cmake/talos_astronautConfig.cmake

@@ -1,4 +1,4 @@
-Symlinking /home/adrii/talos_public_ws/devel/share/simple_trajectory/cmake/simple_trajectoryConfig.cmake
-Symlinking /home/adrii/talos_public_ws/devel/share/simple_trajectory/cmake/simple_trajectoryConfig-version.cmake
 Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/simple_trajectory.pc
 Symlinking /home/adrii/talos_public_ws/devel/lib/simple_trajectory/simple_trajectory
+Symlinking /home/adrii/talos_public_ws/devel/share/simple_trajectory/cmake/simple_trajectoryConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/simple_trajectory/cmake/simple_trajectoryConfig-version.cmake

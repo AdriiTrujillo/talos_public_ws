@@ -4,26 +4,26 @@
 [  0%] Built target _pal_web_msgs_generate_messages_check_deps_WebGoTo
 [  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputFeedback
 [  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputGoal
-[  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputActionFeedback
 [  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputActionFeedback
 [  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputAction
-[  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputResult
 [  0%] Built target actionlib_msgs_generate_messages_nodejs
 [  0%] Built target actionlib_msgs_generate_messages_py
-[  0%] Built target std_msgs_generate_messages_py
 [  0%] Built target pal_interaction_msgs_generate_messages_py
+[  0%] Built target _pal_web_msgs_generate_messages_check_deps_GetUserInputResult
+[  0%] Built target std_msgs_generate_messages_py
 [  0%] Built target actionlib_msgs_generate_messages_lisp
 [  0%] Built target pal_interaction_msgs_generate_messages_lisp
 [  0%] Built target std_msgs_generate_messages_lisp
-[  0%] Built target actionlib_msgs_generate_messages_eus
 [  0%] Built target pal_interaction_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_eus
 [  0%] Built target std_msgs_generate_messages_eus
 [  0%] Built target std_msgs_generate_messages_cpp
 [  0%] Built target pal_interaction_msgs_generate_messages_cpp
 [  0%] Built target actionlib_msgs_generate_messages_cpp
 [ 19%] Built target pal_web_msgs_generate_messages_nodejs
-[ 38%] Built target pal_web_msgs_generate_messages_lisp
-[ 59%] Built target pal_web_msgs_generate_messages_py
+[ 40%] Built target pal_web_msgs_generate_messages_py
+[ 59%] Built target pal_web_msgs_generate_messages_lisp
 [ 80%] Built target pal_web_msgs_generate_messages_eus
 [100%] Built target pal_web_msgs_generate_messages_cpp
 [100%] Built target pal_web_msgs_generate_messages

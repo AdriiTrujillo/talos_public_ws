@@ -1,7 +1,0 @@
-set(grasping_motion_SETUP_PY_SETUP_MODULE "distutils.core")
-set(grasping_motion_SETUP_PY_VERSION "0.0.0")
-set(grasping_motion_SETUP_PY_SCRIPTS "")
-set(grasping_motion_SETUP_PY_PACKAGES "grasping_motion")
-set(grasping_motion_SETUP_PY_PACKAGE_DIRS "src/grasping_motion")
-set(grasping_motion_SETUP_PY_MODULES "")
-set(grasping_motion_SETUP_PY_MODULE_DIRS "")

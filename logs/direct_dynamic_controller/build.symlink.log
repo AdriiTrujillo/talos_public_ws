@@ -1,4 +1,4 @@
-Linked: (/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/lib/libdirect_dynamic_controller.so, /home/adrii/talos_public_ws/devel/lib/libdirect_dynamic_controller.so)
-Linked: (/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/lib/pkgconfig/direct_dynamic_controller.pc, /home/adrii/talos_public_ws/devel/lib/pkgconfig/direct_dynamic_controller.pc)
-Linked: (/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig-version.cmake, /home/adrii/talos_public_ws/devel/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig-version.cmake)
-Linked: (/home/adrii/talos_public_ws/devel/.private/direct_dynamic_controller/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig.cmake, /home/adrii/talos_public_ws/devel/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig.cmake)
+Symlinking /home/adrii/talos_public_ws/devel/lib/libdirect_dynamic_controller.so
+Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/direct_dynamic_controller.pc
+Symlinking /home/adrii/talos_public_ws/devel/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig-version.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/direct_dynamic_controller/cmake/direct_dynamic_controllerConfig.cmake

@@ -4,8 +4,8 @@
 [  0%] Built target _pal_statistics_msgs_generate_messages_check_deps_Statistics
 [  0%] Built target _pal_statistics_msgs_generate_messages_check_deps_Statistic
 [  0%] Built target std_msgs_generate_messages_py
-[  0%] Built target std_msgs_generate_messages_nodejs
 [  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
 [  0%] Built target std_msgs_generate_messages_cpp
 [ 18%] Built target pal_statistics_msgs_generate_messages_lisp
 [ 40%] Built target pal_statistics_msgs_generate_messages_py

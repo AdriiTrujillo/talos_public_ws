@@ -1,4 +1,4 @@
-Symlinking /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig.cmake
-Symlinking /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig-version.cmake
 Symlinking /home/adrii/talos_public_ws/devel/lib/libqr_detector_nodelet.so
 Symlinking /home/adrii/talos_public_ws/devel/lib/pkgconfig/qr_detector.pc
+Symlinking /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig.cmake
+Symlinking /home/adrii/talos_public_ws/devel/share/qr_detector/cmake/qr_detectorConfig-version.cmake

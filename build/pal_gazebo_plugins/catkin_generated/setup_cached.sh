@@ -8,8 +8,6 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/adrii/talos_public_ws/devel/.private/pal_gazebo_plugins:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/adrii/talos_public_ws/devel/.private/pal_gazebo_plugins/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/adrii/talos_public_ws/devel/.private/pal_gazebo_plugins/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/adrii/talos_public_ws/build/pal_gazebo_plugins'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/adrii/talos_public_ws/devel/.private/pal_gazebo_plugins/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/adrii/talos_public_ws/src/pal_gazebo_plugins:$ROS_PACKAGE_PATH"

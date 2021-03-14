@@ -14,7 +14,7 @@
 # EXTERNAL cache entries
 ########################
 
-//Build shared libraries (DLLs).
+//Build dynamically-linked binaries
 BUILD_SHARED_LIBS:BOOL=ON
 
 //catkin devel space
@@ -193,32 +193,11 @@ EMPY_EXECUTABLE:FILEPATH=/usr/bin/empy
 //Empy script
 EMPY_SCRIPT:STRING=/usr/bin/empy
 
-//The directory containing a CMake configuration file for GMock.
-GMock_DIR:PATH=GMock_DIR-NOTFOUND
-
-//Path to a file.
-GTEST_INCLUDE_DIR:PATH=/usr/include
-
-//Path to a library.
-GTEST_LIBRARY:FILEPATH=GTEST_LIBRARY-NOTFOUND
-
-//Path to a library.
-GTEST_LIBRARY_DEBUG:FILEPATH=GTEST_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
-
-//Path to a library.
-GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
-
 //lsb_release executable was found
 LSB_FOUND:BOOL=TRUE
 
 //Path to a program.
 LSB_RELEASE_EXECUTABLE:FILEPATH=/usr/bin/lsb_release
-
-//Path to a program.
-NOSETESTS:FILEPATH=/usr/bin/nosetests-2.7
 
 //Path to a program.
 PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python2
@@ -232,69 +211,14 @@ RT_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/librt.so
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
-//Name of the computer/site where compile is being run
-SITE:STRING=adrii-laptop
-
 //LSB Distrib tag
 UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_XENIAL:BOOL=TRUE
 
-//Path to a file.
-_gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
-
-//Path to a file.
-_gmock_SOURCES:FILEPATH=/usr/src/gmock/src/gmock.cc
-
-//Path to a file.
-_gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
-
-//Path to a file.
-_gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
-
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/kinetic/share/catkin/cmake
-
-//Value Computed by CMake
-gmock_BINARY_DIR:STATIC=/home/adrii/talos_public_ws/build/hey5_description/gtest
-
-//Dependencies for the target
-gmock_LIB_DEPENDS:STATIC=general;-lpthread;
-
-//Value Computed by CMake
-gmock_SOURCE_DIR:STATIC=/usr/src/gmock
-
-//Build all of Google Mock's own tests.
-gmock_build_tests:BOOL=OFF
-
-//Dependencies for the target
-gmock_main_LIB_DEPENDS:STATIC=general;-lpthread;
-
-//Value Computed by CMake
-gtest_BINARY_DIR:STATIC=/home/adrii/talos_public_ws/build/hey5_description/gtest/gtest
-
-//Dependencies for the target
-gtest_LIB_DEPENDS:STATIC=general;-lpthread;
-
-//Value Computed by CMake
-gtest_SOURCE_DIR:STATIC=/usr/src/gtest
-
-//Build gtest's sample programs.
-gtest_build_samples:BOOL=OFF
-
-//Build all of gtest's own tests.
-gtest_build_tests:BOOL=OFF
-
-//Disable uses of pthreads in gtest.
-gtest_disable_pthreads:BOOL=OFF
-
-//Use shared (DLL) run-time lib even when Google Test is built
-// as static lib.
-gtest_force_shared_crt:BOOL=OFF
-
-//Dependencies for the target
-gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
 //Value Computed by CMake
 hey5_description_BINARY_DIR:STATIC=/home/adrii/talos_public_ws/build/hey5_description
@@ -309,7 +233,6 @@ hey5_description_SOURCE_DIR:STATIC=/home/adrii/talos_public_ws/src/talos_astrona
 
 //catkin environment
 CATKIN_ENV:INTERNAL=/home/adrii/talos_public_ws/build/hey5_description/catkin_generated/env_cached.sh
-CATKIN_TEST_RESULTS_DIR:INTERNAL=/home/adrii/talos_public_ws/build/hey5_description/test_results
 //ADVANCED property for variable: CMAKE_AR
 CMAKE_AR-ADVANCED:INTERNAL=1
 //This is the directory where this CMakeCache.txt was created
@@ -374,14 +297,6 @@ CMAKE_GENERATOR:INTERNAL=Unix Makefiles
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Have symbol pthread_create
-CMAKE_HAVE_LIBC_CREATE:INTERNAL=
-//Have library pthreads
-CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
-//Have library pthread
-CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
-//Have include pthread.h
-CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/adrii/talos_public_ws/src/talos_astronaut/hey5_description
@@ -445,28 +360,6 @@ CMAKE_UNAME:INTERNAL=/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.12(2)]
-//Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
-GMOCK_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
-GMOCK_FROM_SOURCE_LIBRARIES:INTERNAL=gmock
-GMOCK_FROM_SOURCE_LIBRARY_DIRS:INTERNAL=/home/adrii/talos_public_ws/build/hey5_description/gmock
-GMOCK_FROM_SOURCE_MAIN_LIBRARIES:INTERNAL=gmock_main
-GTEST_FROM_SOURCE_FOUND:INTERNAL=TRUE
-GTEST_FROM_SOURCE_INCLUDE_DIRS:INTERNAL=/usr/include
-GTEST_FROM_SOURCE_LIBRARIES:INTERNAL=gtest
-GTEST_FROM_SOURCE_LIBRARY_DIRS:INTERNAL=/home/adrii/talos_public_ws/build/hey5_description/gtest
-GTEST_FROM_SOURCE_MAIN_LIBRARIES:INTERNAL=gtest_main
-//ADVANCED property for variable: GTEST_INCLUDE_DIR
-GTEST_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_LIBRARY
-GTEST_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_LIBRARY_DEBUG
-GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_MAIN_LIBRARY
-GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
-GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
 PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //This needs to be in PYTHONPATH when 'setup.py install' is called.

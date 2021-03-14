@@ -51,10 +51,10 @@
 [ 69%] [34m[1mGenerating Python code from SRV pal_motion_model_msgs/GetMotionMap[0m
 [ 73%] [34m[1mGenerating Python msg __init__.py for pal_motion_model_msgs[0m
 [ 78%] [34m[1mGenerating Python srv __init__.py for pal_motion_model_msgs[0m
-[ 78%] Built target pal_motion_model_msgs_generate_messages_py
 [35m[1mScanning dependencies of target pal_motion_model_msgs_generate_messages_eus[0m
 [ 82%] [34m[1mGenerating EusLisp code from pal_motion_model_msgs/MotionModelList.msg[0m
 [ 86%] [34m[1mGenerating EusLisp code from pal_motion_model_msgs/MotionModel.msg[0m
+[ 86%] Built target pal_motion_model_msgs_generate_messages_py
 [ 91%] [34m[1mGenerating EusLisp code from pal_motion_model_msgs/MotionModelMap.msg[0m
 [ 95%] [34m[1mGenerating EusLisp code from pal_motion_model_msgs/GetMotionMap.srv[0m
 [100%] [34m[1mGenerating EusLisp manifest code for pal_motion_model_msgs[0m

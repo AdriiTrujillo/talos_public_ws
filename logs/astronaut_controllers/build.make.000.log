@@ -1,0 +1,54 @@
+[35m[1mScanning dependencies of target _astronaut_controllers_generate_messages_check_deps_hand_operations[0m
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target trajectory_msgs_generate_messages_cpp[0m
+[  0%] Built target trajectory_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target _astronaut_controllers_generate_messages_check_deps_target_frame[0m
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target trajectory_msgs_generate_messages_nodejs[0m
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target trajectory_msgs_generate_messages_lisp[0m
+[  0%] Built target trajectory_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target trajectory_msgs_generate_messages_eus[0m
+[  0%] Built target trajectory_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target trajectory_msgs_generate_messages_py[0m
+[  0%] Built target trajectory_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[35m[1mScanning dependencies of target astronaut_controllers_lib[0m
+[  4%] [32mBuilding CXX object CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o[0m
+[35m[1mScanning dependencies of target matrix_transf[0m
+[  8%] [32mBuilding CXX object CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o[0m
+[ 13%] [32m[1mLinking CXX executable /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/matrix_transf[0m
+[ 13%] Built target matrix_transf
+[35m[1mScanning dependencies of target trajectories[0m
+[ 17%] [32mBuilding CXX object CMakeFiles/trajectories.dir/src/trajectories.cpp.o[0m
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:48:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllers/target_frame.h: No existe el archivo o el directorio
+compilation terminated.
+CMakeFiles/astronaut_controllers_lib.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o'
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+CMakeFiles/Makefile2:1413: fallo en las instrucciones para el objetivo 'CMakeFiles/astronaut_controllers_lib.dir/all'
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make[1]: *** Se espera a que terminen otras tareas....
+[ 21%] [32m[1mLinking CXX executable /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/trajectories[0m
+[ 21%] Built target trajectories
+Makefile:127: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

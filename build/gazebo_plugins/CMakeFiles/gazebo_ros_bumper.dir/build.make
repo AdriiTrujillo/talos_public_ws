@@ -116,6 +116,9 @@ gazebo_ros_bumper_EXTERNAL_OBJECTS =
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libignition-math2.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libignition-math2.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /opt/ros/kinetic/lib/libnodeletlib.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libuuid.so
@@ -188,6 +191,9 @@ gazebo_ros_bumper_EXTERNAL_OBJECTS =
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libprotobuf.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libsdformat.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libignition-math2.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgreMain.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+/home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libOgrePaging.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /opt/ros/kinetic/lib/libnodeletlib.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /usr/lib/x86_64-linux-gnu/libuuid.so
 /home/adrii/talos_public_ws/devel/.private/gazebo_plugins/lib/libgazebo_ros_bumper.so: /opt/ros/kinetic/lib/libbondcpp.so

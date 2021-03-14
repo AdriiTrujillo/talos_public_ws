@@ -66,22 +66,22 @@
 [ 40%] [34m[1mGenerating Python msg __init__.py for pal_web_msgs[0m
 [ 40%] Built target pal_web_msgs_generate_messages_py
 [35m[1mScanning dependencies of target pal_web_msgs_generate_messages_lisp[0m
-[ 42%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionFeedback.msg[0m
-[ 45%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionGoal.msg[0m
-[ 47%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputResult.msg[0m
-[ 50%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputGoal.msg[0m
-[ 52%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputFeedback.msg[0m
-[ 54%] [34m[1mGenerating Lisp code from pal_web_msgs/WebGoTo.msg[0m
-[ 57%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionResult.msg[0m
-[ 59%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputAction.msg[0m
-[ 59%] Built target pal_web_msgs_generate_messages_lisp
 [35m[1mScanning dependencies of target pal_web_msgs_generate_messages_eus[0m
-[ 61%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputActionFeedback.msg[0m
-[ 64%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputActionGoal.msg[0m
-[ 66%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputResult.msg[0m
-[ 69%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputGoal.msg[0m
-[ 71%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputFeedback.msg[0m
+[ 42%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionFeedback.msg[0m
+[ 45%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputActionFeedback.msg[0m
+[ 47%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionGoal.msg[0m
+[ 50%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputActionGoal.msg[0m
+[ 52%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputResult.msg[0m
+[ 54%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputResult.msg[0m
+[ 57%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputGoal.msg[0m
+[ 59%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputFeedback.msg[0m
+[ 61%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputGoal.msg[0m
+[ 64%] [34m[1mGenerating Lisp code from pal_web_msgs/WebGoTo.msg[0m
+[ 66%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputFeedback.msg[0m
+[ 69%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputActionResult.msg[0m
+[ 71%] [34m[1mGenerating Lisp code from pal_web_msgs/GetUserInputAction.msg[0m
 [ 73%] [34m[1mGenerating EusLisp code from pal_web_msgs/WebGoTo.msg[0m
+[ 73%] Built target pal_web_msgs_generate_messages_lisp
 [ 76%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputActionResult.msg[0m
 [ 78%] [34m[1mGenerating EusLisp code from pal_web_msgs/GetUserInputAction.msg[0m
 [ 80%] [34m[1mGenerating EusLisp manifest code for pal_web_msgs[0m
@@ -90,8 +90,8 @@
 [ 83%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputActionFeedback.msg[0m
 [ 85%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputActionGoal.msg[0m
 [ 88%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputResult.msg[0m
-[ 90%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputGoal.msg[0m
-[ 92%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputFeedback.msg[0m
+[ 90%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputFeedback.msg[0m
+[ 92%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputGoal.msg[0m
 [ 95%] [34m[1mGenerating C++ code from pal_web_msgs/WebGoTo.msg[0m
 [ 97%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputActionResult.msg[0m
 [100%] [34m[1mGenerating C++ code from pal_web_msgs/GetUserInputAction.msg[0m

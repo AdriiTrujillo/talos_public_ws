@@ -1,5 +1,0 @@
-[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/publisher.cpp:2:41:[m[K [01;31m[Kfatal error: [m[Kgeometry_msgs/PoseStamped.msg: No existe el archivo o el directorio
-compilation terminated.
-make[2]: *** [CMakeFiles/publisher.dir/src/publisher.cpp.o] Error 1
-make[1]: *** [CMakeFiles/publisher.dir/all] Error 2
-make: *** [all] Error 2

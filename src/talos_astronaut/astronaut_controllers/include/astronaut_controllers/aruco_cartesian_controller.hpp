@@ -212,8 +212,10 @@ bool aruco_cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
 
+    
+
     if(diff_frame_){ // To not check when it has just started
-        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
             return true;
         }
     }

@@ -154,16 +154,6 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
         target_frame_ = trajectory_->Pos(now_);
         vel_i_ = global_velPof_->Vel(now_);
         acc_i_ = global_velPof_->Acc(now_);
-        // std::cout << "NOW Vel: " << vel_i << std::endl;
-        // std::cout << "NOW Acc: " << acc_i << std::endl;
-        // std::cout << "Target Frame:" << std::endl;
-        // std::cout << "X: " << target_frame_.p.x() << std::endl;
-        // std::cout << "Y: " << target_frame_.p.y() << std::endl;
-        // std::cout << "Z: " << target_frame_.p.z() << std::endl;
-        // std::cout << "Current Frame:" << std::endl;
-        // std::cout << "X: " << current_pose.p.x() << std::endl;
-        // std::cout << "Y: " << current_pose.p.y() << std::endl;
-        // std::cout << "Z: " << current_pose.p.z() << std::endl;
         start_frame_ = current_pose;
     }
 
@@ -252,7 +242,7 @@ bool aruco_trajectory_cartesian_controller_class::compareTolerance(KDL::Twist er
 
     // Point reached
     if(diff_frame_){ // To not check when it has just started
-        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
             return true;
         }
     }
@@ -299,27 +289,12 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             // Save starting time for the trajectory
             begin_time_ = ros::Time::now();
             // If a direfent frame is recalculated it won't do a 7 sec trajectory
-            // if((duration_time_ - now) > 0.0) duration_time_ = duration_time_ - now;
-            // std::cout << "NOW Vel: " << vel_i_ << std::endl;
-            // std::cout << "NOW Acc: " << acc_i_ << std::endl;
-            // std::cout << "START DISTANCE between frames : " << start_distance_ << std::endl;
-            // std::cout << "DISTANCE between frames : " << frame_distance << std::endl;
-            // std::cout << "DURATION time recalculated : " << duration_time_ << std::endl;
-
-            // std::cout << "Start Frame:" << std::endl;
-            // std::cout << "X: " << start_frame_.p.x() << std::endl;
-            // std::cout << "Y: " << start_frame_.p.y() << std::endl;
-            // std::cout << "Z: " << start_frame_.p.z() << std::endl;
-            // std::cout << "Final Frame:" << std::endl;
-            // std::cout << "X: " << final_frame_.p.x() << std::endl;
-            // std::cout << "Y: " << final_frame_.p.y() << std::endl;
-            // std::cout << "Z: " << final_frame_.p.z() << std::endl;
 
             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 125.0;
+            kp_ = 500.0;
         }
     }
 

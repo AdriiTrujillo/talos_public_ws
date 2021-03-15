@@ -99,6 +99,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
     // Resizes the joint state vectors in non-realtime -----------------------------
     jnt_pos_.resize(kdl_chain.getNrOfJoints());
+    jnt_vel_.resize(kdl_chain.getNrOfJoints());
     jnt_effort_.resize(kdl_chain.getNrOfJoints());
     jacobian_.resize(kdl_chain.getNrOfJoints());
 
@@ -132,6 +133,11 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
         jnt_pos_(i) = joint_handles_[i].getPosition();
     }
 
+    //Get initial joints velocity
+    for(unsigned int i = 0; i < joint_handles_.size(); i++){
+        jnt_vel_(i) = joint_handles_[i].getVelocity();
+    }
+
     KDL::Frame current_pose;
     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
     if (fk_status == -1) 
@@ -145,37 +151,50 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
 // ------------------------------------------------------------------------------------------- 
-    
+    KDL::Twist desired_vel;
+
     if(start_trajectory_){
         //Get the actual time
-        actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
+        actual_time_ = ros::Time::now() - begin_time_; // That's start in sec 0
         now_ = actual_time_.toSec();
-        // std::cout << "NOW Time: " << now << std::endl;
         target_frame_ = trajectory_->Pos(now_);
+        desired_vel = trajectory_->Vel(now_);
         vel_i_ = global_velPof_->Vel(now_);
         acc_i_ = global_velPof_->Acc(now_);
-        start_frame_ = current_pose;
+        start_frame_ = current_pose; //Update de start frame to start the folowing trajectory
     }
 
-    // get the pose error
+    // get the each pose control error
     KDL::Twist control_error;
+    // get the error with respect final frame
     KDL::Twist final_error;
 
-    // Target frame is already with ISS reference
+    // Target frame is the next nearest pose
     control_error = KDL::diff(current_pose, target_frame_);
-    // std::cout << "Error: " << control_error << std::endl;
+    // Calculate the error of the final pose in the trajectory
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(final_error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 
+    // get actual cartesian velocities
+    KDL::Twist cart_vel = KDL::Twist::Zero(); // Initiliz it to zeros
+    for(unsigned int i = 0; i < 6 ; i++){
+        for (unsigned int j=0; j<jnt_vel_.rows(); j++){
+            cart_vel(i) += jacobian_(i,j) * jnt_vel_(j);
+        }
+    }
+
+    KDL::Twist velocity_error;
+    velocity_error = KDL::diff(cart_vel, desired_vel);
+
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j) + (kv_*velocity_error(j)));
         }
     }
 
@@ -202,8 +221,9 @@ void aruco_trajectory_cartesian_controller_class::writeJointCommand(KDL::JntArra
 
 void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time) {
     
-    //Some initializtions
+    // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
+    kv_ = 0.0; // 50, 10, 5, not working vibrations // 200 too slow // 0.01, 0.1 can't apprecieate effects
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
@@ -218,8 +238,9 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     vel_i_ = 0.0;
     acc_i_ = 0.0;
     global_velPof_ = new KDL::VelocityProfile_Spline();
+    // ______________________________________________________________________________________________________________
 
-    //Get initial joints position 
+    //Get initial joints position ___________________________________________________________________________________ 
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
     }
@@ -231,19 +252,20 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
 
     // Send current pose to the end effector to not to move
     target_frame_ = current_pose;
-    // Save first cartesian positión to detect when a differente one has arrived
+    // ______________________________________________________________________________________________________________
+    // Save the first cartesian positión to detect when a differente one has arrived ________________________________
     local_frame_ = current_pose;
     start_frame_ = current_pose;
+    // ______________________________________________________________________________________________________________
 }
 
 void aruco_trajectory_cartesian_controller_class::stopping(const ros::Time &time) {}
 
 bool aruco_trajectory_cartesian_controller_class::compareTolerance(KDL::Twist error){
 
-    // Point reached
     if(diff_frame_){ // To not check when it has just started
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
-            return true;
+            return true; // Point reached
         }
     }
     // Not reached yet
@@ -253,7 +275,7 @@ bool aruco_trajectory_cartesian_controller_class::compareTolerance(KDL::Twist er
 bool aruco_trajectory_cartesian_controller_class::diffTargetFrame(KDL::Frame target_frame){
 
     if(target_frame != local_frame_){
-            return true; // A different frame has arrived
+            return true; // A different frame has arrived!!
     }
     return false;
 }
@@ -273,7 +295,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
     if(data.header.frame_id == "base_link"){
 
         talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
-        target_frame_ = talos_2_aruco_ * aruco_2_target_;
+        target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
 
         if (diffTargetFrame(target_frame_) and not finish_trajectory_) {
             diff_frame_ = true;
@@ -284,17 +306,19 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             }
 
             double frame_distance = distanceBetweenFrames(start_frame_, final_frame_);
+            // The time is escalated having the reference of the first distance
             duration_time_ = (frame_distance * ref_time_)/start_distance_;
 
             // Save starting time for the trajectory
             begin_time_ = ros::Time::now();
-            // If a direfent frame is recalculated it won't do a 7 sec trajectory
 
+            // If a direfent frame is recalculated it won't do a 9 sec trajectory
+            // It use the velocity and acceleration of the previous trajectory to start the next one
             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 500.0;
+            kp_ = 500.0; // When moving it uses this constant
         }
     }
 
@@ -312,7 +336,7 @@ KDL::Trajectory* aruco_trajectory_cartesian_controller_class::trajectoryPlanner(
     KDL::VelocityProfile_Spline* velprof = new KDL::VelocityProfile_Spline();
     //(start_pos, start_vel, start_acc, end_pos, end_vel, end_acc, Duration)
     velprof->SetProfileDuration(0, vel_i, acc_i, path->PathLength(), 0, 0.0,  duration);
-    global_velPof_->SetProfileDuration(0, vel_i, acc_i, path->PathLength(), 0, 0.0,  duration);
+    global_velPof_->SetProfileDuration(0, vel_i, acc_i, path->PathLength(), 0, 0.0,  duration); // To get the velocity and accelration of the previous trajectory
     KDL::Trajectory* traject = new KDL::Trajectory_Segment(path, velprof);
 
     return traject;
@@ -326,7 +350,7 @@ double aruco_trajectory_cartesian_controller_class::distanceBetweenFrames(const 
     double distance;
 
     KDL::Frame R = ending.Inverse()*start;
-    angle_distance = acos((trace(R)-1)/2);
+    angle_distance = acos((trace(R)-1)/2); // Distance beetwen start matrix rotation and end matrix rotation
 
     double x_s = start.p.x();
     double y_s = start.p.y();
@@ -334,15 +358,18 @@ double aruco_trajectory_cartesian_controller_class::distanceBetweenFrames(const 
     double x_e = ending.p.x();
     double y_e = ending.p.y();
     double z_e = ending.p.z();
+    
+    // Distance beetwen start position and ending position
+    module_distance = sqrt(pow(x_s - x_e, 2) + pow(y_s - y_e, 2) + pow(z_s - z_e, 2)); 
 
-    module_distance = sqrt(pow(x_s - x_e, 2) + pow(y_s - y_e, 2) + pow(z_s - z_e, 2));
-
+    // Calculate the mean of this two
     distance = (angle_distance + module_distance)/2;
 
     return distance;
 
 }
 
+// Obtain the trace of the matrix rotation instade a KDL::Frame
 double aruco_trajectory_cartesian_controller_class::trace(const KDL::Frame frame){
 
     double trace;

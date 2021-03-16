@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
+messages_str = "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg;/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_msg.msg"
 services_str = "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv"
 pkg_name = "astronaut_controllers"
 dependencies_str = "std_msgs;geometry_msgs;trajectory_msgs"

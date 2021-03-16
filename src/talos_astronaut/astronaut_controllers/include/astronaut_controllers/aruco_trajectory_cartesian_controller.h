@@ -40,6 +40,7 @@
 
 // STD_MSGS
 #include <std_msgs/Bool.h>
+#include <std_msgs/Float64.h>
 
 namespace controller_ns{
 
@@ -108,6 +109,11 @@ namespace controller_ns{
             double ref_time_;
             double now_;
             ros::Duration actual_time_;
+
+            //Data publisher
+            ros::Publisher control_error_pub_;
+            ros::Publisher velocity_error_pub_;
+            ros::Publisher joint_value_pub_;
 
     };
 

@@ -1,0 +1,46 @@
+In file included from [01m[K/opt/ros/kinetic/include/ros/serialization.h:37:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/publisher.h:34[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/node_handle.h:32[m[K,
+                 from [01m[K/opt/ros/kinetic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:4[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+/opt/ros/kinetic/include/ros/message_traits.h: In instantiation of ‘[01m[Kstatic const char* ros::message_traits::MD5Sum<M>::value() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’:
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:228:102:[m[K   required from ‘[01m[Kconst char* ros::message_traits::md5sum() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’
+[01m[K/opt/ros/kinetic/include/ros/advertise_options.h:92:39:[m[K   required from ‘[01m[Kvoid ros::AdvertiseOptions::init(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int; ros::SubscriberStatusCallback = boost::function<void(const ros::SingleSubscriberPublisher&)>][m[K’
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:252:7:[m[K   required from ‘[01m[Kros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:124:82:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:121:28:[m[K [01;31m[Kerror: [m[Kincomplete type ‘[01m[Kstd_msgs::Float64_<std::allocator<void> > [][m[K’ used in nested name specifier
+     return M::__s_getMD5Sum().c_str();
+[01;32m[K                            ^[m[K
+/opt/ros/kinetic/include/ros/message_traits.h: In instantiation of ‘[01m[Kstatic const char* ros::message_traits::DataType<M>::value() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’:
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:237:104:[m[K   required from ‘[01m[Kconst char* ros::message_traits::datatype() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’
+[01m[K/opt/ros/kinetic/include/ros/advertise_options.h:93:43:[m[K   required from ‘[01m[Kvoid ros::AdvertiseOptions::init(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int; ros::SubscriberStatusCallback = boost::function<void(const ros::SingleSubscriberPublisher&)>][m[K’
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:252:7:[m[K   required from ‘[01m[Kros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:124:82:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:138:30:[m[K [01;31m[Kerror: [m[Kincomplete type ‘[01m[Kstd_msgs::Float64_<std::allocator<void> > [][m[K’ used in nested name specifier
+     return M::__s_getDataType().c_str();
+[01;32m[K                              ^[m[K
+/opt/ros/kinetic/include/ros/message_traits.h: In instantiation of ‘[01m[Kstatic const char* ros::message_traits::Definition<M>::value() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’:
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:246:106:[m[K   required from ‘[01m[Kconst char* ros::message_traits::definition() [with M = std_msgs::Float64_<std::allocator<void> > []][m[K’
+[01m[K/opt/ros/kinetic/include/ros/advertise_options.h:94:55:[m[K   required from ‘[01m[Kvoid ros::AdvertiseOptions::init(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int; ros::SubscriberStatusCallback = boost::function<void(const ros::SingleSubscriberPublisher&)>][m[K’
+[01m[K/opt/ros/kinetic/include/ros/node_handle.h:252:7:[m[K   required from ‘[01m[Kros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool) [with M = std_msgs::Float64_<std::allocator<void> > []; std::__cxx11::string = std::__cxx11::basic_string<char>; uint32_t = unsigned int][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:124:82:[m[K   required from here
+[01m[K/opt/ros/kinetic/include/ros/message_traits.h:155:39:[m[K [01;31m[Kerror: [m[Kincomplete type ‘[01m[Kstd_msgs::Float64_<std::allocator<void> > [][m[K’ used in nested name specifier
+     return M::__s_getMessageDefinition().c_str();
+[01;32m[K                                       ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h: In instantiation of ‘[01m[Kstatic char (& hardware_interface::CheckIsResourceManager<T>::callCM(std::vector<C*>&, C*, typename C::resource_manager_type*))[1] [with C = hardware_interface::EffortJointInterface; T = hardware_interface::EffortJointInterface; hardware_interface::CheckIsResourceManager<T>::yes = char [1]; typename C::resource_manager_type = hardware_interface::ResourceManager<hardware_interface::JointHandle>][m[K’:
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:83:14:[m[K   required from ‘[01m[Kstatic const void hardware_interface::CheckIsResourceManager<T>::callConcatManagers(std::vector<T*>&, T*) [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:200:54:[m[K   required from ‘[01m[KT* hardware_interface::InterfaceManager::get() [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:110:30:[m[K   required from ‘[01m[Kbool controller_interface::Controller<T>::initRequest(hardware_interface::RobotHW*, ros::NodeHandle&, ros::NodeHandle&, controller_interface::ControllerBase::ClaimedResources&) [with T = hardware_interface::EffortJointInterface; controller_interface::ControllerBase::ClaimedResources = std::vector<hardware_interface::InterfaceResources>][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:23:113:[m[K   required from here
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
+     yes tmp_yes;
+[01;32m[K         ^[m[K
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

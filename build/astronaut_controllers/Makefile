@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -110,17 +121,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -623,6 +623,19 @@ astronaut_controllers_generate_messages_py/fast:
 .PHONY : astronaut_controllers_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named _astronaut_controllers_generate_messages_check_deps_plot_msg
+
+# Build rule for target.
+_astronaut_controllers_generate_messages_check_deps_plot_msg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _astronaut_controllers_generate_messages_check_deps_plot_msg
+.PHONY : _astronaut_controllers_generate_messages_check_deps_plot_msg
+
+# fast build rule for target.
+_astronaut_controllers_generate_messages_check_deps_plot_msg/fast:
+	$(MAKE) -f CMakeFiles/_astronaut_controllers_generate_messages_check_deps_plot_msg.dir/build.make CMakeFiles/_astronaut_controllers_generate_messages_check_deps_plot_msg.dir/build
+.PHONY : _astronaut_controllers_generate_messages_check_deps_plot_msg/fast
+
+#=============================================================================
 # Target rules for targets named trajectory_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -882,6 +895,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... install/strip"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... hand_service"
 	@echo "... std_msgs_generate_messages_eus"
@@ -921,11 +935,11 @@ help:
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... astronaut_controllers_generate_messages_py"
+	@echo "... _astronaut_controllers_generate_messages_check_deps_plot_msg"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... _astronaut_controllers_generate_messages_check_deps_hand_operations"
 	@echo "... astronaut_controllers_gencpp"
 	@echo "... astronaut_controllers_generate_messages_nodejs"
-	@echo "... install/strip"
 	@echo "... astronaut_controllers_gennodejs"
 	@echo "... astronaut_controllers_lib"
 	@echo "... gripper_service"

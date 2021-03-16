@@ -3,6 +3,7 @@
 
 // PROJECT
 #include <astronaut_controllers/aruco_trajectory_cartesian_controller.h>
+#include <astronaut_controllers/plot_msg.h>
 
 // KDL
 #include <kdl_parser/kdl_parser.hpp>
@@ -121,6 +122,9 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
     aruco_subscr_ = nh.subscribe("/aruco_single/pose", 10000, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
+    control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
+    velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
+    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/joint_value", 1000);
 
     return true;
 
@@ -171,6 +175,17 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     // Target frame is the next nearest pose
     control_error = KDL::diff(current_pose, target_frame_);
+
+    //_____________________________________________
+    astronaut_controllers::plot_msg plot_error;
+    plot_error.x_err = control_error(0);
+    plot_error.y_err = control_error(1);
+    plot_error.z_err = control_error(2);
+    plot_error.roll_err = control_error(3);
+    plot_error.pitch_err = control_error(4);
+    plot_error.yaw_err = control_error(5);
+    //_____________________________________________
+
     // Calculate the error of the final pose in the trajectory
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
@@ -188,18 +203,41 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     KDL::Twist velocity_error;
     velocity_error = KDL::diff(cart_vel, desired_vel);
+    //_____________________________________________
+    astronaut_controllers::plot_msg plot_vel_error;
+    plot_vel_error.x_err = velocity_error(0);
+    plot_vel_error.y_err = velocity_error(1);
+    plot_vel_error.z_err = velocity_error(2);
+    plot_vel_error.roll_err = velocity_error(3);
+    plot_vel_error.pitch_err = velocity_error(4);
+    plot_vel_error.yaw_err = velocity_error(5);
+    //_____________________________________________
 
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j) + (kv_*velocity_error(j)));
+            jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
         }
     }
 
+    //_____________________________________________
+    astronaut_controllers::plot_msg joint_value;
+    joint_value.x_err = jnt_effort_(0);
+    joint_value.y_err = jnt_effort_(1);
+    joint_value.z_err = jnt_effort_(2);
+    joint_value.roll_err = jnt_effort_(3);
+    joint_value.pitch_err = jnt_effort_(4);
+    joint_value.yaw_err = jnt_effort_(5);
+    //_____________________________________________
+
     writeJointCommand(jnt_effort_);
     tolerance_publisher_.publish(goal_reached);
+    control_error_pub_.publish(plot_error);
+    velocity_error_pub_.publish(plot_vel_error);
+    joint_value_pub_.publish(joint_value);
+
 
     // If it arrives to the desired point it has to stop there
     if(goal_reached.data and start_trajectory_){
@@ -223,7 +261,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
-    kv_ = 0.0; // 50, 10, 5, not working vibrations // 200 too slow // 0.01, 0.1 can't apprecieate effects
+    kv_ = 0.1; // 50 not working vibrations // 10 better but worse than with only kp
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point

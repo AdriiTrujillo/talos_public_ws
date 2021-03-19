@@ -261,7 +261,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
-    kv_ = 0.1; // 50 not working vibrations // 10 better but worse than with only kp
+    kv_ = 10.0; // 50 not working vibrations // 10 better but worse than with only kp
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
@@ -356,7 +356,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 500.0; // When moving it uses this constant
+            kp_ = 300.0; // When moving it uses this constant
         }
     }
 

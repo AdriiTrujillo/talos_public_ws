@@ -5,7 +5,7 @@
         <arg name="debug" default="false" />
         <arg name="gui" default="true" />
         <arg name="pause" default="false" />
-        <arg name="world" default="$(find astronaut)/worlds/empty.world" />
+        <arg name="world" default="$(find astronaut)/worlds/international_space_station_paper.world" />
 
         <!-- include gazebo_ros launcher -->
         <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -21,7 +21,7 @@
         <arg name="foot_collision" default="thinbox"/>
         <arg name="default_configuration_type" default="astro_gripper"/>
         <arg name="disable_gazebo_camera" default="false"/>
-        <arg name="gzpose" default="-x 0.0 -y 0.0 -z 0.5 -R 0.0 -P 0.0 -Y 0.0"/>
+        <arg name="gzpose" default="-x -5.292 -y 1.869 -z 0.393 -R -0.0119 -P 0.0233 -Y -0.1523"/>
 
         <env name="GAZEBO_MODEL_PATH" value="$(find talos_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
 

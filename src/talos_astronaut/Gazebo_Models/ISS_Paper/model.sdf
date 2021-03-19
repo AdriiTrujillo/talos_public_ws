@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="International Space Station (Paper)">
+    <link name="Link">
+
+      <collision name="collision">
+        <geometry>
+            <mesh>
+              <uri>model://ISS_Paper/meshes/iss_paper.dae</uri>
+            </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://ISS_Paper/meshes/iss_paper.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

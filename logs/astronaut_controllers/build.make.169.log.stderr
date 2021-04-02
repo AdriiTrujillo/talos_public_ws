@@ -1,0 +1,560 @@
+In file included from [01m[K/opt/openrobots/include/pinocchio/fwd.hpp:25:0[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/spatial/fwd.hpp:9[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/multibody/model.hpp:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:47[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/opt/openrobots/include/pinocchio/container/boost-container-limits.hpp:18:0:[m[K [01;35m[Kwarning: [m[K"BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS" redefined
+   #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
+[01;32m[K ^[m[K
+[01m[K<command-line>:0:0:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:17:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::EffortJointInterface* hw, ros::NodeHandle& nh){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kbool controller_ns::init(hardware_interface::EffortJointInterface*, ros::NodeHandle&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:34:42:[m[K [01;31m[Kerror: [m[K‘[01m[Kend_effector_link[m[K’ was not declared in this scope
+     if (!nh.getParam("end_effector_link",end_effector_link)){
+[01;32m[K                                          ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:39:39:[m[K [01;31m[Kerror: [m[K‘[01m[Ktolerance_[m[K’ was not declared in this scope
+     if (!nh.getParam("goal_tolerance",tolerance_)){
+[01;32m[K                                       ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:55:52:[m[K [01;31m[Kerror: [m[K‘[01m[Krobot_tree_[m[K’ was not declared in this scope
+     if (!kdl_parser::treeFromUrdfModel(robot_model,robot_tree_))
+[01;32m[K                                                    ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:64:10:[m[K [01;31m[Kerror: [m[K‘[01m[Krobot_tree_[m[K’ was not declared in this scope
+     if (!robot_tree_.getChain(base_link,end_effector_link,robot_chain_)){
+[01;32m[K          ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:64:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kend_effector_link[m[K’ was not declared in this scope
+     if (!robot_tree_.getChain(base_link,end_effector_link,robot_chain_)){
+[01;32m[K                                         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:64:59:[m[K [01;31m[Kerror: [m[K‘[01m[Krobot_chain_[m[K’ was not declared in this scope
+     if (!robot_tree_.getChain(base_link,end_effector_link,robot_chain_)){
+[01;32m[K                                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:75:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_names_[m[K’ was not declared in this scope
+     if (!nh.getParam("joints",joint_names_)){
+[01;32m[K                               ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:82:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_names_[m[K’ was not declared in this scope
+     for (size_t i = 0; i < joint_names_.size(); ++i)
+[01;32m[K                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:84:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_handles_[m[K’ was not declared in this scope
+         joint_handles_.push_back(hw->getHandle(joint_names_[i]));
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:91:27:[m[K [01;31m[Kerror: [m[K‘[01m[Krobot_chain_[m[K’ was not declared in this scope
+     for(size_t i = 0; i < robot_chain_.getNrOfSegments(); i++){
+[01;32m[K                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:96:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_to_pose_solver_[m[K’ was not declared in this scope
+     jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:97:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_to_jac_solver_[m[K’ was not declared in this scope
+     jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:101:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_pos_[m[K’ was not declared in this scope
+     jnt_pos_.resize(kdl_chain.getNrOfJoints());
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:102:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_vel_[m[K’ was not declared in this scope
+     jnt_vel_.resize(kdl_chain.getNrOfJoints());
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:103:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_effort_[m[K’ was not declared in this scope
+     jnt_effort_.resize(kdl_chain.getNrOfJoints());
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:104:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjacobian_[m[K’ was not declared in this scope
+     jacobian_.resize(kdl_chain.getNrOfJoints());
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:122:5:[m[K [01;31m[Kerror: [m[K‘[01m[Karuco_subscr_[m[K’ was not declared in this scope
+     aruco_subscr_ = nh.subscribe("/aruco_single/pose", 10000, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:122:64:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+     aruco_subscr_ = nh.subscribe("/aruco_single/pose", 10000, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
+[01;32m[K                                                                ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:122:133:[m[K [01;31m[Kerror: [m[Kinvalid use of ‘[01m[Kthis[m[K’ in non-member function
+     aruco_subscr_ = nh.subscribe("/aruco_single/pose", 10000, &aruco_trajectory_cartesian_controller_class::transformationCallback, this);
+[01;32m[K                                                                                                                                     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:123:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktolerance_publisher_[m[K’ was not declared in this scope
+     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:124:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kcontrol_error_pub_[m[K’ was not declared in this scope
+     control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:125:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity_error_pub_[m[K’ was not declared in this scope
+     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:126:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_value_pub_[m[K’ was not declared in this scope
+     joint_value_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/joint_value", 1000);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:132:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kvoid controller_ns::update(const ros::Time&, const ros::Duration&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:135:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_handles_[m[K’ was not declared in this scope
+     for(unsigned int i = 0; i < joint_handles_.size(); i++){
+[01;32m[K                                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:136:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_pos_[m[K’ was not declared in this scope
+         jnt_pos_(i) = joint_handles_[i].getPosition();
+[01;32m[K                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:140:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_handles_[m[K’ was not declared in this scope
+     for(unsigned int i = 0; i < joint_handles_.size(); i++){
+[01;32m[K                                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:141:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_vel_[m[K’ was not declared in this scope
+         jnt_vel_(i) = joint_handles_[i].getVelocity();
+[01;32m[K                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:145:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kfk_status[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:145:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_to_pose_solver_[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:145:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_pos_[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K                                                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:159:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_trajectory_[m[K’ was not declared in this scope
+     if(start_trajectory_){
+[01;32m[K        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:161:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kactual_time_[m[K’ was not declared in this scope
+         actual_time_ = ros::Time::now() - begin_time_; // That's start in sec 0
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:161:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kbegin_time_[m[K’ was not declared in this scope
+         actual_time_ = ros::Time::now() - begin_time_; // That's start in sec 0
+[01;32m[K                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:162:9:[m[K [01;31m[Kerror: [m[K‘[01m[Know_[m[K’ was not declared in this scope
+         now_ = actual_time_.toSec();
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:163:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_frame_[m[K’ was not declared in this scope
+         target_frame_ = trajectory_->Pos(now_);
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:163:9:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h:22:8:[m[K [01;36m[Knote: [m[K  ‘[01m[Kastronaut_controllers::target_frame_[m[K’
+ struct target_frame_
+[01;32m[K        ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:163:25:[m[K [01;31m[Kerror: [m[K‘[01m[Ktrajectory_[m[K’ was not declared in this scope
+         target_frame_ = trajectory_->Pos(now_);
+[01;32m[K                         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:165:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_i_[m[K’ was not declared in this scope
+         vel_i_ = global_velPof_->Vel(now_);
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:165:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kglobal_velPof_[m[K’ was not declared in this scope
+         vel_i_ = global_velPof_->Vel(now_);
+[01;32m[K                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:166:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kacc_i_[m[K’ was not declared in this scope
+         acc_i_ = global_velPof_->Acc(now_);
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:167:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_frame_[m[K’ was not declared in this scope
+         start_frame_ = current_pose; //Update de start frame to start the folowing trajectory
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:176:45:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_frame_[m[K’ was not declared in this scope
+     control_error = KDL::diff(current_pose, target_frame_);
+[01;32m[K                                             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:176:45:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h:22:8:[m[K [01;36m[Knote: [m[K  ‘[01m[Kastronaut_controllers::target_frame_[m[K’
+ struct target_frame_
+[01;32m[K        ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:189:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kfinal_frame_[m[K’ was not declared in this scope
+     final_error = KDL::diff(current_pose, final_frame_);
+[01;32m[K                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:191:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgoal_reached[m[K’ was not declared in this scope
+     goal_reached.data = compareTolerance(final_error);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:191:53:[m[K [01;31m[Kerror: [m[K‘[01m[KcompareTolerance[m[K’ was not declared in this scope
+     goal_reached.data = compareTolerance(final_error);
+[01;32m[K                                                     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:193:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_to_jac_solver_[m[K’ was not declared in this scope
+     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:193:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kjacobian_[m[K’ was not declared in this scope
+     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
+[01;32m[K                                            ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:198:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_vel_[m[K’ was not declared in this scope
+         for (unsigned int j=0; j<jnt_vel_.rows(); j++){
+[01;32m[K                                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:218:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_effort_[m[K’ was not declared in this scope
+         jnt_effort_(i) = 0;
+[01;32m[K                      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:220:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kkp_[m[K’ was not declared in this scope
+             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
+[01;32m[K                                                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:220:75:[m[K [01;31m[Kerror: [m[K‘[01m[Kkv_[m[K’ was not declared in this scope
+             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
+[01;32m[K                                                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:226:38:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_effort_[m[K’ was not declared in this scope
+     joint_value.x_err = jnt_effort_(0);
+[01;32m[K                                      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:234:34:[m[K [01;31m[Kerror: [m[K‘[01m[KwriteJointCommand[m[K’ was not declared in this scope
+     writeJointCommand(jnt_effort_);
+[01;32m[K                                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:235:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktolerance_publisher_[m[K’ was not declared in this scope
+     tolerance_publisher_.publish(goal_reached);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:236:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kcontrol_error_pub_[m[K’ was not declared in this scope
+     control_error_pub_.publish(plot_error);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:237:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity_error_pub_[m[K’ was not declared in this scope
+     velocity_error_pub_.publish(plot_vel_error);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:238:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_value_pub_[m[K’ was not declared in this scope
+     joint_value_pub_.publish(joint_value);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:242:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_trajectory_[m[K’ was not declared in this scope
+     if(goal_reached.data and start_trajectory_){
+[01;32m[K                              ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:244:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_frame_[m[K’ was not declared in this scope
+         start_frame_ = current_pose;
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:246:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kfinish_trajectory_[m[K’ was not declared in this scope
+         finish_trajectory_ = true;
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:247:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kkp_[m[K’ was not declared in this scope
+         kp_ = 20.0;
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:252:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ void aruco_trajectory_cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kvoid controller_ns::writeJointCommand(KDL::JntArray)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:254:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_handles_[m[K’ was not declared in this scope
+     for(size_t i = 0; i < joint_handles_.size(); i++){
+[01;32m[K                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:259:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time) {
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kvoid controller_ns::starting(const ros::Time&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:262:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kkp_[m[K’ was not declared in this scope
+     kp_ = 20.0;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:263:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kkv_[m[K’ was not declared in this scope
+     kv_ = 10.0; // 50 not working vibrations // 10 better but worse than with only kp
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:264:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kgoal_reached[m[K’ was not declared in this scope
+     goal_reached.data = false;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:265:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kdiff_frame_[m[K’ was not declared in this scope
+     diff_frame_ = false;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:267:5:[m[K [01;31m[Kerror: [m[K‘[01m[Karuco_2_target_[m[K’ was not declared in this scope
+     aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:269:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_trajectory_[m[K’ was not declared in this scope
+     start_trajectory_ = false;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:270:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kfinish_trajectory_[m[K’ was not declared in this scope
+     finish_trajectory_ = false;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:271:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktake_start_distance_[m[K’ was not declared in this scope
+     take_start_distance_ = true;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:272:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kref_time_[m[K’ was not declared in this scope
+     ref_time_ = ros::Duration(9.0).toSec(); //9 sec trajectory
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:273:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kduration_time_[m[K’ was not declared in this scope
+     duration_time_ = 0.0; 
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:274:5:[m[K [01;31m[Kerror: [m[K‘[01m[Know_[m[K’ was not declared in this scope
+     now_ = 0.0;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:275:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_i_[m[K’ was not declared in this scope
+     vel_i_ = 0.0;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:276:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kacc_i_[m[K’ was not declared in this scope
+     acc_i_ = 0.0;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:277:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kglobal_velPof_[m[K’ was not declared in this scope
+     global_velPof_ = new KDL::VelocityProfile_Spline();
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:281:33:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoint_handles_[m[K’ was not declared in this scope
+     for(unsigned int i = 0; i < joint_handles_.size(); i++){
+[01;32m[K                                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:282:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_pos_[m[K’ was not declared in this scope
+         jnt_pos_(i) = joint_handles_[i].getPosition();
+[01;32m[K                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:286:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kfk_status[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:286:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_to_pose_solver_[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:286:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kjnt_pos_[m[K’ was not declared in this scope
+     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
+[01;32m[K                                                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:291:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_frame_[m[K’ was not declared in this scope
+     target_frame_ = current_pose;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:291:5:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h:22:8:[m[K [01;36m[Knote: [m[K  ‘[01m[Kastronaut_controllers::target_frame_[m[K’
+ struct target_frame_
+[01;32m[K        ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:294:5:[m[K [01;31m[Kerror: [m[K‘[01m[Klocal_frame_[m[K’ was not declared in this scope
+     local_frame_ = current_pose;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:295:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_frame_[m[K’ was not declared in this scope
+     start_frame_ = current_pose;
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:303:78:[m[K [01;31m[Kerror: [m[K‘[01m[Kmodel_complete[m[K’ was not declared in this scope
+     pinocchio::urdf::buildModel(urdf_path, pinocchio::JointModelFreeFlyer(), model_complete);
+[01;32m[K                                                                              ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:324:83:[m[K [01;31m[Kerror: [m[K‘[01m[Kmodel[m[K’ was not declared in this scope
+     pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, q, model);
+[01;32m[K                                                                                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:329:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ void aruco_trajectory_cartesian_controller_class::stopping(const ros::Time &time) {}
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:331:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ bool aruco_trajectory_cartesian_controller_class::compareTolerance(KDL::Twist error){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kbool controller_ns::compareTolerance(KDL::Twist)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:333:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kdiff_frame_[m[K’ was not declared in this scope
+     if(diff_frame_){ // To not check when it has just started
+[01;32m[K        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:334:29:[m[K [01;31m[Kerror: [m[K‘[01m[Ktolerance_[m[K’ was not declared in this scope
+         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
+[01;32m[K                             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:342:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ bool aruco_trajectory_cartesian_controller_class::diffTargetFrame(KDL::Frame target_frame){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kbool controller_ns::diffTargetFrame(KDL::Frame)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:344:24:[m[K [01;31m[Kerror: [m[K‘[01m[Klocal_frame_[m[K’ was not declared in this scope
+     if(target_frame != local_frame_){
+[01;32m[K                        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:350:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ void aruco_trajectory_cartesian_controller_class::transformationCallback(const geometry_msgs::PoseStamped& data){
+[01;32m[K      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kvoid controller_ns::transformationCallback(const PoseStamped&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:364:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktalos_2_aruco_[m[K’ was not declared in this scope
+         talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:365:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktarget_frame_[m[K’ was not declared in this scope
+         target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
+[01;32m[K         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:365:9:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:33:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+[01m[K/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h:22:8:[m[K [01;36m[Knote: [m[K  ‘[01m[Kastronaut_controllers::target_frame_[m[K’
+ struct target_frame_
+[01;32m[K        ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:154:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:365:42:[m[K [01;31m[Kerror: [m[K‘[01m[Karuco_2_target_[m[K’ was not declared in this scope
+         target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
+[01;32m[K                                          ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:367:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kfinish_trajectory_[m[K’ was not declared in this scope
+         if (diffTargetFrame(target_frame_) and not finish_trajectory_) {
+[01;32m[K                                                    ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:368:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kdiff_frame_[m[K’ was not declared in this scope
+             diff_frame_ = true;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:369:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kfinal_frame_[m[K’ was not declared in this scope
+             final_frame_ = target_frame_;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:371:16:[m[K [01;31m[Kerror: [m[K‘[01m[Ktake_start_distance_[m[K’ was not declared in this scope
+             if(take_start_distance_){
+[01;32m[K                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:372:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_distance_[m[K’ was not declared in this scope
+                 start_distance_ = distanceBetweenFrames(start_frame_, final_frame_);
+[01;32m[K                 ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:372:57:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_frame_[m[K’ was not declared in this scope
+                 start_distance_ = distanceBetweenFrames(start_frame_, final_frame_);
+[01;32m[K                                                         ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:372:83:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanceBetweenFrames[m[K’ was not declared in this scope
+                 start_distance_ = distanceBetweenFrames(start_frame_, final_frame_);
+[01;32m[K                                                                                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:375:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_frame_[m[K’ was not declared in this scope
+             double frame_distance = distanceBetweenFrames(start_frame_, final_frame_);
+[01;32m[K                                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:375:85:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanceBetweenFrames[m[K’ was not declared in this scope
+             double frame_distance = distanceBetweenFrames(start_frame_, final_frame_);
+[01;32m[K                                                                                     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:377:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kduration_time_[m[K’ was not declared in this scope
+             duration_time_ = (frame_distance * ref_time_)/start_distance_;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:377:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kref_time_[m[K’ was not declared in this scope
+             duration_time_ = (frame_distance * ref_time_)/start_distance_;
+[01;32m[K                                                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:377:59:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_distance_[m[K’ was not declared in this scope
+             duration_time_ = (frame_distance * ref_time_)/start_distance_;
+[01;32m[K                                                           ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:380:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kbegin_time_[m[K’ was not declared in this scope
+             begin_time_ = ros::Time::now();
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:384:13:[m[K [01;31m[Kerror: [m[K‘[01m[Ktrajectory_[m[K’ was not declared in this scope
+             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:384:72:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_i_[m[K’ was not declared in this scope
+             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
+[01;32m[K                                                                        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:384:80:[m[K [01;31m[Kerror: [m[K‘[01m[Kacc_i_[m[K’ was not declared in this scope
+             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
+[01;32m[K                                                                                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:384:102:[m[K [01;31m[Kerror: [m[K‘[01m[KtrajectoryPlanner[m[K’ was not declared in this scope
+             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
+[01;32m[K                                                                                                      ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:385:13:[m[K [01;31m[Kerror: [m[K‘[01m[Klocal_frame_[m[K’ was not declared in this scope
+             local_frame_ = target_frame_;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:386:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_trajectory_[m[K’ was not declared in this scope
+             start_trajectory_ = true;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:387:13:[m[K [01;31m[Kerror: [m[K‘[01m[Ktake_start_distance_[m[K’ was not declared in this scope
+             take_start_distance_ = false;
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:388:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kkp_[m[K’ was not declared in this scope
+             kp_ = 300.0; // When moving it uses this constant
+[01;32m[K             ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:395:18:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ KDL::Trajectory* aruco_trajectory_cartesian_controller_class::trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double vel_i, double acc_i, double duration){
+[01;32m[K                  ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[KKDL::Trajectory* controller_ns::trajectoryPlanner(KDL::Frame, KDL::Frame, double, double, double)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:406:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kglobal_velPof_[m[K’ was not declared in this scope
+     global_velPof_->SetProfileDuration(0, vel_i, acc_i, path->PathLength(), 0, 0.0,  duration); // To get the velocity and accelration of the previous trajectory
+[01;32m[K     ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:413:8:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ double aruco_trajectory_cartesian_controller_class::distanceBetweenFrames(const KDL::Frame start, const KDL::Frame ending){
+[01;32m[K        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[Kdouble controller_ns::distanceBetweenFrames(KDL::Frame, KDL::Frame)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:420:35:[m[K [01;31m[Kerror: [m[K‘[01m[Ktrace[m[K’ was not declared in this scope
+     angle_distance = acos((trace(R)-1)/2); // Distance beetwen start matrix rotation and end matrix rotation
+[01;32m[K                                   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:440:8:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ double aruco_trajectory_cartesian_controller_class::trace(const KDL::Frame frame){
+[01;32m[K        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:452:168:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[K_Matrix_Type_ controller_ns::aruco_trajectory_cartesian_controller_class<_Matrix_Type_>::pseudoInverse(const _Matrix_Type_&, double)[m[K’ may not have default arguments [-fpermissive]
+ _Matrix_Type_ aruco_trajectory_cartesian_controller_class<_Matrix_Type_>::pseudoInverse(const _Matrix_Type_ &a, double epsilon = std::numeric_limits<double>::epsilon()){
+[01;32m[K                                                                                                                                                                        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:461:15:[m[K [01;31m[Kerror: [m[K‘[01m[Ktemplate<class _Matrix_Type_> class controller_ns::aruco_trajectory_cartesian_controller_class[m[K’ used without template parameters
+ KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model model){
+[01;32m[K               ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In function ‘[01m[KKDL::JntArray controller_ns::calculate_base_efforts(pinocchio::Model)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:476:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kend_effector_link[m[K’ was not declared in this scope
+     pinocchio::FrameIndex frame_id = model.getFrameId(end_effector_link);
+[01;32m[K                                                       ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:14:9:[m[K [01;31m[Kerror: [m[Kinvalid use of template-name ‘[01m[Kcontroller_ns::aruco_trajectory_cartesian_controller_class[m[K’ without an argument list
+ typedef controller_ns::aruco_trajectory_cartesian_controller_class ArucoTrajectoryController;
+[01;32m[K         ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/class_loader/./class_loader.hpp:45:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/class_loader/class_loader.h:35[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:40[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:2[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:22:45:[m[K [01;31m[Kerror: [m[K‘[01m[KArucoTrajectoryController[m[K’ in namespace ‘[01m[Kposition_controller[m[K’ does not name a type
+ PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
+[01;32m[K                                             ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:45:14:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE[m[K’
+     typedef  Derived _derived; \
+[01;32m[K              ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:65:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE(Derived, Base, __COUNTER__, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:72:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE(Derived, Base, "")
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:70:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS[m[K’
+   CLASS_LOADER_REGISTER_CLASS(class_type, base_class_type);
+[01;32m[K   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:22:1:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPLUGINLIB_EXPORT_CLASS[m[K’
+ PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
+[01;32m[K ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:[m[K In constructor ‘[01m[K{anonymous}::ProxyExec2::ProxyExec2()[m[K’:
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:51:58:[m[K [01;31m[Kerror: [m[K‘[01m[K_derived[m[K’ was not declared in this scope
+       class_loader::class_loader_private::registerPlugin<_derived, _base>(#Derived, #Base); \
+[01;32m[K                                                          ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:58:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE(Derived, Base, UniqueID, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:65:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE(Derived, Base, __COUNTER__, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:72:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE(Derived, Base, "")
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:70:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS[m[K’
+   CLASS_LOADER_REGISTER_CLASS(class_type, base_class_type);
+[01;32m[K   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:22:1:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPLUGINLIB_EXPORT_CLASS[m[K’
+ PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
+[01;32m[K ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:51:90:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KregisterPlugin(const char [47], const char [37])[m[K’
+       class_loader::class_loader_private::registerPlugin<_derived, _base>(#Derived, #Base); \
+[01;32m[K                                                                                          ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:58:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE(Derived, Base, UniqueID, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:65:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE(Derived, Base, __COUNTER__, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:72:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE(Derived, Base, "")
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:70:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS[m[K’
+   CLASS_LOADER_REGISTER_CLASS(class_type, base_class_type);
+[01;32m[K   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:22:1:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPLUGINLIB_EXPORT_CLASS[m[K’
+ PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
+[01;32m[K ^[m[K
+In file included from [01m[K/opt/ros/kinetic/include/class_loader/./class_loader.hpp:43:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/class_loader/class_loader.h:35[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:40[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:2[m[K:
+[01m[K/opt/ros/kinetic/include/class_loader/class_loader_core.hpp:162:6:[m[K [01;36m[Knote: [m[Kcandidate: template<class Derived, class Base> void class_loader::class_loader_private::registerPlugin(const string&, const string&)
+ void registerPlugin(const std::string & class_name, const std::string & base_class_name)
+[01;32m[K      ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/class_loader_core.hpp:162:6:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+In file included from [01m[K/opt/ros/kinetic/include/class_loader/./class_loader.hpp:45:0[m[K,
+                 from [01m[K/opt/ros/kinetic/include/class_loader/class_loader.h:35[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:40[m[K,
+                 from [01m[K/opt/ros/kinetic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:2[m[K:
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:51:90:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+       class_loader::class_loader_private::registerPlugin<_derived, _base>(#Derived, #Base); \
+[01;32m[K                                                                                          ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:58:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_WITH_MESSAGE(Derived, Base, UniqueID, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:65:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_INTERNAL_HOP1_WITH_MESSAGE(Derived, Base, __COUNTER__, Message)
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/class_loader/register_macro.hpp:72:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE[m[K’
+   CLASS_LOADER_REGISTER_CLASS_WITH_MESSAGE(Derived, Base, "")
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/kinetic/include/pluginlib/./class_list_macros.hpp:70:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KCLASS_LOADER_REGISTER_CLASS[m[K’
+   CLASS_LOADER_REGISTER_CLASS(class_type, base_class_type);
+[01;32m[K   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:22:1:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KPLUGINLIB_EXPORT_CLASS[m[K’
+ PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
+[01;32m[K ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_cartesian_controller.h:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:3[m[K:
+/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h: In instantiation of ‘[01m[Kstatic char (& hardware_interface::CheckIsResourceManager<T>::callCM(std::vector<C*>&, C*, typename C::resource_manager_type*))[1] [with C = hardware_interface::EffortJointInterface; T = hardware_interface::EffortJointInterface; hardware_interface::CheckIsResourceManager<T>::yes = char [1]; typename C::resource_manager_type = hardware_interface::ResourceManager<hardware_interface::JointHandle>][m[K’:
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:83:14:[m[K   required from ‘[01m[Kstatic const void hardware_interface::CheckIsResourceManager<T>::callConcatManagers(std::vector<T*>&, T*) [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:200:54:[m[K   required from ‘[01m[KT* hardware_interface::InterfaceManager::get() [with T = hardware_interface::EffortJointInterface][m[K’
+[01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:110:30:[m[K   required from ‘[01m[Kbool controller_interface::Controller<T>::initRequest(hardware_interface::RobotHW*, ros::NodeHandle&, ros::NodeHandle&, controller_interface::ControllerBase::ClaimedResources&) [with T = hardware_interface::EffortJointInterface; controller_interface::ControllerBase::ClaimedResources = std::vector<hardware_interface::InterfaceResources>][m[K’
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:23:113:[m[K   required from here
+[01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
+     yes tmp_yes;
+[01;32m[K         ^[m[K
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

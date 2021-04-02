@@ -4,11 +4,17 @@ project(astronaut_controllers)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 set ( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/modules/  )
+find_package(Boost REQUIRED)
 find_package(Eigen3 REQUIRED)
+find_package(pinocchio REQUIRED)
+
+add_definitions("-DBOOST_MPL_LIMIT_LIST_SIZE=30")
+add_definitions("-DBOOST_MPL_CFG_NO_PREPROCESSED_HEADERS")
 
 find_package(catkin REQUIRED COMPONENTS
   controller_interface
@@ -113,10 +119,10 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+ INCLUDE_DIRS include
 #  LIBRARIES astronaut_controllers
  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
-#  DEPENDS system_lib
+ DEPENDS Boost
 )
 
 ###########
@@ -129,6 +135,8 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
+  ${pinocchio_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -137,6 +145,9 @@ include_directories(
 # )
 
 add_library(astronaut_controllers_lib src/cartesian_controller.cpp)
+add_dependencies(astronaut_controllers_lib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(astronaut_controllers_lib ${catkin_LIBRARIES} ${pinocchio_LIBRARIES} ${boost_LIBRARIES} ${Eigen3_LIBRARIES})
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -161,6 +172,9 @@ target_link_libraries(matrix_transf ${catkin_LIBRARIES})
 add_executable(trajectories src/trajectories.cpp)
 target_link_libraries(trajectories ${catkin_LIBRARIES})
 
+add_executable(pinocchio_jacobiana src/pinocchio_jacobiana.cc)
+target_link_libraries(pinocchio_jacobiana ${pinocchio_LIBRARIES} ${boost_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -176,7 +190,7 @@ target_link_libraries(trajectories ${catkin_LIBRARIES})
 #   ${catkin_LIBRARIES}
 # )
 
-target_link_libraries(astronaut_controllers_lib ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##

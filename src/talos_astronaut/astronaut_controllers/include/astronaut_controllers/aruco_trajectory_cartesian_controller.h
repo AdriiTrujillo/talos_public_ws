@@ -1,23 +1,31 @@
 #ifndef ARUCO_TRAJECTORY_CARTESIAN_CONTROLLER_H_INCLUDED
 #define ARUCO_TRAJECTORY_CARTESIAN_CONTROLLER_H_INCLUDED
 
+//ROS
 #include <ros/ros.h>
+#include <ros/package.h>
+
+//STD
+#include <limits>
 #include <vector>
 #include <string>
 #include <math.h>
 
+//Ros_Control
 #include <controller_interface/controller.h>
 #include <hardware_interface/joint_command_interface.h>
 
 //Boost
 #include <boost/scoped_ptr.hpp>
 
+//Eigen
+#include <Eigen/SVD>
+
 //KDL
 #include <kdl/chain.hpp>
 #include <kdl/tree.hpp>
 #include <kdl/chainjnttojacsolver.hpp>
 #include <kdl/chainfksolverpos_recursive.hpp>
-#include <kdl/frames.hpp>
 #include <kdl/jacobian.hpp>
 #include <kdl/jntarray.hpp>
 #include <kdl/segment.hpp>
@@ -35,6 +43,16 @@
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
 
+//Pinnochio
+#include <pinocchio/multibody/model.hpp>
+#include <pinocchio/multibody/data.hpp>
+#include <pinocchio/parsers/urdf.hpp>
+#include <pinocchio/algorithm/joint-configuration.hpp>
+#include <pinocchio/algorithm/model.hpp>
+#include <pinocchio/algorithm/frames.hpp>
+#include <pinocchio/algorithm/frames-derivatives.hpp>
+#include <pinocchio/algorithm/crba.hpp>
+
 // GEOMETRY MSGS
 #include <geometry_msgs/PoseStamped.h>
 
@@ -47,7 +65,6 @@ namespace controller_ns{
     class aruco_trajectory_cartesian_controller_class : public controller_interface::Controller<hardware_interface::EffortJointInterface> {
         
         public:
-
             bool init(hardware_interface::EffortJointInterface* hw, ros::NodeHandle& nh);
             void update(const ros::Time &time, const ros::Duration &period);
             void starting(const ros::Time &time);
@@ -55,13 +72,21 @@ namespace controller_ns{
             void writeJointCommand(KDL::JntArray joint_command);
 
         private:
-            
+            // // Base effort function members
+            template<class _Matrix_Type_>
+            _Matrix_Type_ pseudoInverse(const _Matrix_Type_ &a);
+            KDL::JntArray calculate_base_efforts(pinocchio::Model model,KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel);
+
+            // Trajectories function members
             KDL::Trajectory*  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double vel_i, double acc_i, double duration);
             double distanceBetweenFrames(const KDL::Frame start, const KDL::Frame ending);
             double trace(const KDL::Frame frame);
+            
+            // Function members
             bool diffTargetFrame(KDL::Frame target_frame);
             bool compareTolerance(KDL::Twist error);
 
+            // Subscribers and publishers
             ros::Subscriber aruco_subscr_;
             void transformationCallback(const geometry_msgs::PoseStamped& data);
 
@@ -70,9 +95,11 @@ namespace controller_ns{
             bool diff_frame_;
             std_msgs::Bool goal_reached;
 
+            //Joints variables
             std::vector<hardware_interface::JointHandle>      joint_handles_;
             std::vector<std::string>                          joint_names_;
 
+            // KDL obtain model variables
             KDL::Chain robot_chain_;
             KDL::Tree robot_tree_;
 
@@ -90,8 +117,7 @@ namespace controller_ns{
             KDL::Frame local_frame_;
             KDL::Frame aruco_2_target_;
             
-            
-            //Trejctories Variables
+            // Trejctories Variables
             KDL::Trajectory* trajectory_;
             KDL::VelocityProfile_Spline* global_velPof_;   
             KDL::Frame start_frame_;
@@ -103,14 +129,18 @@ namespace controller_ns{
             bool finish_trajectory_;
             bool take_start_distance_;
 
-            //Time variables
+            //Pinnochio variables
+            pinocchio::Model model_complete; // Modelo con los dos brazos accionable
+            pinocchio::Model model; // Modelo con solo un brazo accionable
+
+            // Time variables
             ros::Time begin_time_;
             double duration_time_;
             double ref_time_;
             double now_;
             ros::Duration actual_time_;
 
-            //Data publisher
+            // Data publishers
             ros::Publisher control_error_pub_;
             ros::Publisher velocity_error_pub_;
             ros::Publisher joint_value_pub_;

@@ -3,6 +3,6 @@ prefix=/home/adrii/talos_public_ws/devel/.private/astronaut_controllers
 Name: astronaut_controllers
 Description: Description of astronaut_controllers
 Version: 0.0.0
-Cflags: -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include
-Libs: -L${prefix}/lib 
+Cflags: -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include -I/usr/include
+Libs: -L${prefix}/lib /usr/lib/x86_64-linux-gnu/libboost_chrono.so /usr/lib/x86_64-linux-gnu/libboost_serialization.so /usr/lib/x86_64-linux-gnu/libboost_system.so
 Requires: roscpp rospy std_msgs message_runtime

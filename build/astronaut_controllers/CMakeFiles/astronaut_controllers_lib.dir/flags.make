@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_FLAGS = -fPIC   -std=c++11
 
-CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"astronaut_controllers\" -Dastronaut_controllers_lib_EXPORTS
+CXX_DEFINES = -DBOOST_MPL_CFG_NO_PREPROCESSED_HEADERS -DBOOST_MPL_LIMIT_LIST_SIZE=30 -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"astronaut_controllers\" -Dastronaut_controllers_lib_EXPORTS
 
-CXX_INCLUDES = -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include -I/home/adrii/talos_public_ws/src/ros_control/controller_interface/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/kinetic/share/orocos_kdl/../../include -I/usr/include/eigen3 
+CXX_INCLUDES = -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include -I/home/adrii/talos_public_ws/src/ros_control/controller_interface/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/opt/ros/kinetic/share/orocos_kdl/../../include -I/usr/include/eigen3 -I/opt/openrobots/include 
 

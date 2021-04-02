@@ -60,6 +60,43 @@ CMAKE_SOURCE_DIR = /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_con
 CMAKE_BINARY_DIR = /home/adrii/talos_public_ws/build/astronaut_controllers
 
 #=============================================================================
+# Target rules for target CMakeFiles/pinocchio_jacobiana.dir
+
+# All Build rule for target.
+CMakeFiles/pinocchio_jacobiana.dir/all:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/depend
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=27,28 "Built target pinocchio_jacobiana"
+.PHONY : CMakeFiles/pinocchio_jacobiana.dir/all
+
+# Include target in all.
+all: CMakeFiles/pinocchio_jacobiana.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/pinocchio_jacobiana.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pinocchio_jacobiana.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles 0
+.PHONY : CMakeFiles/pinocchio_jacobiana.dir/rule
+
+# Convenience name for target.
+pinocchio_jacobiana: CMakeFiles/pinocchio_jacobiana.dir/rule
+
+.PHONY : pinocchio_jacobiana
+
+# clean rule for target.
+CMakeFiles/pinocchio_jacobiana.dir/clean:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/clean
+.PHONY : CMakeFiles/pinocchio_jacobiana.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/pinocchio_jacobiana.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
 
 # All Build rule for target.
@@ -1446,7 +1483,36 @@ clean: CMakeFiles/astronaut_controllers_gennodejs.dir/clean
 # Target rules for target CMakeFiles/astronaut_controllers_lib.dir
 
 # All Build rule for target.
-CMakeFiles/astronaut_controllers_lib.dir/all:
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/roscpp_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/trajectory_msgs_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/trajectory_msgs_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/astronaut_controllers_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/roscpp_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/trajectory_msgs_generate_messages_cpp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/trajectory_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/astronaut_controllers_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/roscpp_generate_messages_eus.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/astronaut_controllers_generate_messages_py.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/trajectory_msgs_generate_messages_lisp.dir/all
+CMakeFiles/astronaut_controllers_lib.dir/all: CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/all
 	$(MAKE) -f CMakeFiles/astronaut_controllers_lib.dir/build.make CMakeFiles/astronaut_controllers_lib.dir/depend
 	$(MAKE) -f CMakeFiles/astronaut_controllers_lib.dir/build.make CMakeFiles/astronaut_controllers_lib.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=19,20 "Built target astronaut_controllers_lib"
@@ -1459,7 +1525,7 @@ all: CMakeFiles/astronaut_controllers_lib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/astronaut_controllers_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/astronaut_controllers_lib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles 0
 .PHONY : CMakeFiles/astronaut_controllers_lib.dir/rule
@@ -1560,7 +1626,7 @@ clean: CMakeFiles/matrix_transf.dir/clean
 CMakeFiles/trajectories.dir/all:
 	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/depend
 	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=27,28 "Built target trajectories"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=29,30 "Built target trajectories"
 .PHONY : CMakeFiles/trajectories.dir/all
 
 # Include target in all.

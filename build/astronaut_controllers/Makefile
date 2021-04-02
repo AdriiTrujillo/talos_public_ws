@@ -155,6 +155,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named pinocchio_jacobiana
+
+# Build rule for target.
+pinocchio_jacobiana: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pinocchio_jacobiana
+.PHONY : pinocchio_jacobiana
+
+# fast build rule for target.
+pinocchio_jacobiana/fast:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/build
+.PHONY : pinocchio_jacobiana/fast
+
+#=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -860,6 +873,33 @@ src/matrix_transf.cpp.s:
 	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.s
 .PHONY : src/matrix_transf.cpp.s
 
+src/pinocchio_jacobiana.o: src/pinocchio_jacobiana.cc.o
+
+.PHONY : src/pinocchio_jacobiana.o
+
+# target to build an object file
+src/pinocchio_jacobiana.cc.o:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o
+.PHONY : src/pinocchio_jacobiana.cc.o
+
+src/pinocchio_jacobiana.i: src/pinocchio_jacobiana.cc.i
+
+.PHONY : src/pinocchio_jacobiana.i
+
+# target to preprocess a source file
+src/pinocchio_jacobiana.cc.i:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.i
+.PHONY : src/pinocchio_jacobiana.cc.i
+
+src/pinocchio_jacobiana.s: src/pinocchio_jacobiana.cc.s
+
+.PHONY : src/pinocchio_jacobiana.s
+
+# target to generate assembly for a file
+src/pinocchio_jacobiana.cc.s:
+	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.s
+.PHONY : src/pinocchio_jacobiana.cc.s
+
 src/trajectories.o: src/trajectories.cpp.o
 
 .PHONY : src/trajectories.o
@@ -896,6 +936,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... install/strip"
+	@echo "... pinocchio_jacobiana"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... hand_service"
 	@echo "... std_msgs_generate_messages_eus"
@@ -957,6 +998,9 @@ help:
 	@echo "... src/matrix_transf.o"
 	@echo "... src/matrix_transf.i"
 	@echo "... src/matrix_transf.s"
+	@echo "... src/pinocchio_jacobiana.o"
+	@echo "... src/pinocchio_jacobiana.i"
+	@echo "... src/pinocchio_jacobiana.s"
 	@echo "... src/trajectories.o"
 	@echo "... src/trajectories.i"
 	@echo "... src/trajectories.s"

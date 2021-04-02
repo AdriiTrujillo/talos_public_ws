@@ -1,0 +1,6 @@
+CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o: En la función `main':
+pinocchio_jacobiana.cc:(.text+0x1008): referencia a `controller_ns::algo::print()' sin definir
+collect2: error: ld returned 1 exit status
+make[2]: *** [/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/pinocchio_jacobiana] Error 1
+make[1]: *** [CMakeFiles/pinocchio_jacobiana.dir/all] Error 2
+make: *** [all] Error 2

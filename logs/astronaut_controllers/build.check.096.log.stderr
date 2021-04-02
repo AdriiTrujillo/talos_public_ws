@@ -1,0 +1,18 @@
+[31m[1mCMake Error[0m at /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/CMakeLists.txt:13 (find_package):
+  By not providing "Findpinocchio.cmake" in CMAKE_MODULE_PATH this project
+  has asked CMake to find a package configuration file provided by
+  "pinocchio", but CMake did not find one.
+
+  Could not find a package configuration file provided by "pinocchio" with
+  any of the following names:
+
+    pinocchioConfig.cmake
+    pinocchio-config.cmake
+
+  Add the installation prefix of "pinocchio" to CMAKE_PREFIX_PATH or set
+  "pinocchio_DIR" to a directory containing one of the above files.  If
+  "pinocchio" provides a separate development package or SDK, be sure it has
+  been installed.
+
+
+make: *** [cmake_check_build_system] Error 1

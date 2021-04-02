@@ -9,6 +9,7 @@ talos_astronaut/astronaut_controllers
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/srv/__init__.py /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/astronaut_controllers/srv/__init__.py
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/python2.7/dist-packages/astronaut_controllers/srv/_hand_operations.py /home/adrii/talos_public_ws/devel/lib/python2.7/dist-packages/astronaut_controllers/srv/_hand_operations.py
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/gripper_service /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/gripper_service
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/pinocchio_jacobiana /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/pinocchio_jacobiana
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/hand_service /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/hand_service
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/matrix_transf /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/matrix_transf
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/trajectories /home/adrii/talos_public_ws/devel/lib/astronaut_controllers/trajectories

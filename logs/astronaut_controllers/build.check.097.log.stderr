@@ -1,0 +1,12 @@
+[31m[1mCMake Error[0m at /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/CMakeLists.txt:169 (add_executable):
+  Cannot find source file:
+
+    pinocchio_jacobiana.cc
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
+  .hxx .in .txx
+
+
+CMake Error: CMake can not determine linker language for target: pinocchio_jacobiana
+CMake Error: Cannot determine link language for target "pinocchio_jacobiana".
+make: *** [cmake_check_build_system] Error 1

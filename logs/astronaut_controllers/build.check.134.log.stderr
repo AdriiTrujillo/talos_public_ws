@@ -1,0 +1,4 @@
+CMake Error: Error in cmake code at
+/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/CMakeLists.txt:150:
+Parse error.  Expected a command name, got unquoted argument with text "${{pinocchio_LIBRARIES}}".
+make: *** [cmake_check_build_system] Error 1

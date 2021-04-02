@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o  -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/astronaut_controllers/pinocchio_jacobiana -rdynamic /opt/openrobots/lib/libpinocchio.so -lboost_filesystem -lboost_serialization -lboost_system -Wl,-rpath,/opt/openrobots/lib 

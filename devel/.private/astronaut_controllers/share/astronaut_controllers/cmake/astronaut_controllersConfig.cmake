@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(astronaut_controllers_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include " STREQUAL " ")
+if(NOT "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include;/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include;/usr/include " STREQUAL " ")
   set(astronaut_controllers_INCLUDE_DIRS "")
-  set(_include_dirs "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include")
+  set(_include_dirs "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include;/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include;/usr/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -116,7 +116,7 @@ if(NOT "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "/usr/lib/x86_64-linux-gnu/libboost_chrono.so;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;/usr/lib/x86_64-linux-gnu/libboost_system.so")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")

@@ -213,6 +213,10 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     plot_vel_error.yaw_err = velocity_error(5);
     //_____________________________________________
 
+
+    KDL::JntArray base_efforts;
+    // TODO Calculate base effort in each iteration
+
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
@@ -262,19 +266,19 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
     kv_ = 10.0; // 50 not working vibrations // 10 better but worse than with only kp
-    goal_reached.data = false;
     diff_frame_ = false;
-    // Transformation from the aruco marker to the target point
+    goal_reached.data = false;
+    // Transformation from the aruco marker to the target point _____________________________________________________
     aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
-    // Trjectory inicializations
+    // Trjectory inicializations_____________________________________________________________________________________
+    now_ = 0.0;
+    vel_i_ = 0.0;
+    acc_i_ = 0.0;
+    duration_time_ = 0.0; 
     start_trajectory_ = false;
     finish_trajectory_ = false;
     take_start_distance_ = true;
     ref_time_ = ros::Duration(9.0).toSec(); //9 sec trajectory
-    duration_time_ = 0.0; 
-    now_ = 0.0;
-    vel_i_ = 0.0;
-    acc_i_ = 0.0;
     global_velPof_ = new KDL::VelocityProfile_Spline();
     // ______________________________________________________________________________________________________________
 
@@ -295,6 +299,35 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     local_frame_ = current_pose;
     start_frame_ = current_pose;
     // ______________________________________________________________________________________________________________
+    
+    //Initialize pinnochio models____________________________________________________________________________________
+    std::string urdf_path = ros::package::getPath("astronaut") + std::string("/urdfs/astronaut_pinocchio_no_hands.urdf");
+
+    // Load robot model in pinnochio
+    std::cout << "Loading file: " << urdf_path << "\n";
+    pinocchio::urdf::buildModel(urdf_path, pinocchio::JointModelFreeFlyer(), model_complete);
+    std::cout << "Complete! Robot's name: " << model_complete.name << '\n';
+
+    // list of the joint that will be blocked
+    std::vector<std::string> articulaciones_bloqueadas{
+        "arm_left_1_joint", "arm_left_2_joint", "arm_left_3_joint", "arm_left_4_joint", 
+        "arm_left_5_joint", "arm_left_6_joint", "arm_left_7_joint", "torso_1_joint", 
+         "torso_2_joint", "head_1_joint", "head_2_joint"
+    };
+    // blocked joints id's
+    std::vector<pinocchio::JointIndex> articulaciones_bloqueadas_id;
+    articulaciones_bloqueadas_id.reserve(articulaciones_bloqueadas.size());
+    for (const auto& str : articulaciones_bloqueadas)
+        articulaciones_bloqueadas_id.emplace_back(model_complete.getJointId(str));
+
+    // IF YOU WANT THE INMOBILITZED ARM TO HAVE ANOTHER DIFFERENT CONFIGURATION
+    // YOU MUST DO IT HERE!!
+    auto q = pinocchio::neutral(model_complete);
+
+    // CREATE REDUCED MODEL
+    pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, q, model);
+    //_______________________________________________________________________________________________________________
+
 }
 
 void aruco_trajectory_cartesian_controller_class::stopping(const ros::Time &time) {}
@@ -415,6 +448,107 @@ double aruco_trajectory_cartesian_controller_class::trace(const KDL::Frame frame
     trace = frame(0,0) + frame(1,1) + frame(2,2);
     
     return trace;
+
+}
+
+// Method for calculating the pseudo-Inverse as recommended by Eigen developers (Moore-Penrose Pseudo-Inverse)
+template<class _Matrix_Type_>
+_Matrix_Type_ aruco_trajectory_cartesian_controller_class::pseudoInverse(const _Matrix_Type_ &a){
+
+    double epsilon = std::numeric_limits<double>::epsilon();
+
+    Eigen::JacobiSVD< _Matrix_Type_ > svd(a ,Eigen::ComputeThinU | Eigen::ComputeThinV);
+    // For a square matrix
+    // Eigen::JacobiSVD< _Matrix_Type_ > svd(a ,Eigen::ComputeFullU | Eigen::ComputeFullV);
+	double tolerance = epsilon * std::max(a.cols(), a.rows()) *svd.singularValues().array().abs()(0);
+	return svd.matrixV() *  (svd.singularValues().array().abs() > tolerance).select(svd.singularValues().array().inverse(), 0).matrix().asDiagonal() * svd.matrixU().adjoint();
+}
+
+KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel){
+    
+    KDL::JntArray base_efforts;
+    pinocchio::Data data;
+    Eigen::VectorXd dot_q(7);
+    Eigen::VectorXd acc_d(6);
+    Eigen::VectorXd vel_d(6);
+    Eigen::VectorXd vel(6);
+    Eigen::VectorXd pos_d(6);
+    Eigen::VectorXd pos(6);
+
+    
+    double kp = 300.0;
+    double kv = 10.0;
+
+    for(int i = 0; i < jnt_vel.rows(); i++){
+        dot_q(i) = jnt_vel(i);
+    }
+    for(int i = 0; i < 6;i++){
+        acc_d(i) = dot_dot_Xd(i);
+        vel_d(i) = dot_Xd(i);
+        vel(i) = dot_X(i);
+        pos_d(i) = x_d(i);
+        pos(i) = x(i);
+    }
+
+    // Se inicializa el estado del robot
+    data = pinocchio::Data(model);
+
+    // Calcula la Jacobiana completa
+    auto q = pinocchio::neutral(model);
+    pinocchio::computeJointJacobians(model, data, q);
+    pinocchio::updateFramePlacements(model, data);
+
+    // Calcula la Jacobiana con respecto al extremo del brazo
+    Eigen::MatrixXd J(6, model.nv); J.setZero();
+    pinocchio::FrameIndex frame_id = model.getFrameId("arm_right_7_link");
+    // std::cout << "frame_id: " << frame_id << "\n";
+    // std::cout << "n_frames: " << model.frames.size() << "\n";
+
+    pinocchio::getFrameJacobian(model, data, frame_id, pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, J);
+
+    Eigen::MatrixXd Jb = J.block<6, 6>(0,0);
+    Eigen::MatrixXd Jm = J.block(0, 6, 6, 7);
+
+    // Calcula las derivadas de la jacobiana
+    auto v = Eigen::VectorXd::Random(model.nv);
+    Eigen::MatrixXd dJ(6, model.nv); dJ.setZero();
+    pinocchio::computeJointJacobiansTimeVariation(model, data, q, v);
+    pinocchio::getFrameJacobianTimeVariation(model, data, frame_id, pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, dJ);
+    auto dJb = dJ.block<6, 6>(0, 0);
+    auto dJm = dJ.block(0, 6, 6, 7);
+
+    // Calcula la matriz de inercia
+    pinocchio::crba(model, data, q);
+    data.M.triangularView<Eigen::StrictlyLower>() = data.M.transpose().triangularView<Eigen::StrictlyLower>();
+    // Se guardan las submatrices de inercia
+    auto Hb  = data.M.block<6, 6>(0, 0);
+    auto Hbm = data.M.block(0, 6, 6, 7);
+    auto Hm  = data.M.block(6, 6, 7, 7);
+
+    // Calcula los jacobianos pedidos
+    Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);
+    Eigen::MatrixXd dJg = dJm - dJb * (Hb.inverse() * Hbm);
+    
+    // Imprime todas las jacobianas
+    // std::cout << "Complete J:\n" << J << '\n';
+    // std::cout << "Jb:\n" << Jb << '\n';
+    // std::cout << "Jm:\n" << Jm << '\n';
+    // std::cout << "Complete dJ:\n" << dJ << '\n';
+    // std::cout << "dJb:\n" << dJb << '\n';
+    // std::cout << "dJm:\n" << dJm << '\n';
+    // std::cout << "Jg:\n" << Jg << '\n';
+    // std::cout << "dJg:\n" << dJg << '\n';
+
+    auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
+    auto Jg_ps =  pseudoInverse(Jg);
+    
+    auto effort = Hm_*Jg_ps*(acc_d + kv*(vel_d - vel) + kp*(pos_d - pos) - (dJg*dot_q));
+
+    for(int i = 0; i < 7; i++){
+        base_efforts(i) = effort(i);
+    }
+
+    return base_efforts;   
 
 }
     

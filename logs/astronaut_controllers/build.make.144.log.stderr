@@ -1,0 +1,9 @@
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/pinocchio_jacobiana.cc:1:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/prueba_jacobiana.h:[m[K In member function ‘[01m[Kvoid controller_ns::algo::print()[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/prueba_jacobiana.h:28:3:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ before ‘[01m[K}[m[K’ token
+   }
+[01;32m[K   ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/prueba_jacobiana.h:28:3:[m[K [01;31m[Kerror: [m[Kinvalid use of non-static member function
+make[2]: *** [CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o] Error 1
+make[1]: *** [CMakeFiles/pinocchio_jacobiana.dir/all] Error 2
+make: *** [all] Error 2

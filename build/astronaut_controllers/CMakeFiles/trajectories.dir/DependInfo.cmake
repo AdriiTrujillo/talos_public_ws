@@ -10,6 +10,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
+  "BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS"
+  "BOOST_MPL_LIMIT_LIST_SIZE=30"
   "ROSCONSOLE_BACKEND_LOG4CXX"
   "ROS_BUILD_SHARED_LIBS=1"
   "ROS_PACKAGE_NAME=\"astronaut_controllers\""
@@ -25,6 +27,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/opt/ros/kinetic/share/orocos_kdl/../../include"
   "/usr/include/eigen3"
+  "/opt/openrobots/include"
   )
 
 # Targets to which this target links.

@@ -1,0 +1,6 @@
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/pinocchio_jacobiana.cc:23:32:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+       void calculate_Jacobians()
+[01;32m[K                                ^[m[K
+make[2]: *** [CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o] Error 1
+make[1]: *** [CMakeFiles/pinocchio_jacobiana.dir/all] Error 2
+make: *** [all] Error 2

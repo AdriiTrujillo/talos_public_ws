@@ -76,6 +76,8 @@ namespace controller_ns{
             template<class _Matrix_Type_>
             _Matrix_Type_ pseudoInverse(const _Matrix_Type_ &a);
             KDL::JntArray calculate_base_efforts(pinocchio::Model model,KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel);
+            KDL::Twist frame_to_Twist(const KDL::Frame frame);
+
 
             // Trajectories function members
             KDL::Trajectory*  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double vel_i, double acc_i, double duration);
@@ -110,7 +112,7 @@ namespace controller_ns{
 
             //Variables
             float kp_, kv_;
-            KDL::JntArray jnt_pos_, jnt_effort_, jnt_vel_;
+            KDL::JntArray jnt_pos_, jnt_effort_, jnt_vel_, base_efforts_;
             KDL::Jacobian jacobian_;
             KDL::Frame target_frame_;
             KDL::Frame talos_2_aruco_;

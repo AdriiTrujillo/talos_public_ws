@@ -103,6 +103,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     jnt_vel_.resize(kdl_chain.getNrOfJoints());
     jnt_effort_.resize(kdl_chain.getNrOfJoints());
     jacobian_.resize(kdl_chain.getNrOfJoints());
+    base_efforts_.resize(kdl_chain.getNrOfJoints());
 
     // ROS_INFO("Cadena cinematica incializada correctamente ...");
     // ROS_INFO("Handles Size: %i", joint_handles_.size());
@@ -147,6 +148,11 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
+
+    KDL::Twist actual_pos = KDL::Twist::Zero(); // Initiliz it to zeros
+    actual_pos = frame_to_Twist(current_pose);
+
+
     // calculate_transformations(current_pose);
 // -------------------------------------------------------------------------------------------    
     // Descomentar para imprimir por pantalla la posición del extremo
@@ -155,17 +161,22 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     // ROS_INFO("y : %f",current_pose.p.y());
     // ROS_INFO("z : %f",current_pose.p.z());
 // ------------------------------------------------------------------------------------------- 
-    KDL::Twist desired_vel;
+    KDL::Twist desired_vel = KDL::Twist::Zero(); // Initiliz it to zeros
+    KDL::Twist desired_acc = KDL::Twist::Zero(); // Initiliz it to zeros
+    KDL::Twist desired_pos = KDL::Twist::Zero(); // Initiliz it to zeros
 
     if(start_trajectory_){
-        //Get the actual time
+        // Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's start in sec 0
         now_ = actual_time_.toSec();
         target_frame_ = trajectory_->Pos(now_);
         desired_vel = trajectory_->Vel(now_);
+        desired_acc = trajectory_->Acc(now_);
+        desired_pos = frame_to_Twist(target_frame_);
+
         vel_i_ = global_velPof_->Vel(now_);
         acc_i_ = global_velPof_->Acc(now_);
-        start_frame_ = current_pose; //Update de start frame to start the folowing trajectory
+        start_frame_ = current_pose; // Update de start frame to start the folowing trajectory
     }
 
     // get the each pose control error
@@ -214,13 +225,19 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     //_____________________________________________
 
 
-    KDL::JntArray base_efforts;
     // TODO Calculate base effort in each iteration
+    if(start_trajectory_){
+        base_efforts_ = calculate_base_efforts(model, desired_acc, desired_vel, cart_vel, desired_pos, actual_pos, jnt_vel_);
+    }
+    else{
+        SetToZero(base_efforts_);
+    }
+    
 
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
-        jnt_effort_(i) = 0;
+        jnt_effort_(i) = base_efforts_(i);
         for (unsigned int j=0; j<6; j++){
             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
         }
@@ -448,6 +465,22 @@ double aruco_trajectory_cartesian_controller_class::trace(const KDL::Frame frame
     trace = frame(0,0) + frame(1,1) + frame(2,2);
     
     return trace;
+
+}
+
+KDL::Twist aruco_trajectory_cartesian_controller_class::frame_to_Twist(const KDL::Frame frame){
+
+    KDL::Twist pose = KDL::Twist::Zero(); // Initiliz it to zeros
+    pose(0) = frame.p.x();
+    pose(1) = frame.p.y();
+    pose(2) = frame.p.z();
+    double roll, pitch, yaw;
+    frame.M.GetRPY(roll, pitch, yaw);
+    pose(3) = roll;
+    pose(4) = pitch;
+    pose(5) = yaw;
+
+    return pose;
 
 }
 

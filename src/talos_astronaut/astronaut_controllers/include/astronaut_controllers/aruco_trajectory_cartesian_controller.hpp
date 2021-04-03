@@ -103,7 +103,6 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     jnt_vel_.resize(kdl_chain.getNrOfJoints());
     jnt_effort_.resize(kdl_chain.getNrOfJoints());
     jacobian_.resize(kdl_chain.getNrOfJoints());
-    base_efforts_.resize(kdl_chain.getNrOfJoints());
 
     // ROS_INFO("Cadena cinematica incializada correctamente ...");
     // ROS_INFO("Handles Size: %i", joint_handles_.size());
@@ -133,6 +132,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
 void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
+    std::cout << "Update" << std::endl;
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
@@ -224,20 +224,19 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     plot_vel_error.yaw_err = velocity_error(5);
     //_____________________________________________
 
-
+    std::vector<float> base_efforts(7, 0);
     // TODO Calculate base effort in each iteration
     if(start_trajectory_){
-        base_efforts_ = calculate_base_efforts(model, desired_acc, desired_vel, cart_vel, desired_pos, actual_pos, jnt_vel_);
+        std::cout << "Base efforts" << std::endl;
+        base_efforts = calculate_base_efforts(model, desired_acc, desired_vel, cart_vel, desired_pos, actual_pos, jnt_vel_);
     }
-    else{
-        SetToZero(base_efforts_);
-    }
+
     
 
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
-        jnt_effort_(i) = base_efforts_(i);
+        jnt_effort_(i) = base_efforts[i];
         for (unsigned int j=0; j<6; j++){
             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
         }
@@ -343,6 +342,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
 
     // CREATE REDUCED MODEL
     pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, q, model);
+    std::cout << "Reduced model complet!" << std::endl;
     //_______________________________________________________________________________________________________________
 
 }
@@ -497,9 +497,9 @@ _Matrix_Type_ aruco_trajectory_cartesian_controller_class::pseudoInverse(const _
 	return svd.matrixV() *  (svd.singularValues().array().abs() > tolerance).select(svd.singularValues().array().inverse(), 0).matrix().asDiagonal() * svd.matrixU().adjoint();
 }
 
-KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel){
+std::vector<float> aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel){
     
-    KDL::JntArray base_efforts;
+    std::vector<float> base_effort;
     pinocchio::Data data;
     Eigen::VectorXd dot_q(7);
     Eigen::VectorXd acc_d(6);
@@ -508,8 +508,7 @@ KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_effort
     Eigen::VectorXd pos_d(6);
     Eigen::VectorXd pos(6);
 
-    
-    double kp = 300.0;
+    double kp = 150.0;
     double kv = 10.0;
 
     for(int i = 0; i < jnt_vel.rows(); i++){
@@ -534,8 +533,6 @@ KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_effort
     // Calcula la Jacobiana con respecto al extremo del brazo
     Eigen::MatrixXd J(6, model.nv); J.setZero();
     pinocchio::FrameIndex frame_id = model.getFrameId("arm_right_7_link");
-    // std::cout << "frame_id: " << frame_id << "\n";
-    // std::cout << "n_frames: " << model.frames.size() << "\n";
 
     pinocchio::getFrameJacobian(model, data, frame_id, pinocchio::ReferenceFrame::LOCAL_WORLD_ALIGNED, J);
 
@@ -561,27 +558,19 @@ KDL::JntArray aruco_trajectory_cartesian_controller_class::calculate_base_effort
     // Calcula los jacobianos pedidos
     Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);
     Eigen::MatrixXd dJg = dJm - dJb * (Hb.inverse() * Hbm);
-    
-    // Imprime todas las jacobianas
-    // std::cout << "Complete J:\n" << J << '\n';
-    // std::cout << "Jb:\n" << Jb << '\n';
-    // std::cout << "Jm:\n" << Jm << '\n';
-    // std::cout << "Complete dJ:\n" << dJ << '\n';
-    // std::cout << "dJb:\n" << dJb << '\n';
-    // std::cout << "dJm:\n" << dJm << '\n';
-    // std::cout << "Jg:\n" << Jg << '\n';
-    // std::cout << "dJg:\n" << dJg << '\n';
 
+    // Control Ecuation
     auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
     auto Jg_ps =  pseudoInverse(Jg);
-    
+
     auto effort = Hm_*Jg_ps*(acc_d + kv*(vel_d - vel) + kp*(pos_d - pos) - (dJg*dot_q));
 
+    //Covenrt Eigen to std::vector
     for(int i = 0; i < 7; i++){
-        base_efforts(i) = effort(i);
+        base_effort.push_back(effort(i));
     }
 
-    return base_efforts;   
+    return base_effort;   
 
 }
     

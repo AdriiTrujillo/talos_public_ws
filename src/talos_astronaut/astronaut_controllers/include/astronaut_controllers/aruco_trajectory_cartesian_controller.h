@@ -75,7 +75,7 @@ namespace controller_ns{
             // // Base effort function members
             template<class _Matrix_Type_>
             _Matrix_Type_ pseudoInverse(const _Matrix_Type_ &a);
-            KDL::JntArray calculate_base_efforts(pinocchio::Model model,KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel);
+            std::vector<float> calculate_base_efforts(pinocchio::Model model,KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel);
             KDL::Twist frame_to_Twist(const KDL::Frame frame);
 
 
@@ -112,7 +112,7 @@ namespace controller_ns{
 
             //Variables
             float kp_, kv_;
-            KDL::JntArray jnt_pos_, jnt_effort_, jnt_vel_, base_efforts_;
+            KDL::JntArray jnt_pos_, jnt_effort_, jnt_vel_;
             KDL::Jacobian jacobian_;
             KDL::Frame target_frame_;
             KDL::Frame talos_2_aruco_;

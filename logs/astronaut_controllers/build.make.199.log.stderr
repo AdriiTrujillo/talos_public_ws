@@ -1,45 +1,3 @@
-[  0%] Built target geometry_msgs_generate_messages_cpp
-[  0%] Built target geometry_msgs_generate_messages_nodejs
-[  0%] Built target std_msgs_generate_messages_cpp
-[  0%] Built target geometry_msgs_generate_messages_lisp
-[  0%] Built target trajectory_msgs_generate_messages_cpp
-[  0%] Built target std_msgs_generate_messages_lisp
-[  0%] Built target trajectory_msgs_generate_messages_nodejs
-[  0%] Built target std_msgs_generate_messages_nodejs
-[  6%] Built target pinocchio_jacobiana
-[  6%] Built target geometry_msgs_generate_messages_py
-[  6%] Built target trajectory_msgs_generate_messages_lisp
-[  6%] Built target geometry_msgs_generate_messages_eus
-[  6%] Built target std_msgs_generate_messages_eus
-[  6%] Built target trajectory_msgs_generate_messages_eus
-[  6%] Built target roscpp_generate_messages_lisp
-[  6%] Built target trajectory_msgs_generate_messages_py
-[  6%] Built target std_msgs_generate_messages_py
-[  6%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
-[  6%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
-[  6%] Built target _astronaut_controllers_generate_messages_check_deps_plot_msg
-[  6%] Built target roscpp_generate_messages_cpp
-[  6%] Built target roscpp_generate_messages_py
-[  6%] Built target rosgraph_msgs_generate_messages_lisp
-[  6%] Built target roscpp_generate_messages_nodejs
-[  6%] Built target rosgraph_msgs_generate_messages_nodejs
-[  6%] Built target rosgraph_msgs_generate_messages_cpp
-[  6%] Built target rosgraph_msgs_generate_messages_eus
-[  6%] Built target rosgraph_msgs_generate_messages_py
-[  6%] Built target roscpp_generate_messages_eus
-[ 16%] Built target astronaut_controllers_generate_messages_cpp
-[ 23%] Built target matrix_transf
-[ 40%] Built target astronaut_controllers_generate_messages_py
-[ 50%] Built target astronaut_controllers_generate_messages_lisp
-[ 63%] Built target astronaut_controllers_generate_messages_eus
-[ 73%] Built target astronaut_controllers_generate_messages_nodejs
-[ 80%] Built target trajectories
-[ 80%] Built target astronaut_controllers_gencpp
-[ 80%] Built target astronaut_controllers_generate_messages
-[35m[1mScanning dependencies of target astronaut_controllers_lib[0m
-[ 86%] Built target hand_service
-[ 93%] Built target gripper_service
-[ 96%] [32mBuilding CXX object CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o[0m
 In file included from [01m[K/opt/openrobots/include/pinocchio/fwd.hpp:25:0[m[K,
                  from [01m[K/opt/openrobots/include/pinocchio/spatial/fwd.hpp:9[m[K,
                  from [01m[K/opt/openrobots/include/pinocchio/multibody/model.hpp:9[m[K,
@@ -49,6 +7,20 @@ In file included from [01m[K/opt/openrobots/include/pinocchio/fwd.hpp:25:0[m
    #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
 [01;32m[K ^[m[K
 [01m[K<command-line>:0:0:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:155:0[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K In member function ‘[01m[Kvirtual void controller_ns::aruco_trajectory_cartesian_controller_class::update(const ros::Time&, const ros::Duration&)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:239:40:[m[K [01;31m[Kerror: [m[Kno match for call to ‘[01m[K(std::vector<float>) (unsigned int&)[m[K’
+         jnt_effort_(i) = base_efforts(i);
+[01;32m[K                                        ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:[m[K At global scope:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.hpp:500:21:[m[K [01;31m[Kerror: [m[Kprototype for ‘[01m[Kstd::vector<double> controller_ns::aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model, KDL::Twist, KDL::Twist, KDL::Twist, KDL::Twist, KDL::Twist, KDL::JntArray)[m[K’ does not match any in class ‘[01m[Kcontroller_ns::aruco_trajectory_cartesian_controller_class[m[K’
+ std::vector<double> aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel){
+[01;32m[K                     ^[m[K
+In file included from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4:0[m[K:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:78:32:[m[K [01;31m[Kerror: [m[Kcandidate is: std::vector<float> controller_ns::aruco_trajectory_cartesian_controller_class::calculate_base_efforts(pinocchio::Model, KDL::Twist, KDL::Twist, KDL::Twist, KDL::Twist, KDL::Twist, KDL::JntArray)
+             std::vector<float> calculate_base_efforts(pinocchio::Model model,KDL::Twist dot_dot_Xd, KDL::Twist dot_Xd, KDL::Twist dot_X, KDL::Twist x_d, KDL::Twist x, KDL::JntArray jnt_vel);
+[01;32m[K                                ^[m[K
 In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/robot_hw.h:35:0[m[K,
                  from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller_base.h:37[m[K,
                  from [01m[K/home/adrii/talos_public_ws/src/ros_control/controller_interface/include/controller_interface/controller.h:35[m[K,
@@ -62,5 +34,6 @@ In file included from [01m[K/home/adrii/talos_public_ws/src/ros_control/hardwa
 [01m[K/home/adrii/talos_public_ws/src/ros_control/hardware_interface/include/hardware_interface/internal/interface_manager.h:73:9:[m[K [01;35m[Kwarning: [m[Kreference to local variable ‘[01m[Ktmp_yes[m[K’ returned [-Wreturn-local-addr]
      yes tmp_yes;
 [01;32m[K         ^[m[K
-[100%] [32m[1mLinking CXX shared library /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/lib/libastronaut_controllers_lib.so[0m
-[100%] Built target astronaut_controllers_lib
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

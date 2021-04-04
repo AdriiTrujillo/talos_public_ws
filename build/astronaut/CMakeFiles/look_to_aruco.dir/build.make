@@ -90,6 +90,7 @@ look_to_aruco_EXTERNAL_OBJECTS =
 
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.o
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: CMakeFiles/look_to_aruco.dir/build.make
+/home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: /opt/ros/kinetic/lib/libroscpp.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco: /usr/lib/x86_64-linux-gnu/libboost_signals.so

@@ -24,6 +24,8 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_basic.hpp
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp
+ /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.h
+ /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.hpp
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp
  /opt/openrobots/include/hpp/fcl/BV/AABB.h
  /opt/openrobots/include/hpp/fcl/BV/BV.h

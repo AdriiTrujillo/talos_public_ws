@@ -90,6 +90,7 @@ send_position_EXTERNAL_OBJECTS =
 
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: CMakeFiles/send_position.dir/src/send_position.cpp.o
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: CMakeFiles/send_position.dir/build.make
+/home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: /opt/ros/kinetic/lib/libroscpp.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/send_position: /usr/lib/x86_64-linux-gnu/libboost_signals.so

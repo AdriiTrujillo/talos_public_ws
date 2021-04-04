@@ -1,0 +1,14 @@
+In file included from [01m[K/opt/openrobots/include/pinocchio/fwd.hpp:25:0[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/spatial/fwd.hpp:9[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/multibody/model.hpp:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/aruco_trajectory_cartesian_controller.h:47[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:4[m[K:
+[01m[K/opt/openrobots/include/pinocchio/container/boost-container-limits.hpp:18:0:[m[K [01;35m[Kwarning: [m[K"BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS" redefined
+   #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
+[01;32m[K ^[m[K
+[01m[K<command-line>:0:0:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp:7:59:[m[K [01;31m[Kfatal error: [m[Kastronaut_controllres/torso_effort_controller.h: No existe el archivo o el directorio
+compilation terminated.
+make[2]: *** [CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o] Error 1
+make[1]: *** [CMakeFiles/astronaut_controllers_lib.dir/all] Error 2
+make: *** [all] Error 2

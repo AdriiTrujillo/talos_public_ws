@@ -487,6 +487,9 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);
     Eigen::MatrixXd dJg = dJm - dJb * (Hb.inverse() * Hbm);
 
+    std::cout << "Jg:\n" << Jg << std::endl;
+    std::cout << "dJg:\n" << dJg << std::endl;
+
     // Control Ecuation _____________________________________________
     auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
     auto Jg_ps =  pseudoInverse(Jg);

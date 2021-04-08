@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
     ros::init(argc, argv, "gripper_service_node");
     ros::NodeHandle n;
 
-    ros::ServiceServer service = n.advertiseService("gripper_service_server", serviceCallback);
+    ros::ServiceServer service = n.advertiseService("hand_service_server", serviceCallback);
     right_pub = n.advertise<trajectory_msgs::JointTrajectory>(right_topic, 10);
     left_pub = n.advertise<trajectory_msgs::JointTrajectory>(left_topic, 10);
 

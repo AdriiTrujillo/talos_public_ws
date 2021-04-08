@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+
+        <!-- overwriting these args -->
+        <arg name="debug" default="false" />
+        <arg name="gui" default="true" />
+        <arg name="pause" default="false" />
+        <arg name="world" default="$(find astronaut)/worlds/international_space_station.world" />
+
+        <!-- include gazebo_ros launcher -->
+        <include file="$(find gazebo_ros)/launch/empty_world.launch">
+                <arg name="world_name" value="$(arg world)" />
+                <arg name="debug" value="$(arg debug)" />
+                <arg name="gui" value="$(arg gui)" />
+                <arg name="paused" value="$(arg pause)" />
+                <arg name="use_sim_time" value="true" />
+        </include>
+
+        <arg name="load_model" default="true"/> <!-- AS: should probably be false by default -->
+        <arg name="robot"  default="upper_body_gripper"/>          <!-- full, lower_body, foot -->
+        <arg name="foot_collision" default="thinbox"/>
+        <arg name="default_configuration_type" default="astro_gripper"/>
+        <arg name="disable_gazebo_camera" default="false"/>
+        <arg name="gzpose" default="-x -5.323 -y 2.353 -z 0.638 -R -0.0063 -P 0.0245 -Y 0.0777"/>
+
+        <env name="GAZEBO_MODEL_PATH" value="$(find talos_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+
+        <group if="$(arg load_model)">
+            <include file="$(find astronaut)/launch/astro_gripper/upload_astro_gripper.launch" >
+                <arg name="robot" value="$(arg robot)"/>
+                <arg name="foot_collision" default="$(arg foot_collision)"/>
+                <arg name="default_configuration_type" default="$(arg default_configuration_type)"/>
+                <arg name="disable_gazebo_camera" value="$(arg disable_gazebo_camera)"/>
+            </include>
+        </group>
+
+          <!-- spawn robot in simulation -->
+        <include file="$(find astronaut)/launch/astro_gripper/astro_spawn_gripper.launch">
+            <arg name="robot"  value="$(arg robot)"/>
+            <arg name="gzpose" value="$(arg gzpose)"/>
+        </include>
+
+        <!-- default controllers -->
+        <!-- <include file="$(find talos_controller_configuration)/launch/talos_default_controllers.launch"/> -->
+        <include file="$(find astronaut)/launch/talos_bringup_astro.launch" />
+
+</launch>

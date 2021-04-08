@@ -21,7 +21,8 @@
                 foot_collision:=$(arg foot_collision)
                 enable_crane:=$(arg enable_crane)
                 disable_gazebo_camera:=$(arg disable_gazebo_camera)
-                head_type:=$(arg head_type)"
+                head_type:=$(arg head_type)
+                test:=false"
       />
 
   <rosparam command="load" file="$(find astronaut)/config/astro_gripper/default_configuration_$(arg default_configuration_type).yaml" />

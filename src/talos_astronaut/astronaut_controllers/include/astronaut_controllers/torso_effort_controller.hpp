@@ -171,7 +171,7 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
 
     // Joint efforts in each iteration ____________
     if(start_trajectory_){
-        jnt_effort_ = calculate_jnt_efforts(model, desired_acc, velocity_error, control_error, jnt_vel_, kp_, kv_);
+        jnt_effort_ = calculate_jnt_efforts(model, desired_acc, velocity_error, control_error, jnt_vel_, jnt_pos_, kp_, kv_);
     }
 
     writeJointCommand(jnt_effort_);
@@ -230,8 +230,8 @@ void torso_effort_controller_class::writeJointCommand(std::vector<float> joint_c
 void torso_effort_controller_class::starting(const ros::Time &time) {
     
     // Some initializtions ____________________________________________________________________________________________________________________________
-    kp_ = 2000.0;
-    kv_ = 100.0;
+    kp_ = 300; //2000
+    kv_ = 10.0; //100
     // ________________________________________________________________________________________________________________________________________________
     diff_frame_ = false;
     goal_reached.data = false;
@@ -279,7 +279,7 @@ void torso_effort_controller_class::starting(const ros::Time &time) {
     std::vector<std::string> articulaciones_bloqueadas{
         "arm_left_1_joint", "arm_left_2_joint", "arm_left_3_joint", "arm_left_4_joint", 
         "arm_left_5_joint", "arm_left_6_joint", "arm_left_7_joint", "torso_1_joint", 
-         "torso_2_joint", "head_1_joint", "head_2_joint"
+         "torso_2_joint", "head_1_joint", "head_2_joint","torso_3_joint"
     };
     // blocked joints id's ____________________________________________________________________________________________________________________________
     std::vector<pinocchio::JointIndex> articulaciones_bloqueadas_id;
@@ -301,13 +301,24 @@ void torso_effort_controller_class::starting(const ros::Time &time) {
 void torso_effort_controller_class::stopping(const ros::Time &time) {}
 
 bool torso_effort_controller_class::compareTolerance(KDL::Twist error){
-
+    
+    // std::cout << "diff_frame: " << diff_frame_ << std::endl;
     if(diff_frame_){ // To not check when it has just started
-        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
+        // std::cout << " ------- " << std::endl;
+        // std::cout << "x_err: " << fabs(error(0)) << std::endl;
+        // std::cout << "y_err: " << fabs(error(1)) << std::endl;
+        // std::cout << "z_err: " << fabs(error(2)) << std::endl;
+        // std::cout << "roll_err: " << fabs(error(3)) << std::endl;  
+        // std::cout << "pitch_err: " << fabs(error(4)) << std::endl;
+        // std::cout << "yaw_err: " << fabs(error(5)) << std::endl;
+        // std::cout << " ------- " << std::endl;
+        if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+            // std::cout << "GOAL REACHED" << std::endl;
             return true; // Point reached
         }
     }
     // Not reached yet
+    // std::cout << "GOAL NOT REACHED YET" << std::endl;
     return false;
 }
 
@@ -431,7 +442,8 @@ _Matrix_Type_ torso_effort_controller_class::pseudoInverse(const _Matrix_Type_ &
 	return svd.matrixV() *  (svd.singularValues().array().abs() > tolerance).select(svd.singularValues().array().inverse(), 0).matrix().asDiagonal() * svd.matrixU().adjoint();
 }
 
-std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_X_err, KDL::Twist x_err, KDL::JntArray jnt_vel, float kp, float kv){
+std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_X_err, KDL::Twist x_err, KDL::JntArray jnt_vel, 
+                                                                        KDL::JntArray jnt_pos, float kp, float kv){
     
     // Initialitations _____________________________________________
     std::vector<float> joint_effort;
@@ -440,13 +452,19 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     Eigen::VectorXd acc_d(6);
     Eigen::VectorXd vel_err(6);
     Eigen::VectorXd pos_err(6);
-
-    for(int i = 0; i < jnt_vel.rows(); i++) dot_q(i) = jnt_vel(i);
+    Eigen::VectorXd q(14);
 
     for(int i = 0; i < 6;i++){
         acc_d(i) = dot_dot_Xd(i);
         vel_err(i) = dot_X_err(i);
         pos_err(i) = x_err(i);
+        q(i) = 0;
+    }
+
+    q(6) = 1;
+    for(int i = 0; i < jnt_vel.rows(); i++) {
+        dot_q(i) = jnt_vel(i);
+        q(i+7) = jnt_pos(i);
     }
     // _____________________________________________________________
 
@@ -454,8 +472,12 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     data = pinocchio::Data(model);
 
     // Calculate complete Jacobian _________________________________
-    auto q = pinocchio::neutral(model);
+
+    // std::cout << "1 -----" << std::endl;
+    // auto q = pinocchio::neutral(model);
+    // std::cout << q << std::endl;
     pinocchio::computeJointJacobians(model, data, q);
+    // std::cout << "2 -----" << std::endl;
     pinocchio::updateFramePlacements(model, data);
 
     // Jacobian with respect the end effector  ______________________
@@ -487,8 +509,8 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);
     Eigen::MatrixXd dJg = dJm - dJb * (Hb.inverse() * Hbm);
 
-    std::cout << "Jg:\n" << Jg << std::endl;
-    std::cout << "dJg:\n" << dJg << std::endl;
+    // std::cout << "Jg:\n" << Jg << std::endl;
+    // std::cout << "dJg:\n" << dJg << std::endl;
 
     // Control Ecuation _____________________________________________
     auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);

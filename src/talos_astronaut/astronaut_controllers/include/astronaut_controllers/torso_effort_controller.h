@@ -75,7 +75,7 @@ namespace controller_ns{
             // // Base effort function members
             template<class _Matrix_Type_>
             _Matrix_Type_ pseudoInverse(const _Matrix_Type_ &a);
-            std::vector<float> calculate_jnt_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_X_err, KDL::Twist x_err, KDL::JntArray jnt_vel, float kp, float kv);
+            std::vector<float> calculate_jnt_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_X_err, KDL::Twist x_err, KDL::JntArray jnt_vel, KDL::JntArray jnt_pos, float kp, float kv);
 
 
             // Trajectories function members

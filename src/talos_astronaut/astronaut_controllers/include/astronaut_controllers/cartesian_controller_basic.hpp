@@ -150,12 +150,7 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
         // std::cout << "Now time: " << now << std::endl;
         target_frame_ = trajectory_->Pos(now);   
     }
-    // Descomentar para imprimir por pantalla la posición del extremo
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
-    
-    
+     
     // get the actual error
     KDL::Twist control_error;
     // get the final error

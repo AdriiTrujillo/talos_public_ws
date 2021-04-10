@@ -127,6 +127,7 @@ namespace controller_ns{
             double vel_i_;
             double acc_i_;
             double start_distance_;
+            bool compute_efforts_;
             bool start_trajectory_;
             bool finish_trajectory_;
             bool take_start_distance_;

@@ -335,7 +335,7 @@ void gazebo_cartesian_controller_class::transformationsCallback(const gazebo_msg
             world_2_Talos_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
         }
 
-        if(data.name[i] == "International Space Station"){
+        if(data.name[i] == "International Space Station" or data.name[i] == "International Space Station (Paper)"){
             world_2_ISS_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
         }
     }

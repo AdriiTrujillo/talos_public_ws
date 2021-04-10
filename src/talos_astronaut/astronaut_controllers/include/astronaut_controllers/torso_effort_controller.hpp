@@ -170,10 +170,10 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
     velocity_error = KDL::diff(cart_vel, desired_vel);
 
     // Joint efforts in each iteration ____________
-    if(start_trajectory_){
+    if(compute_efforts_){
         jnt_effort_ = calculate_jnt_efforts(model, desired_acc, velocity_error, control_error, jnt_vel_, jnt_pos_, kp_, kv_);
     }
-
+    
     writeJointCommand(jnt_effort_);
 
     
@@ -230,8 +230,8 @@ void torso_effort_controller_class::writeJointCommand(std::vector<float> joint_c
 void torso_effort_controller_class::starting(const ros::Time &time) {
     
     // Some initializtions ____________________________________________________________________________________________________________________________
-    kp_ = 300; //2000
-    kv_ = 10.0; //100
+    kp_ = 300;
+    kv_ = 10.0;
     // ________________________________________________________________________________________________________________________________________________
     diff_frame_ = false;
     goal_reached.data = false;
@@ -242,13 +242,14 @@ void torso_effort_controller_class::starting(const ros::Time &time) {
     vel_i_ = 0.0;
     acc_i_ = 0.0;
     duration_time_ = 0.0; 
+    compute_efforts_= false;
     start_trajectory_ = false;
     finish_trajectory_ = false;
     take_start_distance_ = true;
     ref_time_ = ros::Duration(9.0).toSec(); //9 sec trajectory
     global_velPof_ = new KDL::VelocityProfile_Spline();
     // ________________________________________________________________________________________________________________________________________________
-
+    
     //Get initial joints position _____________________________________________________________________________________________________________________
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
@@ -320,6 +321,7 @@ bool torso_effort_controller_class::compareTolerance(KDL::Twist error){
     // Not reached yet
     // std::cout << "GOAL NOT REACHED YET" << std::endl;
     return false;
+
 }
 
 bool torso_effort_controller_class::diffTargetFrame(KDL::Frame target_frame){
@@ -367,6 +369,7 @@ void torso_effort_controller_class::transformationCallback(const geometry_msgs::
             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
             local_frame_ = target_frame_;
             start_trajectory_ = true;
+            compute_efforts_ = true;
             take_start_distance_ = false;
         }
     }
@@ -508,9 +511,6 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     // Clculate desired Jacobians ___________________________________
     Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);
     Eigen::MatrixXd dJg = dJm - dJb * (Hb.inverse() * Hbm);
-
-    // std::cout << "Jg:\n" << Jg << std::endl;
-    // std::cout << "dJg:\n" << dJg << std::endl;
 
     // Control Ecuation _____________________________________________
     auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);

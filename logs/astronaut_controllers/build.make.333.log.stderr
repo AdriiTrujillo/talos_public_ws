@@ -1,0 +1,9 @@
+In file included from [01m[K/opt/openrobots/include/pinocchio/fwd.hpp:25:0[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/spatial/fwd.hpp:9[m[K,
+                 from [01m[K/opt/openrobots/include/pinocchio/multibody/model.hpp:9[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/prueba_jacobiana.h:8[m[K,
+                 from [01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/pinocchio_jacobiana.cc:1[m[K:
+[01m[K/opt/openrobots/include/pinocchio/container/boost-container-limits.hpp:18:0:[m[K [01;35m[Kwarning: [m[K"BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS" redefined
+   #define BOOST_MPL_CFG_NO_PREPROCESSED_HEADERS
+[01;32m[K ^[m[K
+[01m[K<command-line>:0:0:[m[K [01;36m[Knote: [m[Kthis is the location of the previous definition

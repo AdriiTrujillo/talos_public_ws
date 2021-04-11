@@ -71,6 +71,7 @@ namespace controller_ns{
             float tolerance_;
             bool diff_frame_;
             bool start_trajectory_;
+            bool finish_trajectory_;
             std_msgs::Bool goal_reached;
 
             std::vector<hardware_interface::JointHandle>      joint_handles_;
@@ -85,14 +86,14 @@ namespace controller_ns{
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
             //Variables
-            KDL::JntArray jnt_pos_, jnt_effort_;
+            KDL::JntArray jnt_pos_, jnt_vel_, jnt_effort_;
             KDL::Jacobian jacobian_;
             KDL::Frame start_frame_;
             KDL::Frame final_frame_;
             KDL::Frame target_frame_;
             KDL::Frame local_frame_;
             KDL::Trajectory* trajectory_;
-            float kp_;
+            float kp_, kv_;
 
             //Time variables
             ros::Time begin_time_;

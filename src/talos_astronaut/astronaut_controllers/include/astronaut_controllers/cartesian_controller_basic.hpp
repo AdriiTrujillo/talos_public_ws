@@ -99,6 +99,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
 
     // Resizes the joint state vectors in non-realtime -----------------------------
     jnt_pos_.resize(kdl_chain.getNrOfJoints());
+    jnt_vel_.resize(kdl_chain.getNrOfJoints());
     jnt_effort_.resize(kdl_chain.getNrOfJoints());
     jacobian_.resize(kdl_chain.getNrOfJoints());
 
@@ -137,18 +138,27 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
     }
+        
+    //Get initial joints velocity
+    for(unsigned int i = 0; i < joint_handles_.size(); i++){
+        jnt_vel_(i) = joint_handles_[i].getVelocity();
+    }
 
     KDL::Frame current_pose;
     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
     if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
+    KDL::Twist desired_vel = KDL::Twist::Zero(); // Initiliz it to zeros;
+
     if(start_trajectory_){
         //Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
         double now = actual_time_.toSec();
-        // std::cout << "Now time: " << now << std::endl;
-        target_frame_ = trajectory_->Pos(now);   
+        std::cout << "Now time: " << now << std::endl;
+        target_frame_ = trajectory_->Pos(now); 
+        desired_vel = trajectory_->Vel(now); 
+        if(now > final_time_) finish_trajectory_ = true;
     }
      
     // get the actual error
@@ -158,31 +168,60 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     // Target frame is already with ISS reference
     control_error = KDL::diff(current_pose, target_frame_);
-    final_error = KDL::diff(current_pose, final_frame_);
+    
+    // std::cout << "Final frame: " << std::endl;
+    // std::cout << "X: " << final_frame_.p.x() << std::endl;
+    // std::cout << "Y: " << final_frame_.p.y() << std::endl;
+    // std::cout << "Z: " << final_frame_.p.z() << std::endl;  
+    // std::cout << " ------------------ " << std::endl;
 
+    // std::cout << "Target frame: " << std::endl;
+    // std::cout << "X: " << target_frame_.p.x() << std::endl;
+    // std::cout << "Y: " << target_frame_.p.y() << std::endl;
+    // std::cout << "Z: " << target_frame_.p.z() << std::endl;
+    // std::cout << " ------------------ " << std::endl;
+
+    // std::cout << "Current frame: " << std::endl;
+    // std::cout << "X: " << current_pose.p.x() << std::endl;
+    // std::cout << "Y: " << current_pose.p.y() << std::endl;
+    // std::cout << "Z: " << current_pose.p.z() << std::endl;
+    // std::cout << " ------------------ " << std::endl;
+
+    final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(final_error);
 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
+
+    // get actual cartesian velocities
+    KDL::Twist cart_vel = KDL::Twist::Zero(); // Initiliz it to zeros
+    for(unsigned int i = 0; i < 6 ; i++){
+        for (unsigned int j=0; j<jnt_vel_.rows(); j++){
+            cart_vel(i) += jacobian_(i,j) * jnt_vel_(j);
+        }
+    }
+
+    KDL::Twist velocity_error;
+    velocity_error = KDL::diff(cart_vel, desired_vel);
 
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * kp_ * control_error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
         }
+        // std::cout << "i: " << i << ", " << jnt_effort_(i) << std::endl;
     }
-
+    
     writeJointCommand(jnt_effort_);
     tolerance_publisher_.publish(goal_reached);
 
     // If it arrives to the desired point it has to stop there
-    if(goal_reached.data and start_trajectory_){
-        target_frame_ = current_pose;
+    if((goal_reached.data and start_trajectory_) or finish_trajectory_){ 
+        // target_frame_ = current_pose;
         start_frame_ = current_pose;
         start_trajectory_ = false;
-        kp_ = 20;
     }
 
 }
@@ -198,11 +237,13 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 void cartesian_controller_class::starting(const ros::Time &time) {
     
     //Some initializtions
-    kp_ = 20.0;
+    kp_ = 300.0; // 750
+    kv_ = 5.0; // 5 
     goal_reached.data = false;
     diff_frame_ = true;
     start_trajectory_ = false;
-    final_time_ = ros::Duration(9.0).toSec();
+    finish_trajectory_ = false;
+    final_time_ = ros::Duration(10.0).toSec();
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -220,6 +261,8 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     local_frame_ = current_pose;
     // Save inital pose to create the trajectory
     start_frame_ = current_pose;
+    // Save final frame as objective
+    final_frame_ = current_pose;
 
 }
 
@@ -229,7 +272,13 @@ bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
     if(not diff_frame_){ // To not check when it has just started
+        // std::cout << " ------- " << std::endl;
+        // std::cout << "x_err: " << fabs(error(0)) << std::endl;
+        // std::cout << "y_err: " << fabs(error(1)) << std::endl;
+        // std::cout << "z_err: " << fabs(error(2)) << std::endl;
+        // std::cout << " ------- " << std::endl;
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
+            // std::cout << "HA LLEGADO AL PUNTO FINAL" << std::endl;
             return true;
         }
     }
@@ -289,7 +338,6 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
         diff_frame_ = true;
         // Start the trajectory in the main loop
         start_trajectory_ = true;
-        kp_ = 20.0;
     }
 
     else{

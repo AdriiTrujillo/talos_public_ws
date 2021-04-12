@@ -236,7 +236,8 @@ void torso_effort_controller_class::starting(const ros::Time &time) {
     diff_frame_ = false;
     goal_reached.data = false;
     // Transformation from the aruco marker to the target point _______________________________________________________________________________________
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090)); // HEY-5 Point
+    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(-0.116, 1.514, 1.444), KDL::Vector(-0.441, 0.301, -0.135)); // GRIPPERS Point
     // Trjectory inicializations_______________________________________________________________________________________________________________________
     now_ = 0.0;
     vel_i_ = 0.0;

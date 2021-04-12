@@ -188,7 +188,8 @@ void aruco_cartesian_controller_class::starting(const ros::Time &time) {
     // Transformation from the aruco marker to the target point
     // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.517, 0.218, 3.104), KDL::Vector(-0.440, 0.328, -0.081)); Funciona
     // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.5443, 0.2231, -3.057), KDL::Vector(-0.491, 0.310, -0.090)); // mejor
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090)); // HEY-5 Point
+    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.498, 0.254, 3.101), KDL::Vector(-0.441, 0.301, -0.135)); // GRIPPERS Point
 
     //Get initial joints position 
     for(unsigned int i = 0; i < joint_handles_.size(); i++){

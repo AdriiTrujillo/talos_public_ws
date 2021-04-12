@@ -144,7 +144,8 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     KDL::Frame current_pose;
     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (fk_status == -1) 
+    // ROS_INFO("fk_status: %i", fk_status);
+    if (fk_status < 0) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
     // calculate_transformations(current_pose);
@@ -265,7 +266,9 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090)); // HEY-5 Point
+    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.498, 0.254, 3.101), KDL::Vector(-0.441, 0.301, -0.135)); // GRIPPERS Point
+
     // Trjectory inicializations
     start_trajectory_ = false;
     finish_trajectory_ = false;
@@ -302,21 +305,21 @@ void aruco_trajectory_cartesian_controller_class::stopping(const ros::Time &time
 bool aruco_trajectory_cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     if(diff_frame_){ // To not check when it has just started
-        std::cout << " ------- " << std::endl;
-        std::cout << "x_err: " << fabs(error(0)) << std::endl;
-        std::cout << "y_err: " << fabs(error(1)) << std::endl;
-        std::cout << "z_err: " << fabs(error(2)) << std::endl;
-        std::cout << "roll_err: " << fabs(error(3)) << std::endl;  
-        std::cout << "pitch_err: " << fabs(error(4)) << std::endl;
-        std::cout << "yaw_err: " << fabs(error(5)) << std::endl;
-        std::cout << " ------- " << std::endl;
+        // std::cout << " ------- " << std::endl;
+        // std::cout << "x_err: " << fabs(error(0)) << std::endl;
+        // std::cout << "y_err: " << fabs(error(1)) << std::endl;
+        // std::cout << "z_err: " << fabs(error(2)) << std::endl;
+        // std::cout << "roll_err: " << fabs(error(3)) << std::endl;  
+        // std::cout << "pitch_err: " << fabs(error(4)) << std::endl;
+        // std::cout << "yaw_err: " << fabs(error(5)) << std::endl;
+        // std::cout << " ------- " << std::endl;
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_ and fabs(error(3)) < tolerance_ and fabs(error(4)) < tolerance_ and fabs(error(5)) < tolerance_){
-            std::cout << "GOAL REACHED" << std::endl;
+            // std::cout << "GOAL REACHED" << std::endl;
             return true; // Point reached
         }
     }
     // Not reached yet
-    std::cout << "GOAL NOT REACHED YET" << std::endl;
+    // std::cout << "GOAL NOT REACHED YET" << std::endl;
     return false;
 }
 

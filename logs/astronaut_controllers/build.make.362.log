@@ -1,0 +1,55 @@
+[35m[1mScanning dependencies of target matrix_transf[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target trajectory_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[  3%] [32mBuilding CXX object CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o[0m
+[ 10%] Built target trajectories
+[ 16%] Built target pinocchio_jacobiana
+[ 16%] Built target std_msgs_generate_messages_lisp
+[ 16%] Built target trajectory_msgs_generate_messages_lisp
+[ 16%] Built target std_msgs_generate_messages_eus
+[ 16%] Built target geometry_msgs_generate_messages_eus
+[ 16%] Built target geometry_msgs_generate_messages_lisp
+[ 16%] Built target trajectory_msgs_generate_messages_eus
+[ 16%] Built target std_msgs_generate_messages_py
+[ 16%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
+[ 16%] Built target _astronaut_controllers_generate_messages_check_deps_plot_msg
+[ 16%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
+[ 16%] Built target trajectory_msgs_generate_messages_py
+[ 16%] Built target roscpp_generate_messages_lisp
+[ 16%] Built target roscpp_generate_messages_cpp
+[ 16%] Built target roscpp_generate_messages_nodejs
+[ 16%] Built target rosgraph_msgs_generate_messages_lisp
+[ 16%] Built target geometry_msgs_generate_messages_py
+[ 16%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 16%] Built target rosgraph_msgs_generate_messages_eus
+[ 16%] Built target rosgraph_msgs_generate_messages_cpp
+[ 16%] Built target roscpp_generate_messages_py
+[ 16%] Built target rosgraph_msgs_generate_messages_py
+[ 26%] Built target astronaut_controllers_generate_messages_cpp
+[ 36%] Built target astronaut_controllers_generate_messages_lisp
+[ 46%] Built target astronaut_controllers_generate_messages_nodejs
+[ 46%] Built target roscpp_generate_messages_eus
+[ 60%] Built target astronaut_controllers_generate_messages_eus
+[ 76%] Built target astronaut_controllers_generate_messages_py
+[ 76%] Built target astronaut_controllers_gencpp
+[ 76%] Built target astronaut_controllers_generate_messages
+[ 90%] Built target hand_service
+[ 90%] Built target gripper_service
+[ 96%] Built target astronaut_controllers_lib
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:[m[K In function ‘[01m[Kint main(int, char**)[m[K’:
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:14:16:[m[K [01;31m[Kerror: [m[Kredeclaration of ‘[01m[KKDL::Frame world_2_pto[m[K’
+     KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.586, 0.0, 1.573), KDL::Vector(-4.97, 2.093, 0.65)); // GRIPPERS
+[01;32m[K                ^[m[K
+[01m[K/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/matrix_transf.cpp:13:16:[m[K [01;36m[Knote: [m[K‘[01m[KKDL::Frame world_2_pto[m[K’ previously declared here
+     KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.586, 1.322, 1.573), KDL::Vector(-4.97, 2.093, 0.65)); // GRIPPERS
+[01;32m[K                ^[m[K
+CMakeFiles/matrix_transf.dir/build.make:62: fallo en las instrucciones para el objetivo 'CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o'
+make[2]: *** [CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o] Error 1
+CMakeFiles/Makefile2:141: fallo en las instrucciones para el objetivo 'CMakeFiles/matrix_transf.dir/all'
+make[1]: *** [CMakeFiles/matrix_transf.dir/all] Error 2
+Makefile:138: fallo en las instrucciones para el objetivo 'all'
+make: *** [all] Error 2

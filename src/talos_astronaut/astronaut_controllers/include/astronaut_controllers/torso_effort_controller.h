@@ -72,11 +72,10 @@ namespace controller_ns{
             void writeJointCommand(std::vector<float> joint_command);
 
         private:
-            // // Base effort function members
+            // Base effort function members
             template<class _Matrix_Type_>
             _Matrix_Type_ pseudoInverse(const _Matrix_Type_ &a);
             std::vector<float> calculate_jnt_efforts(pinocchio::Model model, KDL::Twist dot_dot_Xd, KDL::Twist dot_X_err, KDL::Twist x_err, KDL::JntArray jnt_vel, KDL::JntArray jnt_pos, float kp, float kv);
-
 
             // Trajectories function members
             KDL::Trajectory*  trajectoryPlanner(const KDL::Frame start, const KDL::Frame ending, double vel_i, double acc_i, double duration);
@@ -103,6 +102,7 @@ namespace controller_ns{
             // KDL obtain model variables
             KDL::Chain robot_chain_;
             KDL::Tree robot_tree_;
+            KDL::Chain kdl_chain;
 
             // KDL Solvers performing the actual computations
             int fk_status;

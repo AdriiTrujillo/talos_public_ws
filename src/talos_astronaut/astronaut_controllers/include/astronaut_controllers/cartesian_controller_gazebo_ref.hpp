@@ -86,7 +86,6 @@ bool gazebo_cartesian_controller_class::init(hardware_interface::EffortJointInte
     // Joints Configured -----------------------------------------------------------
 
     // Initialize solvers ----------------------------------------------------------
-    KDL::Chain kdl_chain;
     // To remove two joints of the torso but the base_link is still in the 0,0,0
     for(size_t i = 0; i < robot_chain_.getNrOfSegments(); i++){
         if(i != 1 && i != 2) kdl_chain.addSegment(robot_chain_.getSegment(i));
@@ -128,6 +127,9 @@ bool gazebo_cartesian_controller_class::init(hardware_interface::EffortJointInte
 
 void gazebo_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
+    // Reinitialize solvers
+    jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
+    jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){

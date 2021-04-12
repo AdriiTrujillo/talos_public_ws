@@ -62,6 +62,7 @@ namespace controller_ns{
 
             KDL::Chain robot_chain_;
             KDL::Tree robot_tree_;
+            KDL::Chain kdl_chain;
 
             // KDL Solvers performing the actual computations
             int fk_status;

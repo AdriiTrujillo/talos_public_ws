@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/astronaut_controllers_generate_messages_cpp"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_msg.h"
+  "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h"
   "/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h"
 )
 

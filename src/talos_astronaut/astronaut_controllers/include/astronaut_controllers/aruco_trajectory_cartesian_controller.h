@@ -1,16 +1,24 @@
 #ifndef ARUCO_TRAJECTORY_CARTESIAN_CONTROLLER_H_INCLUDED
 #define ARUCO_TRAJECTORY_CARTESIAN_CONTROLLER_H_INCLUDED
 
+// ROS
 #include <ros/ros.h>
+#include <ros/package.h>
+
+// STD
 #include <vector>
 #include <string>
 #include <math.h>
 
+// Project
 #include <controller_interface/controller.h>
 #include <hardware_interface/joint_command_interface.h>
 
 //Boost
 #include <boost/scoped_ptr.hpp>
+
+//Eigen
+#include <Eigen/SVD>
 
 //KDL
 #include <kdl/chain.hpp>
@@ -34,6 +42,16 @@
 #include <kdl/path_roundedcomposite.hpp>
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
+
+//Pinnochio
+#include <pinocchio/multibody/model.hpp>
+#include <pinocchio/multibody/data.hpp>
+#include <pinocchio/parsers/urdf.hpp>
+#include <pinocchio/algorithm/joint-configuration.hpp>
+#include <pinocchio/algorithm/model.hpp>
+#include <pinocchio/algorithm/frames.hpp>
+#include <pinocchio/algorithm/frames-derivatives.hpp>
+#include <pinocchio/algorithm/crba.hpp>
 
 // GEOMETRY MSGS
 #include <geometry_msgs/PoseStamped.h>
@@ -75,7 +93,6 @@ namespace controller_ns{
 
             KDL::Chain robot_chain_;
             KDL::Tree robot_tree_;
-            KDL::Chain kdl_chain;
 
             // KDL Solvers performing the actual computations
             int fk_status;
@@ -90,7 +107,11 @@ namespace controller_ns{
             KDL::Frame talos_2_aruco_;
             KDL::Frame local_frame_;
             KDL::Frame aruco_2_target_;
-            
+
+            //Pinnochio variables
+            pinocchio::Data data;
+            pinocchio::Model model_complete; // Modelo con los dos brazos accionable
+            pinocchio::Model model; // Modelo con solo un brazo accionable    
             
             //Trejctories Variables
             KDL::Trajectory* trajectory_;

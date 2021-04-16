@@ -66,6 +66,7 @@ add_message_files(
   FILES
   target_frame.msg
   plot_msg.msg
+  plot_jnt.msg
 )
 
 ## Generate services in the 'srv' folder

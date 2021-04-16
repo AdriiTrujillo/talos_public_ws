@@ -55,6 +55,7 @@ include CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/progress.m
 
 CMakeFiles/astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/target_frame.js
 CMakeFiles/astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_msg.js
+CMakeFiles/astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_jnt.js
 CMakeFiles/astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/srv/hand_operations.js
 
 
@@ -68,14 +69,20 @@ CMakeFiles/astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_pub
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from astronaut_controllers/plot_msg.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_msg.msg -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg
 
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_jnt.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_jnt.js: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_jnt.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from astronaut_controllers/plot_jnt.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_jnt.msg -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg
+
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/srv/hand_operations.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/srv/hand_operations.js: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from astronaut_controllers/hand_operations.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from astronaut_controllers/hand_operations.srv"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/srv
 
 astronaut_controllers_generate_messages_nodejs: CMakeFiles/astronaut_controllers_generate_messages_nodejs
 astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/target_frame.js
 astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_msg.js
+astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/msg/plot_jnt.js
 astronaut_controllers_generate_messages_nodejs: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/share/gennodejs/ros/astronaut_controllers/srv/hand_operations.js
 astronaut_controllers_generate_messages_nodejs: CMakeFiles/astronaut_controllers_generate_messages_nodejs.dir/build.make
 

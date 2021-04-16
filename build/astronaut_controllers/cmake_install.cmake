@@ -127,6 +127,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/astronaut_controllers/msg" TYPE FILE FILES
     "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/target_frame.msg"
     "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_msg.msg"
+    "/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_jnt.msg"
     )
 endif()
 

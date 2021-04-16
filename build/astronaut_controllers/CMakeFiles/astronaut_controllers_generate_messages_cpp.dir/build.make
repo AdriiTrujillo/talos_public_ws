@@ -55,6 +55,7 @@ include CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/progress.make
 
 CMakeFiles/astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h
 CMakeFiles/astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_msg.h
+CMakeFiles/astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h
 CMakeFiles/astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h
 
 
@@ -70,16 +71,23 @@ CMakeFiles/astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from astronaut_controllers/plot_msg.msg"
 	cd /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers && /home/adrii/talos_public_ws/build/astronaut_controllers/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_msg.msg -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers -e /opt/ros/kinetic/share/gencpp/cmake/..
 
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_jnt.msg
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h: /opt/ros/kinetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from astronaut_controllers/plot_jnt.msg"
+	cd /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers && /home/adrii/talos_public_ws/build/astronaut_controllers/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg/plot_jnt.msg -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers -e /opt/ros/kinetic/share/gencpp/cmake/..
+
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h: /opt/ros/kinetic/lib/gencpp/gen_cpp.py
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h: /opt/ros/kinetic/share/gencpp/msg.h.template
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h: /opt/ros/kinetic/share/gencpp/srv.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating C++ code from astronaut_controllers/hand_operations.srv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from astronaut_controllers/hand_operations.srv"
 	cd /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers && /home/adrii/talos_public_ws/build/astronaut_controllers/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/kinetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/srv/hand_operations.srv -Iastronaut_controllers:/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Itrajectory_msgs:/opt/ros/kinetic/share/trajectory_msgs/cmake/../msg -p astronaut_controllers -o /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers -e /opt/ros/kinetic/share/gencpp/cmake/..
 
 astronaut_controllers_generate_messages_cpp: CMakeFiles/astronaut_controllers_generate_messages_cpp
 astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/target_frame.h
 astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_msg.h
+astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h
 astronaut_controllers_generate_messages_cpp: /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/hand_operations.h
 astronaut_controllers_generate_messages_cpp: CMakeFiles/astronaut_controllers_generate_messages_cpp.dir/build.make
 

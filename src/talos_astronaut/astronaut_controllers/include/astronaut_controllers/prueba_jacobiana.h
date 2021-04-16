@@ -108,6 +108,9 @@ namespace controller_ns{
     auto Hb  = data.M.block<6, 6>(0, 0);
     auto Hbm = data.M.block(0, 6, 6, 7);
     auto Hm  = data.M.block(6, 6, 7, 7);
+    auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
+
+    std::cout << "Complete Mii:\n" << Hm_ << '\n';
 
     // Calcula los jacobianos pedidos
     Eigen::MatrixXd Jg  = Jm - Jb * (Hb.inverse() * Hbm);

@@ -4,6 +4,7 @@
 // PROJECT
 #include <astronaut_controllers/aruco_trajectory_cartesian_controller.h>
 #include <astronaut_controllers/plot_msg.h>
+#include <astronaut_controllers/plot_jnt.h>
 
 // KDL
 #include <kdl_parser/kdl_parser.hpp>
@@ -87,6 +88,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     // Joints Configured -----------------------------------------------------------
 
     // Initialize solvers ----------------------------------------------------------
+    KDL::Chain kdl_chain;
     // To remove two joints of the torso but the base_link is still in the 0,0,0
     for(size_t i = 0; i < robot_chain_.getNrOfSegments(); i++){
         if(i != 1 && i != 2) kdl_chain.addSegment(robot_chain_.getSegment(i));
@@ -123,7 +125,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
     control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
-    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/joint_value", 1000);
+    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
 
     return true;
 
@@ -131,10 +133,6 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
 void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
-    // Reinitilize solvers
-    jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
-    jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
-    
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
         jnt_pos_(i) = joint_handles_[i].getPosition();
@@ -147,18 +145,9 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     KDL::Frame current_pose;
     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    // ROS_INFO("fk_status: %i", fk_status);
-    if (fk_status < 0) 
+    if (fk_status == -1) 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
-    // calculate_transformations(current_pose);
-// -------------------------------------------------------------------------------------------    
-    // Descomentar para imprimir por pantalla la posición del extremo
-    // ROS_INFO("Current: ");
-    // ROS_INFO("x : %f",current_pose.p.x());
-    // ROS_INFO("y : %f",current_pose.p.y());
-    // ROS_INFO("z : %f",current_pose.p.z());
-// ------------------------------------------------------------------------------------------- 
     KDL::Twist desired_vel;
 
     if(start_trajectory_){
@@ -180,16 +169,6 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     // Target frame is the next nearest pose
     control_error = KDL::diff(current_pose, target_frame_);
 
-    //_____________________________________________
-    astronaut_controllers::plot_msg plot_error;
-    plot_error.x_err = control_error(0);
-    plot_error.y_err = control_error(1);
-    plot_error.z_err = control_error(2);
-    plot_error.roll_err = control_error(3);
-    plot_error.pitch_err = control_error(4);
-    plot_error.yaw_err = control_error(5);
-    //_____________________________________________
-
     // Calculate the error of the final pose in the trajectory
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
@@ -207,7 +186,45 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
 
     KDL::Twist velocity_error;
     velocity_error = KDL::diff(cart_vel, desired_vel);
-    //_____________________________________________
+
+    // Obtain intertia matrix  _____________________________________
+    // robot's state _______________________________________________
+    data = pinocchio::Data(model);
+    Eigen::VectorXd q(14);
+
+    for(int i = 0; i < 14; i++){
+        if (i < 6) q(i) = 0;
+        if (i == 6) q (i) = 1;
+        if (i > 6) q(i) = jnt_pos_(i-7);
+    }
+
+    // Inertia Matrix _______________________________________________
+    pinocchio::crba(model, data, q);
+    data.M.triangularView<Eigen::StrictlyLower>() = data.M.transpose().triangularView<Eigen::StrictlyLower>();
+    // Manipulator inertia matrix
+    auto Hb  = data.M.block<6, 6>(0, 0);
+    auto Hbm = data.M.block(0, 6, 6, 7);
+    auto Hm  = data.M.block(6, 6, 7, 7);
+    auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
+
+
+    // jnt_effort_ = Jac^transpose * cart_wrench
+    for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
+    {
+        jnt_effort_(i) = 0;
+
+        for (unsigned int j=0; j<6; j++){
+            jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
+        }
+
+        for(int j = 0; j < jnt_pos_.rows(); j++){
+            jnt_effort_(j) += jnt_effort_(j) * Hm_.coeff(i, j);
+        }
+    }
+
+    writeJointCommand(jnt_effort_);
+
+    // WRITE MSGS _________________________________
     astronaut_controllers::plot_msg plot_vel_error;
     plot_vel_error.x_err = velocity_error(0);
     plot_vel_error.y_err = velocity_error(1);
@@ -216,31 +233,29 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     plot_vel_error.pitch_err = velocity_error(4);
     plot_vel_error.yaw_err = velocity_error(5);
     //_____________________________________________
-
-    // jnt_effort_ = Jac^transpose * cart_wrench
-    for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
-    {
-        jnt_effort_(i) = 0;
-        for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
-        }
-    }
-
+    astronaut_controllers::plot_msg plot_error;
+    plot_error.x_err = control_error(0);
+    plot_error.y_err = control_error(1);
+    plot_error.z_err = control_error(2);
+    plot_error.roll_err = control_error(3);
+    plot_error.pitch_err = control_error(4);
+    plot_error.yaw_err = control_error(5);
     //_____________________________________________
-    astronaut_controllers::plot_msg joint_value;
-    joint_value.x_err = jnt_effort_(0);
-    joint_value.y_err = jnt_effort_(1);
-    joint_value.z_err = jnt_effort_(2);
-    joint_value.roll_err = jnt_effort_(3);
-    joint_value.pitch_err = jnt_effort_(4);
-    joint_value.yaw_err = jnt_effort_(5);
+    astronaut_controllers::plot_jnt joint_value;
+    joint_value.jnt_0 = jnt_effort_(0);
+    joint_value.jnt_1 = jnt_effort_(1);
+    joint_value.jnt_2 = jnt_effort_(2);
+    joint_value.jnt_3 = jnt_effort_(3);
+    joint_value.jnt_4 = jnt_effort_(4);
+    joint_value.jnt_5 = jnt_effort_(5);
+    joint_value.jnt_6 = jnt_effort_(6);
     //_____________________________________________
-
-    writeJointCommand(jnt_effort_);
+    // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
     control_error_pub_.publish(plot_error);
     velocity_error_pub_.publish(plot_vel_error);
     joint_value_pub_.publish(joint_value);
+    // ____________________________________________
 
 
     // If it arrives to the desired point it has to stop there
@@ -265,13 +280,11 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
-    kv_ = 10.0; // 50 not working vibrations // 10 better but worse than with only kp
+    kv_ = 0.01; // 50 not working vibrations // 10 better but worse than with only kp
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090)); // HEY-5 Point
-    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.498, 0.254, 3.101), KDL::Vector(-0.441, 0.301, -0.135)); // GRIPPERS Point
-
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
     // Trjectory inicializations
     start_trajectory_ = false;
     finish_trajectory_ = false;
@@ -301,6 +314,36 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     local_frame_ = current_pose;
     start_frame_ = current_pose;
     // ______________________________________________________________________________________________________________
+    
+    //Initialize pinnochio models______________________________________________________________________________________________________________________
+    std::string urdf_path = ros::package::getPath("astronaut") + std::string("/urdfs/astronaut_pinocchio_no_hands.urdf");
+
+    // Load robot model in pinnochio
+    std::cout << "Loading file: " << urdf_path << "\n";
+    pinocchio::urdf::buildModel(urdf_path, pinocchio::JointModelFreeFlyer(), model_complete);
+    std::cout << "Complete! Robot's name: " << model_complete.name << '\n';
+
+    // list of the joint that will be blocked _________________________________________________________________________________________________________
+    std::vector<std::string> articulaciones_bloqueadas{
+        "arm_left_1_joint", "arm_left_2_joint", "arm_left_3_joint", "arm_left_4_joint", 
+        "arm_left_5_joint", "arm_left_6_joint", "arm_left_7_joint", "torso_1_joint", 
+         "torso_2_joint", "head_1_joint", "head_2_joint","torso_3_joint"
+    };
+    // blocked joints id's ____________________________________________________________________________________________________________________________
+    std::vector<pinocchio::JointIndex> articulaciones_bloqueadas_id;
+    articulaciones_bloqueadas_id.reserve(articulaciones_bloqueadas.size());
+    for (const auto& str : articulaciones_bloqueadas)
+        articulaciones_bloqueadas_id.emplace_back(model_complete.getJointId(str));
+
+    // IF YOU WANT THE INMOBILITZED ARM TO HAVE ANOTHER DIFFERENT CONFIGURATION
+    // YOU MUST DO IT HERE!!
+    auto qc = pinocchio::neutral(model_complete);
+
+    // CREATE REDUCED MODEL ___________________________________________________________________________________________________________________________
+    pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, qc, model);
+    std::cout << "Reduced model complet!" << std::endl;
+    //_________________________________________________________________________________________________________________________________________________
+
 }
 
 void aruco_trajectory_cartesian_controller_class::stopping(const ros::Time &time) {}
@@ -372,7 +415,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 300.0; // When moving it uses this constant
+            kp_ = 500.0; // When moving it uses this constant
         }
     }
 

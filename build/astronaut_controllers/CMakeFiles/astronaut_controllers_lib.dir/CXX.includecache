@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_jnt.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include/astronaut_controllers/plot_msg.h
 string
 -
@@ -288,6 +304,8 @@ astronaut_controllers/aruco_trajectory_cartesian_controller.hpp
 astronaut_controllers/aruco_trajectory_cartesian_controller.h
 -
 astronaut_controllers/plot_msg.h
+-
+astronaut_controllers/plot_jnt.h
 -
 kdl_parser/kdl_parser.hpp
 -

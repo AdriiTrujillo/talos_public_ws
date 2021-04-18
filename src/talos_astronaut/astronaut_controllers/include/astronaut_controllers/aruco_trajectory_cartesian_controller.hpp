@@ -88,7 +88,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     // Joints Configured -----------------------------------------------------------
 
     // Initialize solvers ----------------------------------------------------------
-    KDL::Chain kdl_chain;
+
     // To remove two joints of the torso but the base_link is still in the 0,0,0
     for(size_t i = 0; i < robot_chain_.getNrOfSegments(); i++){
         if(i != 1 && i != 2) kdl_chain.addSegment(robot_chain_.getSegment(i));
@@ -126,12 +126,16 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
     joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
+    final_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/final_error", 1000);
 
     return true;
 
 }
 
 void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
+
+    jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
+    jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -207,7 +211,6 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     auto Hm  = data.M.block(6, 6, 7, 7);
     auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
 
-
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
@@ -241,6 +244,15 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     plot_error.pitch_err = control_error(4);
     plot_error.yaw_err = control_error(5);
     //_____________________________________________
+    //_____________________________________________
+    astronaut_controllers::plot_msg plot_fin_error;
+    plot_fin_error.x_err = final_error(0);
+    plot_fin_error.y_err = final_error(1);
+    plot_fin_error.z_err = final_error(2);
+    plot_fin_error.roll_err = final_error(3);
+    plot_fin_error.pitch_err = final_error(4);
+    plot_fin_error.yaw_err = final_error(5);
+    //_____________________________________________
     astronaut_controllers::plot_jnt joint_value;
     joint_value.jnt_0 = jnt_effort_(0);
     joint_value.jnt_1 = jnt_effort_(1);
@@ -253,6 +265,7 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
     control_error_pub_.publish(plot_error);
+    final_error_pub_.publish(plot_fin_error);
     velocity_error_pub_.publish(plot_vel_error);
     joint_value_pub_.publish(joint_value);
     // ____________________________________________
@@ -280,7 +293,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
-    kv_ = 0.01; // 50 not working vibrations // 10 better but worse than with only kp
+    kv_ = 0.1; // 50 not working vibrations // 10 better but worse than with only kp
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
@@ -415,7 +428,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 500.0; // When moving it uses this constant
+            kp_ = 1000.0; // When moving it uses this constant
         }
     }
 

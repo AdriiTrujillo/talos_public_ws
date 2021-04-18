@@ -93,6 +93,7 @@ namespace controller_ns{
 
             KDL::Chain robot_chain_;
             KDL::Tree robot_tree_;
+            KDL::Chain kdl_chain;
 
             // KDL Solvers performing the actual computations
             int fk_status;
@@ -136,6 +137,7 @@ namespace controller_ns{
             ros::Publisher control_error_pub_;
             ros::Publisher velocity_error_pub_;
             ros::Publisher joint_value_pub_;
+            ros::Publisher final_error_pub_;
 
     };
 

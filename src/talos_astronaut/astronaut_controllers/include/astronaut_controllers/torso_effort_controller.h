@@ -110,7 +110,7 @@ namespace controller_ns{
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
             //Variables
-            float kp_, kv_;
+            float kp_, kv_, kp_value_, kv_value_;
             std::vector<float> jnt_effort_;
             KDL::JntArray jnt_pos_,jnt_vel_;
             KDL::Jacobian jacobian_;
@@ -138,6 +138,7 @@ namespace controller_ns{
 
             // Time variables
             ros::Time begin_time_;
+            float time_param_;
             double duration_time_;
             double ref_time_;
             double now_;

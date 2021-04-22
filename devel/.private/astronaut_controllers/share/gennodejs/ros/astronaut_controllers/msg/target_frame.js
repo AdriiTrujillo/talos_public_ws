@@ -24,6 +24,7 @@ class target_frame {
       this.roll = null;
       this.pitch = null;
       this.yaw = null;
+      this.duration = null;
     }
     else {
       if (initObj.hasOwnProperty('x')) {
@@ -62,6 +63,12 @@ class target_frame {
       else {
         this.yaw = 0.0;
       }
+      if (initObj.hasOwnProperty('duration')) {
+        this.duration = initObj.duration
+      }
+      else {
+        this.duration = 0.0;
+      }
     }
   }
 
@@ -79,6 +86,8 @@ class target_frame {
     bufferOffset = _serializer.float64(obj.pitch, buffer, bufferOffset);
     // Serialize message field [yaw]
     bufferOffset = _serializer.float64(obj.yaw, buffer, bufferOffset);
+    // Serialize message field [duration]
+    bufferOffset = _serializer.float64(obj.duration, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -98,11 +107,13 @@ class target_frame {
     data.pitch = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [yaw]
     data.yaw = _deserializer.float64(buffer, bufferOffset);
+    // Deserialize message field [duration]
+    data.duration = _deserializer.float64(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 48;
+    return 56;
   }
 
   static datatype() {
@@ -112,7 +123,7 @@ class target_frame {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '1a83f0bdabe750ce0cfb45a14ec63457';
+    return '41baaca570cafe0d3122ba9b80825b96';
   }
 
   static messageDefinition() {
@@ -124,6 +135,7 @@ class target_frame {
     float64 roll
     float64 pitch
     float64 yaw
+    float64 duration
     
     
     
@@ -177,6 +189,13 @@ class target_frame {
     }
     else {
       resolved.yaw = 0.0
+    }
+
+    if (msg.duration !== undefined) {
+      resolved.duration = msg.duration;
+    }
+    else {
+      resolved.duration = 0.0
     }
 
     return resolved;

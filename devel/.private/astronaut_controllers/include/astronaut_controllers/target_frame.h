@@ -29,7 +29,8 @@ struct target_frame_
     , z(0.0)
     , roll(0.0)
     , pitch(0.0)
-    , yaw(0.0)  {
+    , yaw(0.0)
+    , duration(0.0)  {
     }
   target_frame_(const ContainerAllocator& _alloc)
     : x(0.0)
@@ -37,7 +38,8 @@ struct target_frame_
     , z(0.0)
     , roll(0.0)
     , pitch(0.0)
-    , yaw(0.0)  {
+    , yaw(0.0)
+    , duration(0.0)  {
   (void)_alloc;
     }
 
@@ -60,6 +62,9 @@ struct target_frame_
 
    typedef double _yaw_type;
   _yaw_type yaw;
+
+   typedef double _duration_type;
+  _duration_type duration;
 
 
 
@@ -139,12 +144,12 @@ struct MD5Sum< ::astronaut_controllers::target_frame_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1a83f0bdabe750ce0cfb45a14ec63457";
+    return "41baaca570cafe0d3122ba9b80825b96";
   }
 
   static const char* value(const ::astronaut_controllers::target_frame_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1a83f0bdabe750ceULL;
-  static const uint64_t static_value2 = 0x0cfb45a14ec63457ULL;
+  static const uint64_t static_value1 = 0x41baaca570cafe0dULL;
+  static const uint64_t static_value2 = 0x3122ba9b80825b96ULL;
 };
 
 template<class ContainerAllocator>
@@ -169,6 +174,7 @@ float64 z\n\
 float64 roll\n\
 float64 pitch\n\
 float64 yaw\n\
+float64 duration\n\
 \n\
 \n\
 \n\
@@ -196,6 +202,7 @@ namespace serialization
       stream.next(m.roll);
       stream.next(m.pitch);
       stream.next(m.yaw);
+      stream.next(m.duration);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -226,6 +233,8 @@ struct Printer< ::astronaut_controllers::target_frame_<ContainerAllocator> >
     Printer<double>::stream(s, indent + "  ", v.pitch);
     s << indent << "yaw: ";
     Printer<double>::stream(s, indent + "  ", v.yaw);
+    s << indent << "duration: ";
+    Printer<double>::stream(s, indent + "  ", v.duration);
   }
 };
 

@@ -36,6 +36,11 @@
     :reader yaw
     :initarg :yaw
     :type cl:float
+    :initform 0.0)
+   (duration
+    :reader duration
+    :initarg :duration
+    :type cl:float
     :initform 0.0))
 )
 
@@ -76,6 +81,11 @@
 (cl:defmethod yaw-val ((m <target_frame>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader astronaut_controllers-msg:yaw-val is deprecated.  Use astronaut_controllers-msg:yaw instead.")
   (yaw m))
+
+(cl:ensure-generic-function 'duration-val :lambda-list '(m))
+(cl:defmethod duration-val ((m <target_frame>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader astronaut_controllers-msg:duration-val is deprecated.  Use astronaut_controllers-msg:duration instead.")
+  (duration m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <target_frame>) ostream)
   "Serializes a message object of type '<target_frame>"
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'x))))
@@ -124,6 +134,15 @@
     (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
   (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'yaw))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 32) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 40) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 48) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 56) bits) ostream))
+  (cl:let ((bits (roslisp-utils:encode-double-float-bits (cl:slot-value msg 'duration))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
@@ -195,6 +214,16 @@
       (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'yaw) (roslisp-utils:decode-double-float-bits bits)))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 32) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 40) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 48) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 56) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'duration) (roslisp-utils:decode-double-float-bits bits)))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<target_frame>)))
@@ -205,18 +234,19 @@
   "astronaut_controllers/target_frame")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<target_frame>)))
   "Returns md5sum for a message object of type '<target_frame>"
-  "1a83f0bdabe750ce0cfb45a14ec63457")
+  "41baaca570cafe0d3122ba9b80825b96")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'target_frame)))
   "Returns md5sum for a message object of type 'target_frame"
-  "1a83f0bdabe750ce0cfb45a14ec63457")
+  "41baaca570cafe0d3122ba9b80825b96")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<target_frame>)))
   "Returns full string definition for message of type '<target_frame>"
-  (cl:format cl:nil "float64 x~%float64 y~%float64 z~%float64 roll~%float64 pitch~%float64 yaw~%~%~%~%~%~%"))
+  (cl:format cl:nil "float64 x~%float64 y~%float64 z~%float64 roll~%float64 pitch~%float64 yaw~%float64 duration~%~%~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'target_frame)))
   "Returns full string definition for message of type 'target_frame"
-  (cl:format cl:nil "float64 x~%float64 y~%float64 z~%float64 roll~%float64 pitch~%float64 yaw~%~%~%~%~%~%"))
+  (cl:format cl:nil "float64 x~%float64 y~%float64 z~%float64 roll~%float64 pitch~%float64 yaw~%float64 duration~%~%~%~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <target_frame>))
   (cl:+ 0
+     8
      8
      8
      8
@@ -233,4 +263,5 @@
     (cl:cons ':roll (roll msg))
     (cl:cons ':pitch (pitch msg))
     (cl:cons ':yaw (yaw msg))
+    (cl:cons ':duration (duration msg))
 ))

@@ -41,6 +41,11 @@ bool aruco_cartesian_controller_class::init(hardware_interface::EffortJointInter
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
         return false;
     }
+    if (!nh.getParam("kp_value",kp_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kp_value" << " from parameter server");
+        return false;
+    }
     // Robot configuration done ----------------------------------------------
 
 
@@ -168,7 +173,7 @@ void aruco_cartesian_controller_class::update(const ros::Time &time, const ros::
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
-            jnt_effort_(i) += (jacobian_(j,i) * 20 * error(j));
+            jnt_effort_(i) += (jacobian_(j,i) * kp_ * error(j));
         }
     }
 

@@ -14,7 +14,7 @@
 
 (defclass astronaut_controllers::target_frame
   :super ros::object
-  :slots (_x _y _z _roll _pitch _yaw ))
+  :slots (_x _y _z _roll _pitch _yaw _duration ))
 
 (defmethod astronaut_controllers::target_frame
   (:init
@@ -25,6 +25,7 @@
     ((:roll __roll) 0.0)
     ((:pitch __pitch) 0.0)
     ((:yaw __yaw) 0.0)
+    ((:duration __duration) 0.0)
     )
    (send-super :init)
    (setq _x (float __x))
@@ -33,6 +34,7 @@
    (setq _roll (float __roll))
    (setq _pitch (float __pitch))
    (setq _yaw (float __yaw))
+   (setq _duration (float __duration))
    self)
   (:x
    (&optional __x)
@@ -52,6 +54,9 @@
   (:yaw
    (&optional __yaw)
    (if __yaw (setq _yaw __yaw)) _yaw)
+  (:duration
+   (&optional __duration)
+   (if __duration (setq _duration __duration)) _duration)
   (:serialization-length
    ()
    (+
@@ -66,6 +71,8 @@
     ;; float64 _pitch
     8
     ;; float64 _yaw
+    8
+    ;; float64 _duration
     8
     ))
   (:serialize
@@ -84,6 +91,8 @@
        (sys::poke _pitch (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;; float64 _yaw
        (sys::poke _yaw (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
+     ;; float64 _duration
+       (sys::poke _duration (send s :buffer) (send s :count) :double) (incf (stream-count s) 8)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -100,11 +109,13 @@
      (setq _pitch (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;; float64 _yaw
      (setq _yaw (sys::peek buf ptr- :double)) (incf ptr- 8)
+   ;; float64 _duration
+     (setq _duration (sys::peek buf ptr- :double)) (incf ptr- 8)
    ;;
    self)
   )
 
-(setf (get astronaut_controllers::target_frame :md5sum-) "1a83f0bdabe750ce0cfb45a14ec63457")
+(setf (get astronaut_controllers::target_frame :md5sum-) "41baaca570cafe0d3122ba9b80825b96")
 (setf (get astronaut_controllers::target_frame :datatype-) "astronaut_controllers/target_frame")
 (setf (get astronaut_controllers::target_frame :definition-)
       "float64 x
@@ -113,6 +124,7 @@ float64 z
 float64 roll
 float64 pitch
 float64 yaw
+float64 duration
 
 
 
@@ -121,6 +133,6 @@ float64 yaw
 
 
 
-(provide :astronaut_controllers/target_frame "1a83f0bdabe750ce0cfb45a14ec63457")
+(provide :astronaut_controllers/target_frame "41baaca570cafe0d3122ba9b80825b96")
 
 

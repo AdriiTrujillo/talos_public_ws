@@ -8,7 +8,7 @@ import struct
 
 
 class target_frame(genpy.Message):
-  _md5sum = "1a83f0bdabe750ce0cfb45a14ec63457"
+  _md5sum = "41baaca570cafe0d3122ba9b80825b96"
   _type = "astronaut_controllers/target_frame"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """float64 x
@@ -17,12 +17,13 @@ float64 z
 float64 roll
 float64 pitch
 float64 yaw
+float64 duration
 
 
 
 """
-  __slots__ = ['x','y','z','roll','pitch','yaw']
-  _slot_types = ['float64','float64','float64','float64','float64','float64']
+  __slots__ = ['x','y','z','roll','pitch','yaw','duration']
+  _slot_types = ['float64','float64','float64','float64','float64','float64','float64']
 
   def __init__(self, *args, **kwds):
     """
@@ -32,7 +33,7 @@ float64 yaw
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       x,y,z,roll,pitch,yaw
+       x,y,z,roll,pitch,yaw,duration
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -53,6 +54,8 @@ float64 yaw
         self.pitch = 0.
       if self.yaw is None:
         self.yaw = 0.
+      if self.duration is None:
+        self.duration = 0.
     else:
       self.x = 0.
       self.y = 0.
@@ -60,6 +63,7 @@ float64 yaw
       self.roll = 0.
       self.pitch = 0.
       self.yaw = 0.
+      self.duration = 0.
 
   def _get_types(self):
     """
@@ -74,7 +78,7 @@ float64 yaw
     """
     try:
       _x = self
-      buff.write(_get_struct_6d().pack(_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw))
+      buff.write(_get_struct_7d().pack(_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw, _x.duration))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -88,8 +92,8 @@ float64 yaw
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw,) = _get_struct_6d().unpack(str[start:end])
+      end += 56
+      (_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw, _x.duration,) = _get_struct_7d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -103,7 +107,7 @@ float64 yaw
     """
     try:
       _x = self
-      buff.write(_get_struct_6d().pack(_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw))
+      buff.write(_get_struct_7d().pack(_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw, _x.duration))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -118,8 +122,8 @@ float64 yaw
       end = 0
       _x = self
       start = end
-      end += 48
-      (_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw,) = _get_struct_6d().unpack(str[start:end])
+      end += 56
+      (_x.x, _x.y, _x.z, _x.roll, _x.pitch, _x.yaw, _x.duration,) = _get_struct_7d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -128,9 +132,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6d = None
-def _get_struct_6d():
-    global _struct_6d
-    if _struct_6d is None:
-        _struct_6d = struct.Struct("<6d")
-    return _struct_6d
+_struct_7d = None
+def _get_struct_7d():
+    global _struct_7d
+    if _struct_7d is None:
+        _struct_7d = struct.Struct("<7d")
+    return _struct_7d

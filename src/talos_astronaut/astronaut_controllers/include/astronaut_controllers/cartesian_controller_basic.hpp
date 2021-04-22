@@ -3,6 +3,8 @@
 
 //Project
 #include <astronaut_controllers/cartesian_controller_basic.h>
+#include <astronaut_controllers/plot_msg.h>
+#include <astronaut_controllers/plot_jnt.h>
 
 // KDL
 #include <kdl_parser/kdl_parser.hpp>
@@ -39,6 +41,16 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     if (!nh.getParam("goal_tolerance",tolerance_)){
     
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("kp_value",kp_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kp_value" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("kv_value",kv_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kv_value" << " from parameter server");
         return false;
     }
     // Robot configuration done ----------------------------------------------
@@ -126,6 +138,10 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
 
     target_frame_subscr_ = nh.subscribe("/cartesian_target_frame", 3, &cartesian_controller_class::targetFrameCallback, this);
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
+    control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
+    velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
+    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
+    final_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/final_error", 1000);
 
     return true;
 
@@ -207,6 +223,26 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     KDL::Twist velocity_error;
     velocity_error = KDL::diff(cart_vel, desired_vel);
 
+    // Obtain intertia matrix  _____________________________________
+    // robot's state _______________________________________________
+    data = pinocchio::Data(model);
+    Eigen::VectorXd q(14);
+
+    for(int i = 0; i < 14; i++){
+        if (i < 6) q(i) = 0;
+        if (i == 6) q (i) = 1;
+        if (i > 6) q(i) = jnt_pos_(i-7);
+    }
+
+    // Inertia Matrix _______________________________________________
+    pinocchio::crba(model, data, q);
+    data.M.triangularView<Eigen::StrictlyLower>() = data.M.transpose().triangularView<Eigen::StrictlyLower>();
+    // Manipulator inertia matrix
+    auto Hb  = data.M.block<6, 6>(0, 0);
+    auto Hbm = data.M.block(0, 6, 6, 7);
+    auto Hm  = data.M.block(6, 6, 7, 7);
+    auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
+
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
@@ -214,11 +250,56 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
         for (unsigned int j=0; j<6; j++){
             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
         }
-        // std::cout << "i: " << i << ", " << jnt_effort_(i) << std::endl;
+
+        for(int j = 0; j < jnt_pos_.rows(); j++){
+            jnt_effort_(j) += jnt_effort_(j) * Hm_.coeff(i, j);
+        }
     }
     
     writeJointCommand(jnt_effort_);
+
+    // WRITE MSGS _________________________________
+    astronaut_controllers::plot_msg plot_vel_error;
+    plot_vel_error.x_err = velocity_error(0);
+    plot_vel_error.y_err = velocity_error(1);
+    plot_vel_error.z_err = velocity_error(2);
+    plot_vel_error.roll_err = velocity_error(3);
+    plot_vel_error.pitch_err = velocity_error(4);
+    plot_vel_error.yaw_err = velocity_error(5);
+    //_____________________________________________
+    astronaut_controllers::plot_msg plot_error;
+    plot_error.x_err = control_error(0);
+    plot_error.y_err = control_error(1);
+    plot_error.z_err = control_error(2);
+    plot_error.roll_err = control_error(3);
+    plot_error.pitch_err = control_error(4);
+    plot_error.yaw_err = control_error(5);
+    //_____________________________________________
+    //_____________________________________________
+    astronaut_controllers::plot_msg plot_fin_error;
+    plot_fin_error.x_err = final_error(0);
+    plot_fin_error.y_err = final_error(1);
+    plot_fin_error.z_err = final_error(2);
+    plot_fin_error.roll_err = final_error(3);
+    plot_fin_error.pitch_err = final_error(4);
+    plot_fin_error.yaw_err = final_error(5);
+    //_____________________________________________
+    astronaut_controllers::plot_jnt joint_value;
+    joint_value.jnt_0 = jnt_effort_(0);
+    joint_value.jnt_1 = jnt_effort_(1);
+    joint_value.jnt_2 = jnt_effort_(2);
+    joint_value.jnt_3 = jnt_effort_(3);
+    joint_value.jnt_4 = jnt_effort_(4);
+    joint_value.jnt_5 = jnt_effort_(5);
+    joint_value.jnt_6 = jnt_effort_(6);
+    //_____________________________________________
+    // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
+    control_error_pub_.publish(plot_error);
+    final_error_pub_.publish(plot_fin_error);
+    velocity_error_pub_.publish(plot_vel_error);
+    joint_value_pub_.publish(joint_value);
+    // ____________________________________________
 
     // If it arrives to the desired point it has to stop there
     if((goal_reached.data and start_trajectory_) or finish_trajectory_){ 
@@ -240,13 +321,12 @@ void cartesian_controller_class::writeJointCommand(KDL::JntArray joint_command){
 void cartesian_controller_class::starting(const ros::Time &time) {
     
     //Some initializtions
-    kp_ = 300.0; // 750
-    kv_ = 5.0; // 5 
+    kp_ = kp_value_; // 750
+    kv_ = kv_value_; // 5 
     goal_reached.data = false;
     diff_frame_ = true;
     start_trajectory_ = false;
     finish_trajectory_ = false;
-    final_time_ = ros::Duration(10.0).toSec();
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -266,6 +346,36 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     start_frame_ = current_pose;
     // Save final frame as objective
     final_frame_ = current_pose;
+
+    //Initialize pinnochio models______________________________________________________________________________________________________________________
+    std::string urdf_path = ros::package::getPath("astronaut") + std::string("/urdfs/astronaut_pinocchio_no_hands.urdf");
+
+    // Load robot model in pinnochio
+    std::cout << "Loading file: " << urdf_path << "\n";
+    pinocchio::urdf::buildModel(urdf_path, pinocchio::JointModelFreeFlyer(), model_complete);
+    std::cout << "Complete! Robot's name: " << model_complete.name << '\n';
+
+    // list of the joint that will be blocked _________________________________________________________________________________________________________
+    std::vector<std::string> articulaciones_bloqueadas{
+        "arm_left_1_joint", "arm_left_2_joint", "arm_left_3_joint", "arm_left_4_joint", 
+        "arm_left_5_joint", "arm_left_6_joint", "arm_left_7_joint", "torso_1_joint", 
+         "torso_2_joint", "head_1_joint", "head_2_joint","torso_3_joint"
+    };
+    // blocked joints id's ____________________________________________________________________________________________________________________________
+    std::vector<pinocchio::JointIndex> articulaciones_bloqueadas_id;
+    articulaciones_bloqueadas_id.reserve(articulaciones_bloqueadas.size());
+    for (const auto& str : articulaciones_bloqueadas)
+        articulaciones_bloqueadas_id.emplace_back(model_complete.getJointId(str));
+
+    // IF YOU WANT THE INMOBILITZED ARM TO HAVE ANOTHER DIFFERENT CONFIGURATION
+    // YOU MUST DO IT HERE!!
+    auto qc = pinocchio::neutral(model_complete);
+
+    // CREATE REDUCED MODEL ___________________________________________________________________________________________________________________________
+    pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, qc, model);
+    std::cout << "Reduced model complet!" << std::endl;
+    //_________________________________________________________________________________________________________________________________________________
+
 
 }
 
@@ -327,7 +437,9 @@ void cartesian_controller_class::targetFrameCallback(const astronaut_controllers
         roll = target_frame.roll;
         pitch = target_frame.pitch;
         yaw = target_frame.yaw;
-
+        // Set duration for the desired trajectory
+        final_time_ = ros::Duration(target_frame.duration).toSec();
+        
         // Save starting time for the trajectory
         begin_time_ = ros::Time::now();
 

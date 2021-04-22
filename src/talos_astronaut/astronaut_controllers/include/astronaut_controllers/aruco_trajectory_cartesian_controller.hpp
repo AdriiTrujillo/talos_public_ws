@@ -43,6 +43,21 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
         return false;
     }
+    if (!nh.getParam("kp_value",kp_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kp_value" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("kv_value",kv_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kv_value" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("trajectory_duration",time_param_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/trajectory_duration" << " from parameter server");
+        return false;
+    }
     // Robot configuration done ----------------------------------------------
 
 
@@ -293,7 +308,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     
     // Some initializtions __________________________________________________________________________________________
     kp_ = 20.0;
-    kv_ = 0.1; // 50 not working vibrations // 10 better but worse than with only kp
+    kv_ = kv_value_; // 50 not working vibrations // 10 better but worse than with only kp
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
@@ -302,7 +317,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     start_trajectory_ = false;
     finish_trajectory_ = false;
     take_start_distance_ = true;
-    ref_time_ = ros::Duration(9.0).toSec(); //9 sec trajectory
+    ref_time_ = ros::Duration(time_param_).toSec(); //9 sec trajectory
     duration_time_ = 0.0; 
     now_ = 0.0;
     vel_i_ = 0.0;
@@ -428,7 +443,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             local_frame_ = target_frame_;
             start_trajectory_ = true;
             take_start_distance_ = false;
-            kp_ = 1000.0; // When moving it uses this constant
+            kp_ = kp_value_; // When moving it uses this constant
         }
     }
 

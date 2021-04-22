@@ -11,4 +11,6 @@
           PITCH
           YAW-VAL
           YAW
+          DURATION-VAL
+          DURATION
 ))

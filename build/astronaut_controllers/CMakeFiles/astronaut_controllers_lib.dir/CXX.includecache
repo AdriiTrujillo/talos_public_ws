@@ -387,7 +387,21 @@ kdl/rotational_interpolation_sa.hpp
 -
 kdl/utilities/error.h
 -
-gazebo_msgs/ModelStates.h
+pinocchio/multibody/model.hpp
+-
+pinocchio/multibody/data.hpp
+-
+pinocchio/parsers/urdf.hpp
+-
+pinocchio/algorithm/joint-configuration.hpp
+-
+pinocchio/algorithm/model.hpp
+-
+pinocchio/algorithm/frames.hpp
+-
+pinocchio/algorithm/frames-derivatives.hpp
+-
+pinocchio/algorithm/crba.hpp
 -
 geometry_msgs/PoseStamped.h
 -
@@ -400,6 +414,10 @@ astronaut_controllers/cartesian_controller_basic.hpp
 
 /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_basic.hpp
 astronaut_controllers/cartesian_controller_basic.h
+-
+astronaut_controllers/plot_msg.h
+-
+astronaut_controllers/plot_jnt.h
 -
 kdl_parser/kdl_parser.hpp
 -

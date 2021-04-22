@@ -42,6 +42,21 @@ bool torso_effort_controller_class::init(hardware_interface::EffortJointInterfac
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
         return false;
     }
+    if (!nh.getParam("kp_value",kp_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kp_value" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("kv_value",kv_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kv_value" << " from parameter server");
+        return false;
+    }
+    if (!nh.getParam("trajectory_duration",time_param_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/trajectory_duration" << " from parameter server");
+        return false;
+    }
     // Robot configuration done ----------------------------------------------
 
 
@@ -233,8 +248,8 @@ void torso_effort_controller_class::writeJointCommand(std::vector<float> joint_c
 void torso_effort_controller_class::starting(const ros::Time &time) {
     
     // Some initializtions ____________________________________________________________________________________________________________________________
-    kp_ = 300;
-    kv_ = 10.0;
+    kp_ = kv_value_;
+    kv_ = kv_value_;
     // ________________________________________________________________________________________________________________________________________________
     diff_frame_ = false;
     goal_reached.data = false;
@@ -250,7 +265,7 @@ void torso_effort_controller_class::starting(const ros::Time &time) {
     start_trajectory_ = false;
     finish_trajectory_ = false;
     take_start_distance_ = true;
-    ref_time_ = ros::Duration(9.0).toSec(); //9 sec trajectory
+    ref_time_ = ros::Duration(time_param_).toSec(); //9 sec trajectory
     global_velPof_ = new KDL::VelocityProfile_Spline();
     // ________________________________________________________________________________________________________________________________________________
     

@@ -70,6 +70,7 @@ namespace controller_ns{
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
             //Variables
+            float kp_;
             KDL::JntArray jnt_pos_, jnt_effort_;
             KDL::Jacobian jacobian_;
             KDL::Frame target_frame_;

@@ -11,4 +11,7 @@ right_arm_controller:
     - arm_right_6_joint
     - arm_right_7_joint
 
+  trajectory_duration: 9.0
   goal_tolerance: 0.015
+  kp_value: 300.0
+  kv_value: 10.0

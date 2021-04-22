@@ -12,3 +12,4 @@ right_arm_controller:
     - arm_right_7_joint
 
   goal_tolerance: 0.015
+  kp_value: 75.0

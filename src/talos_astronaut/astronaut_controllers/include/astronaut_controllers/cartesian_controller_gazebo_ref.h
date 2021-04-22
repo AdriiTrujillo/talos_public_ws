@@ -103,7 +103,7 @@ namespace controller_ns{
             ros::Time begin_time_;
             double final_time_;
             ros::Duration actual_time_;
-            float kp_;
+            float kp_, kp_value_;
 
     };
 

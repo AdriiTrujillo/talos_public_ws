@@ -34,8 +34,15 @@
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
 
-// GAZEBO MSGS
-#include <gazebo_msgs/ModelStates.h>
+//Pinnochio
+#include <pinocchio/multibody/model.hpp>
+#include <pinocchio/multibody/data.hpp>
+#include <pinocchio/parsers/urdf.hpp>
+#include <pinocchio/algorithm/joint-configuration.hpp>
+#include <pinocchio/algorithm/model.hpp>
+#include <pinocchio/algorithm/frames.hpp>
+#include <pinocchio/algorithm/frames-derivatives.hpp>
+#include <pinocchio/algorithm/crba.hpp>
 
 // GEOMETRY MSGS
 #include <geometry_msgs/PoseStamped.h>
@@ -86,6 +93,11 @@ namespace controller_ns{
             boost::scoped_ptr<KDL::ChainFkSolverPos>    jnt_to_pose_solver_;
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
 
+            //Pinnochio variables
+            pinocchio::Data data;
+            pinocchio::Model model_complete; // Modelo con los dos brazos accionable
+            pinocchio::Model model; // Modelo con solo un brazo accionable    
+
             //Variables
             KDL::JntArray jnt_pos_, jnt_vel_, jnt_effort_;
             KDL::Jacobian jacobian_;
@@ -94,12 +106,18 @@ namespace controller_ns{
             KDL::Frame target_frame_;
             KDL::Frame local_frame_;
             KDL::Trajectory* trajectory_;
-            float kp_, kv_;
+            float kp_, kv_, kp_value_, kv_value_;
 
             //Time variables
             ros::Time begin_time_;
             double final_time_;
             ros::Duration actual_time_;
+
+            //Data publisher
+            ros::Publisher control_error_pub_;
+            ros::Publisher velocity_error_pub_;
+            ros::Publisher joint_value_pub_;
+            ros::Publisher final_error_pub_;
 
     };
 

@@ -41,6 +41,11 @@ bool gazebo_cartesian_controller_class::init(hardware_interface::EffortJointInte
         ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/goal_tolerance" << " from parameter server");
         return false;
     }
+    if (!nh.getParam("kp_value",kp_value_)){
+    
+        ROS_ERROR_STREAM("Failed to load " << nh.getNamespace() + "/kp_value" << " from parameter server");
+        return false;
+    }
     // Robot configuration done ----------------------------------------------
 
 
@@ -209,7 +214,6 @@ void gazebo_cartesian_controller_class::starting(const ros::Time &time) {
     goal_reached.data = false;
     diff_frame_ = true;
     start_trajectory_ = false;
-    final_time_ = ros::Duration(9.0).toSec();
 
     //Get initial joints position
     for(unsigned int i = 0; i < joint_handles_.size(); i++){
@@ -294,7 +298,8 @@ void gazebo_cartesian_controller_class::targetFrameCallback(const astronaut_cont
         roll = target_frame.roll;
         pitch = target_frame.pitch;
         yaw = target_frame.yaw;
-
+        // Set duration for the desired trajectory 
+        final_time_ = ros::Duration(target_frame.duration).toSec();
         // Save starting time for the trajectory
         begin_time_ = ros::Time::now();
 

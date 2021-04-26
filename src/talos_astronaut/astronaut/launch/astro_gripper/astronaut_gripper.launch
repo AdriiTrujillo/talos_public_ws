@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+
+    <arg name="testing" default="false" />
+
+    <group if="$(arg testing)">
+        <include file="$(find astronaut)/launch/astro_gripper/talos_astronaut_gripper.launch">
+            <arg name="world" default="$(find astronaut)/worlds/empty.world" />
+            <arg name="gzpose" default="-x 0.00 -y 0.00 -z 0.5 -R 0.00 -P 0.00 -Y 0.00"/>
+        </include>
+    </group>
+
+    <group unless="$(arg testing)">
+        <include file="$(find astronaut)/launch/astro_gripper/talos_astronaut_gripper.launch">
+            <arg name="world"  value="$(find astronaut)/worlds/international_space_station.world"/>
+        </include>
+    </group>
+
+</launch>

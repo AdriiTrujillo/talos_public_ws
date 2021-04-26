@@ -12,5 +12,10 @@ right_arm_controller:
     - arm_right_7_joint
 
   goal_tolerance: 0.015
+  # For Hey-5 hands
   kp_value: 100.0
   kv_value: 850.0
+  
+  # For Grippers
+  # kp_value: 100.0
+  # kv_value: 1000.0

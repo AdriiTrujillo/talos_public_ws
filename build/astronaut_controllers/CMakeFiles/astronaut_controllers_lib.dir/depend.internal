@@ -25,6 +25,8 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_basic.hpp
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp
+ /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_torso_efforts.h
+ /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_torso_efforts.hpp
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.h
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.hpp
  /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp
@@ -218,6 +220,7 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o
  /opt/ros/kinetic/include/kdl/joint.hpp
  /opt/ros/kinetic/include/kdl/path.hpp
  /opt/ros/kinetic/include/kdl/path_composite.hpp
+ /opt/ros/kinetic/include/kdl/path_line.hpp
  /opt/ros/kinetic/include/kdl/path_roundedcomposite.hpp
  /opt/ros/kinetic/include/kdl/rigidbodyinertia.hpp
  /opt/ros/kinetic/include/kdl/rotational_interpolation.hpp

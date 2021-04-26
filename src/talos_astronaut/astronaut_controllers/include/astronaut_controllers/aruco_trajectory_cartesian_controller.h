@@ -40,6 +40,7 @@
 #include <kdl/trajectory_composite.hpp>
 #include <kdl/velocityprofile_spline.hpp>
 #include <kdl/path_roundedcomposite.hpp>
+#include <kdl/path_line.hpp>
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
 
@@ -132,6 +133,7 @@ namespace controller_ns{
             double duration_time_;
             double ref_time_;
             double now_;
+            int cont_;
             ros::Duration actual_time_;
 
             //Data publisher
@@ -139,6 +141,8 @@ namespace controller_ns{
             ros::Publisher velocity_error_pub_;
             ros::Publisher joint_value_pub_;
             ros::Publisher final_error_pub_;
+            ros::Publisher frames_pub_;
+            ros::Publisher quintic_pub_;
 
     };
 

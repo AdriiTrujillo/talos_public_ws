@@ -2,4 +2,4 @@
 rostopic pub -r 10 /cartesian_target_frame astronaut_controllers/target_frame "{x: -4.98, y: 2.01, z: 0.60, roll: -0.942, pitch: 1.307, yaw: 2.246, duration: 9.0}"
 
  -- Example target frame message for the Cartesian Controller Basic: 
-rostopic pub -r 10 /cartesian_target_frame astronaut_controllers/target_frame "{x: 0.30, y: -0.25, z: 0.0, roll: 0.0, pitch: 0.0, yaw: -3.14, duration: 10.0}"
+rostopic pub -r 10 /cartesian_target_frame astronaut_corollers/target_frame "{x: 0.45, y: -0.25, z: 0.0, roll: 3.14, pitch: 1.57, yaw: 0.0, duration: 9.0}"

@@ -24,6 +24,8 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/a
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_basic.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.h
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_gazebo_ref.hpp
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_torso_efforts.h
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/cartesian_controller_torso_efforts.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.h
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include/astronaut_controllers/torso_effort_controller.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/src/cartesian_controller.cpp
@@ -217,6 +219,7 @@ CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ro
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/joint.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/path.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/path_composite.hpp
+CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/path_line.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/path_roundedcomposite.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/rigidbodyinertia.hpp
 CMakeFiles/astronaut_controllers_lib.dir/src/cartesian_controller.cpp.o: /opt/ros/kinetic/include/kdl/rotational_interpolation.hpp

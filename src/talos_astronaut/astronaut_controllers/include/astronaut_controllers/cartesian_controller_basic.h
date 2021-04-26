@@ -118,6 +118,7 @@ namespace controller_ns{
             ros::Publisher velocity_error_pub_;
             ros::Publisher joint_value_pub_;
             ros::Publisher final_error_pub_;
+            ros::Publisher frames_pub_;
 
     };
 

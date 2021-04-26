@@ -142,6 +142,8 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
     joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
     final_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/final_error", 1000);
+    frames_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/frames_trajectory", 1000);
+    quintic_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/quintic_profile", 1000);
 
     return true;
 
@@ -149,6 +151,7 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
 void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
+    cont_ = 0;
     jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
     jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
 
@@ -259,7 +262,6 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     plot_error.pitch_err = control_error(4);
     plot_error.yaw_err = control_error(5);
     //_____________________________________________
-    //_____________________________________________
     astronaut_controllers::plot_msg plot_fin_error;
     plot_fin_error.x_err = final_error(0);
     plot_fin_error.y_err = final_error(1);
@@ -277,12 +279,27 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     joint_value.jnt_5 = jnt_effort_(5);
     joint_value.jnt_6 = jnt_effort_(6);
     //_____________________________________________
+    astronaut_controllers::plot_msg frames_traj;
+    frames_traj.x_err = target_frame_.p.x();
+    frames_traj.y_err = target_frame_.p.y();
+    frames_traj.z_err = target_frame_.p.z();
+    frames_traj.roll_err = current_pose.p.x();
+    frames_traj.pitch_err = current_pose.p.y();
+    frames_traj.yaw_err = current_pose.p.z();
+    astronaut_controllers::plot_msg quintic_prof;
+    quintic_prof.x_err = acc_i_;
+    quintic_prof.y_err = vel_i_;
+    quintic_prof.z_err = duration_time_;
+    quintic_prof.roll_err = cont_;
+    //_____________________________________________
     // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
     control_error_pub_.publish(plot_error);
     final_error_pub_.publish(plot_fin_error);
     velocity_error_pub_.publish(plot_vel_error);
     joint_value_pub_.publish(joint_value);
+    frames_pub_.publish(frames_traj);
+    quintic_pub_.publish(quintic_prof);
     // ____________________________________________
 
 
@@ -323,6 +340,7 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     vel_i_ = 0.0;
     acc_i_ = 0.0;
     global_velPof_ = new KDL::VelocityProfile_Spline();
+    cont_ = 0;
     // ______________________________________________________________________________________________________________
 
     //Get initial joints position ___________________________________________________________________________________ 
@@ -423,6 +441,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
         target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
 
         if (diffTargetFrame(target_frame_) and not finish_trajectory_) {
+            cont_ = 1;
             diff_frame_ = true;
             final_frame_ = target_frame_;
 
@@ -457,6 +476,8 @@ KDL::Trajectory* aruco_trajectory_cartesian_controller_class::trajectoryPlanner(
     path->Add(start); 
     path->Add(ending);
     path->Finish();
+
+    // KDL::Path_Line* path = new KDL::Path_Line(start, ending, new KDL::RotationalInterpolation_SingleAxis(), 0.01);
 
     KDL::VelocityProfile_Spline* velprof = new KDL::VelocityProfile_Spline();
     //(start_pos, start_vel, start_acc, end_pos, end_vel, end_acc, Duration)

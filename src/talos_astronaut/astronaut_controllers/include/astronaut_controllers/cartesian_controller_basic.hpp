@@ -142,6 +142,7 @@ bool cartesian_controller_class::init(hardware_interface::EffortJointInterface* 
     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
     joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
     final_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/final_error", 1000);
+    frames_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/frames_trajectory", 1000);
 
     return true;
 
@@ -275,7 +276,6 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     plot_error.pitch_err = control_error(4);
     plot_error.yaw_err = control_error(5);
     //_____________________________________________
-    //_____________________________________________
     astronaut_controllers::plot_msg plot_fin_error;
     plot_fin_error.x_err = final_error(0);
     plot_fin_error.y_err = final_error(1);
@@ -293,13 +293,23 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     joint_value.jnt_5 = jnt_effort_(5);
     joint_value.jnt_6 = jnt_effort_(6);
     //_____________________________________________
+    astronaut_controllers::plot_msg frames_traj;
+    frames_traj.x_err = target_frame_.p.x();
+    frames_traj.y_err = target_frame_.p.y();
+    frames_traj.z_err = target_frame_.p.z();
+    frames_traj.roll_err = current_pose.p.x();
+    frames_traj.pitch_err = current_pose.p.y();
+    frames_traj.yaw_err = current_pose.p.z();
+    //_____________________________________________
     // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
     control_error_pub_.publish(plot_error);
     final_error_pub_.publish(plot_fin_error);
     velocity_error_pub_.publish(plot_vel_error);
     joint_value_pub_.publish(joint_value);
+    frames_pub_.publish(frames_traj);
     // ____________________________________________
+
 
     // If it arrives to the desired point it has to stop there
     if((goal_reached.data and start_trajectory_) or finish_trajectory_){ 

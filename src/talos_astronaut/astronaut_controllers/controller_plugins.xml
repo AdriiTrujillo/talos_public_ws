@@ -48,4 +48,14 @@
     </description>
   </class>
 
+  <class name="astronaut_controllers/CartesianControllerTorsoEfforts" 
+         type="position_controller::CartesianControllerTorsoEfforts"           
+         base_class_type="controller_interface::ControllerBase" >
+    <description>
+      The astronaut controller (Cartesian trayectory Controller) which know the effort
+      in the robot's torso to control the robot arm. And moves the arm to a desired position
+      sent by Ros topics.
+    </description>
+  </class>
+
 </library>

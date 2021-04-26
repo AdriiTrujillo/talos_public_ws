@@ -4,6 +4,7 @@
 #include <astronaut_controllers/aruco_trajectory_cartesian_controller.h>
 #include <astronaut_controllers/cartesian_controller_gazebo_ref.h>
 #include <astronaut_controllers/cartesian_controller_basic.h>
+#include <astronaut_controllers/cartesian_controller_torso_efforts.h>
 #include <astronaut_controllers/torso_effort_controller.h>
 
 namespace position_controller {
@@ -18,6 +19,8 @@ typedef controller_ns::cartesian_controller_class CartesianTrajectoryController;
 
 typedef controller_ns::torso_effort_controller_class TorsoEffortController;
 
+typedef controller_ns::cartesian_controller_torso_efforts_class CartesianControllerTorsoEfforts;
+
 };
 
 PLUGINLIB_EXPORT_CLASS(position_controller::ArucoController, controller_interface::ControllerBase);
@@ -25,4 +28,5 @@ PLUGINLIB_EXPORT_CLASS(position_controller::GazeboTrajectoryController, controll
 PLUGINLIB_EXPORT_CLASS(position_controller::ArucoTrajectoryController, controller_interface::ControllerBase);
 PLUGINLIB_EXPORT_CLASS(position_controller::CartesianTrajectoryController, controller_interface::ControllerBase);
 PLUGINLIB_EXPORT_CLASS(position_controller::TorsoEffortController, controller_interface::ControllerBase);
+PLUGINLIB_EXPORT_CLASS(position_controller::CartesianControllerTorsoEfforts, controller_interface::ControllerBase);
 

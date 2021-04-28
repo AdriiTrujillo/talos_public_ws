@@ -151,7 +151,6 @@ bool aruco_trajectory_cartesian_controller_class::init(hardware_interface::Effor
 
 void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, const ros::Duration &period){
 
-    cont_ = 0;
     jnt_to_pose_solver_.reset(new KDL::ChainFkSolverPos_recursive(kdl_chain));
     jnt_to_jac_solver_.reset(new KDL::ChainJntToJacSolver(kdl_chain));
 
@@ -171,6 +170,7 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
         ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
 
     KDL::Twist desired_vel;
+    KDL::Twist targets_diff;
 
     if(start_trajectory_){
         //Get the actual time
@@ -290,7 +290,6 @@ void aruco_trajectory_cartesian_controller_class::update(const ros::Time &time, 
     quintic_prof.x_err = acc_i_;
     quintic_prof.y_err = vel_i_;
     quintic_prof.z_err = duration_time_;
-    quintic_prof.roll_err = cont_;
     //_____________________________________________
     // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
@@ -340,7 +339,6 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     vel_i_ = 0.0;
     acc_i_ = 0.0;
     global_velPof_ = new KDL::VelocityProfile_Spline();
-    cont_ = 0;
     // ______________________________________________________________________________________________________________
 
     //Get initial joints position ___________________________________________________________________________________ 
@@ -438,12 +436,11 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
     if(data.header.frame_id == "base_link"){
 
         talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
-        target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
+        KDL::Frame temp_frame = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
 
-        if (diffTargetFrame(target_frame_) and not finish_trajectory_) {
-            cont_ = 1;
+        if (diffTargetFrame(temp_frame) and not finish_trajectory_) {
             diff_frame_ = true;
-            final_frame_ = target_frame_;
+            final_frame_ = temp_frame;
 
             if(take_start_distance_){
                 start_distance_ = distanceBetweenFrames(start_frame_, final_frame_);
@@ -459,7 +456,7 @@ void aruco_trajectory_cartesian_controller_class::transformationCallback(const g
             // If a direfent frame is recalculated it won't do a 9 sec trajectory
             // It use the velocity and acceleration of the previous trajectory to start the next one
             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
-            local_frame_ = target_frame_;
+            local_frame_ = temp_frame;
             start_trajectory_ = true;
             take_start_distance_ = false;
             kp_ = kp_value_; // When moving it uses this constant

@@ -122,7 +122,11 @@ bool torso_effort_controller_class::init(hardware_interface::EffortJointInterfac
     tolerance_publisher_ = nh.advertise<std_msgs::Bool>("/goal_tolerance", 1000);
     control_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/control_error", 1000);
     velocity_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/velocity_error", 1000);
-    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/joint_value", 1000);
+    joint_value_pub_ = nh.advertise<astronaut_controllers::plot_jnt>("/joint_value", 1000);
+    final_error_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/final_error", 1000);
+    frames_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/frames_trajectory", 1000);
+    quintic_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/quintic_profile", 1000);
+
 
     return true;
 
@@ -196,14 +200,6 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
 
     
     // WRITE MSGS _________________________________
-    astronaut_controllers::plot_msg joint_value;
-    joint_value.x_err = jnt_effort_[1];
-    joint_value.y_err = jnt_effort_[2];
-    joint_value.z_err = jnt_effort_[3];
-    joint_value.roll_err = jnt_effort_[4];
-    joint_value.pitch_err = jnt_effort_[5];
-    joint_value.yaw_err = jnt_effort_[6];
-    //_____________________________________________
     astronaut_controllers::plot_msg plot_vel_error;
     plot_vel_error.x_err = velocity_error(0);
     plot_vel_error.y_err = velocity_error(1);
@@ -220,12 +216,43 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
     plot_error.pitch_err = control_error(4);
     plot_error.yaw_err = control_error(5);
     //_____________________________________________
-
+    astronaut_controllers::plot_msg plot_fin_error;
+    plot_fin_error.x_err = final_error(0);
+    plot_fin_error.y_err = final_error(1);
+    plot_fin_error.z_err = final_error(2);
+    plot_fin_error.roll_err = final_error(3);
+    plot_fin_error.pitch_err = final_error(4);
+    plot_fin_error.yaw_err = final_error(5);
+    //_____________________________________________
+    astronaut_controllers::plot_jnt joint_value;
+    joint_value.jnt_0 = jnt_effort_[0];
+    joint_value.jnt_1 = jnt_effort_[1];
+    joint_value.jnt_2 = jnt_effort_[2];
+    joint_value.jnt_3 = jnt_effort_[3];
+    joint_value.jnt_4 = jnt_effort_[4];
+    joint_value.jnt_5 = jnt_effort_[5];
+    joint_value.jnt_6 = jnt_effort_[6];
+    //_____________________________________________
+    astronaut_controllers::plot_msg frames_traj;
+    frames_traj.x_err = target_frame_.p.x();
+    frames_traj.y_err = target_frame_.p.y();
+    frames_traj.z_err = target_frame_.p.z();
+    frames_traj.roll_err = current_pose.p.x();
+    frames_traj.pitch_err = current_pose.p.y();
+    frames_traj.yaw_err = current_pose.p.z();
+    astronaut_controllers::plot_msg quintic_prof;
+    quintic_prof.x_err = acc_i_;
+    quintic_prof.y_err = vel_i_;
+    quintic_prof.z_err = duration_time_;
+    //_____________________________________________
     // PUBLISH ____________________________________
     tolerance_publisher_.publish(goal_reached);
     control_error_pub_.publish(plot_error);
+    final_error_pub_.publish(plot_fin_error);
     velocity_error_pub_.publish(plot_vel_error);
     joint_value_pub_.publish(joint_value);
+    frames_pub_.publish(frames_traj);
+    quintic_pub_.publish(quintic_prof);
     // ____________________________________________
 
     // If it arrives to the desired point it has to stop there
@@ -366,11 +393,11 @@ void torso_effort_controller_class::transformationCallback(const geometry_msgs::
     if(data.header.frame_id == "base_link"){
 
         talos_2_aruco_ = KDL::Frame(KDL::Rotation::Quaternion(q_x, q_y, q_z, q_w), KDL::Vector(x, y, z));
-        target_frame_ = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
+        KDL::Frame temp_frame = talos_2_aruco_ * aruco_2_target_; // Transformation from base link to position using aruco reference.
 
-        if (diffTargetFrame(target_frame_) and not finish_trajectory_) {
+        if (diffTargetFrame(temp_frame) and not finish_trajectory_) {
             diff_frame_ = true;
-            final_frame_ = target_frame_;
+            final_frame_ = temp_frame;
 
             if(take_start_distance_){
                 start_distance_ = distanceBetweenFrames(start_frame_, final_frame_);
@@ -386,7 +413,7 @@ void torso_effort_controller_class::transformationCallback(const geometry_msgs::
             // If a direfent frame is recalculated it won't do a 9 sec trajectory
             // It use the velocity and acceleration of the previous trajectory to start the next one
             trajectory_ = trajectoryPlanner(start_frame_, final_frame_,vel_i_, acc_i_, duration_time_);
-            local_frame_ = target_frame_;
+            local_frame_ = temp_frame;
             start_trajectory_ = true;
             compute_efforts_ = true;
             take_start_distance_ = false;

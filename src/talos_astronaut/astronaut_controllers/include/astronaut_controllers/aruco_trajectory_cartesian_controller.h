@@ -133,7 +133,6 @@ namespace controller_ns{
             double duration_time_;
             double ref_time_;
             double now_;
-            int cont_;
             ros::Duration actual_time_;
 
             //Data publisher

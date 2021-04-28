@@ -15,3 +15,6 @@ right_arm_controller:
   goal_tolerance: 0.015
   kp_value: 300.0
   kv_value: 10.0
+  # TODO Ajustar estos valores (Necesario cambiar el punto del talos)
+  # kp_value: 100.0
+  # kv_value: 850.0 

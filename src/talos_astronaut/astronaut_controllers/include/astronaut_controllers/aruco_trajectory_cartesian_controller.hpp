@@ -328,7 +328,8 @@ void aruco_trajectory_cartesian_controller_class::starting(const ros::Time &time
     goal_reached.data = false;
     diff_frame_ = false;
     // Transformation from the aruco marker to the target point
-    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090));
+    aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(1.555, 0.1558, -3.008), KDL::Vector(-0.491, 0.310, -0.090)); // HEY-5 Point
+    // aruco_2_target_ = KDL::Frame(KDL::Rotation::RPY(-0.116, 1.514, 1.444), KDL::Vector(-0.441, 0.301, -0.135)); // GRIPPERS Point
     // Trjectory inicializations
     start_trajectory_ = false;
     finish_trajectory_ = false;

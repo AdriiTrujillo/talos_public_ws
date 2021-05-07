@@ -25,7 +25,7 @@ int main(int argc, char **argv){
 
     std_msgs::Float64 head_pan_move;
     std_msgs::Float64 head_tilt_move;
-    head_pan_move.data = -0.5;
+    head_pan_move.data = -0.50;
     head_tilt_move.data = -0.05;
     bool stop = false;
 

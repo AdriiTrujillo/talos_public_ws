@@ -44,16 +44,6 @@
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
 
-//Pinnochio
-#include <pinocchio/multibody/model.hpp>
-#include <pinocchio/multibody/data.hpp>
-#include <pinocchio/parsers/urdf.hpp>
-#include <pinocchio/algorithm/joint-configuration.hpp>
-#include <pinocchio/algorithm/model.hpp>
-#include <pinocchio/algorithm/frames.hpp>
-#include <pinocchio/algorithm/frames-derivatives.hpp>
-#include <pinocchio/algorithm/crba.hpp>
-
 // GEOMETRY MSGS
 #include <geometry_msgs/PoseStamped.h>
 
@@ -109,12 +99,7 @@ namespace controller_ns{
             KDL::Frame talos_2_aruco_;
             KDL::Frame local_frame_;
             KDL::Frame aruco_2_target_;
-
-            //Pinnochio variables
-            pinocchio::Data data;
-            pinocchio::Model model_complete; // Modelo con los dos brazos accionable
-            pinocchio::Model model; // Modelo con solo un brazo accionable    
-            
+              
             //Trejctories Variables
             KDL::Trajectory* trajectory_;
             KDL::VelocityProfile_Spline* global_velPof_;   
@@ -135,7 +120,7 @@ namespace controller_ns{
             double now_;
             ros::Duration actual_time_;
 
-            //Data publisher
+            //Data publishers
             ros::Publisher control_error_pub_;
             ros::Publisher velocity_error_pub_;
             ros::Publisher joint_value_pub_;

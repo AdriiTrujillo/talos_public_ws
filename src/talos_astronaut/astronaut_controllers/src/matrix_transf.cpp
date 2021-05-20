@@ -10,8 +10,9 @@ int main(int argc, char **argv) {
     // KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.57, 1.358,1.57), KDL::Vector(-5.00, 2.04, 0.65)); // NEW //Works
     // KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-2.075, 1.327, 1.052), KDL::Vector(-4.98, 2.048, 0.60)); //  mejor
     // KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-2.409, 1.352, 0.707), KDL::Vector(-4.98, 2.048, 0.60)); // HEY-FIVE
+    KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-2.409, 1.352, 0.707), KDL::Vector(-4.92, 2.046, 0.60)); // HEY-FIVE
     // KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.586, 1.322, 1.573), KDL::Vector(-4.97, 2.093, 0.65)); // GRIPPERS
-    KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.586, 0.0, 1.573), KDL::Vector(-4.97, 2.093, 0.65)); // GRIPPERS
+    // KDL::Frame world_2_pto = KDL::Frame(KDL::Rotation::RPY(-1.586, 0.0, 1.573), KDL::Vector(-4.97, 2.093, 0.65)); // GRIPPERS
 
     // From gazebo
     KDL::Frame world_2_bl = KDL::Frame(KDL::Rotation::RPY(0.0, 0.0, 0.0), KDL::Vector(-5.625, 1.915, 0.585));

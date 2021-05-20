@@ -166,8 +166,8 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     KDL::Frame current_pose;
     fk_status = jnt_to_pose_solver_->JntToCart(jnt_pos_,current_pose);
-    if (fk_status == -1) 
-        ROS_ERROR_STREAM("No se ha podido calcular la cinematica directa ... ");
+    if (fk_status < 0) 
+        ROS_ERROR_STREAM("Forward Kinematics could not be calculated ... ");
 
     KDL::Twist desired_vel = KDL::Twist::Zero(); // Initiliz it to zeros;
 
@@ -175,7 +175,6 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
         //Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
         double now = actual_time_.toSec();
-        std::cout << "Now time: " << now << std::endl;
         target_frame_ = trajectory_->Pos(now); 
         desired_vel = trajectory_->Vel(now); 
         if(now > final_time_) finish_trajectory_ = true;
@@ -188,24 +187,6 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
 
     // Target frame is already with ISS reference
     control_error = KDL::diff(current_pose, target_frame_);
-    
-    // std::cout << "Final frame: " << std::endl;
-    // std::cout << "X: " << final_frame_.p.x() << std::endl;
-    // std::cout << "Y: " << final_frame_.p.y() << std::endl;
-    // std::cout << "Z: " << final_frame_.p.z() << std::endl;  
-    // std::cout << " ------------------ " << std::endl;
-
-    // std::cout << "Target frame: " << std::endl;
-    // std::cout << "X: " << target_frame_.p.x() << std::endl;
-    // std::cout << "Y: " << target_frame_.p.y() << std::endl;
-    // std::cout << "Z: " << target_frame_.p.z() << std::endl;
-    // std::cout << " ------------------ " << std::endl;
-
-    // std::cout << "Current frame: " << std::endl;
-    // std::cout << "X: " << current_pose.p.x() << std::endl;
-    // std::cout << "Y: " << current_pose.p.y() << std::endl;
-    // std::cout << "Z: " << current_pose.p.z() << std::endl;
-    // std::cout << " ------------------ " << std::endl;
 
     final_error = KDL::diff(current_pose, final_frame_);
     //check if the tool has arrive to the desired point
@@ -224,36 +205,12 @@ void cartesian_controller_class::update(const ros::Time &time, const ros::Durati
     KDL::Twist velocity_error;
     velocity_error = KDL::diff(cart_vel, desired_vel);
 
-    // Obtain intertia matrix  _____________________________________
-    // robot's state _______________________________________________
-    data = pinocchio::Data(model);
-    Eigen::VectorXd q(14);
-
-    for(int i = 0; i < 14; i++){
-        if (i < 6) q(i) = 0;
-        if (i == 6) q (i) = 1;
-        if (i > 6) q(i) = jnt_pos_(i-7);
-    }
-
-    // Inertia Matrix _______________________________________________
-    pinocchio::crba(model, data, q);
-    data.M.triangularView<Eigen::StrictlyLower>() = data.M.transpose().triangularView<Eigen::StrictlyLower>();
-    // Manipulator inertia matrix
-    auto Hb  = data.M.block<6, 6>(0, 0);
-    auto Hbm = data.M.block(0, 6, 6, 7);
-    auto Hm  = data.M.block(6, 6, 7, 7);
-    auto Hm_ = Hm - (Hbm.transpose() * Hb.inverse() * Hbm);
-
     // jnt_effort_ = Jac^transpose * cart_wrench
     for (unsigned int i = 0; i < jnt_pos_.rows(); i++)
     {
         jnt_effort_(i) = 0;
         for (unsigned int j=0; j<6; j++){
             jnt_effort_(i) += (jacobian_(j,i) * (kp_ * control_error(j) + kv_*velocity_error(j)));
-        }
-
-        for(int j = 0; j < jnt_pos_.rows(); j++){
-            jnt_effort_(j) += jnt_effort_(j) * Hm_.coeff(i, j);
         }
     }
     
@@ -357,36 +314,6 @@ void cartesian_controller_class::starting(const ros::Time &time) {
     // Save final frame as objective
     final_frame_ = current_pose;
 
-    //Initialize pinnochio models______________________________________________________________________________________________________________________
-    std::string urdf_path = ros::package::getPath("astronaut") + std::string("/urdfs/astronaut_pinocchio_no_hands.urdf");
-
-    // Load robot model in pinnochio
-    std::cout << "Loading file: " << urdf_path << "\n";
-    pinocchio::urdf::buildModel(urdf_path, pinocchio::JointModelFreeFlyer(), model_complete);
-    std::cout << "Complete! Robot's name: " << model_complete.name << '\n';
-
-    // list of the joint that will be blocked _________________________________________________________________________________________________________
-    std::vector<std::string> articulaciones_bloqueadas{
-        "arm_left_1_joint", "arm_left_2_joint", "arm_left_3_joint", "arm_left_4_joint", 
-        "arm_left_5_joint", "arm_left_6_joint", "arm_left_7_joint", "torso_1_joint", 
-         "torso_2_joint", "head_1_joint", "head_2_joint","torso_3_joint"
-    };
-    // blocked joints id's ____________________________________________________________________________________________________________________________
-    std::vector<pinocchio::JointIndex> articulaciones_bloqueadas_id;
-    articulaciones_bloqueadas_id.reserve(articulaciones_bloqueadas.size());
-    for (const auto& str : articulaciones_bloqueadas)
-        articulaciones_bloqueadas_id.emplace_back(model_complete.getJointId(str));
-
-    // IF YOU WANT THE INMOBILITZED ARM TO HAVE ANOTHER DIFFERENT CONFIGURATION
-    // YOU MUST DO IT HERE!!
-    auto qc = pinocchio::neutral(model_complete);
-
-    // CREATE REDUCED MODEL ___________________________________________________________________________________________________________________________
-    pinocchio::buildReducedModel(model_complete, articulaciones_bloqueadas_id, qc, model);
-    std::cout << "Reduced model complet!" << std::endl;
-    //_________________________________________________________________________________________________________________________________________________
-
-
 }
 
 void cartesian_controller_class::stopping(const ros::Time &time) {}
@@ -395,13 +322,7 @@ bool cartesian_controller_class::compareTolerance(KDL::Twist error){
 
     // Point reached
     if(not diff_frame_){ // To not check when it has just started
-        // std::cout << " ------- " << std::endl;
-        // std::cout << "x_err: " << fabs(error(0)) << std::endl;
-        // std::cout << "y_err: " << fabs(error(1)) << std::endl;
-        // std::cout << "z_err: " << fabs(error(2)) << std::endl;
-        // std::cout << " ------- " << std::endl;
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
-            // std::cout << "HA LLEGADO AL PUNTO FINAL" << std::endl;
             return true;
         }
     }

@@ -34,16 +34,6 @@
 #include <kdl/rotational_interpolation_sa.hpp>
 #include <kdl/utilities/error.h>
 
-//Pinnochio
-#include <pinocchio/multibody/model.hpp>
-#include <pinocchio/multibody/data.hpp>
-#include <pinocchio/parsers/urdf.hpp>
-#include <pinocchio/algorithm/joint-configuration.hpp>
-#include <pinocchio/algorithm/model.hpp>
-#include <pinocchio/algorithm/frames.hpp>
-#include <pinocchio/algorithm/frames-derivatives.hpp>
-#include <pinocchio/algorithm/crba.hpp>
-
 // GEOMETRY MSGS
 #include <geometry_msgs/PoseStamped.h>
 
@@ -92,11 +82,6 @@ namespace controller_ns{
             int fk_status;
             boost::scoped_ptr<KDL::ChainFkSolverPos>    jnt_to_pose_solver_;
             boost::scoped_ptr<KDL::ChainJntToJacSolver> jnt_to_jac_solver_;
-
-            //Pinnochio variables
-            pinocchio::Data data;
-            pinocchio::Model model_complete; // Modelo con los dos brazos accionable
-            pinocchio::Model model; // Modelo con solo un brazo accionable    
 
             //Variables
             KDL::JntArray jnt_pos_, jnt_vel_, jnt_effort_;

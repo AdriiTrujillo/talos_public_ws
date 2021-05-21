@@ -1,0 +1,5 @@
+Linked: (/home/adrii/talos_public_ws/devel/.private/aruco/lib/libaruco.so, /home/adrii/talos_public_ws/devel/lib/libaruco.so)
+Linked: (/home/adrii/talos_public_ws/devel/.private/aruco/lib/pkgconfig/aruco.pc, /home/adrii/talos_public_ws/devel/lib/pkgconfig/aruco.pc)
+Linked: (/home/adrii/talos_public_ws/devel/.private/aruco/lib/aruco/optimalmarkers, /home/adrii/talos_public_ws/devel/lib/aruco/optimalmarkers)
+Linked: (/home/adrii/talos_public_ws/devel/.private/aruco/share/aruco/cmake/arucoConfig-version.cmake, /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig-version.cmake)
+Linked: (/home/adrii/talos_public_ws/devel/.private/aruco/share/aruco/cmake/arucoConfig.cmake, /home/adrii/talos_public_ws/devel/share/aruco/cmake/arucoConfig.cmake)

@@ -169,7 +169,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/look_to_aruco.dir/DependInfo.cmake"
-  "CMakeFiles/send_position.dir/DependInfo.cmake"
   "CMakeFiles/std_msgs_generate_messages_lisp.dir/DependInfo.cmake"
   "CMakeFiles/download_extra_data.dir/DependInfo.cmake"
   "CMakeFiles/astronaut_controllers_generate_messages_eus.dir/DependInfo.cmake"

@@ -176,7 +176,6 @@ void cartesian_controller_torso_efforts_class::update(const ros::Time &time, con
         //Get the actual time
         actual_time_ = ros::Time::now() - begin_time_; // That's 0 sec
         double now = actual_time_.toSec();
-        std::cout << "Now time: " << now << std::endl;
         target_frame_ = trajectory_->Pos(now); 
         desired_vel = trajectory_->Vel(now);
         desired_acc = trajectory_->Acc(now);
@@ -269,7 +268,6 @@ void cartesian_controller_torso_efforts_class::update(const ros::Time &time, con
 
     // If it arrives to the desired point it has to stop there
     if((goal_reached.data and start_trajectory_) or finish_trajectory_){ 
-        // target_frame_ = current_pose;
         start_frame_ = current_pose;
         start_trajectory_ = false;
     }
@@ -352,13 +350,7 @@ bool cartesian_controller_torso_efforts_class::compareTolerance(KDL::Twist error
 
     // Point reached
     if(not diff_frame_){ // To not check when it has just started
-        std::cout << " ------- " << std::endl;
-        std::cout << "x_err: " << fabs(error(0)) << std::endl;
-        std::cout << "y_err: " << fabs(error(1)) << std::endl;
-        std::cout << "z_err: " << fabs(error(2)) << std::endl;
-        std::cout << " ------- " << std::endl;
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
-            // std::cout << "HA LLEGADO AL PUNTO FINAL" << std::endl;
             return true;
         }
     }

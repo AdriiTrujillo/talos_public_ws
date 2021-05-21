@@ -166,45 +166,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named pinocchio_jacobiana
-
-# Build rule for target.
-pinocchio_jacobiana: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pinocchio_jacobiana
-.PHONY : pinocchio_jacobiana
-
-# fast build rule for target.
-pinocchio_jacobiana/fast:
-	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/build
-.PHONY : pinocchio_jacobiana/fast
-
-#=============================================================================
-# Target rules for targets named trajectories
-
-# Build rule for target.
-trajectories: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 trajectories
-.PHONY : trajectories
-
-# fast build rule for target.
-trajectories/fast:
-	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/build
-.PHONY : trajectories/fast
-
-#=============================================================================
-# Target rules for targets named matrix_transf
-
-# Build rule for target.
-matrix_transf: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 matrix_transf
-.PHONY : matrix_transf
-
-# fast build rule for target.
-matrix_transf/fast:
-	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/build
-.PHONY : matrix_transf/fast
-
-#=============================================================================
 # Target rules for targets named gripper_service
 
 # Build rule for target.
@@ -961,87 +922,6 @@ src/hand_service.cpp.s:
 	$(MAKE) -f CMakeFiles/hand_service.dir/build.make CMakeFiles/hand_service.dir/src/hand_service.cpp.s
 .PHONY : src/hand_service.cpp.s
 
-src/matrix_transf.o: src/matrix_transf.cpp.o
-
-.PHONY : src/matrix_transf.o
-
-# target to build an object file
-src/matrix_transf.cpp.o:
-	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.o
-.PHONY : src/matrix_transf.cpp.o
-
-src/matrix_transf.i: src/matrix_transf.cpp.i
-
-.PHONY : src/matrix_transf.i
-
-# target to preprocess a source file
-src/matrix_transf.cpp.i:
-	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.i
-.PHONY : src/matrix_transf.cpp.i
-
-src/matrix_transf.s: src/matrix_transf.cpp.s
-
-.PHONY : src/matrix_transf.s
-
-# target to generate assembly for a file
-src/matrix_transf.cpp.s:
-	$(MAKE) -f CMakeFiles/matrix_transf.dir/build.make CMakeFiles/matrix_transf.dir/src/matrix_transf.cpp.s
-.PHONY : src/matrix_transf.cpp.s
-
-src/pinocchio_jacobiana.o: src/pinocchio_jacobiana.cc.o
-
-.PHONY : src/pinocchio_jacobiana.o
-
-# target to build an object file
-src/pinocchio_jacobiana.cc.o:
-	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.o
-.PHONY : src/pinocchio_jacobiana.cc.o
-
-src/pinocchio_jacobiana.i: src/pinocchio_jacobiana.cc.i
-
-.PHONY : src/pinocchio_jacobiana.i
-
-# target to preprocess a source file
-src/pinocchio_jacobiana.cc.i:
-	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.i
-.PHONY : src/pinocchio_jacobiana.cc.i
-
-src/pinocchio_jacobiana.s: src/pinocchio_jacobiana.cc.s
-
-.PHONY : src/pinocchio_jacobiana.s
-
-# target to generate assembly for a file
-src/pinocchio_jacobiana.cc.s:
-	$(MAKE) -f CMakeFiles/pinocchio_jacobiana.dir/build.make CMakeFiles/pinocchio_jacobiana.dir/src/pinocchio_jacobiana.cc.s
-.PHONY : src/pinocchio_jacobiana.cc.s
-
-src/trajectories.o: src/trajectories.cpp.o
-
-.PHONY : src/trajectories.o
-
-# target to build an object file
-src/trajectories.cpp.o:
-	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.o
-.PHONY : src/trajectories.cpp.o
-
-src/trajectories.i: src/trajectories.cpp.i
-
-.PHONY : src/trajectories.i
-
-# target to preprocess a source file
-src/trajectories.cpp.i:
-	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.i
-.PHONY : src/trajectories.cpp.i
-
-src/trajectories.s: src/trajectories.cpp.s
-
-.PHONY : src/trajectories.s
-
-# target to generate assembly for a file
-src/trajectories.cpp.s:
-	$(MAKE) -f CMakeFiles/trajectories.dir/build.make CMakeFiles/trajectories.dir/src/trajectories.cpp.s
-.PHONY : src/trajectories.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1051,9 +931,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... install/strip"
-	@echo "... pinocchio_jacobiana"
-	@echo "... trajectories"
-	@echo "... matrix_transf"
 	@echo "... gripper_service"
 	@echo "... hand_service"
 	@echo "... std_msgs_generate_messages_eus"
@@ -1119,15 +996,6 @@ help:
 	@echo "... src/hand_service.o"
 	@echo "... src/hand_service.i"
 	@echo "... src/hand_service.s"
-	@echo "... src/matrix_transf.o"
-	@echo "... src/matrix_transf.i"
-	@echo "... src/matrix_transf.s"
-	@echo "... src/pinocchio_jacobiana.o"
-	@echo "... src/pinocchio_jacobiana.i"
-	@echo "... src/pinocchio_jacobiana.s"
-	@echo "... src/trajectories.o"
-	@echo "... src/trajectories.i"
-	@echo "... src/trajectories.s"
 .PHONY : help
 
 

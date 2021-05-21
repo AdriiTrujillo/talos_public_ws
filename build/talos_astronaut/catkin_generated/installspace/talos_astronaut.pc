@@ -1,0 +1,8 @@
+prefix=/home/adrii/talos_public_ws/install
+
+Name: talos_astronaut
+Description: Description of talos_astronaut
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

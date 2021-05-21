@@ -127,9 +127,7 @@ bool torso_effort_controller_class::init(hardware_interface::EffortJointInterfac
     frames_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/frames_trajectory", 1000);
     quintic_pub_ = nh.advertise<astronaut_controllers::plot_msg>("/quintic_profile", 1000);
 
-
     return true;
-
 }
 
 void torso_effort_controller_class::update(const ros::Time &time, const ros::Duration &period){
@@ -164,8 +162,8 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
         desired_vel = trajectory_->Vel(now_);
         desired_acc = trajectory_->Acc(now_);
 
-        vel_i_ = global_velPof_->Vel(now_);
-        acc_i_ = global_velPof_->Acc(now_);
+        vel_i_ = global_velPof_->Vel(now_); // Save actual velocity to start next trajectory
+        acc_i_ = global_velPof_->Acc(now_); // Save actual accelertion to start next trajectory
         start_frame_ = current_pose; // Update de start frame to start the folowing trajectory
     }
 
@@ -175,13 +173,13 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
     control_error = KDL::diff(current_pose, target_frame_);
     // Calculate the error of the final pose in the trajectory
     final_error = KDL::diff(current_pose, final_frame_);
-    //check if the tool has arrive to the desired point
+    // Check if the tool has arrive to the desired point
     goal_reached.data = compareTolerance(final_error);
     // Get jacobian matrix 
     jnt_to_jac_solver_->JntToJac(jnt_pos_, jacobian_);
 
     // Get actual cartesian velocities
-    KDL::Twist cart_vel = KDL::Twist::Zero(); // Initiliz it to zeros
+    KDL::Twist cart_vel = KDL::Twist::Zero(); // Initilize it to zeros
     for(unsigned int i = 0; i < 6 ; i++){
         for (unsigned int j=0; j<jnt_vel_.rows(); j++){
             cart_vel(i) += jacobian_(i,j) * jnt_vel_(j);
@@ -191,13 +189,12 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
     KDL::Twist velocity_error;
     velocity_error = KDL::diff(cart_vel, desired_vel);
 
-    // Joint efforts in each iteration ____________
+    // Joint efforts in each iteration _______________
     if(compute_efforts_){
         jnt_effort_ = calculate_jnt_efforts(model, desired_acc, velocity_error, control_error, jnt_vel_, jnt_pos_, kp_, kv_);
     }
     
     writeJointCommand(jnt_effort_);
-
     
     // WRITE MSGS _________________________________
     astronaut_controllers::plot_msg plot_vel_error;
@@ -266,7 +263,7 @@ void torso_effort_controller_class::update(const ros::Time &time, const ros::Dur
 }
 
 void torso_effort_controller_class::writeJointCommand(std::vector<float> joint_command){
-    // Send joint position to joints
+    // Send joint efforts to all joints
     for(size_t i = 0; i < joint_handles_.size(); i++){
         joint_handles_[i].setCommand(joint_command[i]);
     }
@@ -349,23 +346,12 @@ void torso_effort_controller_class::stopping(const ros::Time &time) {}
 
 bool torso_effort_controller_class::compareTolerance(KDL::Twist error){
     
-    // std::cout << "diff_frame: " << diff_frame_ << std::endl;
     if(diff_frame_){ // To not check when it has just started
-        // std::cout << " ------- " << std::endl;
-        // std::cout << "x_err: " << fabs(error(0)) << std::endl;
-        // std::cout << "y_err: " << fabs(error(1)) << std::endl;
-        // std::cout << "z_err: " << fabs(error(2)) << std::endl;
-        // std::cout << "roll_err: " << fabs(error(3)) << std::endl;  
-        // std::cout << "pitch_err: " << fabs(error(4)) << std::endl;
-        // std::cout << "yaw_err: " << fabs(error(5)) << std::endl;
-        // std::cout << " ------- " << std::endl;
         if(fabs(error(0)) < tolerance_ and fabs(error(1)) < tolerance_ and fabs(error(2)) < tolerance_){
-            // std::cout << "GOAL REACHED" << std::endl;
             return true; // Point reached
         }
     }
     // Not reached yet
-    // std::cout << "GOAL NOT REACHED YET" << std::endl;
     return false;
 
 }
@@ -521,12 +507,7 @@ std::vector<float> torso_effort_controller_class::calculate_jnt_efforts(pinocchi
     data = pinocchio::Data(model);
 
     // Calculate complete Jacobian _________________________________
-
-    // std::cout << "1 -----" << std::endl;
-    // auto q = pinocchio::neutral(model);
-    // std::cout << q << std::endl;
     pinocchio::computeJointJacobians(model, data, q);
-    // std::cout << "2 -----" << std::endl;
     pinocchio::updateFramePlacements(model, data);
 
     // Jacobian with respect the end effector  ______________________

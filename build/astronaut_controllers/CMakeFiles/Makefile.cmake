@@ -261,9 +261,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/pinocchio_jacobiana.dir/DependInfo.cmake"
-  "CMakeFiles/trajectories.dir/DependInfo.cmake"
-  "CMakeFiles/matrix_transf.dir/DependInfo.cmake"
   "CMakeFiles/gripper_service.dir/DependInfo.cmake"
   "CMakeFiles/hand_service.dir/DependInfo.cmake"
   "CMakeFiles/std_msgs_generate_messages_eus.dir/DependInfo.cmake"

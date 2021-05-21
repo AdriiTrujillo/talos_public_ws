@@ -136,10 +136,6 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/astronaut_node.cpp)
 
-add_executable(send_position src/send_position.cpp)
-target_link_libraries(send_position ${catkin_LIBRARIES})
-add_dependencies(send_position ${catkin_EXPORTED_TARGETS})
-
 add_executable(look_to_aruco src/look_to_aruco.cpp)
 target_link_libraries(look_to_aruco ${catkin_LIBRARIES})
 

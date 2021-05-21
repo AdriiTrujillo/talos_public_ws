@@ -4,7 +4,6 @@
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/install/local.dir
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/rebuild_cache.dir
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/look_to_aruco.dir
-/home/adrii/talos_public_ws/build/astronaut/CMakeFiles/send_position.dir
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/std_msgs_generate_messages_lisp.dir
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/download_extra_data.dir
 /home/adrii/talos_public_ws/build/astronaut/CMakeFiles/astronaut_controllers_generate_messages_eus.dir

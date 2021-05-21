@@ -168,19 +168,6 @@ look_to_aruco/fast:
 .PHONY : look_to_aruco/fast
 
 #=============================================================================
-# Target rules for targets named send_position
-
-# Build rule for target.
-send_position: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 send_position
-.PHONY : send_position
-
-# fast build rule for target.
-send_position/fast:
-	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/build
-.PHONY : send_position/fast
-
-#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_lisp
 
 # Build rule for target.
@@ -493,33 +480,6 @@ src/look_to_aruco.cpp.s:
 	$(MAKE) -f CMakeFiles/look_to_aruco.dir/build.make CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.s
 .PHONY : src/look_to_aruco.cpp.s
 
-src/send_position.o: src/send_position.cpp.o
-
-.PHONY : src/send_position.o
-
-# target to build an object file
-src/send_position.cpp.o:
-	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.o
-.PHONY : src/send_position.cpp.o
-
-src/send_position.i: src/send_position.cpp.i
-
-.PHONY : src/send_position.i
-
-# target to preprocess a source file
-src/send_position.cpp.i:
-	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.i
-.PHONY : src/send_position.cpp.i
-
-src/send_position.s: src/send_position.cpp.s
-
-.PHONY : src/send_position.s
-
-# target to generate assembly for a file
-src/send_position.cpp.s:
-	$(MAKE) -f CMakeFiles/send_position.dir/build.make CMakeFiles/send_position.dir/src/send_position.cpp.s
-.PHONY : src/send_position.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -532,7 +492,6 @@ help:
 	@echo "... install/local"
 	@echo "... rebuild_cache"
 	@echo "... look_to_aruco"
-	@echo "... send_position"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... download_extra_data"
 	@echo "... astronaut_controllers_generate_messages_eus"
@@ -559,9 +518,6 @@ help:
 	@echo "... src/look_to_aruco.o"
 	@echo "... src/look_to_aruco.i"
 	@echo "... src/look_to_aruco.s"
-	@echo "... src/send_position.o"
-	@echo "... src/send_position.i"
-	@echo "... src/send_position.s"
 .PHONY : help
 
 

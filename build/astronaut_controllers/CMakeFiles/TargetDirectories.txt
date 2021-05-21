@@ -1,9 +1,6 @@
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/rebuild_cache.dir
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/edit_cache.dir
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/install/strip.dir
-/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/pinocchio_jacobiana.dir
-/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/trajectories.dir
-/home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/matrix_transf.dir
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/gripper_service.dir
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/hand_service.dir
 /home/adrii/talos_public_ws/build/astronaut_controllers/CMakeFiles/std_msgs_generate_messages_eus.dir

@@ -1,0 +1,39 @@
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target trajectory_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target trajectory_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target trajectory_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target trajectory_msgs_generate_messages_eus
+[  0%] Built target trajectory_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_plot_jnt
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_hand_operations
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_plot_msg
+[  0%] Built target _astronaut_controllers_generate_messages_check_deps_target_frame
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target roscpp_generate_messages_eus
+[ 13%] Built target astronaut_controllers_generate_messages_cpp
+[ 27%] Built target astronaut_controllers_generate_messages_nodejs
+[ 41%] Built target astronaut_controllers_generate_messages_lisp
+[ 62%] Built target astronaut_controllers_generate_messages_py
+[ 79%] Built target astronaut_controllers_generate_messages_eus
+[ 79%] Built target astronaut_controllers_gencpp
+[ 79%] Built target astronaut_controllers_generate_messages
+[100%] Built target hand_service
+[100%] Built target astronaut_controllers_lib
+[100%] Built target gripper_service

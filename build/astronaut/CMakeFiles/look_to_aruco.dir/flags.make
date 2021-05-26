@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"astronaut\"
 
-CXX_INCLUDES = -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include -I/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/adrii/talos_public_ws/devel/.private/astronaut_controllers/include -I/home/adrii/talos_public_ws/devel/.private/aruco_ros/include -I/home/adrii/talos_public_ws/src/talos_astronaut/aruco_ros/aruco/include -I/home/adrii/talos_public_ws/src/talos_astronaut/aruco_ros/aruco_ros/include -I/home/adrii/talos_public_ws/src/talos_astronaut/astronaut_controllers/include -I/opt/ros/kinetic/include -I/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
 

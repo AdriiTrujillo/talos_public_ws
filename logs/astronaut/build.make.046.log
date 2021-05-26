@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target look_to_aruco[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/look_to_aruco.dir/src/look_to_aruco.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/adrii/talos_public_ws/devel/.private/astronaut/lib/astronaut/look_to_aruco[0m
+[100%] Built target look_to_aruco

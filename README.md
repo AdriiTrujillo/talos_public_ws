@@ -1,5 +1,5 @@
 # TALOS ASTRONAUT PROJECT
-*Author: Adrián Trujillo López*
+*Author: Adrián Trujillo López*  
 *Contact: adrii.trujillo@gmail.com*
 
 ## Description

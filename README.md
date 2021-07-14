@@ -24,10 +24,10 @@ each ROS Version.In addition to PAL Robotics dependencies this project also uses
 environment variables are setted the next step will be to compile my packages in first place:
 
 ```
-1º --> catkin build astronaut_controllers
-2º --> catkin build astronaut
-3º --> catkin build aruco_ros
-4º --> catkin build hey5_description
+1 --> catkin build astronaut_controllers
+2 --> catkin build astronaut
+3 --> catkin build aruco_ros
+4 --> catkin build hey5_description
 ```
 Then the rest of the project can be compiled by typing:
 

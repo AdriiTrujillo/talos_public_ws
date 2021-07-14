@@ -43,3 +43,7 @@ Then If you want to see the funcionality of this project you can run the next si
 ```
 roslaunch astronaut astronaut.launch
 ```
+
+```
+roslaunch astronaut trajectory_motion.launch
+```
